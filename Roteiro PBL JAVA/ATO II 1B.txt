@@ -1,0 +1,123 @@
+===============================================================================
+ATO II — A ROTA DOS ARQUIVOS MORTOS (ROTA: 1B)
+===============================================================================
+
+[CENA: Cartório e Arquivo Municipal de Santa Aurora. Madrugada.]
+
+Você decide que confiar em qualquer estrutura da delegacia é um risco desnecessário. Com as cópias dos relatórios rasurados em mãos, você caminha sob a chuva densa até o antigo prédio do Cartório Municipal, onde os registros imobiliários e arquivos mortos da cidade são guardados.
+
+O prédio histórico está silencioso. As portas de madeira maciça estão trancadas, mas uma janela de ventilação nos fundos permite o acesso ao piso inferior.
+
+> VOZ DA RAZÃO:
+> "Se os horários das mortes foram alterados e as propriedades ao redor dos crimes mudaram de dono recentemente, os livros de registro do cartório indicarão o verdadeiro beneficiário."
+
+===============================================================================
+ESCOLHA 1 — A INFILTRAÇÃO NO CARTÓRIO
+===============================================================================
+
+[1] Mapear o painel elétrico nos fundos e desligar a energia para desativar 
+    quaisquer alarmes do prédio antes de entrar.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+		Você desliga o disjuntor principal. O prédio mergulha na escuridão total. Usando 
+		a lanterna do celular velada pela mão, você avança diretamente para a ala dos 
+		livros do século passado.
+		
+
+(É surpreendido por alguém que estava lá dentro GAME OVER)
+
+[2] Observar as janelas do andar superior. Há uma luz fraca acessa no escritório 
+    do arquivista; alguém já está lá dentro.
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+		Sua cautela evita que você seja surpreendido. Da sombra do pátio, você vê duas
+		figuras de terno vasculhando as prateleiras do fundo e ateando fogo em pastas
+		específicas.
+
+[3] Forçar a tranca da porta dos fundos com uma alavanca para garantir uma 
+    saída rápida, independentemente de fazer barulho.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+		A madeira cede com um estrondo seco. O barulho ecoa pelo saguão, chamando
+		a atenção imediata dos homens que limpavam o local.
+
+Digite o número da sua escolha: _
+
+===============================================================================
+ESCOLHA 2 — A BUSCA NOS ARQUIVOS
+===============================================================================
+
+No fundo do arquivo morto, você localiza as pastas de registros antigos da 
+região onde seu irmão foi encontrado. Os papéis estão amarelados e cobertos 
+de mofo, mas revelam incongruências gritantes: assinaturas rasuradas, taxas 
+imobiliárias sem comprovante e nomes de testemunhas que simplesmente sumiram 
+dos cadastros da prefeitura nos últimos seis meses.
+
+Seu irmão não estava apenas investigando um crime isolado; ele estava 
+rastreando a origem de documentos que a cidade tentou apagar há anos.
+
+> VOZ DA RAZÃO:
+> "As datas das rasuras coincidem com o início das mortes. Há um padrão de 
+> ocultação aqui, mas o motivo principal ainda está oculto."
+
+===============================================================================
+
+[1] Fotografar as rasuras e as datas dos documentos para cruzar os horários 
+    com os laudos da polícia mais tarde.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+		Você registra os carimbos e as datas apagadas. As fotos garantem que você 
+		tenha provas de que o arquivo foi adulterado, mas o tempo gasto na operação 
+		permite que o prédio seja cercado em silêncio.
+
+[2] Procurar por relatórios anexados que mencionem quem solicitou a retirada 
+    dessas pastas do arquivo público.
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+		Você encontra um protocolo de retirada assinado por um código interno da
+		prefeitura. Antes que possa decifrar o número, o som seco de uma tranca sendo
+		acionada na porta do corredor ressoa pelo prédio.
+
+[3] Coletar os papéis mais recentes e guardá-los no casaco antes de continuar 
+    vasculhando as gavetas.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+		Você puxa as pastas principais, garantindo a posse dos papéis originais. O
+		barulho das gavetas metálicas se chocando ecoa pelo galpão e chama a atenção
+		dos homens que patrulhavam a ala externa.
+
+Digite o número da sua escolha: _
+
+===============================================================================
+DESFECHO DA ROTA 1B — GAME OVER (O PREÇO DO CONHECIMENTO)
+===============================================================================
+
+[CENA: Saguão do Arquivo Municipal]
+
+Você segura as pastas e tenta alcançar a saída dos fundos. No entanto, a luz 
+de projetores externos atravessa os vitrais do cartório. Viaturas sem identificação 
+bloqueiam todas as vias do quarteirão.
+
+As portas da frente são arrombadas simultaneamente. Homens usando uniformes 
+táticos pretos invadem o salão. No centro do grupo, surge o Prefeito de Santa 
+Aurora, acompanhado por um Daniel silencioso e de cabeça baixa.
+
+PREFEITO:
+"Seu irmão cometeu exatamente o mesmo erro que você. Ele achou que podia mexer 
+em arquivos antigos sem que ninguém notasse. Santa Aurora tem coisas que 
+devem permanecer esquecidas."
+
+Você tenta reagir ou usar a documentação como barganha, mas a desproporção de 
+força é absoluta. Os homens armados avançam. As provas são tiradas das suas 
+mãos e queimadas em um tambor de metal ali mesmo no saguão.
+
+> VOZ DA RAZÃO / CONSPIRAÇÃO / VIOLÊNCIA:
+> "Aproximamos-nos demais sem saber com o que estávamos lidando..."
+
+Você é imobilizado. A névoa de Santa Aurora invade o salão pela porta aberta, 
+enquanto a cidade garante que nem você, nem seu irmão, jamais façam as 
+perguntas certas.
+
+===============================================================================
+FIM DE JOGO — [ROTA 1B: SILENCIADO PELO ARQUIVO]
+===============================================================================

@@ -1,0 +1,371 @@
+Roteiro Jogo Narrativo Java
+
+========================
+PROLOGO
+========================
+-----------------------------------------------------------------------------
+NARRRADOR
+ 
+	Silêncio.
+                
+                Por alguns segundos, nenhum som.
+                Então, lentamente, começa a chover. Primeiro algumas gotas.
+                Depois, uma chuva constante.
+                
+                Ao fundo, quase imperceptível, o som de carros passando
+                sobre o asfalto molhado.
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+>NARRRADOR-
+ 
+Uma cidade é vista de longe.
+O céu está 
+completamente encoberto. A chuva cai pesada sobre a arquitetura que mistura 
+prédios antigos e construções recentes. Uma fina camada de névoa arrasta-se 
+pelas avenidas movimentadas.
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+>NARRADOR:
+
+"Santa Aurora nunca foi uma cidade tranquila... mas também nunca foi do tipo
+ que chamava atenção. Pelo menos era o que todos diziam."
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+>RÁDIO (Chiado de sintonização):
+
+"...a polícia confirmou hoje a identidade da quinta vítima relacionada à se-
+quência de homicídios que vem preocupando os moradores de Santa Aurora. Ape-
+sar da repercussão, as autoridades afirmam que ainda não há evidências sufi-
+cientes para interligar os crimes."
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+[Rua residencial / Fachada de uma casa]:
+
+Pessoas caminham apressadas sob guarda-chuvas. Uma senhora tranca a porta de 
+casa com as mãos trêmulas e olha ao redor antes de puxar o casaco.
+
+>MORADORA LOCAL: 
+
+"Não dá mais para andar tranquila depois que o sol se põe. Essa névoa... esse
+ lugar está mudando."
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+[CENA: Esquina da Avenida Central / Perímetro isolado]
+
+A luz giratória de uma viatura reflete na pista molhada. Fitas amarelas de 
+isolamento bloqueiam a passagem para um beco escuro.
+
+
+>POLICIAL MILITAR: 
+"Circulando, pessoal! Deixem o trabalho com a perícia. Não tem nada para ver 
+ aqui."
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+[CENA: Banca de Jornal]
+
+O jornaleiro ajusta os papéis sob o toldo que goteja. A manchete em destaque 
+sob o plástico protetor diz: "QUINTA MORTE EM SEIS MESES".
+
+
+>JORNALEIRO: 
+"Quinta morte em seis meses... Se continuar assim, nem o jornal da manhã vai 
+ dar conta de vender tanta notícia ruim."
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+>NARRADOR:
+"O problema de uma cidade pequena é que segredos não ficam enterrados por muito
+ tempo. E Santa Aurora estava prestes a cobrar o seu preço."
+
+
+
+===============================================================================
+Pressione [ENTER] para iniciar a investigação...
+===============================================================================
+
+
+((CRIAÇÃO DO PERSONAGEM PRINCIPAL))
+
+===============================================================================
+ATO I — O RETORNO
+===============================================================================
+
+[CENA: Interior de um ônibus de viagem. Chuva bate contra a janela.]
+
+O balanço do veículo é constante. Do lado de fora, a névoa de Santa Aurora 
+engole a paisagem familiar. Você observa seu próprio reflexo no vidro molhado.
+
+> PROTAGONISTA:
+ "Eu não lembrava da cidade parecer tão pequena. Talvez fosse eu que tivesse 
+ mudado."
+
+*(O ônibus desacelera até parar com um chiado nos freios. As portas se abrem.)*
+
+Você desce na plataforma da rodoviária deserta. O ar frio da noite atinge 
+seu rosto. No seu bolso, o celular vibra.
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+[NOVA MENSAGEM - DANIEL]
+"Quando chegar, me procure na delegacia."
+
+Você guarda o aparelho. Um peso no peito lembra o motivo de estar aqui:
+
+
+
+(Background da relação entre o MC e seu irmão, vou fazer algo mais conexo com 
+o final, coloco depois)
+
+A morte de Gabriel, a única pessoa em quem você confiava... antes daquela última 
+discussão terrível. Você foi embora sem se despedir. Agora, ela está morta.
+
+De repente, pensamentos ecoam com clareza incômoda na sua mente:
+
+> VOZ DA RAZÃO:
+> "Você deveria ir direto para a delegacia. Daniel está te esperando."
+ 
+> VOZ DA CONSPIRAÇÃO:
+> "Ou talvez ele só queira saber o que você sabe. Todos aqui têm algo a esconder."
+	
+> VOZ DA VIOLÊNCIA:
+> "Você não precisa dar satisfação a ele. Nem a ninguém nesta cidade."
+
+
+Você fecha os olhos e respira fundo. O ruído na sua cabeça cessa.
+
+> PROTAGONISTA:
+> "Foi só um pensamento..."
+
+===============================================================================
+ESCOLHA 1 — O PRIMEIRO PASSO
+===============================================================================
+Você guarda o celular no bolso. O eco das vozes ainda vibra nos seus ouvidos,
+mas o peso do medalhão de bronze no seu bolso — o mesmo que seu irmão te deu
+na infância — traz um choque doloroso de realidade.
+
+Você precisa decidir como dar o primeiro passo nesta cidade.
+
+
+[1] Analisar o mapa da cidade na parede da estação para calcular o trajeto 
+    mais rápido até a delegacia e entender onde a quinta vítima foi achada.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			Você se aproxima do mapa manchado de umidade. Com calma, cruza as informações
+			da mensagem de Daniel com os locais de isolamento policial que ouviu no rádio.
+
+			> VOZ DA RAZÃO:
+			> "O tempo entre a rodoviária e o centro é de dez minutos a pé. Se cortarmos 
+			> pela travessa, evitamos a névoa densa e chegamos com fatos, não com 				suposições."
+
+
+[2] Observar os arredores da plataforma. Aquele sujeito encostado no poste 
+    parece estar vigiando quem desce do ônibus.
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			Você ajusta o gola do casaco e disfarça o olhar. O homem no poste acende um
+			cigarro, mas os olhos dele acompanham cada movimento das suas mãos.
+
+			VOZ DA CONSPIRAÇÃO:
+			"Ele sabe quem você é. A notícia da sua volta já circulou antes mesmo de o
+			ônibus estacionar. Ninguém fica parado no frio à meia-noite sem um motivo."
+
+[3] Segurar com força o medalhão no bolso, ignorar a chuva e marchar firme 
+    direto para a rua, pronto para encarar qualquer um que cruzar seu caminho.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Você ignora o mapa, a névoa e as pessoas. Seus passos ecoam pesados contra
+			o paralelepípedo molhado, cortando a noite com determinação cega.
+
+			VOZ DA VIOLÊNCIA:
+			"Deixe que vejam você chegando. Se alguém nesta cidade acha que pode brincar
+			com a memória do seu irmão, vai descobrir do pior jeito que você voltou."
+
+Digite o número da sua escolha:
+
+===============================================================================
+ESCOLHA 2 — O ENCONTRO NA RUA
+===============================================================================
+
+A caminho do seu destino, uma figura surge da névoa. É o Velho Jonas, um antigo 
+conhecido da família que trabalhava com seu irmão. Ele parece assustado e segura 
+uma lanterna com a mão trêmula.
+
+MORADOR (JONAS):
+"Garoto?... É você mesmo? Pelas barbas de Deus, você não devia ter voltado. 
+Aquele assunto do seu irmão... ele estava mexendo onde não devia!"
+
+[1] "Jonas, acalme-se. Me diga exatamente o que ele estava fazendo nos últimos 
+    dias e quem foi a última pessoa a falar com ele."
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+		Jonas solta um suspiro pesado, ajeitando o casaco. Sua postura firme o acalma.
+
+		MORADOR (JONAS):
+		> "Ele... ele estava na antiga fábrica desativada na semana passada. Dizia que 
+		> achou registros antigos da prefeitura que não batiam. Falou que ia encontrar 
+		> o Daniel para entregar tudo..."
+		(Pista de Jonas adicionada ao inventário)
+
+[2] "Quem te mandou aqui para me avisar? Você está vigiando a entrada da cidade 
+    para quem?"
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+		Jonas recua dois passos, assustado com o seu olhar desconfiado.
+
+		MORADOR (JONAS):
+		>"Ninguém me mandou! Eu só... eu vi a movimentação no posto de polícia mais cedo.
+		>Tinha gente estranha lá, garoto. Gente que não é da cidade perguntando por você!"
+
+[3] Segurar Jonas pelo colarinho do casaco: "Chega de rodeios, velho! Fala de 
+    uma vez o que aconteceu com ele antes que eu perca a paciência!"
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+		Jonas treme, arregalando os olhos com o impacto. Ele aponta para o beco da delegacia.
+
+		MORADOR (JONAS):
+		"Calma, garoto! Eu não sei de nada! Só sei que o Daniel tá te esperando no beco
+		dos fundos da delegacia... e ele não tá sozinho!"
+
+
+===============================================================================
+ESCOLHA 3 — A APROXIMAÇÃO DA DELEGACIA
+===============================================================================
+
+Ao se aproximar do bloco policial, a iluminação da rua falha. Você percebe que 
+a entrada principal está trancada. Há um rastro de documentos espalhados na lama 
+perto da porta de serviço, além de uma figura caída na penumbra do beco.
+
+> VOZ DA RAZÃO:
+> "Examine a cena primeiro. Recolha os papéis e verifique os sinais vitais 
+> antes de tomar qualquer atitude impulsiva."
+
+> VOZ DA CONSPIRAÇÃO:
+> "É uma emboscada clara. Alguém deixou essa cena montada para ver como você 
+> reage. Mantenha as costas na parede e observe as sombras."
+
+> VOZ DA VIOLÊNCIA:
+> "Esqueça a cautela. Avance rápido, segure quem estiver ali e garanta que 
+> ninguém saia desse beco sem te dar respostas."
+
+===============================================================================
+
+[1] Agachar-se para recolher as provas na lama e checar a pessoa no chão de 
+    forma metódica.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+(Aq só pega o documento sem cair no truque se a paranoia for ex: 2 )
+
+		Você analisa as páginas molhadas: são cópias do laudo do seu irmão com rasuras 
+		propositais. A pessoa no chão é apenas um manequim usado para chamar atenção. 
+		Você obteve o documento.( SE CAIU NO TRUQUE ACONTECE ALGO DPS)
+
+
+[2] Dar a volta por trás dos caixotes, usando a névoa como cobertura para 
+    analisar o beco sem ser visto.
+    (+1 CONSPIRAÇÃO)
+
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+		Sua cautela revela um olheiro escondido no topo da escada de incêndio, com uma
+		câmera apontada para o beco. Ao notar que foi descoberto, o sujeito foge,
+		deixando para trás uma pista sobre quem está monitorando a polícia.
+		(Adiciona Pista Manequim ao inventário)
+
+[3] Marchar direto em direção à sombra na penumbra, pronto para o confronto.
+    (+1 VIOLÊNCIA)
+
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+		Você arromba a porta de serviço com um chute, surpreendendo um suspeito que
+		tentava queimar o restante dos arquivos do seu irmão. Você o imobiliza antes
+		que as evidências sejam destruídas.
+		(Eram evidências falsas)
+
+===============================================
+FIM DO CAPÍTULO RETORNO( Enveredamentos Possíveis)
+
+SEGUIMENTOS POSSÍVEIS A PARTIR DAQUI:
+______________________________________________________________________
+[Opção 1A — O Confronto Metódico]
+
+Você entra na delegacia com os documentos rasurados em mãos e confronta Daniel.
+Usando a lógica, você força o detetive a admitir que a perícia oficial foi
+falsificada por ordens de cima.
+
+
+(Requer documento)
+______________________________________________________________________
+______________________________________________________________________
+[Opção 1B — A Rota dos Arquivos Mortos]
+
+Você decide não entregar as provas para a polícia local. Em vez disso, segue
+para a biblioteca/cartório municipal para cruzar as rasuras do laudo com os
+registros de propriedades antigas da cidade.(Requer pista)
+
+(Requer pista Manequim), vai dar game over em algum lugar com truque ou sem
+______________________________________________________________________
+______________________________________________________________________
+[Opção 2A — O Esconderijo Subterrâneo]
+
+Ignorando a delegacia e as autoridades, você usa as pistas fornecidas por Jonas
+para localizar o esconderijo secreto que seu irmão mantinha na antiga fábrica.
+
+
+(Requer Pista de Jonas)
+______________________________________________________________________
+______________________________________________________________________
+[Opção 2B — O Jogo Duplo]
+
+Você entra na delegacia fingindo total ingenuidade, alimentando as suspeitas
+de Daniel para ver até onde o detetive mentirá sobre a morte do seu irmão.
+
+
+______________________________________________________________________
+______________________________________________________________________
+[Opção 3A — Invasão à Delegacia]
+
+Você cruza as portas da delegacia impondo sua presença, peita o detetive
+Daniel na frente de toda a equipe e exige acesso imediato à cena do crime.
+
+
+(GAME OVER Preso por desacato).
+______________________________________________________________________
+______________________________________________________________________
+[Opção 3B — A Vingança Direta]
+
+Você usa a força para obter o endereço do principal suspeito citado por Jonas
+e segue direto para a casa dele na calada da noite para fazer justiça com as
+próprias mãos.
+
+
+(Requer full Agressividade)
+______________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
