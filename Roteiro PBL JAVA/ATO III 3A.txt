@@ -1,0 +1,260 @@
+===============================================================================
+ATO III — O CERCO AO GABINETE (PERSPECTIVA 3A: A ROTA DO DEPOIMENTO)
+===============================================================================
+
+[PONTE NARRATIVA PARA O ATO III]
+
+O relógio do painel da delegacia marca 02h40. As informações obtidas no interrogatório 
+do beco incendiaram a investigação. O suspeito confessou a ligação direta com a alta 
+cupola municipal: o incêndio dos laudos e a morte de Gabriel não foram acidentes, mas 
+partes de uma limpeza de arquivo ordenada pelo Gabinete do Vice-Prefeito.
+
+Com a pista do assessor, o local do ponto de encontro ou o cartão de acesso em mãos, 
+você deixa a delegacia sob uma garoa fina. A névoa de Santa Aurora parece mais espessa, 
+e o ar tem gosto de ferrugem.
+
+A verdade está exposta. Agora, você precisa transformar um depoimento obtido no beco 
+em uma prova irrefutável antes que o sol nasça e a prefeitura destrua o resto dos arquivos.
+
+
+===============================================================================
+CENA 1: A Garagem do Anexo Municipal / 03h15
+===============================================================================
+
+Você chega ao Anexo da Prefeitura, onde os veículos oficiais ficam estacionados. 
+O silêncio do subsolo é quebrado apenas pelo gotejar contínuo da água da chuva saindo 
+das tubulações da maquete viária. 
+
+A SUV preta do Assessor do Vice-Prefeito está parada na vaga reservada. Pelo vidro 
+fumê, você percebe a silhueta de alguém triturando papéis com uma máquina portátil 
+conectada ao acendedor de cigarros do carro.
+
+> VOZ DA RAZÃO:
+> "Ele está destruindo as vias originais dos contratos antes da Sessão matutina. 
+> É preciso registrar a ação antes de abordá-lo."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Repare na iluminação: os portões do anexo estão abertos. É uma armadilha para 
+> atrair você ou ele está agindo em desespero absoluto?"
+
+> VOZ DA VIOLÊNCIA:
+> "Ele é o elo direto entre a ordem e o gatilho que matou seu irmão. Bloqueie o 
+> veículo e arranque ele do banco do motorista agora."
+
+
+===============================================================================
+ESCOLHA 1 — A ABORDAGEM NO ANEXO
+===============================================================================
+
+[1] Fotografar/gravar o assessor destruindo os documentos pela janela antes de 
+    chamar Daniel ou agir.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			As lentes da sua câmera capturam claramente o rosto do assessor e os papéis 
+			com o timbre da obra da rodovia sendo triturados. A prova visual da destruição 
+			de arquivo público está garantida.
+			(Obteve Pista: Registro Visual da Destruição)
+
+[2] Usar o Cartão de Acesso/Ferramentas para cortar a energia do anexo e render o 
+    assessor na escuridão do subsolo.
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			O anexo fica no breu total. Assustado, o assessor tenta sair do carro com a 
+			pasta de originais. Você o rende na penumbra e recupera os documentos intactos.
+			(Obteve Item: Contratos Originais da Rodovia)
+
+[3] Quebrar o vidro do motorista com uma chave de roda e arrancar o assessor do carro.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Os cacos de vidro voam. Você puxa o homem pelo colarinho. Em pânico, ele 
+			entrega o celular pessoal desbloqueado, com mensagens do Vice-Prefeito mandando 
+			"resolver o problema do irmão do jornalista".
+			(Obteve Pista: Celular Desbloqueado do Assessor)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA III — A REVOLTA DA IMPRENSA
+===============================================================================
+
+Com o Assessor neutralizado e os registros da destruição em mãos, você deixa a 
+garagem do Anexo. O relógio marca 03h50. 
+
+A única forma de garantir que essas provas não sumam dentro da própria delegacia 
+é torná-las públicas antes da abertura dos portões da Câmara dos Vereadores às 06h00.
+
+Você caminha até a sede do jornal *A Voz de Santa Aurora*. A fachada de alvenaria 
+está escura, mas a porta de serviço dos fundos está entreaberta. Helena está no 
+laboratório fotográfico, pendurando negativos para secar sob a luz vermelha.
+
+
+===============================================================================
+CENA 2: Laboratório Fotográfico de Helena / 04h15
+===============================================================================
+
+Helena se vira assustada com a sua entrada, a caneta de marcação em riste. 
+Ao reconhecer você e ver o material colhido do assessor, ela ajusta os óculos.
+
+HELENA:
+"O que é isso? O depoimento do beco vazou para a rádio comunitária há vinte minutos. 
+A prefeitura está tentando emitir uma nota dizendo que o suspeito capturado é um 
+invasor qualquer sem vínculo público. O que você tem aí?"
+
+> VOZ DA RAZÃO:
+> "Helena precisa ver os contratos e o registro fotográfico do anexo. A lógica da 
+> reportagem precisa ser impecável para evitar processos."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Não entregue tudo a ela. Dê apenas cópias da gravação. O arquivo físico deve 
+> permanecer sob seu controle até o momento da denúncia formal."
+
+> VOZ DA VIOLÊNCIA:
+> "Ela tem acesso às impressoras de rodízio da cidade. Faça ela rodar edições de 
+> emergência para espalhar nas ruas antes do sol nascer."
+
+
+===============================================================================
+ESCOLHA 2 — A PUBLICAÇÃO DA VERDADE
+===============================================================================
+
+[1] Entregar o registro fotográfico e cruzar os contratos com as matérias antigas 
+    para redigir a capa do jornal.
+    (+1 RAZÃO / +Relacionamento HELENA)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			Helena monta a edição extraordinária em tempo recorde. A manchete estampa 
+			as fotos do assessor e os números dos contratos da rodovia com o selo de fraude.
+			(Obteve Pista: Edição Extraordinária Impressa)
+
+[2] Passar apenas o áudio/áudio do celular para Helena e pedir que ela acione seus 
+    contatos no Ministério Público Estadual.
+    (+1 CONSPIRAÇÃO / +Relacionamento HELENA)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			Helena faz três ligações encriptadas. Um promotor de justiça de plantão 
+			confirma o recebimento do áudio e emite uma ordem de busca preventiva.
+			(Obteve Pista: Ordem do Ministério Público)
+
+[3] Exigir que ela use a duplicadora de panfletos para espalhar o depoimento do beco 
+    diretamente nas portas da prefeitura e da câmara.
+    (+1 VIOLÊNCIA / +Relacionamento HELENA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Centenas de cópias do depoimento e das fotos começam a ser impressas. 
+			Helena entrega os fardos para os entregadores da madrugada espalharem no centro.
+			(Status: Alerta Geral na Cidade)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA IV — O EMBATE NO BEC O E A EMBOSCADA FINAL
+===============================================================================
+
+[CENA: Cruzamento da Avenida Central com a Praça da Matriz / 05h00]
+
+Você sai da redação carregando o dossiê finalizado. A luz cinzenta do amanhecer 
+começa a romper as nuvens de chuva. As luzes da iluminação pública se apagam uma 
+a uma por ordem do sistema central.
+
+Ao tentar atravessar a Praça da Matriz em direção ao Prédio da Prefeitura, o som 
+de sirenes sem iluminação ecoa pelas alamedas. Dois carros patrulha sem identificação 
+bloqueiam as duas pontes de pedestres. 
+
+Não são homens comuns da prefeitura. São os policiais da tropa pessoal do Vice-Prefeito, 
+enviados para conter o vazamento antes da abertura da Câmara.
+
+
+===============================================================================
+CENA 3: A Praça da Matriz sob Névoa / 05h15
+===============================================================================
+
+Um oficial desce com o cassetete tático em mãos, enquanto outro mantém a mão no coldre.
+
+POLICIAL:
+"Parado aí! Por ordem do Gabinete de Segurança, essa área está interditada para 
+varredura. Entrega esse volume que você está carregando e encoste no muro!"
+
+> VOZ DA RAZÃO:
+> "O perímetro está cercado por viaturas, mas o monumento central da praça oferece 
+> cobertura total até a entrada lateral do Palácio Municipal."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Eles estão agindo sem mandato oficial. Se você usar o rádio de Daniel ou o gravador 
+> na frequência aberta, o comando geral da PM terá que intervir."
+
+> VOZ DA VIOLÊNCIA:
+> "A calçada está molhada e eles estão confiantes demais. O confronto físico na 
+> penumbra da praça é a única forma de abrir caminho na marra."
+
+
+===============================================================================
+ESCOLHA 3 — O RUPTURA DO BLOQUEIO DA PRAÇA
+===============================================================================
+
+[1] virar as costas e tentar correr diretamente a pé de volta para o beco do jornal.
+    (TENTATIVA DE FUGA DESESPERADA)
+		---> SE ESCOLHEU [1] (GAME OVER)
+			Ao se virar para fugir pela rua aberta, o oficial dispara duas vezes com 
+			munição não-letal de impacto direto nas suas pernas. Você cai na calçada 
+			molhada, incapacitado. Os policiais avançam, recolhem todo o dossiê e o 
+			jovens trancam você em um veículo descaracterizado. A verdade é soterrada.
+			
+			[FIM DE JOGO — A CORRUPÇÃO VENCEU A CORRIDA]
+			(Reiniciar a partir da Escolha 3 do Ato III)
+
+[2] Flanquear o bloqueio usando as colunas do monumento central para acessar a 
+    entrada de serviço da prefeitura sem ser visto.
+    (+1 RAZÃO / +1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (ROTA TÁTICA)
+			Você se move em silêncio entre as estátuas e colunas de pedra. Os policiais 
+			buscam na direção errada enquanto você alcança a porta metálica dos fundos 
+			da prefeitura, mantendo todas as provas secas e sob seu controle.
+
+[3] Enfrentar o primeiro policial no corpo a corpo usando o ambiente molhado para 
+    desarmá-lo e abrir caminho pela força bruta.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (ROTA DE IMPACTO)
+			Você avança rápido, usa a poça de água para deslizar sob o golpe de cassetete 
+			e derruba o oficial com uma rasteira violenta. Apoderando-se do cassetete dele, 
+			você afasta o segundo agente e corre para os degraus da Prefeitura.
+			(Status: Ferimentos Leves / Arma Branca Adquirida)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA FINAL DO ATO III (PERSPECTIVA 3A) — A CAMINHO DO CONFRONTO FINAL
+===============================================================================
+
+[CENA: Hall de Entrada da Prefeitura Municipal de Santa Aurora / 05h45]
+
+Você consegue passar pelas portas pesadas de bronze do Palácio Municipal. 
+
+O interior da prefeitura é luxuoso: pisos de mármore polido, lustres de cristal e 
+retratos a óleo dos antigos prefeitos nas paredes. Lá fora, o sol finalmente começa 
+a iluminar a tempestade que passou, mas dentro do prédio o clima é de velório militar.
+
+Os funcionários do primeiro escalão começam a chegar para a Sessão Extraordinária. 
+No topo da grande escadaria de mármore, o Vice-Prefeito conversa em voz baixa com os 
+seus advogados, sem saber que o seu dossiê completo acabou de atravessar o portão.
+
+Você ajusta o casaco, sente o peso dos documentos, gravações e fotos no seu peito. 
+A teia construída pelo interrogatório do beco levou você até as portas do poder.
+
+> VOZ DA RAZÃO:
+> "O plenário abre em quinze minutos. Presente o dossiê diretamente na mesa da 
+> presidência da Câmara sob o olhar da imprensa."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Usar a Chave do Cofre ou o Cartão para invadir o gabinete do Vice-Prefeito antes 
+> que ele suba ao pódio para a sessão."
+
+> VOZ DA VIOLÊNCIA:
+> "Suba as escadas agora e confronte o Vice-Prefeito diretamente diante de todos 
+> os funcionários e advogados presentes no hall."
+
+===============================================================================
+ESTADO ATUAL DO JOGADOR (FIM DO ATO III - PERSPECTIVA 3A):
+===============================================================================
+* **EVIDÊNCIA DEFINITIVA:** Depoimento do Beco + Registros do Anexo + Contratos Originais.
+* **RECURSOS ADQUIRIDOS:** [Cartão de Acesso / Celular do Assessor / Jornal Impresso / Cassetete] (Conforme escolhas).
+* **PRÓXIMO PASSO:** ATO IV — A VERDADE (A Queda do Gabinete / O Julgamento na Câmara).

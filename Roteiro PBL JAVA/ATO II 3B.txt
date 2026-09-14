@@ -1,0 +1,39 @@
+===============================================================================
+DESDOBRAMENTOS DA OPÇÃO 3B — A INVASÃO À DELEGACIA
+===============================================================================
+
+[CENA: Saguão da Delegacia de Santa Aurora]
+
+Tomado pelo impulso e pela raiva, você força a passagem pela porta principal 
+da delegacia, empurrando o plantonista e exigindo acesso imediato aos arquivos 
+do seu irmão.
+
+Sua abordagem agressiva faz soar o alarme interno. Em segundos, três policiais 
+armados saem das salas laterais e o cercam no saguão. Daniel surge logo em 
+seguida, mantendo a mão no coldre e uma expressão severa.
+
+DANIEL:
+"Você passou de todos os limites. Isso aqui é uma repartição pública, não a 
+sua casa. Você está preso por desacato, invasão e obstrução de justiça."
+
+===============================================================================
+RESULTADO DA AÇÃO — PRISÃO E FIM DE JOGO (GAME OVER)
+===============================================================================
+
+Você é imobilizado contra o balcão de atendimento e algemado antes que possa 
+esboçar qualquer reação. Todos os seus pertences — incluindo as poucas pistas 
+que havia coletado até agora — são apreendidos e guardados no cofre da perícia.
+
+Trancado em uma cela no subsolo da delegacia, você assiste da grade enquanto 
+Daniel assina a sua transferência para o presídio regional na manhã seguinte. 
+
+Sem liberdade para investigar e sem acesso aos documentos, a busca pela 
+verdade sobre o seu irmão termina ali, abafada pela burocracia e pelo peso 
+da lei em Santa Aurora.
+
+> VOZ DA VIOLÊNCIA:
+> "Agimos no impulso... e o sistema usou a própria força dele para nos anular."
+
+===============================================================================
+FIM DE JOGO — [ROTA 3B: PRESO POR DESACATO]
+============================================

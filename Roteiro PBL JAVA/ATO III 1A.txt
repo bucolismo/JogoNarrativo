@@ -1,0 +1,302 @@
+===============================================================================
+ATO III — AS CONTRADIÇÕES (PERSPECTIVA 1A: O CONFRONTO METÓDICO)
+===============================================================================
+
+[CENA 1: Corredor da Delegacia / Saída do Gabinete de Daniel / 01h45]
+
+O clique da tranca da porta de Daniel ecoa no corredor silencioso. O ar dentro da 
+delegacia é denso, impregnado com cheiro de café requentado, cinzas de cigarro e o 
+mofo de papéis velhos. 
+
+Você caminha a passos lentos, sentindo o peso do envelope sob o casaco molhado. 
+Ao passar pelas baias de trabalho, percebe que o plantonista não digita mais; 
+seus olhos acompanham seus passos pelo reflexo do monitor escuro. Dois outros 
+oficiais conversam em sussurros na recepção, mas emudecem no instante em que 
+você cruza a porta de vidro fumaçado.
+
+Você pisa na calçada. A tempestade em Santa Aurora atingiu o pico. O vento 
+frio arrasta a névoa pelas sarjetas, e a luz amarelada dos postes pisca como se 
+a rede elétrica da cidade estivesse prestes a ruir.
+
+> VOZ DA RAZÃO:
+> "Daniel abriu uma brecha, mas palavras e papéis rasurados são frágeis. Se você 
+> não cruzar esse laudo com dados físicos ou registros oficiais nas próximas horas, 
+> a versão deles se fechará novamente."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Aquele olhar dos policiais no corredor não foi casual. Eles viram o envelope. 
+> O rádio da delegacia já deve estar notificando quem quer que controle as sombras 
+> desta cidade."
+
+> VOZ DA VIOLÊNCIA:
+> "Deixe que venham. Você já tem o suficiente para saber que o laudo é uma farsa. 
+> A única linguagem que essa cidade entende é o confronto."
+
+Você puxa a gola do casaco, protege o envelope da chuva e toma a primeira decisão 
+de percurso com base no que obteve de Daniel.
+
+
+===============================================================================
+ESCOLHA 1 — A INVESTIGAÇÃO DA PROVA MATERIAL
+===============================================================================
+
+[1] [REQUER: Rádio Policial / Aliança com Daniel] Usar o rádio de frequência 
+    restrita na penumbra de uma marquise para interceptar o canal da Perícia.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			Você se abriga sob o toldo de uma loja fechada. Liga o rádio no volume mínimo. 
+			O chiado de estática dá lugar à voz pausada do operador: "Central, viatura 04 
+			em deslocamento. Transferência das amostras do caso Gabriel para o Cartório 
+			Central e IML agendada para as 02h15." Você agora tem um horário e um local exato.
+			(Obteve Pista: Frequência da Central)
+
+[2] [REQUER: Ruptura com a Polícia] Esperar a troca de guarda no estacionamento 
+    dos fundos e invadir o Arquivo Morto da delegacia pela janela da basculante.
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			Você se esconde atrás da caçamba de lixo do pátio até as 02h00, quando o 
+			plantão troca. Deslizando pela janela do subsolo, você alcançar as gavetas 
+			de aço do Arquivo Morto e força a pasta original, fotografando o documento 
+			sem as rasuras do laudo antes de disparar qualquer alarme.
+			(Obteve Item: Laudo Pericial Sem Rasuras)
+
+[3] [REQUER: Nome do Suspeito Empresário] Caminhar até a Área Nobre para vigiar 
+    o endereço do empresário citado por Daniel.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Você corta caminho pelas alamedas arborizadas do bairro nobre. Da calçada, 
+			observa a mansão de andar alto: as luzes do escritório estão acesas e um 
+			homem tritura documentos na janela. Você memoriza a placa do veículo na garagem.
+			(Obteve Pista: Agenda do Empresário)
+
+[4] [REQUER: Cartão do IML / Rota do Necrotério] Usar o cartão de acesso para entrar 
+    pela porta lateral do Instituto Médico Legal na calada da noite.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [4] (ROTA DO NECROTÉRIO)
+			A porta metálica do IML destrava com um bipe suave. O cheiro de formol e ar 
+			gelado atinge seu rosto. Na mesa 03, sob o lençol, você examina o corpo do seu 
+			irmão. Sob as unhas da mão direita, você encontra e coleta pequenos fragmentos 
+			de tinta industrial azul, a mesma usada nos prédios públicos da cidade.
+			(Obteve Pista: Fragmento de Tinta Industrial)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA I — O CAMINHO ATÉ A REDAÇÃO
+===============================================================================
+
+Os minutos seguintes são uma corrida silenciosa contra o relógio. O frio da madrugada 
+começa a atravessar o tecido das suas roupas, mas a adrenalina mantém seus sentidos 
+alerta. 
+
+Com a nova evidência em mãos — seja o horário do transporte, a foto do laudo sem rasuras, 
+o rastro do empresário ou o fragmento de tinta —, uma certeza se consolida: publicar ou 
+validar essas provas exige uma voz independente. A polícia está comprometida, e a 
+prefeitura controla os canais oficiais.
+
+Você cruza a Praça da Matriz. As luzes dos postes refletem nas poças de água da chuva. 
+A poucas quadras dali, no segundo andar de um prédio antigo de alvenaria, brilha a única 
+janela acesa em todo o centro comercial: a redação de *A Voz de Santa Aurora*.
+
+Você sobe as escadas de madeira rangente do edifício. O som das máquinas de datilografar 
+antigas e o zumbido de um rádio AM preenchem o ambiente. Ao abrir a porta de vidro lapidado, 
+você encontra Helena. Ela está de pé sobre uma mesa coberta de jornais velhos, com uma 
+xícara de café fumaçando em uma das mãos e uma caneta vermelha na outra.
+
+
+===============================================================================
+CENA 2: Redação do Jornal "A Voz de Santa Aurora" / 02h30
+===============================================================================
+
+Helena se vira devagar, ajustando os óculos. Ela não parece surpresa em ver você, 
+mas o olhar dela varre suas roupas molhadas e para na pasta de documentos que 
+você carrega.
+
+HELENA:
+"Você tem a cara de quem acabou de mexer no ninho de marimbondos da delegacia. 
+O Daniel te deu as respostas que você queria ou só te empurrou mais conversa fiada?"
+
+> VOZ DA RAZÃO:
+> "Helena é metódica. Se você organizar as provas em linha cronológica, ela 
+> usará os arquivos do jornal para preencher as lacunas que faltam."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Cuidado com o que entrega. Jornalistas vivem de manchetes, mas também vivem 
+> de trocas de favores. Dê a ela os fatos, mas mantenha as provas físicas com você."
+
+> VOZ DA VIOLÊNCIA:
+> "Pule a conversa fiada. Ela precisa rodar essa matéria antes que o jornal da 
+> manhã vá para as bancas, com ou sem a autorização dos editores."
+
+
+===============================================================================
+ESCOLHA 2 — O CONFRONTO DA INFORMAÇÃO COM HELENA
+===============================================================================
+
+[1] Colocar os documentos na mesa e propor um cruzamento de dados com o arquivo 
+    de matérias censuradas do jornal.
+    (+1 RAZÃO / +Relacionamento HELENA)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			Helena puxa as pastas de arquivos mortos do jornal. Cruzando as datas das 
+			obituárias com as desapropriações de imóveis, surge um padrão claro: todas 
+			as 5 vítimas eram proprietárias de terrenos no traçado da nova rodovia municipal.
+			(Obteve Pista: Mapeamento de Propriedades Negadas)
+
+[2] Mostrar apenas trechos do laudo e questionar o que ela realmente sabia sobre 
+    a relação entre Gabriel e as autoridades.
+    (+1 CONSPIRAÇÃO / +Relacionamento HELENA)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			Helena fecha as persianas da sala, respirando fundo. Ela abre uma gaveta 
+			falsa e entrega uma chave antiga: "Gabriel sabia que seria pego. Ele me 
+			deixou isso. É a chave do cofre particular no arquivo da Prefeitura."
+			(Obteve Item: Chave do Cofre da Prefeitura)
+
+[3] Bater as provas na mesa e exigir que ela use a impressora de emergência para 
+    imprimir panfletos e expor o laudo imediatamente.
+    (+1 VIOLÊNCIA / +Relacionamento HELENA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Helena recua, assustada com a sua postura, mas cede à gravidade dos papéis: 
+			"A gráfica foi ameaçada por homens armados no início da semana... mas eu 
+			posso te dar o mapa do acesso de serviço para a gráfica central."
+			(Obteve Pista: Identificação dos Censores da Gráfica)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA II — A EMBOSCADA NA SAÍDA
+===============================================================================
+
+O relógio de parede do jornal marca 03h10 quando você recolhe os documentos. 
+
+Helena permanece em silêncio por um momento, observando o mapa de conexões desenhado 
+sobre a mesa. A verdade sobre Santa Aurora deixou de ser uma suspeita abstrata para 
+se tornar uma conspiração comercial e governamental com nomes, datas e carimbos.
+
+HELENA:
+"Se você sair pela porta da frente, não vai andar duas quadras. A rua principal 
+está calma demais para esta hora da noite... e isso nunca é um bom sinal nesta cidade."
+
+Você acena em concordância, guarda os papéis no bolso interno do casaco impermeável 
+e segue pelas escadas dos fundos. 
+
+A porta de serviço abre para um beco estreito e úmido, cercado por paredes altas 
+de tijolo aparente. O cheiro de lixo molhado e fuligem é forte. A chuva diminuiu para 
+uma garoa fina, mas a névoa acumulou-se na altura dos joelhos.
+
+Você dá dez passos pelo paralelepípedo antes de ouvir o som. 
+
+O ronco grave de um motor V8 surge da travessa. Faróis altos cortam a escuridão da 
+névoa, cegando sua visão por um segundo. Um SUV preto sem placas fecha a saída do beco. 
+As portas se abrem simultaneamente. Dois homens vestindo sobretudos escuros desembarcam, 
+sacando pistolas equipadas com silenciadores.
+
+
+===============================================================================
+CENA 3: O Beco dos Fundos do Jornal / 03h20
+===============================================================================
+
+O silêncio do beco torna-se claustrofóbico. Os faróis do SUV iluminam suas pernas, 
+projetando sua sombra gigantesca contra a parede de tijolos atrás de você.
+
+HOMEM ARMADO:
+"Você deveria ter pegado o próximo ônibus de volta, garoto. Sem passos em falso. 
+Entrega a pasta que está no seu casaco e nem pense em correr."
+
+> VOZ DA RAZÃO:
+> "Eles estão com armas empunhadas e você está no campo de visão direto dos faróis. 
+> Tentar correr ou escalar a escada de incêndio agora é um suicídio evidente."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Eles querem os papéis intactos, não uma cena de crime barulhenta. Use a sombra 
+> dos contêineres para se esconder e acionar o gravador antes que eles se aproximem."
+
+> VOZ DA VIOLÊNCIA:
+> "A única saída é eliminar a vantagem visual deles. Quebre a luz do beco ou use 
+> o ambiente para fechar a distância e desarmar o homem mais próximo no escuro."
+
+
+===============================================================================
+ESCOLHA 3 — O CONFRONTO NO BECO
+===============================================================================
+
+[1] virar as costas e tentar fugir correndo pela escada de incêndio ou pela travessa lateral.
+    (TENTATIVA DE FUGA)
+		---> SE ESCOLHEU [1] (GAME OVER)
+			Você se vira abruptamente e dá dois passos rápidos em direção à estrutura metálica. 
+			O som abafado das disparos com silenciador erra o primeiro passo, mas o segundo 
+			atinge suas costas em cheio. Suas pernas fraquejam, e você desaba sobre o paralelepípedo 
+			molhado. Enquanto a névoa cobre sua visão, mãos frias arrancam o envelope do seu 
+			casaco. O caso de Gabriel termina no fundo daquele beco.
+			
+			[FIM DE JOGO — A VERDADE FOI SILENCIADA]
+			(Reiniciar a partir do início do Ato III ou refazer a Escolha 3)
+
+[2] Recuar devagar para a sombra profunda dos contêineres e acionar o gravador/celular 
+    para captar os nomes e as ordens passadas pelo rádio dos homens.
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			Você prende a respiração na penumbra e levanta as mãos devagar em rendição simulada, 
+			recuando para a mancha de sombra. O rádio de um dos homens chia: "Ache o garoto! 
+			O Gabinete do Prefeito quer o arquivo do laudo destruído antes do amanhecer!" 
+			Aproveitando o chiado do rádio que os distrai, você desliza por uma fresta no portão de serviço.
+			(Obteve Gravação: Ordem de Queima de Arquivo)
+
+[3] Agarrar uma barra de ferro encostada na parede e usá-la para apagar a iluminação 
+    do beco, atacando o agressor mais próximo na penumbra.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Um golpe preciso esmaga a luminária do muro, jogando o beco no breu total. No caos 
+			dos tiros cegos que se seguem, você usa a cobertura da névoa para fechar a distância, 
+			desarmar o primeiro homem com uma alavanca brutal e tomar sua arma antes de escapar pela travessa.
+			(Obteve Item: Arma de Fogo / Status: Procurado por Agressão)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA FINAL DO ATO III — A CAMINHO DO ATO IV
+===============================================================================
+
+[CENA: Mirante do Parque da Cidade / Visão Geral de Santa Aurora / 04h00]
+
+A garoa finalmente cessa. O vento frio da madrugada limpa parte da névoa que 
+cobria o vale.
+
+De cima do mirante, você observa Santa Aurora. As luzes das ruas parecem uma 
+teia amarelada cortando o escuro. No centro geométrico da cidade, destacando-se 
+das construções antigas, ergue-se o Prédio da Prefeitura Municipal — com o último 
+andar inteiramente iluminado em plena madrugada.
+
+Você retira o dossiê do bolso. Os papéis estão manchados de umidade, mas as 
+informações estão intactas. 
+
+O puzzle que seu irmão tentou montar antes de morrer está finalmente completo:
+As cinco mortes não foram obra de um maníaco solto na névoa. Foram execuções 
+planejadas para desapropriar terrenos de alto valor para o projeto da nova rodovia. 
+Gabriel descobriu a farsa, tentou usar o laudo pericial para parar a licitação e 
+foi silenciado dentro da própria estrutura pública.
+
+Não há mais espaço para investigações passivas, dúvidas ou recuos. Toda a teia 
+de corrupção de Santa Aurora converge para um único ponto.
+
+> VOZ DA RAZÃO:
+> "Você tem os fatos, as datas e a prova da adulteração. A única forma de impedir 
+> que isso seja abafado é apresentar o dossiê durante a Sessão Extraordinária no 
+> Prédio da Prefeitura ao amanhecer."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Eles vão cercar o prédio inteiro. A única maneira de agir é usar o Cartão de 
+> Acesso ou a Chave do Cofre para entrar pelas galerias antes que a sessão comece."
+
+> VOZ DA VIOLÊNCIA:
+> "Chega de esperar pelo amanhecer. Você tem as provas e a localização dos responsáveis. 
+> É hora de entrar naquele gabinete e fazer os mandantes pagarem pelo que fizeram."
+
+===============================================================================
+ESTADO ATUAL DO JOGADOR (FIM DO ATO III):
+===============================================================================
+* **EVIDÊNCIA DEFINITIVA:** Dossiê Pericial Adulterado + Mapeamento da Fraude.
+* **RECURSOS ADQUIRIDOS:** [Rádio Policial / Chave do Cofre / Gravação do Rádio / Arma] (Conforme escolhas).
+* **PRÓXIMO PASSO:** ATO IV — A VERDADE (A Infiltração / O Confronto no Governo).

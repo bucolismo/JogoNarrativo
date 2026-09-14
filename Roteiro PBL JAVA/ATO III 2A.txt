@@ -1,0 +1,264 @@
+===============================================================================
+ATO III — AS CONTRADIÇÕES (PERSPECTIVA 2A: A ROTA DOS ARQUIVOS MORTOS)
+===============================================================================
+
+[CENA 1: Corredor de Arquivos da Central de Registros / Subsolo / 01h45]
+
+O cheiro de papel mofado, poeira acumulada e produto de limpeza barato é sufocante 
+no subsolo da Central de Registros Imobiliários de Santa Aurora. 
+
+Você está sozinho no corredor úmido, iluminado apenas pelo brilho intermitente de 
+uma lâmpada tubular com defeito. O eco dos seus passos acarreta uma sensação de 
+vigilância constante. Nas suas mãos, as pastas de transferência de propriedades 
+revelam uma rasura grosseira: a assinatura do seu irmão Gabriel foi forjada em um 
+documento de cessão de direitos assinado dois dias *após* a data oficial de sua morte.
+
+Do lado de fora, no poço de ventilação, ouve-se o som cavo da chuva caindo no asfalto.
+
+> VOZ DA RAZÃO:
+> "O carimbo do tabelião e a numeração do livro de registros indicam que a alteração 
+> foi feita no sistema físico do Cartório do 2º Ofício. Precisamos cruzar esse 
+> livro com as certidões das outras quatro vítimas."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Repare na poeira apagada na prateleira ao lado: alguém tirou a pasta original 
+> há poucas horas. A cadeia de custódia da prefeitura está apagando a memória da cidade."
+
+> VOZ DA VIOLÊNCIA:
+> "Não perca tempo lendo certidões de nascimento. Pegue os livros matrizes, guarde os 
+> originais no casaco e saia antes que o ronda do subsolo faça a checagem das trancas."
+
+
+===============================================================================
+ESCOLHA 1 — A EXTRAÇÃO DAS PROVAS CARTORÁRIAS
+===============================================================================
+
+[1] [REQUER: Conhecimento Pericial / Razão] Usar a lanterna e a lente para fotografar 
+    as marcas de rasura química nos livros matrizes sem danificar os selos oficiais.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			Suas fotos registram claramente o reagente químico usado para apagar o nome 
+			original do dono e sobrepor o nome da empresa fantasma ligada ao projeto.
+			(Obteve Pista: Matriz Adulterada por Reagente)
+
+[2] [REQUER: Gazua/Chave Improvisada] Forçar a gaveta do Tabelião Chefe para obter a 
+    agenda privada de atendimentos fora do expediente.
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			A gaveta cede com um estalo seco. Dentro, você encontra uma lista de pagamentos 
+			em dinheiro vivo feitos por um corretor que atua como laranja da Prefeitura.
+			(Obteve Pista: Livro de Caixas Clandestino do Cartório)
+
+[3] [REQUER: Pé de Cabra / Violência] Arrancar as páginas rasuradas diretamente do livro 
+    matriz e confiscar os selos cartorários não utilizados.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Com um rasgo seco, você arranca a folha da certidão fraudada. O alarme silencioso 
+			do cofre pisca no painel da parede, alertando a segurança privada.
+			(Obteve Item: Páginas Matrizes Originais / Status: Alarme Disparado)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA I — O CAMINHO NA CHUVA ATÉ A IMPRENSA
+===============================================================================
+
+Você abandona o subsolo do Cartório pela porta de descarte de papéis, emergindo no 
+bairro comercial deserto. A névoa da madrugada cobre os paralelepípedos até a altura 
+dos joelhos, refletindo o vermelho dos letreiros desbotados.
+
+Com as fotos das rasuras químicas, a agenda secreta do tabelião ou as folhas matrizes 
+arrancadas sob o casaco, a farsa jurídica montada em Santa Aurora se desfaz. Gabriel 
+não foi morto por acaso: ele descobriu que o Cartório e a Prefeitura estavam 
+expropriando sistematicamente as terras do traçado da nova rodovia.
+
+Você precisa de uma plataforma neutra para tornar esses registros burocráticos inteligíveis 
+para a população antes do amanhecer. Você dobra a esquina em direção ao prédio de 
+alvenaria de *A Voz de Santa Aurora*.
+
+A escada rangente conduz você ao segundo andar. Helena está sentada diante da mesa 
+de montagem visual, cercada por rolos de fita adesiva, tipografia de chumbo e xícaras 
+de café frio.
+
+
+===============================================================================
+CENA 2: Redação do Jornal "A Voz de Santa Aurora" / 03h00
+===============================================================================
+
+Helena levanta os olhos, limpa o suor da testa com as costas da mão e olha para 
+os papéis com carimbos cartorários que você coloca sobre a mesa de luz.
+
+HELENA:
+"Você invadiu os arquivos do 2º Ofício? Se o tabelião descobrir que esses livros 
+foram mexidos, ele aciona a liminar de busca na minha gráfica em dez minutos. 
+O que você encontrou nesses papéis mofados?"
+
+> VOZ DA RAZÃO:
+> "Helena entende de direito imobiliário. Mostre a sequência dos carimbos rasurados 
+> para que ela valide a prova técnica."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Cuidado com quem ela ligar para checar a veracidade das certidões. O Cartório 
+> tem tentáculos dentro do Sindicato dos Jornalistas."
+
+> VOZ DA VIOLÊNCIA:
+> "A hora da análise burocrática passou. Mande ela rodar a matéria usando os nomes 
+> dos tabeliães como cúmplices do assassinato de Gabriel."
+
+
+===============================================================================
+ESCOLHA 2 — A VALIDAÇÃO DAS PROVAS CARTORÁRIAS
+===============================================================================
+
+[1] Dissecá-la a fraude selo por selo, mostrando como as terras foram transferidas 
+    ilegalmente para laranjas da Secretaria de Obras.
+    (+1 RAZÃO / +Relacionamento HELENA)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			Helena usa a lente de aumento e confirma a falsificação. Ela conecta os nomes 
+			dos laranjas ao Secretário de Governo, montando o fluxograma perfeito para a capa.
+			(Obteve Pista: Fluxograma das Desapropriações)
+
+[2] Entregar apenas o Livro de Caixas Clandestino e pedir que ela verifique o código 
+    das contas bancárias sem expor as páginas matrizes.
+    (+1 CONSPIRAÇÃO / +Relacionamento HELENA)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			Helena cruza as contas com o registro de empresas do jornal e descobre a 
+			existência de uma empreiteira fantasma sediada no próprio endereço da Prefeitura.
+			(Obteve Pista: Razão Social da Empreiteira Fantasma)
+
+[3] Bater as folhas arrancadas na mesa e exigi-la a impressão de 500 panfletos para 
+    distribuição nos pontos de ônibus antes das 06h00.
+    (+1 VIOLÊNCIA / +Relacionamento HELENA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Helena hesita perante o risco legal, mas a visão das páginas rasuradas a convence: 
+			ela liga a duplicadora manual nos fundos para gerar as cópias de denúncia.
+			(Obteve Item: Panfletos de Denúncia Cartorária)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA II — A EMBOSCADA NOS FUNDOS DO JORNAL
+===============================================================================
+
+O barulho mecânico da duplicadora nos fundos do jornal cessa às 03h45. Helena entrega 
+o material compilado em uma pasta de couro impermeável.
+
+HELENA:
+"Se essa fraude de certidões for apresentada antes que eles registrem o loteamento 
+na Câmara, a licitação da rodovia caí por terra hoje. Mas fique atento: eles têm 
+seguranças privados patrulhando os acessos do centro a esta hora."
+
+Você fecha a jaqueta, guarda a pasta no peito e desce as escadas de emergência.
+
+O ar do beco dos fundos está imóvel e frio. A névoa subiu até a altura do peito. 
+Ao dar o quinto passo em direção ao canal, o ranger metálico de pneus no paralelepípedo 
+ecoa. Dois sedãs escuros do serviço de segurança do Cartório e da Prefeitura surgem 
+dos dois lados do beco, encurralando você contra o muro alto de tijolos.
+
+Quatro homens de terno e sobretudo descem. Dois deles trazem lanternas táticas e 
+armas com silenciadores apontadas para o seu peito.
+
+
+===============================================================================
+CENA 3: O Beco do Canal / 04h00
+===============================================================================
+
+O brilho das lanternas táticas cega sua visão direta, refletindo no chão molhado.
+
+SEGURANÇA PRIVADO:
+"Parado! Você mexeu onde não devia no subsolo do Cartório, garoto. Entrega as folhas 
+matrizes e os arquivos que a jornalista fez. Devagar, sem palhaçada."
+
+> VOZ DA RAZÃO:
+> "Eles estão em superioridade numérica e cruzando os ângulos de tiro. Tentar correr 
+> em linha reta ou subir a tubulação de escoamento é morte certa."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Repare na lanterna do homem da esquerda: ele está mantendo a mão na arma, mas o 
+> carro atrás dele está com a porta do passageiro aberta e o motor ligado."
+
+> VOZ DA VIOLÊNCIA:
+> "A única vantagem que você tem é a névoa na altura do peito. Use a lixeira de metal 
+> ao seu lado para quebrar a linha de visão do primeiro atirador."
+
+
+===============================================================================
+ESCOLHA 3 — O CONFRONTO NO BECO DO CANAL
+===============================================================================
+
+[1] Virar de costas e tentar escalar a tubulação de escoamento para alcançar a calha.
+    (TENTATIVA DE FUGA DESESPERADA)
+		---> SE ESCOLHEU [1] (GAME OVER)
+			Você se vira para saltar em direção ao tubo de ferro. O som abafado de três 
+			disparos perfura a névoa. As balas atingem suas costas e coxas antes mesmo 
+			de suas mãos tocarem o metal. Você cai de bruços no canal de água servida. 
+			Os homens aproximam-se friamente, recuperam as provas cartorárias e queimam 
+			os papéis ali mesmo.
+			
+			[FIM DE JOGO — A FRAUDE CARTORÁRIA PERMANECEU OCULTA]
+			(Reiniciar a partir da Escolha 3 do Ato III)
+
+[2] Jogar a lanterna/carteira em uma direção e usar a névoa para se esgueirar até o 
+    carro deles com o motor ligado, escapando com o veículo do inimigo.
+    (+1 CONSPIRAÇÃO / +1 RAZÃO)
+		---> SE ESCOLHEU [2] (ROTA TÁTICA)
+			Você lança um objeto metálico contra os contêineres do outro lado. Os atiradores 
+			desviam o foco da lanterna por dois segundos — o suficiente para você rastejar 
+			sob a névoa, assumir a direção do sedã com o motor ligado e arrancar, quebrando 
+			o bloqueio dos homens.
+			(Obteve Item: Veículo dos Seguranças / Prova de Propriedade do Carro)
+
+[3] Chutar o contêiner de ferro pesado contra as pernas do primeiro homem, fechar a 
+    distância na penumbra e tomar a arma tática do agressor.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (ROTA DE IMPACTO)
+			O contêiner de duzentos quilos atinge os joelhos do homem na frente. No caos 
+			dos tiros desviados na névoa, você avança, quebra o pulso do atirador com uma 
+			mão e dispara duas vezes para o ar, fazendo os outros recuarem na escuridão.
+			(Obteve Item: Pistola Tática Silenciada / Status: Procurado por Agressão)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA FINAL DO ATO III — O RASTRO BANCÁRIO E CARTORÁRIO
+===============================================================================
+
+[CENA: Rotatória de Acesso ao Centro Administrativo / 04h45]
+
+A tempestade dá lugar a uma névoa fria e cinzenta. O dia amanhece em Santa Aurora.
+
+Do alto do viaduto que dá acesso ao Centro Administrativo, você observa a movimentação. 
+Carros oficiais com vidros escuros começam a estacionar diante da Câmara de Vereadores. 
+
+Você segura o dossiê. A investigação baseada nos arquivos mortos e nas fraudes de 
+certidões do Cartório do 2º Ofício está completa. 
+
+Não se trata apenas de assassinatos: a execução de Gabriel e das outras quatro vítimas 
+foi a engrenagem usada pela elite financeira e política da cidade para tomar a posse 
+de centenas de hectares sem pagar indenizações, usando certidões de óbito adulteradas 
+e cessões de direitos forjadas.
+
+O tempo acabou. A Sessão Extraordinária para a aprovação do plano diretor e abertura 
+da licitação da nova rodovia começará às 06h00.
+
+> VOZ DA RAZÃO:
+> "As certidões forjadas e as fotos da matriz são provas judiciais suficientes para 
+> que qualquer juiz de plantão emita uma liminar de suspensão da sessão."
+
+> VOZ DA CONSPIRAÇÃO:
+> "O Cartório e a Prefeitura são o mesmo monstro. A única forma de garantir a 
+> denúncia é infiltrar o dossiê diretamente na bancada de imprensa do plenário."
+
+> VOZ DA VIOLÊNCIA:
+> "Eles usaram carimbos para roubar terras e armas para matar seu irmão. Chegou a 
+> hora de entrar no plenário e confrontar o Tabelião e o Prefeito de frente."
+
+===============================================================================
+ESTADO ATUAL DO JOGADOR (FIM DO ATO III - PERSPECTIVA 2A):
+===============================================================================
+* **EVIDÊNCIA DEFINITIVA:** Páginas Matrizes Adulteradas + Prova de Rasura Química + Fluxograma da Fraude.
+* **RECURSOS ADQUIRIDOS:** [Livro Clandestino / Panfletos / Veículo dos Seguranças / Pistola Tática] (Conforme escolhas).
+* **PRÓXIMO PASSO:** ATO IV — A VERDADE (O Julgamento da Licitação / O Confronto no Plenário).
