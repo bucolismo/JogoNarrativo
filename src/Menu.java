@@ -37,25 +37,37 @@ public class Menu {
         return opcao;
     }
 
+    public int recebeEscolha() {
+        System.out.println("Digite a opção desejada: ");
+        int escolha = entrada.lerInteiro();
+
+        while (escolha != 1 && escolha != 2 && escolha != 3) {
+            System.out.println("Escolha inválida.");
+            escolha = entrada.lerInteiro();
+        }
+
+        return escolha;
+    }
+
     public void mostraInstrucoes() {
         System.out.println("""
                 \n===== INSTRUÇÕES =====
-                
+
                 Bem-vindo ao nosso jogo narrativo interativo!
 
                 Você assumirá o papel do protagonista e deverá tomar decisões
                 ao longo da história. Suas escolhas poderão alterar os
                 acontecimentos, os relacionamentos com outros personagens,
                 o acesso a determinadas cenas e até mesmo o final da história.
-                
+
                 Durante a aventura, fique atento às informações apresentadas
                 e pense bem antes de escolher. Algumas consequências podem
                 não ser percebidas imediatamente.
-                
+
                 O jogo é baseado em narrativa e escolhas. Não existe apenas
                 um caminho correto: diferentes decisões podem levar a
                 diferentes acontecimentos e finais.
-                
+
                 Boa sorte e boa história!
                 """);
     }
