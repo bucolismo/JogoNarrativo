@@ -1,7 +1,7 @@
 public class NPC extends Personagem {
     private int confianca;
 
-    public NPC(String nome, int idade, String genero, int confiancaInicial) {
+    public NPC (String nome, int idade, String genero, int confiancaInicial) {
         super(nome, idade, genero);
         this.confianca = 0;
         this.confianca = confiancaInicial;
