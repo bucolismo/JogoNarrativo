@@ -1,32 +1,43 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Inventario {
-    int max_cap;
-    Item[] inventario;
+    private List<Item> todosOsItens;
 
-    public Inventario(int max_cap) {
-        this.max_cap = max_cap;
-        this.inventario = new Item[max_cap];
+    public Inventario() {
+        this.todosOsItens = new ArrayList<>();
     }
-    public void adicionarItem(Item item, int quantidade) {
-        //Já vão existir todos os intens do jogo em um array e aq a gente só adiciona?
-        int i = 0;
-        while (i < max_cap) {
-            if (inventario[i] == null) {
-                inventario[i] = item;
-                System.out.println("Você achou " + quantidade + " " + item.getNome());
-                return;
+
+    public void cadastrarItem(Item item) {
+        this.todosOsItens.add(item);
+    }
+
+    public Item itemPorId(int id) {
+        for (Item item : todosOsItens) {
+            if (item.getItemID() == id) {
+                return item;
             }
-
-            i++;
         }
+
+        return null;
     }
-    //Esses dois métodos vão existir mas eu n sei se ainda qual o melhor jeito de apagar, se seria percorrendo a lista de itens do inventário e comparando ou se a gente usa o id que tem lá em item e apaga direto
-    public void consumirItem(Item item, int quantidade){
-        System.out.println("Você Consumiu " + quantidade +" "+item.getNome());
-    //Aq em consumir provavelmente a gente vá usar algo da classe atributos, pra modificar o andamento da história 
+    public boolean adicionarItemPorId(int id) {
+        Item item = itemPorId(id);
+        if (item != null && !item.getItemStatus()) {
+            item.adicionar();
+            return true;
+        }
+        return false;
     }
 
-    public void  descartarItem(Item item, int quantidade){
-        System.out.println("Você descartou " + quantidade +" "+item.getNome() +" do seu inventário");
+    public boolean consumirItemPorId(int id) {
+        Item item = itemPorId(id);
+        if (item != null && item.getItemStatus()) {
+            item.consumir();
+            return true;
+        }
+        return false;
     }
+
 
 }
