@@ -33,7 +33,6 @@ public class Menu {
             System.out.println("Escolha inválida.");
             opcao = recebeOpcao();
         }
-
         return opcao;
     }
 

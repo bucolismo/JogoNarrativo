@@ -4,21 +4,29 @@ public class Escolha {
 
     private String texto;
     private ArrayList<Efeito> efeitos;
+    private int requisitoItem;
 
     public Escolha(String texto) {
         this.texto = texto;
         this.efeitos = new ArrayList<>();
+        this.requisitoItem = -1;
     }
 
     public Escolha(String texto, Efeito efeito) {
         this.texto = texto;
         this.efeitos = new ArrayList<>();
         this.efeitos.add(efeito);
+        this.requisitoItem = -1;
     }
 
     public Escolha(String texto, ArrayList<Efeito> efeitos) {
         this.texto = texto;
         this.efeitos = efeitos;
+        this.requisitoItem = -1;
+    }
+
+    public void defineRequisitoItem(int id) {
+        this.requisitoItem = id;
     }
 
     public String getTexto() {

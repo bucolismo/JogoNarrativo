@@ -41,8 +41,9 @@ public class Controlador {
         int idade = menu.recebeIdade();
         String genero = menu.recebeGenero();
 
-        Protagonista protagonista =
-                new Protagonista(nome, idade, genero);
+        Protagonista protagonista = new Protagonista(nome, idade, genero);
+
+        protagonista.cadastrarItens();
 
         // inicialização dos NPCs
         NPC npc1 = new NPC("Marcos", 30, "Masculino", 50);
@@ -73,6 +74,11 @@ public class Controlador {
                 );
 
         Escolha escolha3 = new Escolha("3 - Desconfiar do NPC");
+
+        Escolha pegarPeDeCabra = new Escolha(
+                "3 - Pegar o pé de cabra.",
+                new Efeito("ADICIONAR_ITEM", null, 5)
+        );
 
         escolha3.adicionaEfeito(
                 new Efeito("ATRIBUTO", "Paranoia", -5)
@@ -141,7 +147,7 @@ public class Controlador {
                 """,
                 escolha1,
                 escolha2,
-                escolha3
+                pegarPeDeCabra
         );
 
         executaCena(prologo, protagonista);
@@ -155,6 +161,12 @@ public class Controlador {
         System.out.println(
                 "Confiança do NPC 1 depois: "
                         + npc1.getConfianca()
+        );
+
+        Item item = protagonista.getInventario().itemPorId(5);
+
+        System.out.println(
+                "Possui pé de cabra: " + item.getItemStatus()
         );
     }
 
@@ -185,18 +197,20 @@ public class Controlador {
 
                     if (efeito.getTipo().equals("ATRIBUTO")) {
 
-                        protagonista.alteraAtributo(
-                                efeito.getAlvo(),
-                                efeito.getValor()
-                        );
+                        protagonista.alteraAtributo(efeito.getAlvo(), efeito.getValor());
 
-                    } else if (
-                            efeito.getTipo().equals("CONFIANCA")
-                    ) {
+                    } else if (efeito.getTipo().equals("CONFIANCA")) {
 
-                        efeito.getNpc().alterarConfianca(
-                                efeito.getValor()
-                        );
+                        efeito.getNpc().alterarConfianca(efeito.getValor());
+
+                    }
+                    else if (efeito.getTipo().equals("ADICIONAR_ITEM")) {
+
+                        protagonista.getInventario().adicionarItemPorId(efeito.getValor());
+
+                    } else if (efeito.getTipo().equals("REMOVER_ITEM")) {
+
+                        protagonista.getInventario().removerItemPorId(efeito.getValor());
                     }
                 }
             }

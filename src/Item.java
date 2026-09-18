@@ -29,7 +29,7 @@ public class Item {
         return this.itemStatus;
     }
 
-    public void consumir() {
+    public void remover() {
         if (this.itemStatus) {
             this.itemStatus = false;
         }

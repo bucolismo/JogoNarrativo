@@ -30,14 +30,19 @@ public class Inventario {
         return false;
     }
 
-    public boolean consumirItemPorId(int id) {
+    public boolean removerItemPorId(int id) {
         Item item = itemPorId(id);
         if (item != null && item.getItemStatus()) {
-            item.consumir();
+            item.remover();
             return true;
         }
         return false;
     }
 
+    public boolean possuiItemPorId(int id) {
+        Item item = itemPorId(id);
+
+        return item != null && item.getItemStatus();
+    }
 
 }
