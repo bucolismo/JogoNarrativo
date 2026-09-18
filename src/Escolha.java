@@ -1,34 +1,39 @@
+import java.util.ArrayList;
+
 public class Escolha {
 
     private String texto;
-    private String atributoAfetado;
-    private int valorAlteracao;
+    private ArrayList<Efeito> efeitos;
 
     public Escolha(String texto) {
         this.texto = texto;
-        this.atributoAfetado = null;
-        this.valorAlteracao = 0;
+        this.efeitos = new ArrayList<>();
     }
 
-    public Escolha(String texto, String atributoAfetado, int valorAlteracao) {
+    public Escolha(String texto, Efeito efeito) {
         this.texto = texto;
-        this.atributoAfetado = atributoAfetado;
-        this.valorAlteracao = valorAlteracao;
+        this.efeitos = new ArrayList<>();
+        this.efeitos.add(efeito);
+    }
+
+    public Escolha(String texto, ArrayList<Efeito> efeitos) {
+        this.texto = texto;
+        this.efeitos = efeitos;
     }
 
     public String getTexto() {
         return texto;
     }
 
-    public String getAtributoAfetado() {
-        return atributoAfetado;
+    public ArrayList<Efeito> getEfeitos() {
+        return efeitos;
     }
 
-    public int getValorAlteracao() {
-        return valorAlteracao;
+    public void adicionaEfeito(Efeito efeito) {
+        efeitos.add(efeito);
     }
 
-    public boolean afetaAtributo() {
-        return atributoAfetado != null;
+    public boolean possuiEfeitos() {
+        return !efeitos.isEmpty();
     }
 }
