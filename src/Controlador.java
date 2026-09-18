@@ -44,6 +44,13 @@ public class Controlador {
         Protagonista protagonista =
                 new Protagonista(nome, idade, genero);
 
+        // inicialização dos NPCs
+        NPC npc1 = new NPC("Marcos", 30, "Masculino", 50);
+        NPC npc2 = new NPC("Angela", 40, "Feminino", 50);
+        NPC npc3 = new NPC("Henrique", 25, "Masculino", 50);
+        NPC npc4 = new NPC("Lourdes", 35, "Feminino", 50);
+        NPC npc5 = new NPC("Almeida", 50, "Masculino", 50);
+
         Cena prologo = new Cena();
 
         Personagem narrador =
@@ -53,9 +60,35 @@ public class Controlador {
                         "Neutro"
                 );
 
-        Escolha escolha1 = new Escolha("1 - Ir até o carro", "Paranoia", 3);
-        Escolha escolha2 = new Escolha("2 - Continuar andando", "Razão", 3);
-        Escolha escolha3 = new Escolha("3 - Voltar pelo caminho", "Paranoia", -5);
+        Escolha escolha1 =
+                new Escolha(
+                        "1 - Ir até o carro",
+                        new Efeito("ATRIBUTO", "Paranoia", 3)
+                );
+
+        Escolha escolha2 =
+                new Escolha(
+                        "2 - Continuar andando",
+                        new Efeito("ATRIBUTO", "Razão", 3)
+                );
+
+        Escolha escolha3 = new Escolha("3 - Desconfiar do NPC");
+
+        escolha3.adicionaEfeito(
+                new Efeito("ATRIBUTO", "Paranoia", -5)
+        );
+
+        escolha3.adicionaEfeito(
+                new Efeito(npc1, -10)
+        );
+
+        // Escolha para testar confiança
+        Escolha escolhaConfianca =
+                new Escolha("4 - Desconfiar do NPC");
+
+        escolhaConfianca.adicionaEfeito(
+                new Efeito(npc1, -10)
+        );
 
         prologo.adicionaDialogoSemOpcoes(
                 narrador,
@@ -89,6 +122,17 @@ public class Controlador {
                 """
         );
 
+        // TESTE
+        System.out.println(
+                "Paranoia antes: "
+                        + protagonista.getAtributo("Paranoia")
+        );
+
+        System.out.println(
+                "Confiança do NPC 1 antes: "
+                        + npc1.getConfianca()
+        );
+
         prologo.adicionaDialogoComOpcoes(
                 narrador,
                 """
@@ -99,20 +143,25 @@ public class Controlador {
                 escolha2,
                 escolha3
         );
-        // teste de funcionamento para ver se a alteração de valor do atributo realmetne ta funcioandno
-        System.out.println(
-                "Paranoia: " + protagonista.getAtributo("Paranoia")
-        );
 
         executaCena(prologo, protagonista);
 
-        // teste de funcionamento para ver se a alteração de valor do atributo realmetne ta funcioandno
+        // TESTE
         System.out.println(
-                "Paranoia: " + protagonista.getAtributo("Paranoia")
+                "Paranoia depois: "
+                        + protagonista.getAtributo("Paranoia")
+        );
+
+        System.out.println(
+                "Confiança do NPC 1 depois: "
+                        + npc1.getConfianca()
         );
     }
 
-    public void executaCena(Cena cena, Protagonista protagonista) {
+    public void executaCena(
+            Cena cena,
+            Protagonista protagonista
+    ) {
 
         for (int i = 0; i < cena.getQuantidadeDialogos(); i++) {
 
@@ -121,16 +170,35 @@ public class Controlador {
             dialogo.executarDialogo();
 
             if (dialogo.possuiOpcoes()) {
+
                 int escolha = menu.recebeEscolha();
 
-                Escolha escolhaSelecionada = dialogo.getEscolha(escolha);
+                Escolha escolhaSelecionada =
+                        dialogo.getEscolha(escolha);
 
-                System.out.println(escolhaSelecionada.getTexto()); // linha para testar se a escolha está realmeten funcionando
-
-                protagonista.alteraAtributo(
-                        escolhaSelecionada.getAtributoAfetado(),
-                        escolhaSelecionada.getValorAlteracao()
+                System.out.println(
+                        escolhaSelecionada.getTexto()
                 );
+
+                for (Efeito efeito :
+                        escolhaSelecionada.getEfeitos()) {
+
+                    if (efeito.getTipo().equals("ATRIBUTO")) {
+
+                        protagonista.alteraAtributo(
+                                efeito.getAlvo(),
+                                efeito.getValor()
+                        );
+
+                    } else if (
+                            efeito.getTipo().equals("CONFIANCA")
+                    ) {
+
+                        efeito.getNpc().alterarConfianca(
+                                efeito.getValor()
+                        );
+                    }
+                }
             }
         }
     }
