@@ -71,6 +71,8 @@ public class Controlador {
                 protagonista,
                 npc1
         );
+
+        executaCena(prologo, protagonista);
     }
 
     public void executaCena(
