@@ -123,4 +123,8 @@ Luis Felipe Batista
     public void mostraSaida(){
         System.out.println("Saída");
     }
+
+    public void mostraString(String texto){
+        System.out.printl(texto);
+    }
 }
