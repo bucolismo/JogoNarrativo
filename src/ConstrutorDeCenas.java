@@ -7,7 +7,12 @@ public class ConstrutorDeCenas {
         this.cenaAtual = new Cena();
     }
 
-    public Cena criarPrologo(Personagem narrador) {
+    public Cena criarPrologo(
+            Personagem narrador,
+            Protagonista protagonista,
+            NPC npc1
+    ) {
+
         Cena prologo = new Cena();
 
         // NPCs secundários criados localmente apenas para ambientação do Prólogo
@@ -15,6 +20,35 @@ public class ConstrutorDeCenas {
         Personagem moradora = new Personagem("Moradora Local", 50, "Figurante");
         Personagem policial = new Personagem("Policial Militar", 35, "Figurante");
         Personagem jornaleiro = new Personagem("Jornaleiro", 60, "Figurante");
+
+        Escolha escolha1 =
+                new Escolha(
+                        "1 - Ir até o carro",
+                        new Efeito("ATRIBUTO", "Paranoia", 3)
+                );
+
+        Escolha escolha2 =
+                new Escolha(
+                        "2 - Continuar andando",
+                        new Efeito("ATRIBUTO", "Razão", 3)
+                );
+
+        Escolha escolha3 = new Escolha(
+                "3 - Desconfiar do NPC.",
+                new Efeito("ATRIBUTO", "Paranoia", 5)
+        );
+
+        escolha3.adicionaEfeito(
+                new Efeito(npc1, -10)
+        );
+
+        // Escolha para testar confiança
+        Escolha escolhaConfianca =
+                new Escolha("4 - Desconfiar do NPC");
+
+        escolhaConfianca.adicionaEfeito(
+                new Efeito(npc1, -10)
+        );
 
         // 1. Início
         prologo.adicionaDialogo(new Dialogo(
@@ -100,6 +134,17 @@ public class ConstrutorDeCenas {
                 "Quinta morte em seis meses... Se continuar assim, nem o jornal da manhã vai
                 dar conta de vender tanta notícia ruim."
                 """
+        ));
+
+        prologo.adicionaDialogo(new Dialogo(
+                narrador,
+                """
+                Você olha ao redor. A rua está completamente vazia.
+                Há um carro estacionado alguns metros à frente.
+                """,
+                escolha1,
+                escolha2,
+                escolha3
         ));
 
         // 8. Encerramento do Prólogo
