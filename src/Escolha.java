@@ -5,11 +5,13 @@ public class Escolha {
     private String texto;
     private ArrayList<Efeito> efeitos;
     private int requisitoItem;
+    private String textoConsequencia;
 
     public Escolha(String texto) {
         this.texto = texto;
         this.efeitos = new ArrayList<>();
         this.requisitoItem = -1;
+        this.textoConsequencia = null;
     }
 
     public Escolha(String texto, Efeito efeito) {
@@ -17,12 +19,24 @@ public class Escolha {
         this.efeitos = new ArrayList<>();
         this.efeitos.add(efeito);
         this.requisitoItem = -1;
+        this.textoConsequencia = null;;
     }
+    //Criei esse contrutor para o construtor de Cenas, eu acho que assim fica melhor
+    public Escolha(String texto, Efeito efeito,String textoConsequencia) {
+        this.texto = texto;
+        this.efeitos = new ArrayList<>();
+        this.efeitos.add(efeito);
+        this.requisitoItem = -1;
+        this.textoConsequencia = textoConsequencia;
+    }
+
+
 
     public Escolha(String texto, ArrayList<Efeito> efeitos) {
         this.texto = texto;
         this.efeitos = efeitos;
         this.requisitoItem = -1;
+        this.textoConsequencia = null;
     }
 
     public void defineRequisitoItem(int id) {
@@ -47,5 +61,12 @@ public class Escolha {
 
     public boolean possuiEfeitos() {
         return !efeitos.isEmpty();
+    }
+
+    public void adicionaConsequencia(String consequencia){
+        this.textoConsequencia = consequencia;
+    }
+    public String getTextoConsequencia(){
+        return this.textoConsequencia;
     }
 }
