@@ -41,61 +41,38 @@ public class Controlador {
     }
 
     public void iniciarPartida() {
-
+        Cena cenaAtual= new Cena();
         String nome = menu.recebeNome();
         int idade = menu.recebeIdade();
         String genero = menu.recebeGenero();
+
+        ConstrutorDeCenas construtorDeCenas = new ConstrutorDeCenas();
 
         Protagonista protagonista = new Protagonista(nome, idade, genero);
         protagonista.cadastrarItens();
 
         Personagem narrador = new Personagem("Narrador", 0, "Neutro");
+        NPC jonas = new NPC("Jonas", 30, "Masculino", 50);
+        NPC daniel = new NPC("Daniel",42,"Masculino",50);
 
-        NPC npc1 = new NPC("Marcos", 30, "Masculino", 50);
-        NPC npc2 = new NPC("Angela", 40, "Feminino", 50);
-        NPC npc3 = new NPC("Henrique", 25, "Masculino", 50);
-        NPC npc4 = new NPC("Lourdes", 35, "Feminino", 50);
-        NPC npc5 = new NPC("Almeida", 50, "Masculino", 50);
+        int idCenaAtual = 1;
 
-        protagonista.getInventario().adicionarItemPorId(5);
+        while (idCenaAtual > 0) {
+            cenaAtual = obterProximaCena(idCenaAtual, construtorDeCenas, narrador, protagonista, jonas,daniel);
 
-        Escolha testeItem = new Escolha("1 - Abrir a porta com o pé de cabra.");
-        testeItem.defineRequisitoItem(5);
+            if (cenaAtual == null) {
+                break;
+            }
 
-        Cena cenaTeste = new Cena();
+            executaCena(cenaAtual, protagonista);
 
-        cenaTeste.adicionaDialogo(
-                new Dialogo(
-                        narrador,
-                        "Você encontra uma porta trancada.",
-                        testeItem,
-                        new Escolha("2 - Ir embora."),
-                        new Escolha("3 -Observar a porta.") // só pra fechar os 3 argumentos
-                )
-        );
+            idCenaAtual++;
+        }
 
-        System.out.println(
-                "Possui pé de cabra: " +
-                        protagonista.getInventario().possuiItemPorId(5)
-        );
+        System.out.println("\n--- Fim do Jogo ---");
 
-        executaCena(cenaTeste, protagonista);
-
-        System.out.println(
-                "Possui pé de cabra depois: " +
-                        protagonista.getInventario().possuiItemPorId(5)
-        );
-
-        ConstrutorDeCenas construtor = new ConstrutorDeCenas();
-
-        Cena prologo = construtor.criarPrologo(
-                narrador,
-                protagonista,
-                npc1
-        );
-
-        executaCena(prologo, protagonista);
     }
+
     public void executaCena(Cena cena, Protagonista protagonista) {
 
         for (Dialogo dialogo : cena.getDialogos()) {
@@ -104,7 +81,7 @@ public class Controlador {
 
             if (dialogo.possuiOpcoes()) {
 
-                Escolha escolhaSelecionada = null;
+                Escolha escolhaSelecionada;
 
                 do {
                     //Aq usa o índice da escolha do jogador para pegar o objeto escolha certo
@@ -123,23 +100,42 @@ public class Controlador {
                 } while (escolhaSelecionada == null);
 
                 menu.mostraString(escolhaSelecionada.getTexto());
+                //Aqui faz a conecção com o ponto atual do roteiro com o próximo dialogo
+                menu.mostraString(escolhaSelecionada.getTextoConsequencia());
 
                 for (Efeito efeito : escolhaSelecionada.getEfeitos()) {
+                    switch (efeito.getTipo()) {
+                        case "ATRIBUTO" ->
+                                protagonista.alteraAtributo(efeito.getAlvo(), efeito.getValor());
 
-                    if (efeito.getTipo().equals("ATRIBUTO")) {
-                        protagonista.alteraAtributo(efeito.getAlvo(), efeito.getValor());
+                        case "CONFIANCA" ->
+                                efeito.getNpc().alterarConfianca(efeito.getValor());
 
-                    } else if (efeito.getTipo().equals("CONFIANCA")) {
-                        efeito.getNpc().alterarConfianca(efeito.getValor());
+                        case "ADICIONAR_ITEM" ->
+                                protagonista.getInventario().adicionarItemPorId(efeito.getValor());
 
-                    } else if (efeito.getTipo().equals("ADICIONAR_ITEM")) {
-                        protagonista.getInventario().adicionarItemPorId(efeito.getValor());
+                        case "REMOVER_ITEM" ->
+                                protagonista.getInventario().removerItemPorId(efeito.getValor());
 
-                    } else if (efeito.getTipo().equals("REMOVER_ITEM")) {
-                        protagonista.getInventario().removerItemPorId(efeito.getValor());
+                        default ->
+                                System.out.println("Tipo de efeito desconhecido: " + efeito.getTipo());
                     }
                 }
             }
         }
     }
+
+    public Cena obterProximaCena(int idCena, ConstrutorDeCenas construtor, Personagem narrador, Protagonista protagonista, NPC jonas, NPC daniel) {
+        //Por enquanto isso aqui funciona, pra a parte em que o roteiro está
+        switch (idCena) {
+            case 1:
+                return construtor.criarPrologo(narrador, protagonista);
+            case 2:
+                return construtor.criarAtoI(protagonista,narrador,jonas,daniel);
+            default:
+                System.out.println("Cena não encontrada para o ID: " + idCena);
+                return null;
+        }
+    }
 }
+
