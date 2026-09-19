@@ -29,6 +29,10 @@ public class Escolha {
         this.requisitoItem = id;
     }
 
+    public int getRequisitoItem() {
+        return requisitoItem;
+    }
+
     public String getTexto() {
         return texto;
     }
