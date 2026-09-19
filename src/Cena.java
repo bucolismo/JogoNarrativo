@@ -16,4 +16,9 @@ public class Cena {
     public int getQuantidadeDialogos() {
         return this.dialogos.size();
     }
+
+    public List<Dialogo> getDialogos() {
+        return this.dialogos;
+    }
+
 }
