@@ -29,11 +29,10 @@ public class Menu {
     public int validaOpcao() {
         int opcao = recebeOpcao();
 
-        while (opcao != 1 && opcao != 2 && opcao != 3) {
+        while (opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4) {
             System.out.println("Escolha inválida.");
             opcao = recebeOpcao();
         }
-
         return opcao;
     }
 
@@ -72,12 +71,31 @@ public class Menu {
                 """);
     }
 
+    public void mostraCreditos(){
+        System.out.println("""
+================ CRÉDITOS ================
+        
+Jogo Narrativo Interativo
+
+Projeto desenvolvido para a disciplina de Algoritmos II
+Universidade Estadual de Feira de Santana (UEFS)
+
+Autores:
+Levi Sena Andrade
+Luis Felipe Batista
+
+2026
+                 
+        """);
+    }
+
     public void mostraMenu(){
         System.out.println("""
         ================  MENU ================
         1 - Iniciar partida
         2 - Instruções
-        3 - Sair
+        3 - Créditos
+        4 - Sair
         """);
     }
 
