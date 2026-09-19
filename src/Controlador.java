@@ -96,33 +96,33 @@ public class Controlador {
 
         executaCena(prologo, protagonista);
     }
-
     public void executaCena(Cena cena, Protagonista protagonista) {
 
         for (Dialogo dialogo : cena.getDialogos()) {
 
-            dialogo.executarDialogo();
+            int escolha = menu.mostraDialogo(dialogo);//Executa a cena e retorna a escolha ou 0 se não tiver escolha em dialogos
 
             if (dialogo.possuiOpcoes()) {
 
-                Escolha escolhaSelecionada;
+                Escolha escolhaSelecionada = null;
 
                 do {
-                    int escolha = menu.recebeEscolha();
+                    //Aq usa o índice da escolha do jogador para pegar o objeto escolha certo
                     escolhaSelecionada = dialogo.getEscolha(escolha);
 
-                    int requisito = escolhaSelecionada.getRequisitoItem();
+                    int requisito = escolhaSelecionada.getRequisitoItem();//Pega o Item requisito(o nome dessa variável tá confuso na hr de ler)
 
-                    if (requisito != -1 &&
-                            !protagonista.getInventario().possuiItemPorId(requisito)) {
-
+                    if (requisito != -1 && !protagonista.getInventario().possuiItemPorId(requisito)) {
                         System.out.println("Você não tem o item necessário para essa escolha.");
                         escolhaSelecionada = null;
+                        //Se escolheu errado pede dnv( sem mostrar o dialog dnv)
+
+                        escolha = menu.validaOpcao();
                     }
 
                 } while (escolhaSelecionada == null);
 
-                System.out.println(escolhaSelecionada.getTexto());
+                menu.mostraString(escolhaSelecionada.getTexto());
 
                 for (Efeito efeito : escolhaSelecionada.getEfeitos()) {
 
