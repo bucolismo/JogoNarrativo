@@ -28,11 +28,16 @@ public class Controlador {
                     break;
 
                 case 3:
+                    menu.mostraCreditos();
+                    break;
+
+                case 4:
                     menu.mostraSaida();
                     break;
+
             }
 
-        } while (opcao != 3);
+        } while (opcao != 4);
     }
 
     public void iniciarPartida() {
@@ -41,8 +46,9 @@ public class Controlador {
         int idade = menu.recebeIdade();
         String genero = menu.recebeGenero();
 
-        Protagonista protagonista =
-                new Protagonista(nome, idade, genero);
+        Protagonista protagonista = new Protagonista(nome, idade, genero);
+
+        protagonista.cadastrarItens();
 
         // inicialização dos NPCs
         NPC npc1 = new NPC("Marcos", 30, "Masculino", 50);
@@ -51,8 +57,6 @@ public class Controlador {
         NPC npc4 = new NPC("Lourdes", 35, "Feminino", 50);
         NPC npc5 = new NPC("Almeida", 50, "Masculino", 50);
 
-        Cena prologo = new Cena();
-
         Personagem narrador =
                 new Personagem(
                         "Narrador",
@@ -60,101 +64,12 @@ public class Controlador {
                         "Neutro"
                 );
 
-        Escolha escolha1 =
-                new Escolha(
-                        "1 - Ir até o carro",
-                        new Efeito("ATRIBUTO", "Paranoia", 3)
-                );
+        ConstrutorDeCenas construtor = new ConstrutorDeCenas();
 
-        Escolha escolha2 =
-                new Escolha(
-                        "2 - Continuar andando",
-                        new Efeito("ATRIBUTO", "Razão", 3)
-                );
-
-        Escolha escolha3 = new Escolha("3 - Desconfiar do NPC");
-
-        escolha3.adicionaEfeito(
-                new Efeito("ATRIBUTO", "Paranoia", -5)
-        );
-
-        escolha3.adicionaEfeito(
-                new Efeito(npc1, -10)
-        );
-
-        // Escolha para testar confiança
-        Escolha escolhaConfianca =
-                new Escolha("4 - Desconfiar do NPC");
-
-        escolhaConfianca.adicionaEfeito(
-                new Efeito(npc1, -10)
-        );
-
-        prologo.adicionaDialogoSemOpcoes(
+        Cena prologo = construtor.criarPrologo(
                 narrador,
-                """
-                Silêncio.
-                
-                Por alguns segundos, nenhum som.
-                Então, lentamente, começa a chover. Primeiro algumas gotas.
-                Depois, uma chuva constante.
-                
-                Ao fundo, quase imperceptível, o som de carros passando
-                sobre o asfalto molhado.
-                """
-        );
-
-        prologo.adicionaDialogoSemOpcoes(
-                narrador,
-                """
-                Uma cidade é vista de longe.
-                O céu está encoberto.
-                A chuva cai sobre os prédios.
-                
-                Uma fina camada de névoa cobre parte das ruas.
-                """
-        );
-
-        prologo.adicionaDialogoSemOpcoes(
                 protagonista,
-                """
-                Onde eu estou?
-                """
-        );
-
-        // TESTE
-        System.out.println(
-                "Paranoia antes: "
-                        + protagonista.getAtributo("Paranoia")
-        );
-
-        System.out.println(
-                "Confiança do NPC 1 antes: "
-                        + npc1.getConfianca()
-        );
-
-        prologo.adicionaDialogoComOpcoes(
-                narrador,
-                """
-                Você olha ao redor. A rua está completamente vazia.
-                Há um carro estacionado alguns metros à frente.
-                """,
-                escolha1,
-                escolha2,
-                escolha3
-        );
-
-        executaCena(prologo, protagonista);
-
-        // TESTE
-        System.out.println(
-                "Paranoia depois: "
-                        + protagonista.getAtributo("Paranoia")
-        );
-
-        System.out.println(
-                "Confiança do NPC 1 depois: "
-                        + npc1.getConfianca()
+                npc1
         );
     }
 
@@ -163,9 +78,7 @@ public class Controlador {
             Protagonista protagonista
     ) {
 
-        for (int i = 0; i < cena.getQuantidadeDialogos(); i++) {
-
-            Dialogo dialogo = cena.getDialogo(i);
+        for (Dialogo dialogo : cena.getDialogos()) {
 
             dialogo.executarDialogo();
 
@@ -190,13 +103,21 @@ public class Controlador {
                                 efeito.getValor()
                         );
 
-                    } else if (
-                            efeito.getTipo().equals("CONFIANCA")
-                    ) {
+                    } else if (efeito.getTipo().equals("CONFIANCA")) {
 
                         efeito.getNpc().alterarConfianca(
                                 efeito.getValor()
                         );
+
+                    } else if (efeito.getTipo().equals("ADICIONAR_ITEM")) {
+
+                        protagonista.getInventario()
+                                .adicionarItemPorId(efeito.getValor());
+
+                    } else if (efeito.getTipo().equals("REMOVER_ITEM")) {
+
+                        protagonista.getInventario()
+                                .removerItemPorId(efeito.getValor());
                     }
                 }
             }
