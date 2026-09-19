@@ -13,13 +13,7 @@ public class Dialogo {
     }
 
     // Construtor de diálogo com opções
-    public Dialogo(
-            Personagem personagem,
-            String texto,
-            Escolha escolha1,
-            Escolha escolha2,
-            Escolha escolha3
-    ) {
+    public Dialogo(Personagem personagem, String texto, Escolha escolha1, Escolha escolha2, Escolha escolha3) {
         this.personagem = personagem;
         this.texto = texto;
 
@@ -29,21 +23,16 @@ public class Dialogo {
         this.escolhas[1] = escolha2;
         this.escolhas[2] = escolha3;
     }
+    public Escolha[] getEscolhas() {
+        return escolhas;
+    }
 
-    public void executarDialogo() {
+    public String getTexto() {
+        return texto;
+    }
 
-        // O nome do narrador não deve ser exibido
-        if (!personagem.getNome().equalsIgnoreCase("Narrador")) {
-            System.out.println(personagem.getNome() + ":");
-        }
-
-        System.out.println(texto);
-
-        if (possuiOpcoes()) {
-            for (Escolha escolha : escolhas) {
-                System.out.println(escolha.getTexto());
-            }
-        }
+    public Personagem getPersonagem() {
+        return personagem;
     }
 
     public boolean possuiOpcoes() {
