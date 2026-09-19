@@ -113,7 +113,7 @@ public class Controlador {
                     int requisito = escolhaSelecionada.getRequisitoItem();//Pega o Item requisito(o nome dessa variável tá confuso na hr de ler)
 
                     if (requisito != -1 && !protagonista.getInventario().possuiItemPorId(requisito)) {
-                        System.out.println("Você não tem o item necessário para essa escolha.");
+                        menu.mostraString("Você não tem o item necessário para essa escolha.");
                         escolhaSelecionada = null;
                         //Se escolheu errado pede dnv( sem mostrar o dialog dnv)
 
