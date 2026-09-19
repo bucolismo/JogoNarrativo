@@ -125,6 +125,5 @@ Luis Felipe Batista
     }
 
     public void mostraString(String texto){
-        System.out.printl(texto);
-    }
+        System.out.println(texto);}
 }
