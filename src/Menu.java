@@ -99,6 +99,27 @@ Luis Felipe Batista
         """);
     }
 
+    public int mostraDialogo(Dialogo dialogo){
+
+        //Caso de ser o narrador:
+        if (!dialogo.getPersonagem().getNome().equalsIgnoreCase("Narrador")) {
+            System.out.println("[" + dialogo.getPersonagem().getNome() + "]");
+        }
+        //Printa o texto do dialogo
+        System.out.println(dialogo.getTexto());
+
+        //Caso de haver opções no dialogo:
+        if (dialogo.possuiOpcoes()) {
+            System.out.println("\n--- Opções ---");
+            Escolha[] escolhas = dialogo.getEscolhas();
+            for (int i = 0; i < escolhas.length; i++) {
+                System.out.println(escolhas[i].getTexto());
+            }
+           return validaOpcao();//Opção escolhida do dialogo
+        }
+        return 0;//Dialogo sem opções
+    }
+
     public void mostraSaida(){
         System.out.println("Saída");
     }
