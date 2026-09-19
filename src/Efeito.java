@@ -3,8 +3,8 @@ public class Efeito {
     private String tipo;
     private String alvo;
     private int valor;
-
     private NPC npc;
+    private int itemId;
 
     // Efeito sobre atributo do protagonista
     public Efeito(String tipo, String alvo, int valor) {
@@ -12,6 +12,7 @@ public class Efeito {
         this.alvo = alvo;
         this.valor = valor;
         this.npc = null;
+        this.itemId = -1;
     }
 
     // Efeito sobre confiança de um NPC
@@ -20,8 +21,15 @@ public class Efeito {
         this.alvo = null;
         this.valor = valor;
         this.npc = npc;
+        this.itemId = -1;
     }
-
+    public Efeito(int itemId) {
+        this.tipo = "ITEM";
+        this.alvo = null;
+        this.valor = 1;
+        this.npc = null;
+        this.itemId = itemId;
+    }
     public String getTipo() {
         return tipo;
     }
@@ -36,5 +44,8 @@ public class Efeito {
 
     public NPC getNpc() {
         return npc;
+    }
+    public int getItemId() {
+        return itemId;
     }
 }
