@@ -23,8 +23,9 @@ public class Efeito {
         this.npc = npc;
         this.itemId = -1;
     }
+    //Efeito adição de Item no inventário
     public Efeito(int itemId) {
-        this.tipo = "ITEM";
+        this.tipo = "ADICIONAR_ITEM";
         this.alvo = null;
         this.valor = 1;
         this.npc = null;
