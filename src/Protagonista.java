@@ -37,7 +37,7 @@ public class Protagonista extends Personagem {
         return 0;
     }
 
- public void cadastrarItens(){
+    public void cadastrarItens(){
         Item cartaoIml = new Item("Cartão do IML", "Acesso", "Um cartão de acesso que permite acessar o IML da cidade", 1);
         Item chaveMestra = new Item("Chave Mestra do Cartório", "Acesso", "Uma chave estranha com o símbolo do cartório central que permite acessar o prédio de registros", 2);
         Item cartaoPrefeitura = new Item("Cartão de Acesso da Prefeitura", "Acesso", "Um cartão magnético que permite acessar o prédio da prefeitura municipal", 3);
