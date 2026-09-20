@@ -41,68 +41,130 @@ public class Controlador {
     }
 
     public void iniciarPartida() {
-        Cena cenaAtual= new Cena();
+        // 1. Cria o protagonista
+        Protagonista protagonista = criarProtagonista();
+
+        // 2. Instancia os personagens da história
+        Personagem narrador = new Personagem("Narrador", 0, "Neutro");
+        NPC jonas = new NPC("Jonas", 30, "Masculino", 50);
+        NPC daniel = new NPC("Daniel", 40, "Masculino", 50);
+
+        // 3. Instancia o construtor de cenas
+        ConstrutorDeCenas construtor = new ConstrutorDeCenas();
+
+        // 4. Executa o loop principal da narrativa
+        executarHistoria(construtor, protagonista, narrador, jonas, daniel, menu);
+    }
+
+    private Protagonista criarProtagonista() {
         String nome = menu.recebeNome();
         int idade = menu.recebeIdade();
         String genero = menu.recebeGenero();
-
-        ConstrutorDeCenas construtorDeCenas = new ConstrutorDeCenas();
-
         Protagonista protagonista = new Protagonista(nome, idade, genero);
         protagonista.cadastrarItens();
-
-        Personagem narrador = new Personagem("Narrador", 0, "Neutro");
-        NPC jonas = new NPC("Jonas", 30, "Masculino", 50);
-        NPC daniel = new NPC("Daniel",42,"Masculino",50);
-
-        int idCenaAtual = 1;
-
-        while (idCenaAtual > 0) {
-            cenaAtual = obterProximaCena(idCenaAtual, construtorDeCenas, narrador, protagonista, jonas,daniel);
-
-            if (cenaAtual == null) {
-                break;
-            }
-
-            executaCena(cenaAtual, protagonista);
-
-            idCenaAtual++;
-        }
-
-        System.out.println("\n--- Fim do Jogo ---");
-
+        return protagonista;
     }
 
-    public void executaCena(Cena cena, Protagonista protagonista) {
+    private void executarHistoria(ConstrutorDeCenas construtor, Protagonista protagonista, Personagem narrador, NPC jonas, NPC daniel, Menu menu) {
+        int idCenaAtual = 1;
+        int ultimaEscolha = 0;
+
+        while (idCenaAtual > 0) {
+            Cena cena = obterProximaCena(idCenaAtual, ultimaEscolha, construtor, narrador, protagonista, jonas, daniel);
+            if (cena == null) {
+                break;
+            }
+            ultimaEscolha = executaCena(cena, protagonista, menu);
+            idCenaAtual++;
+        }
+    }
+
+    private Cena obterProximaCena(int idCena, int opcaoEscolhida, ConstrutorDeCenas construtor, Personagem narrador, Protagonista protagonista, NPC jonas, NPC daniel) {
+        switch (idCena) {
+            case 1:
+                return construtor.criarPrologo(narrador, protagonista);
+            case 2:
+                return construtor.criarAtoI(protagonista, narrador, jonas, daniel);
+            case 3:
+                return construtor.criarFinalAtoI(narrador, protagonista);
+            case 4:
+                return obterRotaDoAtoII(opcaoEscolhida, construtor, narrador, protagonista, daniel);
+            default:
+                return null;
+        }
+    }
+
+    private Cena obterRotaDoAtoII(int opcaoEscolhida, ConstrutorDeCenas construtor, Personagem narrador, Protagonista protagonista, NPC daniel) {
+        switch (opcaoEscolhida) {
+            case 1: return construtor.criarAtoIIRota1A(narrador, protagonista);
+            case 2: return construtor.criarAtoIIRota1B(narrador, protagonista, daniel);
+            case 3: return construtor.criarAtoIIRota2A(narrador, protagonista);
+            case 4: return construtor.criarAtoIIRota2B(narrador, protagonista);
+            case 5: return construtor.criarAtoIIRota3A(narrador, protagonista, daniel);
+            case 6: return construtor.criarAtoIIRota3B(narrador, protagonista);
+            default: return null;
+        }
+    }
+
+    private int executaCena(Cena cena, Protagonista protagonista, Menu menu) {
+        if (cena == null || cena.getDialogos() == null) {
+            return 0;
+        }
+
+        int ultimaEscolha = 0;
 
         for (Dialogo dialogo : cena.getDialogos()) {
+            if (dialogo == null) {
+                continue;
+            }
 
-            int escolha = menu.mostraDialogo(dialogo);//Executa a cena e retorna a escolha ou 0 se não tiver escolha em dialogos
+            // Mostra o diálogo e captura a escolha (0 se não houver opções)
+            int escolha = menu.mostraDialogo(dialogo);
 
             if (dialogo.possuiOpcoes()) {
-
                 Escolha escolhaSelecionada;
 
                 do {
-                    //Aq usa o índice da escolha do jogador para pegar o objeto escolha certo
+                    // Usa o índice da escolha do jogador para pegar o objeto correto
                     escolhaSelecionada = dialogo.getEscolha(escolha);
 
-                    int requisito = escolhaSelecionada.getRequisitoItem();//Pega o Item requisito(o nome dessa variável tá confuso na hr de ler)
-
+                    // Verifica se possui o item requisito
+                    int requisito = escolhaSelecionada.getRequisitoItem();
                     if (requisito != -1 && !protagonista.getInventario().possuiItemPorId(requisito)) {
                         menu.mostraString("Você não tem o item necessário para essa escolha.");
                         escolhaSelecionada = null;
-                        //Se escolheu errado pede dnv( sem mostrar o dialog dnv)
+                        escolha = menu.validaOpcao(); // pede nova escolha
+                    }
 
-                        escolha = menu.validaOpcao();
+                    // Verifica requisito de atributo
+                    if (escolhaSelecionada != null && escolhaSelecionada.getRequisitoAtributo() != null) {
+                        String atributo = escolhaSelecionada.getRequisitoAtributo();
+                        int valorMinimo = escolhaSelecionada.getValorRequisitoAtributo();
+                        if (protagonista.getAtributo(atributo) < valorMinimo) {
+                            menu.mostraString("Você não possui o atributo necessário para essa escolha.");
+                            escolhaSelecionada = null;
+                            escolha = menu.validaOpcao();
+                        }
+                    }
+
+                    // Verifica requisito de confiança com NPC
+                    if (escolhaSelecionada != null && escolhaSelecionada.getRequisitoNpc() != null) {
+                        NPC npc = escolhaSelecionada.getRequisitoNpc();
+                        int confiancaMinima = escolhaSelecionada.getConfiancaMinima();
+                        if (npc.getConfianca() < confiancaMinima) {
+                            menu.mostraString("Você não possui confiança suficiente com " + npc.getNome() + ".");
+                            escolhaSelecionada = null;
+                            escolha = menu.validaOpcao();
+                        }
                     }
 
                 } while (escolhaSelecionada == null);
 
-                menu.mostraString(escolhaSelecionada.getTexto());
-                //Aqui faz a conecção com o ponto atual do roteiro com o próximo dialogo
-                menu.mostraString(escolhaSelecionada.getTextoConsequencia());
+                if (escolhaSelecionada.getTextoConsequencia() != null) {
+                    menu.mostraString(escolhaSelecionada.getTextoConsequencia());
+                }
 
+                // Aplica os efeitos da escolha selecionada
                 for (Efeito efeito : escolhaSelecionada.getEfeitos()) {
                     switch (efeito.getTipo()) {
                         case "ATRIBUTO" ->
@@ -118,24 +180,15 @@ public class Controlador {
                                 protagonista.getInventario().removerItemPorId(efeito.getValor());
 
                         default ->
-                                System.out.println("Tipo de efeito desconhecido: " + efeito.getTipo());
+                                menu.mostraString("Tipo de efeito desconhecido: " + efeito.getTipo());
                     }
                 }
+
+                ultimaEscolha = escolha; // guarda a última escolha feita
             }
         }
+
+        return ultimaEscolha;
     }
 
-    public Cena obterProximaCena(int idCena, ConstrutorDeCenas construtor, Personagem narrador, Protagonista protagonista, NPC jonas, NPC daniel) {
-        //Por enquanto isso aqui funciona, pra a parte em que o roteiro está
-        switch (idCena) {
-            case 1:
-                return construtor.criarPrologo(narrador, protagonista);
-            case 2:
-                return construtor.criarAtoI(protagonista,narrador,jonas,daniel);
-            default:
-                System.out.println("Cena não encontrada para o ID: " + idCena);
-                return null;
-        }
-    }
 }
-
