@@ -133,7 +133,7 @@ public class Controlador {
                     if (requisito != -1 && !protagonista.getInventario().possuiItemPorId(requisito)) {
                         menu.mostraString("Você não tem o item necessário para essa escolha.");
                         escolhaSelecionada = null;
-                        escolha = menu.validaOpcao(); // pede nova escolha
+                        escolha = menu.validaOpcao(dialogo.getQuantidadeEscolhas());// pede nova escolha
                     }
 
                     // Verifica requisito de atributo
@@ -143,7 +143,7 @@ public class Controlador {
                         if (protagonista.getAtributo(atributo) < valorMinimo) {
                             menu.mostraString("Você não possui o atributo necessário para essa escolha.");
                             escolhaSelecionada = null;
-                            escolha = menu.validaOpcao();
+                            escolha = menu.validaOpcao(dialogo.getQuantidadeEscolhas());
                         }
                     }
 
@@ -154,7 +154,7 @@ public class Controlador {
                         if (npc.getConfianca() < confiancaMinima) {
                             menu.mostraString("Você não possui confiança suficiente com " + npc.getNome() + ".");
                             escolhaSelecionada = null;
-                            escolha = menu.validaOpcao();
+                            escolha = menu.validaOpcao(dialogo.getQuantidadeEscolhas());
                         }
                     }
 
