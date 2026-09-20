@@ -9,7 +9,7 @@ public class Protagonista extends Personagem {
 
         atributos[0] = new Atributo("Razão", 50, 100);
         atributos[1] = new Atributo("Paranoia", 50, 100);
-        atributos[2] = new Atributo("Violencia", 50, 100);
+        atributos[2] = new Atributo("Violência", 50, 100);
 
         inventario = new Inventario();
     }
