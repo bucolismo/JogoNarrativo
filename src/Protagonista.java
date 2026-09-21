@@ -38,8 +38,6 @@ public class Protagonista extends Personagem {
     }
 
     public void cadastrarItens(){
-        // IDs confirmados via new Efeito(N) / defineRequisitoItem(N) em ConstrutorDeCenas
-
         Item pistaDeJonas    = new Item("Pista de Jonas", "Pista", "Informação repassada pelo Velho Jonas sobre a fábrica desativada", 6);
         Item pistaManequim   = new Item("Pista do Manequim", "Pista", "Uma pista plantada por alguém em um manequim no beco", 7);
         Item laudoAdulterado = new Item("Laudo Adulterado", "Evidência", "Laudo pericial do caso de Gabriel com rasuras propositais", 8);
@@ -66,9 +64,6 @@ public class Protagonista extends Personagem {
         Item ferimentosLeves  = new Item("Ferimentos Leves", "Status", "Dano físico leve sofrido em confronto corpo a corpo", 33);
         Item armaBranca       = new Item("Arma Branca Adquirida", "Item", "Arma branca tomada de um policial durante confronto", 34);
         Item gameOver = new Item(("GameOver"),"GameOver","GameOver",-1);
-
-        // ATENÇÃO: ID 14 pressupõe que você altere, em criarAtoIIRota3A (escolhaAuto12),
-        // "new Efeito(13)" para "new Efeito(14)" — hoje ela colide com o item 13 acima.
         Item chaveArquivoMorto = new Item("Chave do Arquivo Morto", "Acesso", "Chave entregue por Daniel ao atingir parceria total com ele", 14);
 
         inventario.cadastrarItem(pistaDeJonas);
