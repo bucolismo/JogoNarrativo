@@ -1,3 +1,10 @@
+/**
+ * classe que controla o fluxo da execução do jogo
+ *
+ * ela que inicializa os componentes de interação, inicia a partida,
+ * cria o protagonista e NPCs também e rege a progressão da narrativa entre as cenas
+ */
+
 public class Controlador {
 
     private Menu menu;
@@ -7,7 +14,13 @@ public class Controlador {
         entrada = new Entrada();
         menu = new Menu(entrada);
     }
-
+    
+    /**
+     * mostra e controla o menu principal do jogo
+     *
+     *  aqui o jogador pode iniciar uma partida, ver as instruções,
+     * ver os créditos ou sair do jogo
+     */
     public void menuInicial() {
 
         int opcao;
@@ -39,7 +52,13 @@ public class Controlador {
 
         } while (opcao != 4);
     }
-
+    
+    /**
+     * inicia uma nova partida
+     *
+     * Cria o protagonista, os NPCs e também o construtor responsável pela criação das cenas,
+     * e depois a execução da história/do jogo
+     */
     public void iniciarPartida() {
         // Cria o protagonista
         Protagonista protagonista = criarProtagonista();
@@ -55,6 +74,14 @@ public class Controlador {
         // Executa o loop principal da narrativa
         executarHistoria(construtor, protagonista, narrador, jonas, daniel,helena, menu);
     }
+    
+    /**
+     * cadastra o protagonista com as informações fornecidas pelo jogador
+     *
+     * faz o cadastro dos os itens disponíveis para o inventário do protagonista.
+     *
+     * @return retona o protagonista criado para a partida
+     */
 
     private Protagonista criarProtagonista() {
         String nome = menu.recebeNome();
@@ -233,7 +260,15 @@ public class Controlador {
             default: return null;
         }
     }
-
+    
+    /**
+     * ciontrola a progressão da narrativa entre as cenas.
+     *
+     * recebe as cenas de acordo com a escolha realizada anteriormente,
+     * executa cada cena e utiliza a última escolha para determinar
+     * a próxima
+     */
+    
     private int executaCena(Cena cena, Protagonista protagonista, Menu menu) {
         if (cena == null || cena.getDialogos() == null) {
             return 0;
