@@ -46,14 +46,14 @@ public class Controlador {
 
         // 2. Instancia os personagens da história
         Personagem narrador = new Personagem("Narrador", 0, "Neutro");
-        NPC jonas = new NPC("Jonas", 30, "Masculino", 50);
-        NPC daniel = new NPC("Daniel", 40, "Masculino", 50);
-
+        NPC jonas = new NPC("Jonas", 30, "Masculino", 5);
+        NPC daniel = new NPC("Daniel", 40, "Masculino", 5);
+        NPC helena = new NPC("Helena",23,"Feminino",5);
         // 3. Instancia o construtor de cenas
         ConstrutorDeCenas construtor = new ConstrutorDeCenas();
 
         // 4. Executa o loop principal da narrativa
-        executarHistoria(construtor, protagonista, narrador, jonas, daniel, menu);
+        executarHistoria(construtor, protagonista, narrador, jonas, daniel,helena, menu);
     }
 
     private Protagonista criarProtagonista() {
@@ -65,38 +65,169 @@ public class Controlador {
         return protagonista;
     }
 
-    private void executarHistoria(ConstrutorDeCenas construtor, Protagonista protagonista, Personagem narrador, NPC jonas, NPC daniel, Menu menu) {
-        int idCenaAtual = 1;
-        int ultimaEscolha = 0;
-
-        while (idCenaAtual > 0) {
-            Cena cena = obterProximaCena(idCenaAtual, ultimaEscolha, construtor, narrador, protagonista, jonas, daniel);
-            if (cena == null) {
-                break;
-            }
-            ultimaEscolha = executaCena(cena, protagonista, menu);
-            idCenaAtual++;
-        }
+    private enum EstadoJogo {
+        PROLOGO, ATO_I, FINAL_ATO_I, ATO_II, ATO_III, ATO_IV, ATO_V, ATO_VI, FINAL, FIM
     }
 
-    private Cena obterProximaCena(int idCena, int opcaoEscolhida, ConstrutorDeCenas construtor, Personagem narrador, Protagonista protagonista, NPC jonas, NPC daniel) {
-        switch (idCena) {
-            case 1:
-                return construtor.criarPrologo(narrador, protagonista);
-            case 2:
-                return construtor.criarAtoI(protagonista, narrador, jonas, daniel);
-            case 3:
-                return construtor.criarFinalAtoI(narrador, protagonista);
-            case 4:
-                return obterRotaDoAtoII(opcaoEscolhida, construtor, narrador, protagonista, daniel);
-            default:
-                return null;
+    private static final int SENTINELA_GAME_OVER = -1; // ver observação 1 acima
+
+    private void executarHistoria(ConstrutorDeCenas construtor, Protagonista protagonista, Personagem narrador,
+                                  NPC jonas, NPC daniel, NPC helena, Menu menu) {
+
+        EstadoJogo estado = EstadoJogo.PROLOGO;
+        int rotaAtoII = 0; // 1=1A, 2=1B, 3=2A, 4=2B(fim), 5=3A, 6=3B(fim)
+        int rotaAtoV = 0;  // 1=RotaA, 2=RotaB, 3=RotaC
+
+        while (estado != EstadoJogo.FIM) {
+            if(protagonista.getInventario().possuiItemPorId(-1)){
+                estado= EstadoJogo.FIM;
+            }
+            switch (estado) {
+
+                case PROLOGO: {
+                    Cena cena = construtor.criarPrologo(narrador, protagonista);
+                    executaCena(cena, protagonista, menu); // sem escolhas relevantes para roteamento
+                    estado = EstadoJogo.ATO_I;
+                    break;
+                }
+
+                case ATO_I: {
+                    Cena cena = construtor.criarAtoI(protagonista, narrador, jonas, daniel);
+                    executaCena(cena, protagonista, menu);
+                    estado = EstadoJogo.FINAL_ATO_I;
+                    break;
+                }
+
+                case FINAL_ATO_I: {
+                    Cena cena = construtor.criarFinalAtoI(narrador, protagonista);
+                    int escolha = executaCena(cena, protagonista, menu);
+                    rotaAtoII = escolha; // 1..6, mapeado 1:1 com as Escolhas de criarFinalAtoI
+                    estado = EstadoJogo.ATO_II;
+                    break;
+                }
+
+                case ATO_II: {
+                    Cena cena = obterRotaDoAtoII(rotaAtoII, construtor, narrador, protagonista, daniel);
+                    if (cena == null) { estado = EstadoJogo.FIM; break; }
+
+                    int escolha = executaCena(cena, protagonista, menu);
+
+                    // Rotas 2B e 3B terminam em Game Over dentro do próprio método
+                    // (não têm Escolha nenhuma — só narração de captura/prisão).
+                    if (rotaAtoII == 4 || rotaAtoII == 6 || escolha == SENTINELA_GAME_OVER) {
+                        estado = EstadoJogo.FIM;
+                    } else {
+                        estado = EstadoJogo.ATO_III;
+                    }
+                    break;
+                }
+
+                case ATO_III: {
+                    // NPCs de emboscada, um por perspectiva — vida útil de uma cena só,
+                    // seguindo o mesmo padrão dos NPCs locais criados em criarPrologo.
+                    Cena cena;
+                    switch (rotaAtoII) {
+                        case 1: {
+                            NPC homemArmado = new NPC("Homem Armado",44,"Antagonista",5);
+                            cena = construtor.criarAtoIIIPerspectiva1A(narrador, protagonista, helena, homemArmado);
+                            break;
+                        }
+                        case 2: {
+                            NPC agenteSeguranca = new NPC("Agente da Segurança",42,"Antagonista",5);
+                            cena = construtor.criarAtoIIIPerspectiva1B(narrador, protagonista, helena, agenteSeguranca);
+                            break;
+                        }
+                        case 3: {
+                            NPC segurancaPrivado = new NPC("Segurança Privado",34,"Antagonista",5);
+                            cena = construtor.criarAtoIIIPerspectiva2A(narrador, protagonista, helena, segurancaPrivado);
+                            break;
+                        }
+                        case 5: {
+                            NPC policial = new NPC("Policial",25,"Antagonista",5);
+                            cena = construtor.criarAtoIIIPerspectiva3A(narrador, protagonista, helena, policial);
+                            break;
+                        }
+                        default:
+                            cena = null; // não deveria ocorrer: 4 e 6 já terminaram no Ato II
+                    }
+
+                    if (cena == null) { estado = EstadoJogo.FIM; break; }
+
+                    int escolha = executaCena(cena, protagonista, menu);
+
+                    // Todas as perspectivas convergem para o mesmo Ato IV — a única
+                    // exceção é se o jogador escolheu "correr" e morreu na emboscada.
+                    estado = (escolha == SENTINELA_GAME_OVER) ? EstadoJogo.FIM : EstadoJogo.ATO_IV;
+                    break;
+                }
+
+                case ATO_IV: {
+                    Cena cena = construtor.criarAtoIV(narrador, protagonista, helena, daniel);
+                    int escolha = executaCena(cena, protagonista, menu);
+                    // escolha reflete a Escolha Decisiva final (Cena 4 do Ato IV):
+                    // 1=Razão->Rota1A, 2=Paranoia->Rota1B, 3=Violência->Rota1C, 4/sentinela=Game Over
+                    if (escolha == 1) { rotaAtoV = 1; estado = EstadoJogo.ATO_V; }
+                    else if (escolha == 2) { rotaAtoV = 2; estado = EstadoJogo.ATO_V; }
+                    else if (escolha == 3) { rotaAtoV = 3; estado = EstadoJogo.ATO_V; }
+                    else { estado = EstadoJogo.FIM; } // opção 4 (discurso sem provas) ou GameOver de outra etapa da cena
+                    break;
+                }
+
+                case ATO_V: {
+                    Cena cena;
+                    switch (rotaAtoV) {
+                        case 1: cena = construtor.criarAtoVRota1A(narrador, protagonista, helena, daniel); break;
+                        case 2: cena = construtor.criarAtoVRota1B(narrador, protagonista, helena, daniel); break;
+                        case 3: cena = construtor.criarAtoVRota1C(narrador, protagonista, helena, daniel); break;
+                        default: cena = null;
+                    }
+                    if (cena == null) { estado = EstadoJogo.FIM; break; }
+
+                    int escolha = executaCena(cena, protagonista, menu);
+                    // Game Over de cada rota está no PRIMEIRO diálogo da cena (opção 4);
+                    // se o jogador seguiu vivo, converge para o Ato VI independente da
+                    // escolha feita no segundo diálogo.
+                    estado = (escolha == SENTINELA_GAME_OVER) ? EstadoJogo.FIM : EstadoJogo.ATO_VI;
+                    break;
+                }
+
+                case ATO_VI: {
+                    Cena cena = construtor.criarAtoVI(narrador, protagonista, helena, daniel);
+                    int escolha = executaCena(cena, protagonista, menu);
+                    // 1=Balança, 2=Névoa, 3=Sangue, 4/sentinela=Game Over ("O Silêncio de Santa Aurora")
+                    if (escolha == 1 || escolha == 2 || escolha == 3) {
+                        rotaAtoV = escolha; // reaproveito a variável só para carregar o final escolhido
+                        estado = EstadoJogo.FINAL;
+                    } else {
+                        estado = EstadoJogo.FIM;
+                    }
+                    break;
+                }
+
+                case FINAL: {
+                    Cena cena;
+                    switch (rotaAtoV) {
+                        case 1: cena = construtor.criarFinalBalanca(narrador, protagonista, helena); break;
+                        case 2: cena = construtor.criarFinalNevoa(narrador, protagonista, helena); break;
+                        case 3: cena = construtor.criarFinalSangue(narrador, protagonista); break;
+                        default: cena = null;
+                    }
+                    if (cena != null) {
+                        executaCena(cena, protagonista, menu); // epílogo puro, sem escolhas
+                    }
+                    estado = EstadoJogo.FIM;
+                    break;
+                }
+
+                case FIM:
+                    break;
+            }
         }
     }
 
     private Cena obterRotaDoAtoII(int opcaoEscolhida, ConstrutorDeCenas construtor, Personagem narrador, Protagonista protagonista, NPC daniel) {
         switch (opcaoEscolhida) {
-            case 1: return construtor.criarAtoIIRota1A(narrador, protagonista);
+            case 1: return construtor.criarAtoIIRota1A(narrador, protagonista, daniel);
             case 2: return construtor.criarAtoIIRota1B(narrador, protagonista, daniel);
             case 3: return construtor.criarAtoIIRota2A(narrador, protagonista);
             case 4: return construtor.criarAtoIIRota2B(narrador, protagonista);
