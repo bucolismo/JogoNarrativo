@@ -1,3 +1,12 @@
+/**
+ * Essa classe representa uma opção de escolha apresentada ao jogador durante um diálogo qualquer
+ *
+ * Uma escolha pode exigir requisitos (item, atributo mínimo ou confiança
+ * mínima com um NPC) para ficar disponível (que é a restrição de acesso),
+ * e pode aplicar um ou mais efeito sobre o estado do jogo quando selecionada
+ * e que por sua veza ltera os atributos do protagonista, confiança de NPCs ou o inventário.
+ */
+
 import java.util.ArrayList;
 
 public class Escolha {
@@ -47,7 +56,12 @@ public class Escolha {
         this.textoConsequencia = textoConsequencia;
     }
 
-    // Requisito de item
+    /**
+     * Define um item como requisito para que a escolha fique disponível
+     * é o que permite fazermos a restriação de acesso
+     *
+     * @param id identificador (índice) do item necessário
+     */
     public void defineRequisitoItem(int id) {
         this.requisitoItem = id;
     }
@@ -56,7 +70,15 @@ public class Escolha {
         return requisitoItem;
     }
 
-    // Requisito de atributo
+
+    /**
+     * Define um atributo e o valor mínimo como requisito para que a escolha
+     * fique disponível.
+     *
+     * @param atributo nome do atributo exigido (como "Violência, Paranoia ou Razão)
+     * @param valor valor mínimo a ser atingodo do atributo
+     */
+
     public void defineRequisitoAtributo(String atributo, int valor) {
         this.requisitoAtributo = atributo;
         this.valorRequisitoAtributo = valor;
@@ -94,15 +116,29 @@ public class Escolha {
         return efeitos;
     }
 
+    /**
+     * Adiciona um efeito à escolha.
+     *
+     * @param efeito efeito que será aplicado quando a escolha for selecionada
+     */
     public void adicionaEfeito(Efeito efeito) {
         efeitos.add(efeito);
     }
 
+    /**
+     * checa se a escolha possui algum efeito
+     *
+     * @return true se a escolha possuir pelo menos um efeito, false se não tiver
+     */
     public boolean possuiEfeitos() {
         return !efeitos.isEmpty();
     }
 
-    // Consequência
+    /**
+     * define o texto que será apresentado como consequência da escolha
+     *
+     * @param consequencia texto da consequência
+     */
     public void adicionaConsequencia(String consequencia) {
         this.textoConsequencia = consequencia;
     }
