@@ -1,3 +1,11 @@
+/**
+ * classe que representa o menu responsável pela interação textual com o jogador
+ *
+ * ela faz uso da classe Entrada para receber os dados do usuário e também apresenta
+ * informações, instruções, créditos no menu inicial, sáida e tambem os  diálogos
+ * ao longo do jogo
+ */
+
 public class Menu {
 
     private Entrada entrada;
@@ -115,6 +123,13 @@ Luis Felipe Batista
         """);
     }
 
+    /**
+     * Exibe um diálogo e se tiver apresenta as opções
+     * disponíveis ao jogador e recebe a entrada com a escolha dele
+     *
+     * @param dialogo diálogo que será apresentado
+     * @return ele retorna o número da escolha selecionada ou retorna "0" se o diálogo não tiver opções
+     */
     public int mostraDialogo(Dialogo dialogo) {
 
         // Caso de não ser o narrador:
