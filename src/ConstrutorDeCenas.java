@@ -1,3 +1,9 @@
+/**
+ * é a classe responsável por construir as cenas que compõem a narrativa do jogo
+ * Cada método cria uma cena com seus respectivos diálogos, personagens
+ * e escolhas, organizando o desenvolvimento da história
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,9 +12,6 @@ public class ConstrutorDeCenas {
     private Cena cenaAtual;
     private String cenaID;
 
-    // ---------------------------------------------------------------------
-    // CONSTANTES DE BALANCEAMENTO — ajuste tudo a partir daqui
-    // ---------------------------------------------------------------------
     private static final int CONFIANCA_INICIAL = 5;        // todo NPC começa aqui (escala 0-10)
     private static final int CONFIANCA_ALIADO_LEAL = 9;     // portão de "parceria total"
     private static final int CONFIANCA_PARCERIA_BASICA = 7; // portão de acesso a favores pontuais
