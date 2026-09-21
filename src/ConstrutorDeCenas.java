@@ -1,97 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * =============================================================================
- * NOTAS DE REVISÃO (leia antes de mexer nos números)
- * =============================================================================
- *
- * 1) ESCALA DE RELACIONAMENTO (CONFIANÇA COM NPCs)
- *    - Todo NPC com relacionamento rastreado (Daniel, Helena) COMEÇA em 5,
- *      numa escala de 0 a 10.
- *    - Padrão de variação usado em (quase) todas as interações:
- *        +2  -> escolha que constrói confiança (cooperação, honestidade,
- *              competência demonstrada)
- *        -1  -> escolha que gera distância/desconfiança, mas não hostilidade
- *              (cautela, blefe, sonegar informação)
- *        -3  -> escolha agressiva/violenta que quebra a confiança
- *      Exceção deliberada: na Rota 1B (Jogo Duplo), o jogador finge
- *      confiabilidade para enganar Daniel, então escolhas de "Paranoia"
- *      (o jogador desconfiando dele) na visão do PRÓPRIO Daniel parecem
- *      cooperação e por isso SOBEM a confiança dele — isso é ironia
- *      dramática proposital, não erro de digitação.
- *    - Portões de confiança (defineRequisitoConfianca) foram recalculados
- *      para serem SEMPRE alcançáveis: nenhum portão pede mais do que o
- *      máximo teoricamente possível de se acumular até aquele ponto do jogo.
- *
- * 2) ATRIBUTOS DE PERSONALIDADE (Razão / Paranoia / Violência)
- *    - Cada escolha "alinhada" concede +3 no atributo correspondente.
- *    - LIMITE_FINAL_ATO_VI (24) exige comprometimento real com uma linha de
- *      conduta (cerca de 8 escolhas alinhadas ao longo do jogo) para abrir
- *      o final correspondente no Ato VI — não é mais trivial acertar por
- *      acidente.
- *    - LIMITE_CHECKPOINT_ATO_IV (15) é um portão intermediário: só quem já
- *      vinha jogando de forma consistente consegue tomar a decisão decisiva
- *      do Ato IV. Um jogador indeciso cai no final fraco "PALAVRAS SEM
- *      PROVAS NÃO DERRUBAM O PODER", o que é tematicamente coerente
- *      (indecisão não muda uma cidade).
- *
- * 3) ITENS / PISTAS
- *    - Toda vez que o texto narra "(Obteve Item/Pista/Evidência: X)" agora
- *      existe um Efeito real correspondente (isso NÃO acontecia em vários
- *      pontos da versão anterior — o texto prometia um item que o motor do
- *      jogo nunca registrava).
- *    - Os itens 6, 7, 8, 10 e 11 continuam sendo os "itens-chave" que
- *      abrem rotas (Ato I -> Ato II) e finais (Ato VI). Os demais itens
- *      (Ato III em diante) são tratados como evidências de apoio via
- *      AdicionaItem e alimentam o novo atributo "PROVAS".
- *    - Novo atributo PROVAS: sobe +1 sempre que o jogador recupera uma
- *      evidência relevante. O Final da Razão (A Balança) agora também
- *      exige PROVAS >= 6, reforçando que o caminho "legal" só se sustenta
- *      se você realmente construiu um caso — não bastam boas intenções.
- *    - Corrigido: a rota "Confiar em Helena" no Ato IV, que antes SEMPRE
- *      dava Game Over independente do relacionamento construído. Agora,
- *      se a confiança com Helena for alta o suficiente, ela realmente
- *      ajuda.
- *
- * 4) TOM DOS FINAIS (pedido explícito de revisão)
- *    - FINAL DA PARANOIA ("A Névoa se Levanta") agora é o final mais
- *      SATISFATÓRIO: a cidade desperta, Helena permanece aliada, Gabriel
- *      é vingado por uma causa coletiva, e o protagonista encontra
- *      pertencimento — a vigilância paranoica é reenquadrada como cuidado
- *      genuíno com a cidade, não isolamento.
- *    - FINAL DA VIOLÊNCIA ("O Preço do Sangue") é deliberadamente
- *      "mais ou menos": há justiça real (o Prefeito cai), mas o
- *      protagonista paga um preço concreto e ambíguo (foragido, sem poder
- *      voltar). Nem tragédia completa, nem vitória limpa.
- *    - FINAL DA RAZÃO ("A Balança") é reescrito para ser tecnicamente
- *      correto mas emocionalmente incompleto: processo lento, Helena se
- *      afasta, o protagonista nunca tem seu momento de confronto ou luto
- *      real, e o texto termina deixando uma pergunta em aberto — o
- *      objetivo é que o jogador termine pensando "e se eu tivesse
- *      escolhido diferente?" e queira rejogar.
- *
- * 5) BUG CRÍTICO CORRIGIDO
- *    - O método criarAtoIIIPerspectiva1B estava duplicado (dois métodos
- *      com a MESMA assinatura), o que nem compila em Java. Mantida apenas
- *      a versão mais coerente (itens via AdicionaItem, sem IDs numéricos
- *      colidindo com o item 11 "Gravação" do Ato II).
- *    - Em FinalAtoI, as escolhas [5] e [6] levavam ao MESMO texto de
- *      resultado ("ROTA 3A (INVASÃO À DELEGACIA)"), embora fossem
- *      apresentadas como rotas diferentes (3A x 3B). Agora [5] leva à
- *      Rota 3A (confronto no beco, sem pré-requisito) e [6] exige
- *      Violência >= 9 (o máximo possível só de Ato I) para a invasão
- *      cega à delegacia, que leva à prisão (Rota 3B).
- * =============================================================================
- */
 public class ConstrutorDeCenas {
 
     private Cena cenaAtual;
     private String cenaID;
 
-    // ---------------------------------------------------------------------
+
     // CONSTANTES DE BALANCEAMENTO — ajuste tudo a partir daqui
-    // ---------------------------------------------------------------------
     private static final int CONFIANCA_INICIAL = 5;        // todo NPC começa aqui (escala 0-10)
     private static final int CONFIANCA_ALIADO_LEAL = 9;     // portão de "parceria total"
     private static final int CONFIANCA_PARCERIA_BASICA = 8; // portão de acesso a favores pontuais
