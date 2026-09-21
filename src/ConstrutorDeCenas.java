@@ -6,11 +6,12 @@ public class ConstrutorDeCenas {
     private Cena cenaAtual;
     private String cenaID;
 
-
+    // ---------------------------------------------------------------------
     // CONSTANTES DE BALANCEAMENTO — ajuste tudo a partir daqui
+    // ---------------------------------------------------------------------
     private static final int CONFIANCA_INICIAL = 5;        // todo NPC começa aqui (escala 0-10)
     private static final int CONFIANCA_ALIADO_LEAL = 9;     // portão de "parceria total"
-    private static final int CONFIANCA_PARCERIA_BASICA = 8; // portão de acesso a favores pontuais
+    private static final int CONFIANCA_PARCERIA_BASICA = 7; // portão de acesso a favores pontuais
     private static final int CONFIANCA_HOSTIL = 2;          // abaixo disso, o NPC vira obstáculo
 
     private static final int LIMITE_CHECKPOINT_ATO_IV = 15; // portão da escolha decisiva do Ato IV
@@ -130,12 +131,12 @@ public class ConstrutorDeCenas {
         return prologo;
     }
 
-    public Cena criarAtoI(Protagonista protagonista, Personagem narrador, Personagem jonas, Personagem daniel) {
+    public Cena criarAtoI(Protagonista protagonista, Personagem narrador, NPC jonas, Personagem daniel) {
 
         Cena atoI = new Cena("ato_1");
 
         // =========================================================================
-        // DIÁLOGO 1 — A CHEGADA EM SANTA AURORA
+        // A CHEGADA EM SANTA AURORA
         // =========================================================================
 
         Dialogo dialogo1 = new Dialogo(narrador, """
@@ -162,7 +163,7 @@ public class ConstrutorDeCenas {
         atoI.adicionaDialogo(dialogo1);
 
         // =========================================================================
-        // DIÁLOGO 2 — A LEMBRANÇA DE GABRIEL
+        // A LEMBRANÇA DE GABRIEL
         // =========================================================================
 
         Dialogo dialogo2 = new Dialogo(narrador, """
@@ -246,7 +247,7 @@ public class ConstrutorDeCenas {
                 [1] "Jonas, acalme-se. Me diga exatamente o que ele estava fazendo nos últimos
                     dias e quem foi a última pessoa a falar com ele."
                 """,
-                new ArrayList<>(List.of(aumentaRazao, new Efeito(6), ganhaProva)),
+                new ArrayList<>(List.of(aumentaRazao, ganhaProva)),
                 """
                         Jonas solta um suspiro pesado, ajeitando o casaco. Sua postura firme o acalma.
 
@@ -304,6 +305,129 @@ public class ConstrutorDeCenas {
         );
 
         atoI.adicionaDialogo(dialogo4);
+
+        // =========================================================================
+        // DIÁLOGO 4.1 — GANHANDO (OU PERDENDO) A CONFIANÇA DE JONAS
+        // =========================================================================
+        // Requer os efeitos melhoraRelacaoJonas / pioraRelacaoJonas — defina-os
+        // como campos da classe, no mesmo padrão de aumentaRazao/aumentaParanioa.
+
+        Escolha escolhaDialogo4_1_1 = new Escolha("""
+                [1] "Eu sei que isso é pesado, Jonas. Mas confio em você — foi o Gabriel
+                    quem sempre disse que você era de confiança. Me ajuda a entender
+                    o resto."
+                """,
+                new ArrayList<>(List.of(new Efeito(jonas,3), aumentaRazao)),
+                """
+                        Jonas relaxa os ombros pela primeira vez desde que apareceu na névoa.
+                        Ele parece aliviado por ouvir o nome do seu irmão dito sem raiva.
+
+                        MORADOR (JONAS):
+                        "Ele falava de você toda semana, sabia? Achava que um dia vocês dois
+                        iam resolver as coisas. Vem, garoto... te mostro onde ele escondia
+                        as anotações."
+
+                        (Relação com Jonas melhorou)
+                        """
+        );
+
+        Escolha escolhaDialogo4_1_2 = new Escolha("""
+                [2] "Não tenho tempo pra isso agora, Jonas. Se sabe de algo, fala logo
+                    ou sai da minha frente."
+                """,
+                new ArrayList<>(List.of(new Efeito(jonas,-2), aumentaParanioa)),
+                """
+                        Jonas se encolhe, os olhos marejados. Ele dá um passo para trás,
+                        a lanterna tremendo ainda mais na mão.
+
+                        MORADOR (JONAS):
+                        "Tudo bem... tudo bem. Você mudou mesmo, garoto. Não vou te atrapalhar
+                        mais."
+
+                        (Relação com Jonas piorou)
+                        """
+        );
+
+        Escolha escolhaDialogo4_1_3 = new Escolha("""
+                [3] Ficar em silêncio, apenas observando Jonas, esperando que ele
+                    continue por conta própria.
+                """,
+                aumentaParanioa,
+                """
+                        O silêncio pesa entre vocês. Jonas se remexe, incomodado, mas
+                        acaba enchendo o vazio sozinho.
+
+                        MORADOR (JONAS):
+                        "Você sempre foi de poucas palavras... assim como o Gabriel quando
+                        tava puto com alguma coisa. Só espero que não esteja puto comigo."
+                        """
+        );
+
+        Dialogo dialogo4_1 = new Dialogo(
+                jonas,
+                """
+                        Jonas hesita antes de continuar falando, os olhos passeando entre
+                        você e a névoa atrás de si, como se avaliasse se pode confiar no
+                        que vai dizer a seguir.
+                        """,
+                escolhaDialogo4_1_1,
+                escolhaDialogo4_1_2,
+                escolhaDialogo4_1_3
+        );
+
+        atoI.adicionaDialogo(dialogo4_1);
+
+        // =========================================================================
+        // DIÁLOGO 4.2 — A PISTA DE JONAS (condicionada ao relacionamento)
+        // =========================================================================
+        // Se seu motor suportar condição de estado nas Escolhas, prefira travar
+        // escolhaDialogo4_2_1 atrás de uma condição do tipo:
+        // estado.getRelacaoJonas() >= 1
+
+        Escolha escolhaDialogo4_2_1 = new Escolha("""
+                [1] "Jonas, se você confia em mim, me entrega o que o Gabriel te deixou."
+                """,
+                new ArrayList<>(List.of(new Efeito(jonas,3), new Efeito(6), ganhaProva)),
+                """
+                        Jonas suspira fundo, como quem solta um peso carregado por dias.
+                        Ele tira do bolso do casaco um envelope amassado e úmido de chuva.
+
+                        MORADOR (JONAS):
+                        "Ele me disse... 'só entrega isso pra alguém que eu confiaria de
+                        olhos fechados'. Acho que só pode ser você, garoto."
+
+                        (Obteve Pista: Pista De Jonas)
+                        (Relação com Jonas melhorou)
+                        """
+        );
+
+        Escolha escolhaDialogo4_2_2 = new Escolha("""
+                [2] "Jonas, para de enrolar e me entrega logo isso que você tá escondendo!"
+                """,
+                new Efeito(jonas,-2),
+                """
+                        Jonas recua, protegendo o bolso do casaco com o braço.
+
+                        MORADOR (JONAS):
+                        "Não! Não do jeito que você tá agora. O Gabriel confiava em mim
+                        justamente pra saber a hora certa. E essa hora não é essa."
+
+                        (Jonas se recusa a entregar a pista)
+                        """
+        );
+
+        Dialogo dialogo4_2 = new Dialogo(
+                jonas,
+                """
+                        Jonas segura algo no bolso do casaco, indeciso. A forma como ele
+                        reage agora parece depender inteiramente de como você o tratou
+                        até aqui.
+                        """,
+                escolhaDialogo4_2_1,
+                escolhaDialogo4_2_2
+        );
+
+        atoI.adicionaDialogo(dialogo4_2);
 
         // =========================================================================
         // DIÁLOGO 5 — A CENA NO BECO
@@ -375,6 +499,7 @@ public class ConstrutorDeCenas {
 
         return atoI;
     }
+
 
     public Cena criarFinalAtoI(Personagem narrador, Protagonista protagonista) {
         Cena cenaFinalAtoI = new Cena("fim_ato_1");
@@ -449,7 +574,7 @@ public class ConstrutorDeCenas {
                         """
         );
 
-        //Requisito Violêcia no Máximo Possível = 9
+        //Requisito Violêcia = 7
         Escolha escolha6 = new Escolha("""
                 [6] [Opção 3B — Invasão à Delegacia]
                     Chutar a porta da delegacia, peitar o detetive Daniel e exigir acesso imediato.
@@ -461,7 +586,7 @@ public class ConstrutorDeCenas {
                         [ROTA ATIVADA: ATO II - ROTA 3B (INVASÃO À DELEGACIA)]
                         """
         );
-        escolha6.defineRequisitoAtributo("VIOLÊNCIA", 9);
+        escolha6.defineRequisitoAtributo("VIOLÊNCIA", 7);
 
         Dialogo dialogoFinal = new Dialogo(
                 narrador,
