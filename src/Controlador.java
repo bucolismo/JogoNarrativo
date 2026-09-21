@@ -41,18 +41,18 @@ public class Controlador {
     }
 
     public void iniciarPartida() {
-        // 1. Cria o protagonista
+        // Cria o protagonista
         Protagonista protagonista = criarProtagonista();
 
-        // 2. Instancia os personagens da história
+        // Instancia os personagens da história
         Personagem narrador = new Personagem("Narrador", 0, "Neutro");
         NPC jonas = new NPC("Jonas", 30, "Masculino", 5);
         NPC daniel = new NPC("Daniel", 40, "Masculino", 5);
         NPC helena = new NPC("Helena",23,"Feminino",5);
-        // 3. Instancia o construtor de cenas
+        // Instancia o construtor de cenas
         ConstrutorDeCenas construtor = new ConstrutorDeCenas();
 
-        // 4. Executa o loop principal da narrativa
+        // Executa o loop principal da narrativa
         executarHistoria(construtor, protagonista, narrador, jonas, daniel,helena, menu);
     }
 
@@ -123,8 +123,7 @@ public class Controlador {
                 }
 
                 case ATO_III: {
-                    // NPCs de emboscada, um por perspectiva — vida útil de uma cena só,
-                    // seguindo o mesmo padrão dos NPCs locais criados em criarPrologo.
+                    // NPCs de emboscada, só existem localmente
                     Cena cena;
                     switch (rotaAtoII) {
                         case 1: {
@@ -155,8 +154,7 @@ public class Controlador {
 
                     int escolha = executaCena(cena, protagonista, menu);
 
-                    // Todas as perspectivas convergem para o mesmo Ato IV — a única
-                    // exceção é se o jogador escolheu "correr" e morreu na emboscada.
+                    // O ato IV é o ponto que centraliza toda a história
                     estado = (escolha == SENTINELA_GAME_OVER) ? EstadoJogo.FIM : EstadoJogo.ATO_IV;
                     break;
                 }
@@ -165,6 +163,7 @@ public class Controlador {
                     Cena cena = construtor.criarAtoIV(narrador, protagonista, helena, daniel);
                     int escolha = executaCena(cena, protagonista, menu);
                     // escolha reflete a Escolha Decisiva final (Cena 4 do Ato IV):
+                    
                     // 1=Razão->Rota1A, 2=Paranoia->Rota1B, 3=Violência->Rota1C, 4/sentinela=Game Over
                     if (escolha == 1) { rotaAtoV = 1; estado = EstadoJogo.ATO_V; }
                     else if (escolha == 2) { rotaAtoV = 2; estado = EstadoJogo.ATO_V; }
@@ -184,9 +183,7 @@ public class Controlador {
                     if (cena == null) { estado = EstadoJogo.FIM; break; }
 
                     int escolha = executaCena(cena, protagonista, menu);
-                    // Game Over de cada rota está no PRIMEIRO diálogo da cena (opção 4);
-                    // se o jogador seguiu vivo, converge para o Ato VI independente da
-                    // escolha feita no segundo diálogo.
+                    
                     estado = (escolha == SENTINELA_GAME_OVER) ? EstadoJogo.FIM : EstadoJogo.ATO_VI;
                     break;
                 }
