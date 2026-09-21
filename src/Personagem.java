@@ -1,3 +1,11 @@
+/**
+ * serve pra representar os personagens da narrativa do jogo
+ *
+ * todos os personagem do jogo tem nome, idade e gênero
+ * essa é classe é como uma base/modelo para a inicialização
+ * de todos os personagnes, seja ele jogável ou não
+ */
+
 public class Personagem {
     private String nome;
     private int idade;
