@@ -56,7 +56,7 @@ public class Menu {
      * Sobrecarga mantida para o menu principal com 4 opções fixas.
      */
     public int validaOpcao() {
-        return validaOpcao(4);
+        return validaOpcao(6);
     }
 
     public int recebeEscolha() {
@@ -115,12 +115,14 @@ Luis Felipe Batista
 
     public void mostraMenu() {
         System.out.println("""
-        ================  MENU ================
-        1 - Iniciar partida
-        2 - Instruções
-        3 - Créditos
-        4 - Sair
-        """);
+    ================ MENU ================
+    1 - Nova partida
+    2 - Continuar partida
+    3 - Carregar partida
+    4 - Instruções
+    5 - Créditos
+    6 - Sair
+    """);
     }
 
     /**
