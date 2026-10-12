@@ -1,0 +1,229 @@
+===============================================================================
+ATO II — O CONFRONTO NO BECO (ROTA: 3A - REVISADO E CONECTADO)
+===============================================================================
+
+[CENA 1: Beco Lateral da Delegacia de Santa Aurora / Noite Chuvosa / 01h15]
+
+A chuva cai em pancadas pesadas, transformando o beco lateral da delegacia em 
+um corredor de lama e poças refletindo o neon piscante de uma farmácia distante. 
+O vapor da água fria atingindo o asfalto quente cria uma névoa rasteira.
+
+Você encurrala o homem no canto cego do beco, bem ao lado dos contêineres de lixo 
+da delegacia, antes que ele consiga acender o isqueiro sobre a pasta com papéis 
+parcialmente queimados. O cheiro de papel incinerado e gasolina barata impregnam o ar. 
+
+Ele está encharcado, respirando de forma afobada, com os olhos arregalados 
+procurando desesperadamente uma rota de fuga entre as paredes altas de tijolos.
+
+SUSPEITO:
+"Calma aí, cara! Eu só recebi um dinheiro pra sumir com esse entulho da lixeira! 
+Não sei de nada sobre o seu irmão, juro por Deus!"
+
+> VOZ DA VIOLÊNCIA:
+> "Ele está mentindo para ganhar tempo. Faça ele falar antes que a patrulha 
+> faça a ronda dos fundos."
+
+> VOZ DA RAZÃO:
+> "O envelope que ele tenta esconder tem a marca d'água oficial do Cartório. 
+> Se o fogo destruir a numeração, perdemos a conexão com a autópsia."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Repare nas câmeras do muro: a lâmpada do poste da delegacia foi quebrada de 
+> propósito. Alguém facilitation a entrada dele aqui."
+
+
+===============================================================================
+ESCOLHA 1 — A PRESSÃO NO BECO
+===============================================================================
+
+[1] Pressionar o homem contra a parede de tijolos e exigir o nome de quem o contratou:
+    "Quem te pagou para queimar os relatórios no beco? Fala agora!"
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [1] (VIOLÊNCIA)
+			O homem treme e murmura um apelido pouco antes de a porta de serviço se 
+			abrir bruscamente. Daniel sai armado, vê a cena e manda você soltar o suspeito 
+			imediatamente. O sujeito é levado algemado para a cela, mas Daniel fica 
+			extremamente irritado com a sua violência em propriedade policial.
+			[CONFIANÇA COM DANIEL: -1]
+
+[2] Revistar os bolsos do sujeito rapidamente em busca de carteira, celular 
+    ou chaves antes que a patrulha perceba a movimentação.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [2] (RAZÃO)
+			Sua agilidade permite que você encontre um cartão de acesso magnético com um 
+			símbolo timbrado da Prefeitura no bolso da jaqueta dele. Você guarda a prova 
+			no casaco um segundo antes de a patrulha dobrar a esquina.
+			(Obteve Item: Cartão de Acesso da Prefeitura)
+			[CONFIANÇA COM DANIEL: NEUTRA]
+
+[3] Arrastar o sujeito para a penumbra do portão dos fundos para evitar a luz 
+    da rua e interrogar em silêncio.
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [3] (CONSPIRAÇÃO)
+			Escondido no ponto cego das câmeras de segurança, você faz o sujeito confessar 
+			que recebia ordens por mensagens anônimas de um número com o código interno do 
+			gabinete municipal. Você obtém a informação sem expor sua posição para a polícia.
+			(Obteve Pista: Canal do Gabinete)
+			[CONFIANÇA COM DANIEL: NEUTRA]
+
+[4] Largar o homem no chão e chamar o Detetive Daniel para assumir a custódia 
+    do suspeito de forma oficial.
+    (+1 COOPERAÇÃO)
+		---> SE ESCOLHEU [4] (COOPERAÇÃO)
+			Daniel atende ao seu chamado de rádio e rende o suspeito no beco. Impressionado 
+			pela captura limpa e sem uso de força desmedida, ele agradece a ajuda e 
+			concorda em realizar o interrogatório em conjunto na sala oficial.
+			[CONFIANÇA COM DANIEL: +1]
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA I — DO BECO À SALA DE INTERROGATÓRIO
+===============================================================================
+
+O suspeito é arrastado para dentro da delegacia sob o olhar curioso dos policiais 
+de plantão. A água da chuva escorre de suas roupas, deixando um rastro escuro no 
+piso de linóleo gasto do corredor. 
+
+Daniel empurra a porta de carvalho pesado da Sala de Interrogatório 02. O ambiente 
+é frio, iluminado por uma única lâmpada fluorescente que zume no teto. O cheiro de 
+fumo de corda e tinta fresca domina o ar. 
+
+O suspeito é empurrado para a cadeira de ferro fixada no chão. Suas algemas tilintam 
+contra a mesa de metal. Daniel encosta-se na parede ao lado do espelho falso, cruza 
+os braços e faz um sinal com a cabeça, passando a condução do questionamento a você.
+
+
+===============================================================================
+CENA 2: Sala de Interrogatório 02 / 01h45
+===============================================================================
+
+O barulho da chuva batendo na janela alta retumba na sala privativa. O suspeito 
+respira fundo, olhando fixamente para a superfície espelhada da mesa.
+
+SUSPEITO:
+"Eu já disse tudo o que sei lá fora... Eu só fui pago para queimar aquela pasta! 
+Se eu falar o nome de quem mandou o Pix, eu tô morto antes de pisar no pátio do presídio!"
+
+> VOZ DA RAZÃO:
+> "Ele está apavorado, mas a ganância o fez guardar o comprovante ou o registro no 
+> celular. Apresenar os dados em ordem fará ele quebrar."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Repare no relógio dele: é um modelo caro demais para um queimador de arquivo. 
+> Esse cara não é um zé-ninguém da rua, é um funcionário comissionado."
+
+> VOZ DA VIOLÊNCIA:
+> "Pule a burocracia. Encoste a cadeira dele na parede e mostre que a polícia é o 
+> menor dos problemas dele nesta noite."
+
+
+===============================================================================
+ESCOLHA 2 — A TÁTICA DE INTERROGATÓRIO
+===============================================================================
+
+[1] Apresentar as fotos do local do crime e apontar as falhas do plano dele:
+    "O seu contratante deixou a placa do seu carro no sistema. Você foi descartado."
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			O homem olha os papéis, empalidece e cede à lógica. Ele confessa que o 
+			pagamento veio de uma conta ligada ao gabinete do vice-prefeito de 
+			Santa Aurora para apagar as provas daquela noite.
+			(Obteve Pista: Vínculo com Vice-Prefeito)
+			[CONFIANÇA COM DANIEL: +1]
+
+[2] Blefar dizendo que o celular apreendido já revelou todas as conversas apagadas:
+    "Nós já resgatamos as mensagens do servidor. Se não confirmar agora, leva a culpa sozinho."
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			O suspeito hesita, desconfiado do blefe, mas treme ao ouvir o nome da prefeitura. 
+			Ele confirma o envolvimento da administração, mas se recusa a assinar o depoimento.
+			(Obteve Pista: Testemunho Verbal Não-Assinado)
+			[CONFIANÇA COM DANIEL: NEUTRA]
+
+[3] Bater as mãos com força na mesa de metal e encarar o homem a poucos centímetros:
+    "Você tem três segundos para me dar esse nome antes que eu perca a paciência!"
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			O homem se encolhe na cadeira e grita o nome do assessor direto do vice-prefeito. 
+			Daniel intervém imediatamente, segurando seu ombro e afastando você da mesa 
+			para evitar uma agressão física.
+			(Obteve Pista: Nome do Assessor)
+			[CONFIANÇA COM DANIEL: -1]
+
+[4] Olhar para Daniel e deixar que o detetive faça a pergunta decisiva sobre a ordem:
+    "Daniel, mostre a ele o que acontece com quem cobre os crimes do alto escalão."
+    (+1 COOPERAÇÃO)
+		---> SE ESCOLHEU [4] (COOPERAÇÃO)
+			Daniel assume o comando com calma profissional. O suspeito, sentindo a 
+			pressão da autoridade policial oficial, entrega o local e o horário exatos 
+			onde entregaria o restante do material queimado.
+			(Obteve Pista: Ponto de Encontro do Transfuga)
+			[CONFIANÇA COM DANIEL: +1]
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA II — O CONFRONTO DE PLANOS NO CORREDOR
+===============================================================================
+
+Daniel tranca a porta da Sala de Interrogatório e entrega a chave para o guarda de plantão. 
+
+Vocês dois caminham em silêncio pelo corredor até a saída dos fundos da delegacia. O vapor 
+da chuva acumulada no asfalto sobe enquanto os primeiros vestígios do amanhecer começam a 
+rasgar a névoa densa que cobre os morros de Santa Aurora.
+
+Daniel tira um maço amassado do bolso, acende um cigarro com o feno protegido pela mão e 
+solta a fumaça azulada contra o vento frio. Ele encara você com os olhos fundos de quem 
+não dorme há 48 horas.
+
+
+===============================================================================
+CENA 3: Saída dos Fundos da Delegacia / 02h15
+===============================================================================
+
+DANIEL:
+"As peças estão se encaixando... e a imagem que está se formando é pior do que 
+eu imaginava. O que seu irmão descobriu não é briga de gangue. Vai direto ao topo 
+da prefeitura. Agora me diga, sem rodeios: qual é o seu próximo passo?"
+
+> VOZ DA CONSPIRAÇÃO:
+> "Decida o quanto vai revelar a ele. O próximo movimento define se você terá um 
+> parceiro na lei ou se agirá como um alvo isolado nas ruas."
+
+
+===============================================================================
+ESCOLHA 3 — O FECHAMENTO COM DANIEL
+===============================================================================
+
+[1] "Vamos montar uma operação oficial com o que temos e grampear o gabinete do vice-prefeito."
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			Daniel acena positivamente com a cabeça. Ele garante que usará sua influência 
+			para conseguir um mandado de busca discreto sem acionar os alertas da prefeitura.
+			[CONFIANÇA COM DANIEL: +1 | ROTA ATIVADA: OPERAÇÃO CONJUNTA]
+
+[2] "Vou até a prefeitura por conta própria antes que eles saibam que o suspeito falou."
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			Daniel joga a bituca do cigarro no chão e suspira, preocupado com sua imprudência. 
+			Ele avisa que não poderá te cobrir se você for pego invadindo prédios públicos.
+			[CONFIANÇA COM DANIEL: -1 | ROTA ATIVADA: INFILTRAÇÃO SOLO]
+
+[3] "Vou caçar o assessor do vice-prefeito hoje mesmo e fazer ele pagar pelo meu irmão."
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Daniel põe a mão no coldre e avisa em tom ameaçador que não hesitará em te prender 
+			se você tentar fazer justiça com as próprias mãos em Santa Aurora.
+			[CONFIANÇA COM DANIEL: -2 | ROTA ATIVADA: VIGILANTE PERSEGUIDO]
+
+[4] "Me passe o acesso ao arquivo morto do caso e vamos dividir as tarefas de investigação."
+    (+1 COOPERAÇÃO)
+		---> SE ESCOLHEU [4] (COOPERAÇÃO)
+			Daniel retira uma cópia da chave do arquivo do bolso e entrega na sua mão. 
+			Ele demonstra confiança total na sua capacidade de conduzir o caso ao seu lado.
+			[CONFIANÇA COM DANIEL: +2 | ROTA ATIVADA: PARCERIA TOTAL]
+
+Digite o número da sua escolha: _

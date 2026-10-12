@@ -1,0 +1,173 @@
+===============================================================================
+ATO II — O CONFRONTO METÓDICO (ROTA: RAZÃO / OPCÃO 1A)
+===============================================================================
+
+[CENA: Interior da Delegacia de Santa Aurora. Luzes fluorescentes piscando.]
+
+Você ignora as distrações da rua e atravessa a recepção da delegacia com o 
+envelope de provas na mão. O cheiro de café velho e papel mofado preenche o 
+ambiente. No fundo do corredor, o Detetive Daniel organiza uma pilha de 
+pastas amarelas com expressão cansada.
+
+Ao notar sua presença, ele para o que está fazendo e ajusta a postura, 
+tentando manter um tom de controle paternal.
+
+DANIEL:
+"Você demorou... Sinto muito pelo seu irmão. Eu sei que as coisas entre vocês 
+não eram fáceis no final, mas nós estamos fazendo o possível para entender 
+o que aconteceu."
+
+Você não responde de imediato. Em vez disso, coloca sobre a mesa as cópias 
+do laudo preliminar com as inconsistências e rasuras expostas.
+
+> VOZ DA RAZÃO:
+> "Não se altere. Mantenha os fatos em ordem. Aparelho de análise, divergência 
+> de horários e rasuras no documento. Faça-o admitir as falhas."
+
+===============================================================================
+ESCOLHA 1 — O PRIMEIRO QUESTIONAMENTO
+===============================================================================
+
+[1] Apontar para a diferença de horários entre o chamado e o laudo pericial: 
+    "A autópsia indica a morte duas horas antes do chamado oficial. Por que o 
+    relatório foi alterado, Daniel?"
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+		Daniel desvia o olhar para os papéis na mesa e solta um suspiro pesado. Ele 
+		tranca a porta do escritório para que os outros policiais não ouçam a conversa.
+
+		> DANIEL:
+		> "Você sempre foi analítico como ele... Escute, nem tudo o que acontece nesta 
+		> delegacia passa pelas minhas mãos. Se esse relatório foi alterado, veio de 
+		> instâncias superiores."
+
+[2] Observar a reação do detetive enquanto fala: "Você parece surpreso em ver 
+    esses papéis. Estava esperando que eles ficassem perdidos no beco?"
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+		Os olhos de Daniel se arregalam por um segundo antes de ele recuperar a postura.
+		Ele dá um passo para trás e cruza os braços, adotando uma postura defensiva.
+
+		DANIEL:
+		"Você está vendo fantasmas onde não tem. Se alguém deixou esses papéis no beco,
+		foi para nos colocar um contra o outro."
+
+[3] Bater a mão na mesa de Daniel: "Deixe as condolências de lado e me diga 
+    quem mandou adulterar o relatório do meu irmão!"
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+		O baque no tampo da mesa faz a xícara de café de Daniel balançar. Dois policiais
+		no corredor olham pelo vidro da porta, mas Daniel levanta a mão pedindo calma.
+
+		DANIEL:
+		"Abaixe o tom! Você não está em posição de fazer exigências aqui. Se quiser
+		respostas, vai ter que me ouvir sem chilique."
+
+Digite o número da sua escolha: _
+
+===============================================================================
+ESCOLHA 2 — A PRESSÃO TÁTICA
+===============================================================================
+
+Daniel pega uma chave na gaveta e abre um arquivo de aço no canto da sala, 
+revelando uma pasta vermelha etiquetada com o nome do seu irmão. Ele hesita 
+em entregá-la.
+
+DANIEL:
+"Há informações aqui que podem colocar você em risco. O que seu irmão descobriu 
+envolve gente grande em Santa Aurora."
+
+> VOZ DA RAZÃO:
+> "Ele está tentando barganhar. Exija ver o arquivo agora ou ameace levar as 
+> provas rasuradas para a imprensa da capital."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Essa pasta vermelha pode ser uma isca. Verifique se as páginas internas 
+> batem com os carimbos oficiais antes de aceitar o que ele diz."
+
+> VOZ DA VIOLÊNCIA:
+> "Pegue a pasta da mão dele antes que ele decida fechar o arquivo novamente."
+
+===============================================================================
+
+[1] "Se você não me entregar essa pasta agora, o laudo adulterado vai direto 
+    para os jornais fora de Santa Aurora."
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+		Daniel engole em seco ao perceber a ameaça calculada. Ele desliza a pasta 
+		sobre a mesa, admitindo que não pode arriscar um escândalo fora da cidade.
+
+[2] "Abra a pasta na minha frente e me mostre os carimbos de entrada antes de 
+    me dizer o que tem aí dentro."
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+		Daniel folheia os papéis sob seu olhar atento. A verificação dos carimbos revela
+		que faltam relatórios vitais anexados na data do crime, provando que o arquivo
+		já foi filtrado antes de chegar a você.
+
+[3] Arrancar a pasta vermelha da mão do detetive antes que ele feche a gaveta.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+		Você toma a pasta em um gesto rápido. Daniel recua, surpreso pela audácia,
+		mas não tenta reavê-la; ele apenas cruza os braços, tenso com o rumo do confronto.
+		Digite o número da sua escolha: _
+
+
+===============================================================================
+ESCOLHA 3 — O DIÁLOGO COM DANIEL (TESTE DE CONFIANÇA)
+===============================================================================
+Daniel se encosta na janela molhada pela chuva e encara você. O olhar dele
+demonstra um misto de cansaço e receio.
+
+DANIEL:
+"Seu irmão achava que podia derrubar a estrutura toda sozinho. Ele me procurou
+dias antes de morrer, cheio de acusações, mas recusei ajuda imediata porque
+precisava de provas firmes. Agora me diga... você veio a Santa Aurora buscar
+justiça ou apenas descarregar a culpa por ter abandonado ele?"
+
+A pergunta ecoa na sala. A forma como você responde vai definir o nível de
+CONFIANÇA entre você e o Detetive Daniel, alterando o acesso a recursos
+policiais e revelações no futuro.
+
+===============================================================================
+
+[1] "Ele cometeu erros, e eu também. Mas os fatos mostram que ele estava certo
+sobre o esquema. Vamos trabalhar juntos para expor quem fez isso."
+[+1 RAZÃO | CONFIANÇA COM DANIEL: AUMENTA]
+(Estabelece uma aliança profissional)
+		---> SE ESCOLHEU [1] (ALIANÇA COM DANIEL)
+		Daniel assente com a cabeça e entrega o rádio de frequência restrita da polícia.
+		* **CAMINHO LIBERADO:** Você ganha um aliado interno que fornecerá avisos 
+		  sobre operações oficiais e interceptações de chamadas em tempo real.
+
+[2] "Não tente inverter o jogo, Daniel. Você não ajudou ele na época e agora
+parece estar escondendo o resto dos documentos para se proteger."
+[+1 CONSPIRAÇÃO | CONFIANÇA COM DANIEL: REDUZ]
+(Cria atrito e paranoia; Daniel fechará o acesso aos canais oficiais.)
+		---> SE ESCOLHEU [2] (RUPTURA COM A POLÍCIA)
+		Daniel recolhe os papéis restantes e guarda na gaveta trancada, encerrando a conversa.
+
+		CAMINHO LIBERADO: Você é forçado a agir na ilegalidade, precisando
+		invadir o arquivo morto da delegacia durante a madrugada para obter o restante das pistas.
+
+[3] "Minha relação com meu irmão não é da sua conta. Só me diga o nome do
+suspeito principal antes que eu descubra por conta própria."
+[+1 VIOLÊNCIA | CONFIANÇA COM DANIEL: NEUTRA/HOSTIL]
+(Impõe autoridade pela força; Daniel responderá sob intimidação.)
+		---> SE ESCOLHEU [3] (CONFRONTO DIRETO)
+		Daniel, intimidado pela sua postura, solta o nome do último empresário que
+		esteve com seu irmão antes da morte.
+
+		CAMINHO LIBERADO: Rota de investigação rápida focada em interrogatórios
+		agressivos com suspeitos civis na área nobre da cidade.
+
+[4] "Se você realmente se importava com ele, me entregue as chaves do necrotério
+agora. Deixe que eu veja o corpo e comprove o que a perícia escondeu."
+[ESCOLHA DE ROTA DIRETA | CONFIANÇA COM DANIEL: CONDICIONAL]
+(Abre mão da burocracia e exige acesso imediato à prova física.)
+
+		---> SE ESCOLHEU [4] (ROTA DO NECROTÉRIO)
+		Daniel hesita, mas entrega o cartão de acesso lateral do IML municipal.
+
+		CAMINHO LIBERADO: Investigação noturna e necropsia independente no
+		corpo do seu irmão para identificar vestígios não relatados no laudo.

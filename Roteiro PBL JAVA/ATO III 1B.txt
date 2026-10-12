@@ -1,0 +1,265 @@
+===============================================================================
+ATO III — AS FISSURAS NA MÁSCARA (PERSPECTIVA 1B: O JOGO DUPLO)
+===============================================================================
+
+[CENA 1: Corredor da Delegacia / Saída da Sala de Daniel / 01h50]
+
+A porta da sala de Daniel fecha atrás de você com um clique seco. O som ecoa pelo 
+corredor silencioso da delegacia. O ar tem gosto de cinzas, café estragado e cera 
+de chão gasta. 
+
+Você caminha mantendo o ritmo de quem não tem pressa, ajustando a gola do casaco. 
+Os policiais no balcão de plantão observam seus passos. Por fora, você mantém a 
+fisionomia de um parente abatido pelo luto; por dentro, a mente processa cada detalhe 
+das meias-verdades que Daniel acabou de pronunciar.
+
+Ao pisar na calçada da delegacia, a tempestade sopra um vento gelado que arrasta 
+folhas secas e lixo pelas sarjetas. A luz amarelada dos postes pisca sob a chuva fina, 
+projetando sombras longas contra os prédios antigos do centro.
+
+> VOZ DA CONSPIRAÇÃO:
+> "Daniel comprou sua cena ou está apenas dando corda para ver onde você vai. 
+> A viatura que ele prometeu mandar para a casa do seu irmão pode estar a caminho 
+> neste exato momento."
+
+> VOZ DA RAZÃO:
+> "Sua vantagem atual é a assimetria de informação. Você sabe que ele mente, mas 
+> ele acha que tem você sob controle. Use esse ponto cego antes que a guarda troque."
+
+> VOZ DA VIOLÊNCIA:
+> "Chega de teatro e sorrisos falsos. Se uma viatura tentar cercar a casa do Gabriel, 
+> corte os pneus ou force a entrada antes que os peritos cheguem."
+
+
+===============================================================================
+ESCOLHA 1 — O MOVIMENTO DISCRETO PELA CIDADE
+===============================================================================
+
+[1] [REQUER: Status ALIANÇA CONTROLADA / MANOBRA EVASIVA] Usar o termo/lista obtido 
+    para ir à Central de Custódia e resgatar o gravador de voz que ficou fora do inventário.
+    (+1 RAZÃO)
+		---> SE ESCOLHEU [1] (RAZÃO)
+			Você se apresenta no balcão de evidências com a requisição parcial. O guarda 
+			do plantão, sem suspeitar da manobra, entrega a caixa de pertences secundários. 
+			Dentro, sob um maço de chaves, você recupera a fita microcassete do seu irmão.
+			(Obteve Item: Fita de Áudio Confidencial do Irmão)
+
+[2] [REQUER: Status RESERVA SUSPEITA] Desviar do caminho principal e se esgueirar 
+    pelos becos até a casa de Gabriel para chegar antes da patrulha de vigilância de Daniel.
+    (+1 CONSPIRAÇÃO)
+		---> SE ESCOLHEU [2] (CONSPIRAÇÃO)
+			Movendo-se na sombra dos quarteirões, você observa a viatura de Daniel parar 
+			na frente da casa. Deslizando pelo telhado vizinho, você entra pela claraboia, 
+			recupera os diários ocultos sob o assoalho e sai sem acionar os policiais.
+			(Obteve Pista: Diários do Sobrado de Gabriel)
+
+[3] [REQUER: Status RUPTURA DECLARADA] Rastrear o carro descaracterizado que Daniel 
+    usou para mandar a escolta e interceptar os documentos na marra.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Você espera o veículo desacelerar no cruzamento da Praça Central. Numa ação 
+			rápida, você fura o pneu traseiro com um estilete na penumbra da chuva e 
+			arranca a pasta de ordens do banco traseiro enquanto os guardas checam o dano.
+			(Obteve Pista: Ordem de Busca e Apreensão Paralela)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA I — A REUNIÃO NA REDAÇÃO DA "VOZ DE SANTA AURORA"
+===============================================================================
+
+O relógio de pulso marca 02h40. A garoa constante encharca os ombros do seu casaco, 
+mas o material recuperado — seja a fita microcassete, os diários ocultos ou a ordem de 
+busca paralela — quebra definitivamente a narrativa oficial montada pela delegacia.
+
+Você precisa de uma testemunha neutra que saiba decifrar os codinomes usados por Gabriel. 
+Alguém que conheça os podres dos bastidores políticos sem estar na folha de pagamento do Gabinete.
+
+Você cruza a viela dos sapateiros e sobe os degraus de madeira rangente que levam ao 
+segundo andar do jornal *A Voz de Santa Aurora*. 
+
+A iluminação da redação é escassa. Helena está sentada diante da mesa de checagem, 
+girando uma xícara de café frio entre as mãos enquanto ouve o canal de rádio da polícia 
+sintonizado em volume mínimo.
+
+
+===============================================================================
+CENA 2: Redação de "A Voz de Santa Aurora" / 03h00
+===============================================================================
+
+Helena levanta a cabeça ao ouvir o barulho do seu passo na porta de vidro. Ela ajusta 
+os óculos, reparando na sua postura cautelosa e no volume escondido sob o seu casaco.
+
+HELENA:
+"Você tem a cara de quem acabou de jogar um jogo de xadrez no escuro com o Daniel. 
+Ele achou mesmo que você ia engolir aquela história de gangue de periferia? 
+O que você trouxe daí?"
+
+> VOZ DA CONSPIRAÇÃO:
+> "Ela sabe mais do que aparenta, mas joga com as próprias cartas. Não entregue 
+> o material original; use trechos para testar a lealdade dela."
+
+> VOZ DA RAZÃO:
+> "Helena tem o arquivo completo dos jornais dos últimos dez anos. Cruzar o material 
+> de Gabriel com o acervo dela dará a prova irrefutável."
+
+> VOZ DA VIOLÊNCIA:
+> "Pressione Helena para rodar uma tiragem de emergência. A dissimulação de Daniel 
+> precisa ser exposta antes do primeiro raio de sol."
+
+
+===============================================================================
+ESCOLHA 2 — A NEGOCIAÇÃO DE INFORMAÇÕES COM HELENA
+===============================================================================
+
+[1] Reproduzir apenas um trecho da gravação/diário e pedir que ela identifique as 
+    vozes e os codinomes citados pela alta cúpula.
+    (+1 CONSPIRAÇÃO / +Relacionamento HELENA)
+		---> SE ESCOLHEU [1] (CONSPIRAÇÃO)
+			Helena reconhece a voz no áudio imediatamente: é o Secretário de Governo 
+			autorizando o repasse de verbas para a empresa fantasma. Ela entrega o mapa 
+			das contas bancárias que guardava em segredo.
+			(Obteve Pista: Mapeamento da Conta Fantasma)
+
+[2] Colocar todo o material sobre a mesa e propor uma investigação assinada em conjunto 
+    para desmantelar a farsa de Daniel e da Prefeitura.
+    (+1 RAZÃO / +Relacionamento HELENA)
+		---> SE ESCOLHEU [2] (RAZÃO)
+			Helena abre o acervo confidencial do jornal. Juntos, vocês montam o organograma 
+			que prova como Daniel abafou os outros quatro homicídios anteriores ao de Gabriel.
+			(Obteve Pista: Dossiê de Ocultação de Cadáveres)
+
+[3] Exigir que ela use o mimeógrafo industrial para produzir centenas de cópias 
+    dos documentos e jogá-los no pátio da delegacia.
+    (+1 VIOLÊNCIA / +Relacionamento HELENA)
+		---> SE ESCOLHEU [3] (VIOLÊNCIA)
+			Helena recua diante da exigência abrupta, mas cede ao ver a gravidade das provas: 
+			ela aciona a máquina de panfletos para distribuição no turno da manhã.
+			(Obteve Item: Panfletos de Denúncia Operacional)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA II — A EMBOSCADA NA SAÍDA DO JORNAL
+===============================================================================
+
+O som abafado das máquinas de impressão cessa às 03h45. Helena entrega o dossiê 
+organizado dentro de uma pasta de couro impermeável.
+
+HELENA:
+"Se o Daniel descobrir que este material saiu daqui, ele não vai te prender... ele 
+vai fazer você desaparecer como fez com o arquivo de Gabriel. Tome cuidado lá fora."
+
+Você fecha o casaco por cima do dossiê, acena em silêncio e desce pelas escadas de 
+emergência dos fundos. 
+
+A chuva deu lugar a um nevoeiro úmido e denso que cobre as travessas do centro. O cheiro 
+de fumaça e óleo queimado impregna o ar. Ao dar dez passos pela calçada do beco, 
+o estalo de um galho e o zumbido elétrico de uma lâmpada apagando denunciam a armadilha.
+
+Dois carros descaracterizados da polícia bloqueiam as duas pontes de saída da rua. 
+Homens de sobretudo escuro e lanternas táticas desembarcam, sacando pistolas equipadas 
+com silenciadores. Não é uma abordagem de rotina: é a equipe de contenção de Daniel.
+
+
+===============================================================================
+CENA 3: A Viela dos Sapateiros / 04h00
+===============================================================================
+
+A luz forte de uma lanterna tática atinge o seu rosto, cegando sua visão direta. 
+O vapor da sua respiração mistura-se à névoa densa na altura dos joelhos.
+
+AGENTE DA SEGURANÇA:
+"Chega de jogo duplo, garoto. O Detetive Daniel manda lembranças. Coloque a pasta 
+no chão, dê três passos para trás e mantenha as mãos onde a gente possa ver."
+
+> VOZ DA RAZÃO:
+> "Eles fecharam as duas saídas da viela e estão com os ângulos de tiro cruzados. 
+> Tentar correr em linha reta ou fugir a pé pela rua aberta é suicídio instantâneo."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Eles querem a pasta sem furos de bala para não danificar o material. Use a sombra 
+> do portão de ferro à direita para se abrigar e acionar a frequência do rádio público."
+
+> VOZ DA VIOLÊNCIA:
+> "A névoa está alta. Use a lixeira de ferro pesada ao seu lado como escudo e feche 
+> a distância contra o atirador da esquerda antes que ele consiga focar a iluminação."
+
+
+===============================================================================
+ESCOLHA 3 — O CONFRONTO NA VIELA
+===============================================================================
+
+[1] Virar as costas e tentar correr desesperadamente a pé em direção à avenida aberta.
+    (TENTATIVA DE FUGA EXPONENCIAL)
+		---> SE ESCOLHEU [1] (GAME OVER)
+			Você se vira e dispara em corrida pela calçada molhada. O som abafado de dois 
+			disparos com silenciador corta a névoa. As balas perfuram suas costas e coxa. 
+			Você desaba sobre o paralelepípedo molhado, incapaz de se mover. Os agentes 
+			se aproximam em silêncio, recolhem o dossiê do seu casaco e jogam seu corpo 
+			no porta-malas do carro sem placas. Seu jogo duplo termina no escuro.
+			
+			[FIM DE JOGO — A MÁSCARA CAIU E A VERDADE FOI APAGADA]
+			(Reiniciar a partir da Escolha 3 do Ato III)
+
+[2] Render-se simuladamente, dar três passos para trás e jogar a pasta na sombra para 
+    recuperar a fita de áudio/gravação e escapar pela tubulação de escoamento.
+    (+1 CONSPIRAÇÃO / +1 RAZÃO)
+		---> SE ESCOLHEU [2] (ROTA TÁTICA)
+			Você finge obedecer, soltando uma pasta fútil na iluminação principal. Enquanto 
+			os agentes se aproximam distraídos para recolher a isca, você desliza pela 
+			grade da tubulação de serviço, escapando pelo canal subterrâneo com as provas reais.
+			(Obteve Pista: Rota das Galerias do Centro)
+
+[3] Usar a lixeira de metal para quebrar a iluminação da lanterna, fechar a distância 
+    e subjugar o primeiro agente na penumbra da névoa.
+    (+1 VIOLÊNCIA)
+		---> SE ESCOLHEU [3] (ROTA DE IMPACTO)
+			Você tomba a lixeira com força contra as pernas do primeiro homem. Na confusão 
+			dos tiros cegos sob o nevoeiro, você desarma o agressor com um golpe de joelho, 
+			toma sua pistola silenciada e foge pela travessa lateral.
+			(Obteve Item: Pistola Tática com Silenciador / Status: Procurado por Agressão)
+
+Digite o número da sua escolha: _
+
+
+===============================================================================
+PONTE NARRATIVA FINAL DO ATO III (PERSPECTIVA 1B) — O CONFRONTO IMINENTE
+===============================================================================
+
+[CENA: Mirante da Caixa D'Água / Visão Panorâmica de Santa Aurora / 04h45]
+
+O nevoeiro finalmente começa a dissipar sob o vento frio da madrugada. A luz cinzenta 
+do amanhecer pinta o horizonte de Santa Aurora.
+
+Do alto do mirante da antiga Caixa D'Água, você observa o Centro Administrativo. As luzes 
+do Gabinete do Prefeito e da Delegacia Central brilham intensamente na escuridão que se esvai. 
+
+Você segura o dossiê e os itens recuperados. O jogo de dissimulação iniciado na sala 
+de Daniel chegou ao fim. As máscaras caíram: Daniel não é apenas um policial omisso, 
+mas o braço operacional do Gabinete do Prefeito encarregado de limpar os rastros de 
+sangue deixados pelas desapropriações de terras.
+
+Toda a farsa política de Santa Aurora está exposta. A Sessão Extraordinária da Câmara, 
+onde a licitação fraudulenta será votada, começa às 06h00.
+
+> VOZ DA RAZÃO:
+> "Você tem as gravações e as ordens paralelas. A apresentação dessas provas para o 
+> Ministério Público durante a sessão anulará a votação imediatamente."
+
+> VOZ DA CONSPIRAÇÃO:
+> "Daniel estará na porta principal esperando por você. A única forma de entrar no 
+> plenário é usar a Chave das Galerias ou o Cartão para invadir pelos fundos."
+
+> VOZ DA VIOLÊNCIA:
+> "Chega de fingir. Você tem as provas e a arma tomada no beco. É hora de ir à 
+> delegacia e ao gabinete para encarar Daniel e o Prefeito de frente."
+
+===============================================================================
+ESTADO ATUAL DO JOGADOR (FIM DO ATO III - PERSPECTIVA 1B):
+===============================================================================
+* **EVIDÊNCIA DEFINITIVA:** Gravações de Voz de Gabriel + Mapeamento de Ocultação de Daniel.
+* **RECURSOS ADQUIRIDOS:** [Fita Microcassete / Diários / Rota das Galerias / Pistola Silenciada] (Conforme escolhas).
+* **PRÓXIMO PASSO:** ATO IV — A VERDADE (O Confronto com Daniel / A Queda do Gabinete).
