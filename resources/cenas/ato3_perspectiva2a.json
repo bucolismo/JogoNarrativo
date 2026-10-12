@@ -1,0 +1,200 @@
+{
+  "id": "ato3_perspectiva2a",
+  "dialogos": [
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "ATO III — AS CONTRADIÇÕES (PERSPECTIVA 2A: A ROTA DOS ARQUIVOS MORTOS)",
+        "===============================================================================",
+        "",
+        "[CENA 1: Corredor de Arquivos da Central de Registros / Subsolo / 01h45]",
+        "",
+        "Nas suas mãos, as pastas de transferência de propriedades revelam uma rasura",
+        "grosseira: a assinatura do seu irmão Gabriel foi forjada em um documento de",
+        "cessão de direitos assinado dois dias após a data oficial de sua morte."
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Usar a lanterna e a lente para fotografar as marcas de rasura química nos livros matrizes sem danificar os selos oficiais."
+          ],
+          "resposta": [
+            "Suas fotos registram claramente o reagente químico usado para apagar o nome",
+            "original do dono e sobrepor o nome da empresa fantasma ligada ao projeto.",
+            "",
+            "(Provas +1)"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Forçar a gaveta do Tabelião Chefe para obter a agenda privada de atendimentos fora do expediente."
+          ],
+          "resposta": [
+            "A gaveta cede com um estalo seco. Dentro, você encontra uma lista de pagamentos",
+            "em dinheiro vivo feitos por um corretor que atua como laranja da Prefeitura.",
+            "",
+            "(Provas +1)"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Arrancar as páginas rasuradas diretamente do livro matriz e confiscar os selos cartorários não utilizados."
+          ],
+          "resposta": [
+            "Com um rasgo seco, você arranca a folha da certidão fraudada. O alarme silencioso",
+            "do cofre pisca no painel da parede, alertando a segurança privada.",
+            "",
+            "(Você disparou o alarme: Alarme Disparado [ID: 30])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "ITEM", "idItem": 30 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "helena",
+      "texto": [
+        "===============================================================================",
+        "CENA 2: Redação do Jornal \"A Voz de Santa Aurora\" / 03h00",
+        "===============================================================================",
+        "",
+        "HELENA:",
+        "\"Você invadiu os arquivos do 2º Ofício? O que você encontrou nesses papéis mofados?\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Dissecá-la a fraude selo por selo, mostrando como as terras foram transferidas ilegalmente para laranjas da Secretaria de Obras."
+          ],
+          "resposta": [
+            "Helena usa a lente de aumento e confirma a falsificação. Ela conecta os nomes",
+            "dos laranjas ao Secretário de Governo, montando o fluxograma perfeito para a capa.",
+            "",
+            "(Provas +1)"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": 2 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Entregar apenas o Livro de Caixas Clandestino e pedir que ela verifique o código das contas bancárias sem expor as páginas matrizes."
+          ],
+          "resposta": [
+            "Helena cruza as contas com o registro de empresas do jornal e descobre a",
+            "existência de uma empreiteira fantasma sediada no próprio endereço da Prefeitura."
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": 1 }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Bater as folhas arrancadas na mesa e exigi-la a impressão de 500 panfletos para distribuição nos pontos de ônibus antes das 06h00."
+          ],
+          "resposta": [
+            "Helena hesita perante o risco legal, mas a visão das páginas rasuradas a convence:",
+            "ela liga a duplicadora manual nos fundos para gerar as cópias de denúncia.",
+            "",
+            "(Obteve Item: Panfletos de Denúncia [ID: 27])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": -1 },
+            { "tipo": "ITEM", "idItem": 27 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "segurancaPrivado",
+      "texto": [
+        "===============================================================================",
+        "CENA 3: O Beco do Canal / 04h00",
+        "===============================================================================",
+        "",
+        "SEGURANÇA PRIVADO:",
+        "\"Parado! Você mexeu onde não devia no subsolo do Cartório, garoto. Entrega as folhas",
+        "matrizes e os arquivos que a jornalista fez. Devagar, sem palhaçada.\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Virar de costas e tentar escalar a tubulação de escoamento para alcançar a calha."
+          ],
+          "resposta": [
+            "\"A FRAUDE CARTORÁRIA PERMANECEU OCULTA\"",
+            "",
+            "Você se vira para saltar em direção ao tubo de ferro. O som abafado de três",
+            "disparos perfura a névoa. As balas atingem suas costas e coxas antes mesmo",
+            "de suas mãos tocarem o metal."
+          ],
+          "efeitos": [
+            { "tipo": "ITEM", "idItem": -1 }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Jogar a lanterna/carteira em uma direção e usar a névoa para se esgueirar até o carro deles com o motor ligado, escapando com o veículo do inimigo."
+          ],
+          "resposta": [
+            "Você lança um objeto metálico contra os contêineres do outro lado. Os atiradores",
+            "desviam o foco da lanterna por dois segundos — o suficiente para você rastejar",
+            "sob a névoa e arrancar, quebrando o bloqueio dos homens.",
+            "",
+            "(Obteve Item: Veículo dos Seguranças [ID: 31])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "ITEM", "idItem": 31 }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Chutar o contêiner de ferro pesado contra as pernas do primeiro homem, fechar a distância na penumbra e tomar a arma tática do agressor."
+          ],
+          "resposta": [
+            "O contêiner de duzentos quilos atinge os joelhos do homem na frente. No caos",
+            "dos tiros desviados na névoa, você avança, quebra o pulso do atirador e",
+            "dispara duas vezes para o ar, fazendo os outros recuarem na escuridão.",
+            "",
+            "(Obteve Item: Pistola Tática com Silenciador [ID: 29])",
+            "(Você agora está marcado: Procurado por Agressão [ID: 21])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "ITEM", "idItem": 29 },
+            { "tipo": "ITEM", "idItem": 21 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "PONTE NARRATIVA FINAL DO ATO III — O RASTRO BANCÁRIO E CARTORÁRIO",
+        "===============================================================================",
+        "",
+        "A execução de Gabriel e das outras quatro vítimas foi a engrenagem usada pela",
+        "elite financeira e política da cidade para tomar a posse de centenas de hectares",
+        "sem pagar indenizações."
+      ]
+    }
+  ]
+}

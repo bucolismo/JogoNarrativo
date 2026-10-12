@@ -1,0 +1,223 @@
+{
+  "id": "ato3_perspectiva1b",
+  "dialogos": [
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "ATO III — AS FISSURAS NA MÁSCARA (PERSPECTIVA 1B: O JOGO DUPLO)",
+        "===============================================================================",
+        "",
+        "[CENA 1: Corredor da Delegacia / Saída da Sala de Daniel / 01h50]",
+        "",
+        "A porta da sala de Daniel fecha atrás de você com um clique seco.",
+        "",
+        "> VOZ DA CONSPIRAÇÃO:",
+        "> \"Daniel comprou sua cena ou está apenas dando corda para ver onde você vai.\"",
+        "",
+        "> VOZ DA RAZÃO:",
+        "> \"Sua vantagem atual é a assimetria de informação. Use esse ponto cego antes que a guarda troque.\"",
+        "",
+        "> VOZ DA VIOLÊNCIA:",
+        "> \"Chega de teatro. Se uma viatura tentar cercar a casa do Gabriel, corte os pneus ou force a entrada.\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Usar o termo/lista obtido para ir à Central de Custódia e resgatar o gravador de voz que ficou fora do inventário."
+          ],
+          "resposta": [
+            "Você se apresenta no balcão de evidências com a requisição parcial. O guarda",
+            "do plantão, sem suspeitar da manobra, entrega a caixa de pertences secundários.",
+            "Dentro, sob um maço de chaves, você recupera a fita microcassete do seu irmão.",
+            "",
+            "(Obteve Item: Fita de Áudio Confidencial do Irmão [ID: 22])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "ITEM", "idItem": 22 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Desviar do caminho principal e se esgueirar pelos becos até a casa de Gabriel para chegar antes da patrulha de vigilância de Daniel."
+          ],
+          "resposta": [
+            "Movendo-se na sombra dos quarteirões, você observa a viatura de Daniel parar",
+            "na frente da casa. Deslizando pelo telhado vizinho, você entra pela claraboia,",
+            "recupera os diários ocultos sob o assoalho e sai sem acionar os policiais.",
+            "",
+            "(Obteve Item: Diários do Sobrado de Gabriel [ID: 23])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "ITEM", "idItem": 23 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Rastrear o carro descaracterizado que Daniel usou para mandar a escolta e interceptar os documentos na marra."
+          ],
+          "resposta": [
+            "Você espera o veículo desacelerar no cruzamento da Praça Central. Numa ação",
+            "rápida, você fura o pneu traseiro com um estilete na penumbra da chuva e",
+            "arranca a pasta de ordens do banco traseiro enquanto os guardas checam o dano.",
+            "",
+            "(Obteve Item: Ordem de Busca e Apreensão Paralela [ID: 24])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "ITEM", "idItem": 24 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "helena",
+      "texto": [
+        "===============================================================================",
+        "CENA 2: Redação de \"A Voz de Santa Aurora\" / 03h00",
+        "===============================================================================",
+        "",
+        "HELENA:",
+        "\"Você tem a cara de quem acabou de jogar um jogo de xadrez no escuro com o Daniel.",
+        "O que você trouxe daí?\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Reproduzir apenas um trecho da gravação/diário e pedir que ela identifique as vozes e os codinomes citados pela alta cúpula."
+          ],
+          "resposta": [
+            "Helena reconhece a voz no áudio imediatamente: é o Secretário de Governo",
+            "autorizando o repasse de verbas para a empresa fantasma. Ela entrega o mapa",
+            "das contas bancárias que guardava em segredo.",
+            "",
+            "(Obteve Item: Mapeamento da Conta Fantasma [ID: 25])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": 2 },
+            { "tipo": "ITEM", "idItem": 25 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Colocar todo o material sobre a mesa e propor uma investigação assinada em conjunto para desmantelar a farsa de Daniel e da Prefeitura."
+          ],
+          "resposta": [
+            "Helena abre o acervo confidencial do jornal. Juntos, vocês montam o organograma",
+            "que prova como Daniel abafou os outros quatro homicídios anteriores ao de Gabriel.",
+            "",
+            "(Obteve Item: Dossiê de Ocultação de Cadáveres [ID: 26])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": 2 },
+            { "tipo": "ITEM", "idItem": 26 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Exigir que ela use o mimeógrafo industrial para produzir centenas de cópias dos documentos e jogá-los no pátio da delegacia."
+          ],
+          "resposta": [
+            "Helena recua diante da exigência abrupta, mas cede ao ver a gravidade das provas:",
+            "ela aciona a máquina de panfletos para distribuição no turno da manhã.",
+            "",
+            "(Obteve Item: Panfletos de Denúncia Operacional [ID: 27])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": -1 },
+            { "tipo": "ITEM", "idItem": 27 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "agenteSeguranca",
+      "texto": [
+        "===============================================================================",
+        "CENA 3: A Viela dos Sapateiros / 04h00",
+        "===============================================================================",
+        "",
+        "AGENTE DA SEGURANÇA:",
+        "\"Chega de jogo duplo, garoto. O Detetive Daniel manda lembranças. Coloque a pasta",
+        "no chão, dê três passos para trás e mantenha as mãos onde a gente possa ver.\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Virar as costas e tentar correr desesperadamente a pé em direção à avenida aberta."
+          ],
+          "resposta": [
+            "\"A MÁSCARA CAIU E A VERDADE FOI APAGADA\"",
+            "",
+            "Você se vira e dispara em corrida pela calçada molhada. O som abafado de dois",
+            "disparos com silenciador corta a névoa. As balas perfuram suas costas e coxa.",
+            "Você desaba sobre o paralelepípedo molhado, incapaz de se mover. Os agentes",
+            "se aproximam em silêncio, recolhem o dossiê do seu casaco e jogam seu corpo",
+            "no porta-malas do carro sem placas. Seu jogo duplo termina no escuro."
+          ],
+          "efeitos": [
+            { "tipo": "ITEM", "idItem": -1 }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Render-se simuladamente, dar três passos para trás e jogar a pasta na sombra para recuperar a fita de áudio/gravação e escapar pela tubulação de escoamento."
+          ],
+          "resposta": [
+            "Você finge obedecer, soltando uma pasta fútil na iluminação principal. Enquanto",
+            "os agentes se aproximam distraídos para recolher a isca, você desliza pela",
+            "grade da tubulação de serviço, escapando pelo canal subterrâneo com as provas reais.",
+            "",
+            "(Obteve Item: Rota das Galerias do Centro [ID: 28])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "ITEM", "idItem": 28 }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Usar a lixeira de metal para quebrar a iluminação da lanterna, fechar a distância e subjugar o primeiro agente na penumbra da névoa."
+          ],
+          "resposta": [
+            "Você tomba a lixeira com força contra as pernas do primeiro homem. Na confusão",
+            "dos tiros cegos sob o nevoeiro, você desarma o agressor com um golpe de joelho,",
+            "toma sua pistola silenciada e foge pela travessa lateral.",
+            "",
+            "(Obteve Item: Pistola Tática com Silenciador [ID: 29])",
+            "(Você agora está marcado: Procurado por Agressão [ID: 21])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "ITEM", "idItem": 29 },
+            { "tipo": "ITEM", "idItem": 21 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "PONTE NARRATIVA FINAL DO ATO III (PERSPECTIVA 1B) — O CONFRONTO IMINENTE",
+        "===============================================================================",
+        "",
+        "[CENA: Mirante da Caixa D'Água / Visão Panorâmica de Santa Aurora / 04h45]",
+        "",
+        "As máscaras caíram: Daniel não é apenas um policial omisso, mas o braço",
+        "operacional do Gabinete do Prefeito encarregado de limpar os rastros de",
+        "sangue deixados pelas desapropriações de terras."
+      ]
+    }
+  ]
+}

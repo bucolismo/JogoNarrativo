@@ -1,0 +1,128 @@
+{
+  "id": "fim_ato_1",
+  "dialogos": [
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "ATO I — A ENCRUZILHADA DE SANTA AURORA (FINAL DO ATO I)",
+        "===============================================================================",
+        "",
+        "[CENA: Praça Central de Santa Aurora / Noite Chuvosa / 00h45]",
+        "",
+        "A névoa espessa desce dos morros e abraça os paralelepípedos frios da praça.",
+        "Gotas grossas de chuva escorrem do seu casaco enquanto o letreiro luminoso da",
+        "delegacia pisca ao fundo, refletindo poças avermelhadas no asfalto.",
+        "",
+        "Jonas acabou de se afastar na escuridão, desaparecendo entre as vielas. Suas",
+        "palavras ainda ecoam na sua mente, somando-se às poucas certezas que você reuniu",
+        "até agora. O relógio da torre matriz bate uma badalada ecoante. É o momento",
+        "de decidir seu próximo passo.",
+        "",
+        "> VOZ DA RAZÃO:",
+        "> \"Temos dados e papéis rasurados. Se usarmos a lógica e os fatos frios, podemos",
+        "> encurralar quem está mentindo no relatório antes que queimem os arquivos originais.\"",
+        "",
+        "> VOZ DA CONSPIRAÇÃO:",
+        "> \"Ninguém nesta cidade é confiável. A polícia quer abafar o caso e as respostas",
+        "> reais estão escondidas nas sombras ou trancadas sob velhas escrituras.\"",
+        "",
+        "> VOZ DA VIOLÊNCIA:",
+        "> \"Chega de rodeios, burocracia e conversas sutis. Se você quer justiça pelo seu",
+        "> irmão, precisa tomar a iniciativa e fazer os culpados sangrarem.\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] [Opção 1A — O Confronto Metódico]",
+            "    Entrar na delegacia com os documentos rasurados em mãos e confrontar Daniel com a lógica."
+          ],
+          "resposta": [
+            "Você ajusta o casaco, aperta os documentos sob o braço e caminha firme em direção às portas de vidro da delegacia.",
+            "",
+            "[ROTA ATIVADA: ATO II - OPÇÃO 1A (O CONFRONTO METÓDICO)]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+          ],
+          "requisitoItem": 8
+        },
+        {
+          "texto": [
+            "[2] [Opção 1B — O Jogo Duplo]",
+            "    Entrar na delegacia fingindo ingenuidade para ver até onde Daniel mentirá."
+          ],
+          "resposta": [
+            "Você guarda os papéis no bolso interno, respira fundo e assume uma postura inofensiva antes de empurrar a porta da delegacia.",
+            "",
+            "[ROTA ATIVADA: ATO II - OPÇÃO 1B (O JOGO DUPLO)]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] [Opção 2A — O Esconderijo Subterrâneo]",
+            "    Ignorar a delegacia e seguir as pistas de Jonas até a fábrica abandonada."
+          ],
+          "resposta": [
+            "Você dá as costas para a iluminação da delegacia e caminha pelas sombras em direção ao distrito industrial abandonado.",
+            "",
+            "[ROTA ATIVADA: ATO II - ROTA 2A (O ESCONDERIJO SUBTERRÂNEO)]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ],
+          "requisitoItem": 6
+        },
+        {
+          "texto": [
+            "[4] [Opção 2B — A Rota dos Arquivos Mortos]",
+            "    Ir ao Cartório/Biblioteca Municipal para cruzar as rasuras com os registros de imóveis."
+          ],
+          "resposta": [
+            "Você decide que a resposta está nos documentos oficiais antigos. Você segue sob a chuva até o prédio do Cartório Central.",
+            "",
+            "[ROTA ATIVADA: ATO II - ROTA 2B (OS ARQUIVOS MORTOS)]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+          ],
+          "requisitoItem": 7
+        },
+        {
+          "texto": [
+            "[5] [Opção 3A — O Confronto no Beco]",
+            "    Marchar diretamente até o beco lateral da delegacia ao perceber movimentação",
+            "    suspeita perto dos contêineres."
+          ],
+          "resposta": [
+            "Você marcha até o beco lateral, os punhos fechados, os olhos fixos na movimentação suspeita entre os contêineres.",
+            "",
+            "[ROTA ATIVADA: ATO II - ROTA 3A (O CONFRONTO NO BECO)]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+          ]
+        },
+        {
+          "texto": [
+            "[6] [Opção 3B — Invasão à Delegacia]",
+            "    Chutar a porta da delegacia, peitar o detetive Daniel e exigir acesso imediato."
+          ],
+          "resposta": [
+            "A raiva se sobrepõe completamente ao bom senso. Você marcha até a delegacia e escancara as portas de entrada com um golpe, sem plano e sem provas nas mãos.",
+            "",
+            "[ROTA ATIVADA: ATO II - ROTA 3B (INVASÃO À DELEGACIA)]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+          ],
+          "requisitoAtributo": "Violência",
+          "valorRequisitoAtributo": 7
+        }
+      ]
+    }
+  ]
+}
