@@ -73,4 +73,11 @@ public class ConstrutorDeCenas {
     public Cena criarAtoIII1B() throws IOException {
         return CarregadorDeCenas.montarCena("/cenas/ato3_perspectiva1b.json", elenco, predefinidos);
     }
+    public Cena criarAtoIII2A() throws IOException {
+        return CarregadorDeCenas.montarCena("/cenas/ato3_perspectiva2a.json", elenco, predefinidos);
+    }
+
+    public Cena criarAtoIII3A() throws IOException {
+        return CarregadorDeCenas.montarCena("/cenas/ato3_perspectiva3a.json", elenco, predefinidos);
+    }
 }
