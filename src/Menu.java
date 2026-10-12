@@ -1,17 +1,56 @@
 /**
- * classe que representa o menu responsável pela interação textual com o jogador
+ * Classe responsável pela interação textual com o jogador.
  *
- * ela faz uso da classe Entrada para receber os dados do usuário e também apresenta
- * informações, instruções, créditos no menu inicial, sáida e tambem os  diálogos
- * ao longo do jogo
+ * Apresenta menus, instruções, créditos, diálogos e mensagens,
+ * além de receber e validar as entradas do jogador.
  */
-
 public class Menu {
 
-    private Entrada entrada;
+    private final Entrada entrada;
+    private final Controlador controlador;
 
-    public Menu(Entrada entrada) {
+    public Menu(Controlador controlador, Entrada entrada) {
+        this.controlador = controlador;
         this.entrada = entrada;
+    }
+
+    /**
+     * Executa o menu principal e encaminha as ações ao controlador.
+     */
+    public void executarMenuInicial() {
+        int opcao;
+
+        do {
+            mostraMenu();
+            opcao = validaOpcao();
+
+            switch (opcao) {
+                case 1:
+                    controlador.iniciarPartida(this);
+                    break;
+
+                case 2:
+                    mostraString("Funcionalidade de continuar partida ainda não implementada.");
+                    break;
+
+                case 3:
+                    mostraString("Funcionalidade de carregar partida ainda não implementada.");
+                    break;
+
+                case 4:
+                    mostraInstrucoes();
+                    break;
+
+                case 5:
+                    mostraCreditos();
+                    break;
+
+                case 6:
+                    mostraSaida();
+                    break;
+            }
+
+        } while (opcao != 6);
     }
 
     public String recebeNome() {
@@ -25,27 +64,27 @@ public class Menu {
     }
 
     public String recebeGenero() {
-        System.out.println("Digite o genero do protagonista:");
+        System.out.println("Digite o gênero do protagonista:");
         return entrada.lerString();
     }
 
     public int recebeOpcao() {
-        System.out.println("Digite a opcao desejada: ");
+        System.out.println("Digite a opção desejada:");
         return entrada.lerInteiro();
     }
 
     /**
-     * Valida a opção digitada garantindo que ela esteja no intervalo de 1 até maxOpcoes.
-     * Funciona dinamicamente para diálogos com qualquer quantidade de escolhas.
-     *
-     * @param maxOpcoes O número máximo de opções válidas disponíveis.
-     * @return O número da opção escolhida válida.
+     * Recebe e valida uma opção entre 1 e maxOpcoes.
      */
     public int validaOpcao(int maxOpcoes) {
         int opcao = recebeOpcao();
 
         while (opcao < 1 || opcao > maxOpcoes) {
-            System.out.println("Escolha inválida. Digite um número de 1 a " + maxOpcoes + ".");
+            System.out.println(
+                    "Escolha inválida. Digite um número de 1 a "
+                            + maxOpcoes + "."
+            );
+
             opcao = recebeOpcao();
         }
 
@@ -53,27 +92,24 @@ public class Menu {
     }
 
     /**
-     * Sobrecarga mantida para o menu principal com 4 opções fixas.
+     * Valida as seis opções do menu principal.
      */
     public int validaOpcao() {
         return validaOpcao(6);
     }
 
+    /**
+     * Recebe uma escolha entre três alternativas.
+     * Mantido para compatibilidade com chamadas existentes.
+     */
     public int recebeEscolha() {
-        System.out.println("Digite a opção desejada: ");
-        int escolha = entrada.lerInteiro();
-
-        while (escolha != 1 && escolha != 2 && escolha != 3) {
-            System.out.println("Escolha inválida.");
-            escolha = entrada.lerInteiro();
-        }
-
-        return escolha;
+        return validaOpcao(3);
     }
 
     public void mostraInstrucoes() {
         System.out.println("""
-                \n===== INSTRUÇÕES =====
+                
+                ===== INSTRUÇÕES =====
 
                 Bem-vindo ao nosso jogo narrativo interativo!
 
@@ -96,70 +132,74 @@ public class Menu {
 
     public void mostraCreditos() {
         System.out.println("""
-================ CRÉDITOS ================
-        
-Jogo Narrativo Interativo
+                
+                ================ CRÉDITOS ================
 
-Projeto desenvolvido para a disciplina de Algoritmos II - EXA863
-Universidade Estadual de Feira de Santana (UEFS)
-Docente: Roberto Almeida Bittencourt
+                Jogo Narrativo Interativo
 
-Autores:
-Levi Sena Andrade
-Luis Felipe Batista
+                Projeto desenvolvido para a disciplina de Algoritmos II - EXA863
+                Universidade Estadual de Feira de Santana (UEFS)
+                Docente: Roberto Almeida Bittencourt
 
-2026
-                 
-        """);
+                Autores:
+                Levi Sena Andrade
+                Luis Felipe Batista
+
+                2026
+                """);
     }
 
     public void mostraMenu() {
         System.out.println("""
-    ================ MENU ================
-    1 - Nova partida
-    2 - Continuar partida
-    3 - Carregar partida
-    4 - Instruções
-    5 - Créditos
-    6 - Sair
-    """);
+                
+                ================ MENU ================
+                1 - Nova partida
+                2 - Continuar partida
+                3 - Carregar partida
+                4 - Instruções
+                5 - Créditos
+                6 - Sair
+                """);
     }
 
     /**
-     * Exibe um diálogo e se tiver apresenta as opções
-     * disponíveis ao jogador e recebe a entrada com a escolha dele
+     * Exibe um diálogo e recebe a escolha, caso existam opções.
      *
      * @param dialogo diálogo que será apresentado
-     * @return ele retorna o número da escolha selecionada ou retorna "0" se o diálogo não tiver opções
+     * @return índice da escolha selecionada ou 0 se não houver opções
      */
     public int mostraDialogo(Dialogo dialogo) {
 
-        // Caso de não ser o narrador:
-        if (!dialogo.getPersonagem().getNome().equalsIgnoreCase("Narrador")) {
-            System.out.println("[" + dialogo.getPersonagem().getNome() + "]");
+        if (dialogo == null) {
+            return 0;
         }
 
-        // Printa o texto do diálogo
+        if (!dialogo.getPersonagem().getNome()
+                .equalsIgnoreCase("Narrador")) {
+            System.out.println(
+                    "[" + dialogo.getPersonagem().getNome() + "]"
+            );
+        }
+
         System.out.println(dialogo.getTexto());
 
-        // Caso haja opções no diálogo:
         if (dialogo.possuiOpcoes()) {
             System.out.println("\n--- Opções ---");
+
             Escolha[] escolhas = dialogo.getEscolhas();
 
             for (int i = 0; i < escolhas.length; i++) {
-                System.out.println(escolhas[i].getTexto());
+                System.out.println((i + 1) + " - " + escolhas[i].getTexto());
             }
 
-            // Valida considerando a quantidade total de escolhas presentes no diálogo
             return validaOpcao(escolhas.length);
         }
 
-        return 0; // Diálogo sem opções
+        return 0;
     }
 
     public void mostraSaida() {
-        System.out.println("Saída");
+        System.out.println("Saindo do jogo...");
     }
 
     public void mostraString(String texto) {
