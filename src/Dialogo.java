@@ -4,7 +4,6 @@
  * os diálogos podem conter nenhuma ou várias escolhas que serão apresentadas
  * ao jogador durante a partida
  *
- * @author Levi Sena Andrade
  */
 
 import java.util.ArrayList;
@@ -21,25 +20,22 @@ public class Dialogo {
     public Dialogo(Personagem personagem, String texto) {
         this.personagem = personagem;
         this.texto = texto;
-        this.escolhas = null;
+        this.escolhas = new ArrayList<>();
     }
 
     public Dialogo(Personagem personagem, String texto, Escolha... escolhas) {
         this.personagem = personagem;
         this.texto = texto;
 
-        if (escolhas != null && escolhas.length > 0) {
-            this.escolhas = new ArrayList<>(Arrays.asList(escolhas));
-        } else {
-            this.escolhas = null;
+        this.escolhas = new ArrayList<>();
+
+        if (escolhas != null) {
+            this.escolhas.addAll(Arrays.asList(escolhas));
         }
     }
 
-    // Retorna o Arraydinâmico como um array normal
+    // Retorna a lista de escolhas como um array normal (vazio se o diálogo não tiver escolhas)
     public Escolha[] getEscolhas() {
-        if (escolhas == null) {
-            return null;
-        }
         return escolhas.toArray(new Escolha[0]);
     }
 
@@ -62,7 +58,7 @@ public class Dialogo {
      * @return retorna true se tiver pelo menos 1 escolha, se não tiver ele retorna false
      */
     public boolean possuiOpcoes() {
-        return escolhas != null && !escolhas.isEmpty();
+        return !escolhas.isEmpty();
     }
 
     /**
@@ -74,7 +70,7 @@ public class Dialogo {
      * @return retorna a escolha correspondente ao índice ou null se o índice for inválido
      */
     public Escolha getEscolha(int indice) {
-        if (escolhas == null || indice < 1 || indice > escolhas.size()) {
+        if (indice < 1 || indice > escolhas.size()) {
             return null;
         }
         return escolhas.get(indice - 1);
