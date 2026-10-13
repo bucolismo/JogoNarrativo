@@ -2,15 +2,20 @@
  * Representa um efeito que pode ser aplicado ao estado do jogo
  *
  * Um efeito pode alterar um atributo do protagonista, modificar a confiança
- * de um NPC ou adicionar um item ao inventário do protagonista.
+ * de um NPC, adicionar um item ao inventário do protagonista ou encerrar
+ * a partida (game over).
  */
 public class Efeito {
+
+    public static final String TIPO_ATRIBUTO = "ATRIBUTO";
+    public static final String TIPO_CONFIANCA = "CONFIANCA";
+    public static final String TIPO_ADICIONAR_ITEM = "ADICIONAR_ITEM";
+    public static final String TIPO_GAME_OVER = "GAME_OVER";
 
     private String tipo;
     private String alvo;
     private int valor;
     private NPC npc;
-    private Protagonista protagonista;
     private int itemId;
 
     /**
@@ -36,7 +41,7 @@ public class Efeito {
      * @param valor valor da alteração na confiança
      */
     public Efeito(NPC npc, int valor) {
-        this.tipo = "CONFIANCA";
+        this.tipo = TIPO_CONFIANCA;
         this.alvo = null;
         this.valor = valor;
         this.npc = npc;
@@ -49,12 +54,22 @@ public class Efeito {
      * @param itemId identificador (indice) do item que será adicionado ao ivnentario
      */
     public Efeito(int itemId) {
-        this.tipo = "ADICIONAR_ITEM";
+        this.tipo = TIPO_ADICIONAR_ITEM;
         this.alvo = null;
         this.valor = 1;
         this.npc = null;
         this.itemId = itemId;
     }
+
+    /**
+     * Cria um efeito que encerra a partida (game over) assim que a escolha é aplicada.
+     *
+     * @return efeito de fim de jogo
+     */
+    public static Efeito gameOver() {
+        return new Efeito(TIPO_GAME_OVER, null, 0);
+    }
+
     public String getTipo() {
         return tipo;
     }
