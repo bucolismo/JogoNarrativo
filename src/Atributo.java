@@ -4,12 +4,15 @@
  * O valor do atributo varia de 0 ao valor maximo informado na inicialização
  *
  */
+
 public class Atributo {
     private String nome;
     private int valor;
+    private int valorMaximo;
 
     public Atributo(String nome, int valor, int valorMaximo) {
         this.nome = nome;
+        this.valorMaximo = valorMaximo;
 
         if (valor < 0) {
             this.valor = 0;
@@ -28,15 +31,25 @@ public class Atributo {
         return this.valor;
     }
 
+    public int getValorMaximo() {
+        return this.valorMaximo;
+    }
+
     /**
      * aumenta o valor do atributo pela quantidade informada
-     * se quantidade for menor ou igual a zero não alteraa o valor do atributo
+     * se quantidade for menor ou igual a zero não altera o valor do atributo
+     * o valor do atributo também nunca passa do valor máximo
      *
      * @param quantidade valor que será acrescentado ao atributo
      */
+    
     public void aumentaValor(int quantidade) {
         if (quantidade > 0) {
             this.valor += quantidade;
+
+            if (this.valor > this.valorMaximo) {
+                this.valor = this.valorMaximo;
+            }
         }
     }
 
@@ -46,6 +59,7 @@ public class Atributo {
      *
      * @param quantidade valor que será subtraído do atributo
      */
+    
     public void reduzValor(int quantidade) {
         if (quantidade > 0) {
             this.valor -= quantidade;
