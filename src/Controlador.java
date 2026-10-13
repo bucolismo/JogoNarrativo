@@ -1,59 +1,100 @@
 /**
  * classe que controla o fluxo da execução do jogo
  *
- * ela que inicializa os componentes de interação, inicia a partida,
- * cria o protagonista e NPCs também e rege a progressão da narrativa entre as cenas
+ * faz a ponte entre o jogador (Menu), o estado da partida (EstadoPartida) e a persistência
+ * (RepositorioDeSaves): inicia/continua/carrega partidas, executa as cenas de cada ato e
+ * oferece os pontos de salvamento. As regras do jogo (requisitos, efeitos) ficam no Model.
  */
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controlador {
+
+    // valor devolvido por executaCena quando uma escolha com efeito GAME_OVER é aplicada
+    private static final int SENTINELA_GAME_OVER = -1;
+
+    // na lista de saves do menu, a opção 4 representa o salvamento automático (slot 0)
+    private static final int OPCAO_DO_SAVE_AUTOMATICO = RepositorioDeSaves.ULTIMO_SLOT_MANUAL + 1;
+
+    private final Menu menu;
+    private final RepositorioDeSaves repositorio;
+
+    public Controlador() {
+        this(new Entrada(), new RepositorioJson());
+    }
+
+    /**
+     * permite informar de onde vem a entrada e onde os saves são guardados (usado nos testes)
+     *
+     * @param entrada origem dos dados digitados pelo jogador
+     * @param repositorio local de armazenamento dos saves
+     */
+    
+    public Controlador(Entrada entrada, RepositorioDeSaves repositorio) {
+        this.menu = new Menu(entrada);
+        this.repositorio = repositorio;
+    }
+
     /**
      * mostra e controla o menu principal do jogo
      *
-     *  aqui o jogador pode iniciar uma partida, ver as instruções,
-     * ver os créditos ou sair do jogo
+     * aqui o jogador pode iniciar uma partida, continuar ou carregar uma partida salva,
+     * ver as instruções, ver os créditos ou sair do jogo
      */
+    
+    public void menuInicial() {
 
+        int opcao;
+
+        do {
+            menu.mostraMenu();
+
+            opcao = menu.validaOpcao();
+
+            switch (opcao) {
+
+                case 1:
+                    iniciarPartida();
+                    break;
+
+                case 2:
+                    continuarPartida();
+                    break;
+
+                case 3:
+                    gerenciarSaves();
+                    break;
+
+                case 4:
+                    menu.mostraInstrucoes();
+                    break;
+
+                case 5:
+                    menu.mostraCreditos();
+                    break;
+
+                case 6:
+                    menu.mostraSaida();
+                    break;
+
+            }
+
+        } while (opcao != 6);
+    }
 
     /**
      * inicia uma nova partida
      *
-     * Cria o protagonista, os NPCs e também o construtor responsável pela criação das cenas,
-     * e depois a execução da história/do jogo
+     * Cria o protagonista e o estado inicial da partida e depois executa a história
      */
-    public void iniciarPartida(Menu menu) {
-        Protagonista protagonista = criarProtagonista(menu);
+    public void iniciarPartida() {
+        Protagonista protagonista = criarProtagonista();
 
-        Map<String, Personagem> elenco = new HashMap<>();
-
-        elenco.put("narrador", new Personagem("Narrador", 0, "Neutro"));
-        elenco.put("jonas", new NPC("Jonas", 30, "Masculino", 5));
-        elenco.put("daniel", new NPC("Daniel", 40, "Masculino", 5));
-        elenco.put("helena", new NPC("Helena", 23, "Feminino", 5));
-        elenco.put("protagonista", protagonista);
-
-        // Figurantes
-        elenco.put("radio",new Personagem("Rádio", 0, "Informativo"));
-        elenco.put("moradora",new Personagem("Moradora Local", 50, "Figurante"));
-        elenco.put("policial",new Personagem("Policial Militar", 35, "Figurante"));
-        elenco.put("jornaleiro",new Personagem("Jornaleiro", 60, "Figurante"));
-        elenco.put("homemArmado",new NPC("Homem Armado", 44, "Antagonista", 5));
-        elenco.put("agenteSeguranca",new NPC("Agente da Segurança", 42, "Antagonista", 5));
-        elenco.put("segurancaPrivado",new NPC("Segurança Privado", 34, "Antagonista", 5));
-        elenco.put("policialAntagonista",new NPC("Policial", 25, "Antagonista", 5));
-
-        ConstrutorDeCenas construtor = new ConstrutorDeCenas(elenco);
-
-        try {
-            executarHistoria(construtor, elenco, menu);
-        } catch (IOException | IllegalStateException e) {
-            menu.mostraString("Erro ao carregar a história: " + e.getMessage());
-            e.printStackTrace();
-        }
+        executarHistoria(EstadoPartida.nova(protagonista));
     }
-    
+
     /**
      * cadastra o protagonista com as informações fornecidas pelo jogador
      *
@@ -61,124 +102,381 @@ public class Controlador {
      *
      * @return retona o protagonista criado para a partida
      */
-
-    private Protagonista criarProtagonista(Menu menu) {
+    private Protagonista criarProtagonista() {
         String nome = menu.recebeNome();
         int idade = menu.recebeIdade();
         String genero = menu.recebeGenero();
-
         Protagonista protagonista = new Protagonista(nome, idade, genero);
         protagonista.cadastrarItens();
-
         return protagonista;
     }
 
-    private enum EstadoJogo {
-        PROLOGO, ATO_I, FINAL_ATO_I, ATO_II, ATO_III, ATO_IV, ATO_V, ATO_VI, FINAL, FIM
+    // ------------------------------------------------------------------ saves
+
+    /**
+     * retoma a partida do save mais recente (entre os slots manuais e o automático)
+     */
+    private void continuarPartida() {
+        int slot = slotMaisRecente();
+
+        if (slot == -1) {
+            menu.mostraString("Não há partidas salvas para continuar.");
+            return;
+        }
+
+        carregarEExecutar(slot);
     }
 
-    private static final int SENTINELA_GAME_OVER = -1; // ver observação 1 acima
+    /**
+     * tela de saves do menu principal: lista os slots e permite carregar ou excluir
+     */
+    private void gerenciarSaves() {
+        while (true) {
+            int opcao = menu.mostraListaDeSaves("CARREGAR PARTIDA", descricaoDosSlots(true));
 
-    private void executarHistoria(ConstrutorDeCenas construtor, Map<String, Personagem> elenco, Menu menu) throws IOException {
-
-        Protagonista protagonista = (Protagonista) elenco.get("protagonista");
-        Personagem narrador = elenco.get("narrador");
-        NPC jonas = (NPC) elenco.get("jonas");
-        NPC daniel = (NPC) elenco.get("daniel");
-        NPC helena = (NPC) elenco.get("helena");
-
-        System.out.println(">>> executarHistoria iniciou");
-        EstadoJogo estado = EstadoJogo.PROLOGO;
-        int rotaAtoII = 0; // 1=1A, 2=1B, 3=2A, 4=2B(fim), 5=3A, 6=3B(fim)
-        int rotaAtoV = 0;  // 1=RotaA, 2=RotaB, 3=RotaC
-
-        while (estado != EstadoJogo.FIM) {
-            System.out.println(">>> estado atual: " + estado);
-            if(protagonista.getInventario().possuiItemPorId(-1)){
-                estado= EstadoJogo.FIM;
+            if (opcao == 0) {
+                return;
             }
-            switch (estado) {
+
+            int slot = (opcao == OPCAO_DO_SAVE_AUTOMATICO) ? RepositorioDeSaves.SLOT_AUTOMATICO : opcao;
+
+            if (!repositorio.existe(slot)) {
+                menu.mostraString("Esse slot está vazio.");
+                continue;
+            }
+
+            int acao = menu.escolheAcaoDoSave();
+
+            if (acao == 1) {
+                carregarEExecutar(slot);
+                return;
+            }
+
+            if (acao == 2) {
+                excluirComConfirmacao(slot);
+            }
+        }
+    }
+
+    private void carregarEExecutar(int slot) {
+        EstadoPartida estado;
+
+        try {
+            estado = repositorio.carregar(slot);
+        } catch (CarregamentoException e) {
+            menu.mostraString("Não foi possível carregar a partida: " + e.getMessage());
+            return;
+        }
+
+        menu.mostraString("Partida carregada.");
+        executarHistoria(estado);
+    }
+
+    private void excluirComConfirmacao(int slot) {
+        if (!menu.confirma("Deseja realmente excluir esse save? Essa ação não pode ser desfeita.")) {
+            return;
+        }
+
+        try {
+            repositorio.excluir(slot);
+            menu.mostraString("Save excluído.");
+        } catch (SaveException e) {
+            menu.mostraString("Não foi possível excluir o save: " + e.getMessage());
+        }
+    }
+
+    /**
+     * @return o slot (0 a 3) do save mais recente, ou -1 se não houver nenhum save válido
+     */
+    
+    private int slotMaisRecente() {
+        int melhorSlot = -1;
+        LocalDateTime melhorData = null;
+
+        for (int slot = RepositorioDeSaves.SLOT_AUTOMATICO; slot <= RepositorioDeSaves.ULTIMO_SLOT_MANUAL; slot++) {
+            try {
+                MetadadosSave metadados = repositorio.lerMetadados(slot);
+
+                if (metadados != null) {
+                    LocalDateTime data = metadados.getDataHora();
+
+                    if (melhorData == null || data.isAfter(melhorData)) {
+                        melhorData = data;
+                        melhorSlot = slot;
+                    }
+                }
+            } catch (CarregamentoException e) {
+                // save corrompido não entra na disputa pelo mais recente
+            }
+        }
+
+        return melhorSlot;
+    }
+
+    /**
+     * monta a descrição de cada slot para as telas de saves
+     *
+     * @param incluiAutomatico true para acrescentar o salvamento automático como última opção
+     * @return uma linha por slot: slots manuais 1 a 3 e, se pedido, o automático
+     */
+    
+    private List<String> descricaoDosSlots(boolean incluiAutomatico) {
+        List<String> linhas = new ArrayList<>();
+
+        for (int slot = RepositorioDeSaves.PRIMEIRO_SLOT_MANUAL; slot <= RepositorioDeSaves.ULTIMO_SLOT_MANUAL; slot++) {
+            linhas.add(descricaoDoSlot(slot));
+        }
+
+        if (incluiAutomatico) {
+            linhas.add("[Automático] " + descricaoDoSlot(RepositorioDeSaves.SLOT_AUTOMATICO));
+        }
+
+        return linhas;
+    }
+
+    private String descricaoDoSlot(int slot) {
+        try {
+            MetadadosSave metadados = repositorio.lerMetadados(slot);
+
+            return (metadados == null) ? "(vazio)" : metadados.descricao();
+        } catch (CarregamentoException e) {
+            return "(save corrompido)";
+        }
+    }
+
+    private void salvarAutomaticamente(EstadoPartida estado) {
+        try {
+            repositorio.salvar(RepositorioDeSaves.SLOT_AUTOMATICO, estado);
+            menu.mostraString("[Progresso salvo automaticamente]");
+        } catch (SaveException e) {
+            menu.mostraString("Aviso: não foi possível salvar automaticamente. " + e.getMessage());
+        }
+    }
+
+    private void salvarManualmente(EstadoPartida estado) {
+        int slot = menu.mostraListaDeSaves("SALVAR PARTIDA", descricaoDosSlots(false));
+
+        if (slot == 0) {
+            return;
+        }
+
+        if (repositorio.existe(slot)
+                && !menu.confirma("O slot " + slot + " já possui um save. Deseja sobrescrever?")) {
+            return;
+        }
+
+        try {
+            repositorio.salvar(slot, estado);
+            menu.mostraString("Partida salva no slot " + slot + ".");
+        } catch (SaveException e) {
+            menu.mostraString("Não foi possível salvar a partida: " + e.getMessage());
+        }
+    }
+
+    /**
+     * ponto de salvamento: salva automaticamente e oferece o salvamento manual
+     *
+     * @return true se o jogador quer continuar a história, false se voltou ao menu principal
+     */
+    private boolean pontoDeSalvamento(EstadoPartida estado) {
+        salvarAutomaticamente(estado);
+
+        while (true) {
+            int opcao = menu.mostraPontoDeSalvamento(estado.getAto().getRotulo());
+
+            if (opcao == 1) {
+                return true;
+            }
+
+            if (opcao == 2) {
+                salvarManualmente(estado);
+            } else if (menu.confirma("Voltar ao menu principal? Você poderá retomar daqui pelo salvamento automático.")) {
+                return false;
+            }
+        }
+    }
+
+    // ---------------------------------------------------------------- história
+
+    /**
+     * executa a história a partir do ato em que o estado está (nova partida ou save carregado)
+     *
+     * se alguma cena não puder ser carregada (arquivo JSON ausente ou inválido), mostra o erro e
+     * volta ao menu principal
+     */
+    
+    private void executarHistoria(EstadoPartida estado) {
+        try {
+            rodarHistoria(estado);
+        } catch (CenaInvalidaException e) {
+            menu.mostraString("Erro ao carregar a história: " + e.getMessage());
+        }
+    }
+
+    /**
+     * em cada ato, entrega as cenas, executa e decide o próximo ato de acordo com as escolhas
+     */
+    private void rodarHistoria(EstadoPartida estado) throws CenaInvalidaException {
+        ConstrutorDeCenas construtor = new ConstrutorDeCenas(estado);
+
+        while (estado.getAto() != Ato.FIM) {
+
+            if (estado.getAto().pontoDeSalvamento() && !pontoDeSalvamento(estado)) {
+                return; // voltou ao menu principal
+            }
+
+            switch (estado.getAto()) {
 
                 case PROLOGO: {
-                    Cena cena = construtor.criarPrologo();
-                    executaCena(cena, protagonista, menu);
-                    estado = EstadoJogo.ATO_I;
+                    executaCena(construtor.criarPrologo(), estado); // sem escolhas relevantes para roteamento
+                    estado.setAto(Ato.ATO_I);
                     break;
                 }
 
                 case ATO_I: {
-                    Cena cena = construtor.criarAtoI();
-                    executaCena(cena, protagonista, menu);
-                    estado = EstadoJogo.FINAL_ATO_I;
+                    executaCena(construtor.criarAtoI(), estado);
+                    estado.setAto(Ato.FINAL_ATO_I);
                     break;
                 }
 
                 case FINAL_ATO_I: {
-                    Cena cena = construtor.criarFinalAtoI();
-                    int escolha = executaCena(cena, protagonista, menu);
-                    rotaAtoII = escolha; // 1..6, mapeado 1:1 com as Escolhas de criarFinalAtoI
-                    estado = EstadoJogo.ATO_II;
+                    int escolha = executaCena(construtor.criarFinalAtoI(), estado);
+                    estado.setRotaAtoII(escolha); // 1..6, mapeado 1:1 com as Escolhas do desfecho do Ato I
+                    estado.setAto(Ato.ATO_II);
                     break;
                 }
 
                 case ATO_II: {
-                    Cena cena = obterRotaDoAtoII(rotaAtoII, construtor, narrador, protagonista, daniel);
-                    if (cena == null) { estado = EstadoJogo.FIM; break; }
+                    Cena cena = obterCenaDoAtoII(estado.getRotaAtoII(), construtor);
+                    if (cena == null) { estado.setAto(Ato.FIM); break; }
 
-                    int escolha = executaCena(cena, protagonista, menu);
+                    int escolha = executaCena(cena, estado);
 
-                    // Rotas 2B e 3B terminam em Game Over dentro do próprio método
+                    // Rotas 2B e 3B terminam em Game Over dentro do próprio arquivo
                     // (não têm Escolha nenhuma — só narração de captura/prisão).
-                    if (rotaAtoII == 4 || rotaAtoII == 6 || escolha == SENTINELA_GAME_OVER) {
-                        estado = EstadoJogo.FIM;
+                    if (estado.getRotaAtoII() == 4 || estado.getRotaAtoII() == 6 || escolha == SENTINELA_GAME_OVER) {
+                        estado.setAto(Ato.FIM);
                     } else {
-                        estado = EstadoJogo.ATO_III;
+                        estado.setAto(Ato.ATO_III);
                     }
                     break;
                 }
 
+                case ATO_III: {
+                    Cena cena = obterCenaDoAtoIII(estado.getRotaAtoII(), construtor);
+                    if (cena == null) { estado.setAto(Ato.FIM); break; }
 
-                           }
+                    int escolha = executaCena(cena, estado);
+
+                    // O ato IV é o ponto que centraliza toda a história
+                    estado.setAto(escolha == SENTINELA_GAME_OVER ? Ato.FIM : Ato.ATO_IV);
+                    break;
+                }
+
+                case ATO_IV: {
+                    int escolha = executaCena(construtor.criarAtoIV(), estado);
+                    // escolha reflete a Escolha Decisiva final (Cena 4 do Ato IV):
+                    // 1=Razão->Rota1A, 2=Paranoia->Rota1B, 3=Violência->Rota1C, 4/sentinela=Game Over
+                    if (escolha >= 1 && escolha <= 3) {
+                        estado.setRotaAtoV(escolha);
+                        estado.setAto(Ato.ATO_V);
+                    } else {
+                        estado.setAto(Ato.FIM); // opção 4 (discurso sem provas) ou GameOver de outra etapa da cena
+                    }
+                    break;
+                }
+
+                case ATO_V: {
+                    Cena cena;
+                    switch (estado.getRotaAtoV()) {
+                        case 1: cena = construtor.criarAtoVRota1A(); break;
+                        case 2: cena = construtor.criarAtoVRota1B(); break;
+                        case 3: cena = construtor.criarAtoVRota1C(); break;
+                        default: cena = null;
+                    }
+                    if (cena == null) { estado.setAto(Ato.FIM); break; }
+
+                    int escolha = executaCena(cena, estado);
+
+                    estado.setAto(escolha == SENTINELA_GAME_OVER ? Ato.FIM : Ato.ATO_VI);
+                    break;
+                }
+
+                case ATO_VI: {
+                    int escolha = executaCena(construtor.criarAtoVI(), estado);
+                    // 1=Balança, 2=Névoa, 3=Sangue, 4/sentinela=Game Over ("O Silêncio de Santa Aurora")
+                    if (escolha >= 1 && escolha <= 3) {
+                        estado.setFinalEscolhido(escolha);
+                        estado.setAto(Ato.FINAL);
+                    } else {
+                        estado.setAto(Ato.FIM);
+                    }
+                    break;
+                }
+
+                case FINAL: {
+                    Cena cena;
+                    switch (estado.getFinalEscolhido()) {
+                        case 1: cena = construtor.criarFinalBalanca(); break;
+                        case 2: cena = construtor.criarFinalNevoa(); break;
+                        case 3: cena = construtor.criarFinalSangue(); break;
+                        default: cena = null;
+                    }
+                    if (cena != null) {
+                        executaCena(cena, estado); // epílogo puro, sem escolhas
+                    }
+                    estado.setAto(Ato.FIM);
+                    break;
+                }
+
+                case FIM:
+                    break;
+            }
         }
     }
 
-    private Cena obterRotaDoAtoII(int opcaoEscolhida, ConstrutorDeCenas construtor, Personagem narrador, Protagonista protagonista, NPC daniel) throws IOException {
-        switch (opcaoEscolhida) {
+    private Cena obterCenaDoAtoII(int rota, ConstrutorDeCenas construtor) throws CenaInvalidaException {
+        switch (rota) {
             case 1: return construtor.criarAtoIIRota1A();
             case 2: return construtor.criarAtoIIRota1B();
             case 3: return construtor.criarAtoIIRota2A();
             case 4: return construtor.criarAtoIIRota2B();
             case 5: return construtor.criarAtoIIRota3A();
             case 6: return construtor.criarAtoIIRota3B();
-
             default: return null;
         }
     }
-    private Cena obterCenaDoAtoIII(int rotaAtoII, ConstrutorDeCenas construtor) throws IOException {
+
+    private Cena obterCenaDoAtoIII(int rotaAtoII, ConstrutorDeCenas construtor) throws CenaInvalidaException {
         switch (rotaAtoII) {
-            case 1: return construtor.criarAtoIII1A();
-            case 2: return construtor.criarAtoIII1B();
-            case 3: return construtor.criarAtoIII2A();
-            case 5: return construtor.criarAtoIII3A();
+            case 1: return construtor.criarAtoIIIPerspectiva1A();
+            case 2: return construtor.criarAtoIIIPerspectiva1B();
+            case 3: return construtor.criarAtoIIIPerspectiva2A();
+            case 5: return construtor.criarAtoIIIPerspectiva3A();
             default: return null; // 4 e 6 já terminaram no Ato II
         }
     }
+
     /**
-     * ciontrola a progressão da narrativa entre as cenas.
+     * controla a progressão da narrativa dentro de uma cena.
      *
-     * recebe as cenas de acordo com a escolha realizada anteriormente,
-     * executa cada cena e utiliza a última escolha para determinar
-     * a próxima
+     * mostra cada diálogo, pede a escolha do jogador, impede escolhas bloqueadas (a regra de
+     * bloqueio fica no EstadoPartida), aplica os efeitos e registra a decisão tomada.
+     *
+     * @return o número da última escolha feita na cena (usado para decidir a próxima rota),
+     *         0 se a cena não teve escolhas ou SENTINELA_GAME_OVER se uma escolha encerrou a partida
      */
-    
-    private int executaCena(Cena cena, Protagonista protagonista, Menu menu) {
+    private int executaCena(Cena cena, EstadoPartida estado) {
         if (cena == null || cena.getDialogos() == null) {
             return 0;
         }
 
         int ultimaEscolha = 0;
+        List<Dialogo> dialogos = cena.getDialogos();
 
-        for (Dialogo dialogo : cena.getDialogos()) {
+        for (int i = 0; i < dialogos.size(); i++) {
+            Dialogo dialogo = dialogos.get(i);
+
             if (dialogo == null) {
                 continue;
             }
@@ -187,66 +485,25 @@ public class Controlador {
             int escolha = menu.mostraDialogo(dialogo);
 
             if (dialogo.possuiOpcoes()) {
-                Escolha escolhaSelecionada;
+                Escolha escolhaSelecionada = dialogo.getEscolha(escolha);
+                String motivo = estado.motivoDeBloqueio(escolhaSelecionada);
 
-                do {
-                    // Usa o índice da escolha do jogador para pegar o objeto correto
+                while (motivo != null) {
+                    menu.mostraString(motivo);
+                    escolha = menu.validaOpcao(dialogo.getQuantidadeEscolhas()); // pede nova escolha
                     escolhaSelecionada = dialogo.getEscolha(escolha);
-
-                    // Verifica se possui o item requisito
-                    int requisito = escolhaSelecionada.getRequisitoItem();
-                    if (requisito != -1 && !protagonista.getInventario().possuiItemPorId(requisito)) {
-                        menu.mostraString("Você não tem o item necessário para essa escolha.");
-                        escolhaSelecionada = null;
-                        escolha = menu.validaOpcao(dialogo.getQuantidadeEscolhas());// pede nova escolha
-                    }
-
-                    // Verifica requisito de atributo
-                    if (escolhaSelecionada != null && escolhaSelecionada.getRequisitoAtributo() != null) {
-                        String atributo = escolhaSelecionada.getRequisitoAtributo();
-                        int valorMinimo = escolhaSelecionada.getValorRequisitoAtributo();
-                        if (protagonista.getAtributo(atributo) < valorMinimo) {
-                            menu.mostraString("Você não possui o atributo necessário para essa escolha.");
-                            escolhaSelecionada = null;
-                            escolha = menu.validaOpcao(dialogo.getQuantidadeEscolhas());
-                        }
-                    }
-
-                    // Verifica requisito de confiança com NPC
-                    if (escolhaSelecionada != null && escolhaSelecionada.getRequisitoNpc() != null) {
-                        NPC npc = escolhaSelecionada.getRequisitoNpc();
-                        int confiancaMinima = escolhaSelecionada.getConfiancaMinima();
-                        if (npc.getConfianca() < confiancaMinima) {
-                            menu.mostraString("Você não possui confiança suficiente com " + npc.getNome() + ".");
-                            escolhaSelecionada = null;
-                            escolha = menu.validaOpcao(dialogo.getQuantidadeEscolhas());
-                        }
-                    }
-
-                } while (escolhaSelecionada == null);
+                    motivo = estado.motivoDeBloqueio(escolhaSelecionada);
+                }
 
                 if (escolhaSelecionada.getTextoConsequencia() != null) {
                     menu.mostraString(escolhaSelecionada.getTextoConsequencia());
                 }
 
-                // Aplica os efeitos da escolha selecionada
-                for (Efeito efeito : escolhaSelecionada.getEfeitos()) {
-                    switch (efeito.getTipo()) {
-                        case "ATRIBUTO" ->
-                                protagonista.alteraAtributo(efeito.getAlvo(), efeito.getValor());
+                estado.registrarDecisao(estado.getAto().name() + "#" + (i + 1) + "=" + escolha);
 
-                        case "CONFIANCA" ->
-                                efeito.getNpc().alterarConfianca(efeito.getValor());
-
-                        case "ADICIONAR_ITEM" ->
-                                protagonista.getInventario().adicionarItemPorId(efeito.getItemId());
-
-                        case "REMOVER_ITEM" ->
-                                protagonista.getInventario().removerItemPorId(efeito.getValor());
-
-                        default ->
-                                menu.mostraString("Tipo de efeito desconhecido: " + efeito.getTipo());
-                    }
+                // game over: a cena é interrompida na hora e o jogo volta para o menu
+                if (estado.aplicarEfeitos(escolhaSelecionada)) {
+                    return SENTINELA_GAME_OVER;
                 }
 
                 ultimaEscolha = escolha; // guarda a última escolha feita
@@ -255,5 +512,4 @@ public class Controlador {
 
         return ultimaEscolha;
     }
-
 }
