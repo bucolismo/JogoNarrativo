@@ -1,0 +1,199 @@
+{
+  "id": "ato3_perspectiva3a",
+  "dialogos": [
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "ATO III — O CERCO AO GABINETE (PERSPECTIVA 3A: A ROTA DO DEPOIMENTO)",
+        "===============================================================================",
+        "",
+        "[CENA 1: A Garagem do Anexo Municipal / 03h15]",
+        "",
+        "A SUV preta do Assessor do Vice-Prefeito está parada na vaga reservada. Pelo vidro",
+        "fumê, você percebe a silhueta de alguém triturando papéis com uma máquina portátil."
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Fotografar/gravar o assessor destruindo os documentos pela janela antes de chamar Daniel ou agir."
+          ],
+          "resposta": [
+            "As lentes da sua câmera capturam claramente o rosto do assessor e os papéis",
+            "com o timbre da obra da rodovia sendo triturados.",
+            "",
+            "(Provas +1)"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Usar o Cartão de Acesso/Ferramentas para cortar a energia do anexo e render o assessor na escuridão do subsolo."
+          ],
+          "resposta": [
+            "O anexo fica no breu total. Assustado, o assessor tenta sair do carro com a",
+            "pasta de originais. Você o rende na penumbra e recupera os documentos intactos.",
+            "",
+            "(Provas +1)"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Quebrar o vidro do motorista com uma chave de roda e arrancar o assessor do carro."
+          ],
+          "resposta": [
+            "Os cacos de vidro voam. Você puxa o homem pelo colarinho. Em pânico, ele",
+            "entrega o celular pessoal desbloqueado, com mensagens do Vice-Prefeito.",
+            "",
+            "(Provas +1)"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "helena",
+      "texto": [
+        "===============================================================================",
+        "CENA 2: Laboratório Fotográfico de Helena / 04h15",
+        "===============================================================================",
+        "",
+        "HELENA:",
+        "\"O que é isso? O depoimento do beco vazou para a rádio comunitária há vinte minutos.",
+        "O que você tem aí?\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Entregar o registro fotográfico e cruzar os contratos com as matérias antigas para redigir a capa do jornal."
+          ],
+          "resposta": [
+            "Helena monta a edição extraordinária em tempo recorde. A manchete estampa",
+            "as fotos do assessor e os números dos contratos da rodovia com o selo de fraude.",
+            "",
+            "(Provas +1)"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": 2 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Passar apenas o áudio do celular para Helena e pedir que ela acione seus contatos no Ministério Público Estadual."
+          ],
+          "resposta": [
+            "Helena faz três ligações encriptadas. Um promotor de justiça de plantão",
+            "confirma o recebimento do áudio e emite uma ordem de busca preventiva.",
+            "",
+            "(Provas +1)"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": 1 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Exigir que ela use a duplicadora de panfletos para espalhar o depoimento do beco diretamente nas portas da prefeitura e da câmara."
+          ],
+          "resposta": [
+            "Centenas de cópias do depoimento e das fotos começam a ser impressas.",
+            "Helena entrega os fardos para os entregadores da madrugada espalharem no centro.",
+            "",
+            "(A cidade inteira agora sabe: Alerta Geral na Cidade [ID: 32])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": -1 },
+            { "tipo": "ITEM", "idItem": 32 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "policialAntagonista",
+      "texto": [
+        "===============================================================================",
+        "CENA 3: A Praça da Matriz sob Névoa / 05h15",
+        "===============================================================================",
+        "",
+        "POLICIAL:",
+        "\"Parado aí! Por ordem do Gabinete de Segurança, essa área está interditada para",
+        "varredura. Entrega esse volume que você está carregando e encoste no muro!\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Virar as costas e tentar correr diretamente a pé de volta para o beco do jornal."
+          ],
+          "resposta": [
+            "\"A CORRUPÇÃO VENCEU A CORRIDA\"",
+            "",
+            "Ao se virar para fugir pela rua aberta, o oficial dispara duas vezes com",
+            "munição não-letal de impacto direto nas suas pernas. Você cai na calçada",
+            "molhada, incapacitado."
+          ],
+          "efeitos": [
+            { "tipo": "ITEM", "idItem": -1 }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Flanquear o bloqueio usando as colunas do monumento central para acessar a entrada de serviço da prefeitura sem ser visto."
+          ],
+          "resposta": [
+            "Você se move em silêncio entre as estátuas e colunas de pedra, mantendo todas",
+            "as provas secas e sob seu controle."
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Enfrentar o primeiro policial no corpo a corpo usando o ambiente molhado para desarmá-lo e abrir caminho pela força bruta."
+          ],
+          "resposta": [
+            "Você avança rápido, usa a poça de água para deslizar sob o golpe de cassetete",
+            "e derruba o oficial com uma rasteira violenta.",
+            "",
+            "(Você sofreu: Ferimentos Leves [ID: 33])",
+            "(Obteve Item: Arma Branca Adquirida [ID: 34])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "ITEM", "idItem": 33 },
+            { "tipo": "ITEM", "idItem": 34 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "PONTE NARRATIVA FINAL DO ATO III (PERSPECTIVA 3A) — A CAMINHO DO CONFRONTO FINAL",
+        "===============================================================================",
+        "",
+        "[CENA: Hall de Entrada da Prefeitura Municipal de Santa Aurora / 05h45]",
+        "",
+        "Você consegue passar pelas portas pesadas de bronze do Palácio Municipal.",
+        "A teia construída pelo interrogatório do beco levou você até as portas do poder."
+      ]
+    }
+  ]
+}

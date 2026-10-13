@@ -1,0 +1,226 @@
+{
+  "id": "ato3_perspectiva1a",
+  "dialogos": [
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "ATO III — AS CONTRADIÇÕES (PERSPECTIVA 1A: O CONFRONTO METÓDICO)",
+        "===============================================================================",
+        "",
+        "[CENA 1: Corredor da Delegacia / Saída do Gabinete de Daniel / 01h45]",
+        "",
+        "O clique da tranca da porta de Daniel ecoa no corredor silencioso. O ar dentro da",
+        "delegacia é denso, impregnado com cheiro de café requentado e o mofo de papéis velhos.",
+        "",
+        "Você caminha a passos lentos, sentindo o peso do envelope sob o casaco molhado.",
+        "",
+        "Você pisa na calçada. A tempestade em Santa Aurora atingiu o pico. O vento",
+        "frio arrasta a névoa pelas sarjetas.",
+        "",
+        "> VOZ DA RAZÃO:",
+        "> \"Daniel abriu uma brecha, mas palavras e papéis rasurados são frágeis. Se você",
+        "> não cruzar esse laudo com registros oficiais nas próximas horas, a versão deles se fechará.\"",
+        "",
+        "> VOZ DA CONSPIRAÇÃO:",
+        "> \"Aquele olhar dos policiais no corredor não foi casual. Eles viram o envelope.",
+        "> O rádio da delegacia já deve estar notificando quem controla as sombras desta cidade.\"",
+        "",
+        "> VOZ DA VIOLÊNCIA:",
+        "> \"Deixe que venham. Você já tem o suficiente para saber que o laudo é uma farsa.",
+        "> A única linguagem que essa cidade entende é o confronto.\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Usar a parceria com Daniel para se abrigar sob uma marquise e interceptar o rádio de frequência restrita da Perícia."
+          ],
+          "resposta": [
+            "Você se abriga sob o toldo de uma loja fechada. Liga o rádio no volume mínimo.",
+            "O chiado dá lugar à voz do operador: \"Central, transferência das amostras do caso",
+            "Gabriel para o Cartório Central agendada para as 02h15.\" Você obtém o horário exato."
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ],
+          "requisitoItem": 12
+        },
+        {
+          "texto": [
+            "[2] Esperar a troca de guarda no estacionamento dos fundos e invadir o Arquivo Morto da delegacia pela janela basculante."
+          ],
+          "resposta": [
+            "Você se esconde atrás da caçamba até as 02h00, quando o plantão troca. Deslizando",
+            "pela janela do subsolo, você alcança as gavetas e resgata a pasta original do laudo",
+            "sem as rasuras oficiais.",
+            "",
+            "(Obteve Item: Pasta Original do Laudo [ID: 13])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "ITEM", "idItem": 13 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Caminhar até a Área Nobre para vigiar o endereço do empresário citado por Daniel."
+          ],
+          "resposta": [
+            "Você corta caminho pelas alamedas arborizadas do bairro nobre. Da calçada,",
+            "observa a mansão: as luzes do escritório estão acesas e um homem tritura documentos",
+            "na janela."
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "helena",
+      "texto": [
+        "===============================================================================",
+        "PONTE NARRATIVA I — O CAMINHO ATÉ A REDAÇÃO",
+        "===============================================================================",
+        "",
+        "Você cruza a Praça da Matriz e sobe até a redação de 'A Voz de Santa Aurora',",
+        "encontrando Helena com uma xícara de café e caneta na mão.",
+        "",
+        "===============================================================================",
+        "CENA 2: Redação do Jornal \"A Voz de Santa Aurora\" / 02h30",
+        "===============================================================================",
+        "",
+        "HELENA:",
+        "\"Você tem a cara de quem acabou de mexer no ninho de marimbondos da delegacia.",
+        "O Daniel te deu as respostas que você queria ou só te empurrou mais conversa fiada?\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Colocar os documentos na mesa e propor um cruzamento de dados com o arquivo de matérias censuradas do jornal."
+          ],
+          "resposta": [
+            "Helena puxa as pastas de arquivos mortos do jornal. Cruzando as datas dos",
+            "obituários com as desapropriações de imóveis, surge um padrão claro: todas",
+            "as vítimas eram proprietárias de terrenos no traçado da nova rodovia municipal."
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": 2 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ],
+          "requisitoItem": 13
+        },
+        {
+          "texto": [
+            "[2] Mostrar apenas trechos do laudo e questionar o que ela realmente sabia sobre a relação entre Gabriel e as autoridades."
+          ],
+          "resposta": [
+            "Helena fecha as persianas da sala, respirando fundo. Ela abre uma gaveta",
+            "falsa e confirma que Gabriel tentou expor a fraude dos terrenos antes de ser silenciado."
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": 1 }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Bater as provas na mesa e exigir que ela use a impressora de emergência para expor o laudo imediatamente."
+          ],
+          "resposta": [
+            "Helena recua diante da sua postura, incomodada com a pressão, mas cede à gravidade",
+            "dos fatos e entrega o mapa do acesso de serviço para a gráfica e o setor de imprensa."
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "RELACAO", "personagem": "helena", "valor": -1 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "homemArmado",
+      "texto": [
+        "===============================================================================",
+        "PONTE NARRATIVA II — A EMBOSCADA NA SAÍDA",
+        "===============================================================================",
+        "",
+        "Ao sair pela porta dos fundos para o beco estreito, o ronco grave de um motor V8",
+        "ecoa. Um SUV preto sem placas fecha a saída. Dois homens desembarcam, sacando pistolas",
+        "com silenciadores.",
+        "",
+        "===============================================================================",
+        "CENA 3: O Beco dos Fundos do Jornal / 03h20",
+        "===============================================================================",
+        "",
+        "HOMEM ARMADO:",
+        "\"Você deveria ter pegado o próximo ônibus de volta, garoto. Entrega a pasta",
+        "e nem pense em correr.\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Virar as costas e tentar fugir correndo pela escada de incêndio ou pela travessa lateral."
+          ],
+          "resposta": [
+            "\"A NÉVOA ENGOLIU MAIS UMA VÍTIMA\"",
+            "",
+            "Você se vira abruptamente e tenta correr. O som abafado dos disparos com",
+            "silenciador atinge suas costas em cheio. Você desaba no paralelepípedo molhado",
+            "e os papéis são arrancados do seu casaco. O caso termina no fundo do beco."
+          ],
+          "efeitos": [
+            { "tipo": "ITEM", "idItem": -1 }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Recuar devagar para a sombra dos contêineres para captar as ordens passadas pelo rádio dos homens."
+          ],
+          "resposta": [
+            "Você recua para a mancha de sombra. O rádio de um dos homens chia: \"O Gabinete",
+            "do Prefeito quer o arquivo destruído antes do amanhecer!\" Distraídos pelo rádio,",
+            "você desliza pela fresta do portão de serviço."
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Agarrar uma barra de ferro encostada na parede e apagar a iluminação do beco, atacando o agressor na penumbra."
+          ],
+          "resposta": [
+            "Um golpe preciso esmaga a luminária, jogando o beco no breu total. No caos dos",
+            "tiros cegos, você usa a névoa para desarmar o primeiro homem com brutalidade e",
+            "escapar pela travessa.",
+            "",
+            "(Você agora está marcado: Procurado por Agressão [ID: 21])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "ITEM", "idItem": 21 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "PONTE NARRATIVA FINAL DO ATO III — A CAMINHO DO ATO IV",
+        "===============================================================================",
+        "",
+        "[CENA: Mirante do Parque da Cidade / Visão Geral de Santa Aurora / 04h00]",
+        "",
+        "A garoa cessa. De cima do mirante, você observa o Prédio da Prefeitura Municipal — com o",
+        "último andar inteiramente iluminado em plena madrugada.",
+        "",
+        "O mistério da morte de Gabriel foi esclarecido: as execuções visavam desapropriar",
+        "terrenos para o projeto da nova rodovia. Não há mais espaço para hesitações."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "id": "ato2_opcao1b",
+  "dialogos": [
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "ATO II — O JOGO DUPLO (ROTA: CONSPIRAÇÃO / OPÇÃO 1B)",
+        "===============================================================================",
+        "",
+        "[CENA: Sala do Detetive Daniel. Luz amarelada, chuva batendo contra a janela.]",
+        "",
+        "Você entra na sala de Daniel com uma expressão neutra, escondendo as certezas",
+        "que já possui. O detetive está sentado atrás da mesa, organizando papéis sob a",
+        "luz fraca de um abajur. Ele parece surpreso ao ver você caminhar tão calmo.",
+        "",
+        "DANIEL:",
+        "\"Você demorou... Sinto muito pelo seu irmão. Eu sei que as coisas entre vocês",
+        "ficaram difíceis no final, mas estamos fazendo tudo o que podemos aqui. Você",
+        "notou algo de estranho ao chegar na cidade?\"",
+        "",
+        "> VOZ DA CONSPIRAÇÃO:",
+        "> \"Ele está testando até onde você sabe. Ele quer medir o seu nível de suspeita",
+        "> antes de te dar qualquer informação falsa. Mantenha as cartas escondidas.\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Fingir choque emocional e desorientação:",
+            "    \"Eu não sei de nada, Daniel... Só quero entender o que aconteceu. Quem faria uma coisa dessas com ele?\""
+          ],
+          "resposta": [
+            "Daniel relaxa os ombros ao ver sua reação desolada. Ele se encosta na cadeira,",
+            "convencido de que você não passa de um familiar vulnerável buscando conforto.",
+            "",
+            "DANIEL:",
+            "\"É difícil aceitar, eu sei. Ele se envolveu com as pessoas erradas nos últimos",
+            "meses... Pessoas perigosas da periferia. Mas não se preocupe, estamos cuidando.\"",
+            "",
+            "[CONFIANÇA COM DANIEL: +2 — ele acredita que você é inofensivo]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "RELACAO", "personagem": "daniel", "valor": 2 }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Demonstrar cooperação analítica:",
+            "    \"A cidade parece a mesma de sempre, mas os boatos no rádio dizem que a polícia não tem pistas. Isso é verdade?\""
+          ],
+          "resposta": [
+            "Daniel ajeita as pastas sobre a mesa, medindo as palavras com cuidado.",
+            "",
+            "DANIEL:",
+            "\"O rádio exagera para vender notícia. Temos pistas, sim, mas precisamos de",
+            "cautela para não alertar os suspeitos antes da hora.\"",
+            "",
+            "[CONFIANÇA COM DANIEL: +1]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "RELACAO", "personagem": "daniel", "valor": 1 }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Dar um passo à frente com o olhar fixo:",
+            "    \"Eu passei por pessoas estranhas na rua, Daniel. E sinto que a própria polícia está pisando em ovos.\""
+          ],
+          "resposta": [
+            "Daniel estreita os olhos e cruza os braços, assumindo uma postura defensiva.",
+            "",
+            "DANIEL:",
+            "\"Medir as palavras aqui dentro seria uma boa ideia. A polícia faz o trabalho",
+            "dela, e você deveria focar no enterro do seu irmão.\"",
+            "",
+            "[CONFIANÇA COM DANIEL: -3]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "RELACAO", "personagem": "daniel", "valor": -3 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "narrador",
+      "texto": [
+        "===============================================================================",
+        "ESCOLHA 2 — A ISCA SOBRE A MESA",
+        "===============================================================================",
+        "",
+        "Daniel abre a gaveta e retira um arquivo parcial do caso, colocando-o bem na",
+        "sua frente sobre a mesa. Ele se levanta para pegar um copo de água no canto",
+        "da sala, deixando você a sós com o documento por alguns segundos.",
+        "",
+        "> VOZ DA CONSPIRAÇÃO:",
+        "> \"É um teste clássico. Ele quer ver se você vai tentar bisbilhotar o relatório",
+        "> oficial enquanto ele está de costas.\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Permanecer parado na mesma posição, ignorando o arquivo para não demonstrar nenhum interesse suspeito."
+          ],
+          "resposta": [
+            "Você não move um centímetro. Daniel retorna com o copo de água e percebe",
+            "sua postura contida. Ele conclui que você é inofensivo e não desconfia de nada.",
+            "",
+            "[CONFIANÇA COM DANIEL: +1 (Ele acredita que tem o controle da situação)]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "RELACAO", "personagem": "daniel", "valor": 1 }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Usar o reflexo do vidro da janela para tentar ler o título da folha principal sem mover um músculo da mão."
+          ],
+          "resposta": [
+            "Pelo reflexo do vidro, você decifrou o cabeçalho: \"Relatório de Depoimento —",
+            "Testemunha Não Identificada\". Daniel nota que você olhava para o vidro e fica",
+            "mais cauteloso.",
+            "",
+            "[CONFIANÇA COM DANIEL: -1 (Ele percebe que você desconfia)]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "RELACAO", "personagem": "daniel", "valor": -1 }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Puxar o arquivo rapidamente e folhear as páginas em busca dos nomes de testemunhas antes que ele se vire."
+          ],
+          "resposta": [
+            "Ao ouvir o papel se mover, Daniel se vira rapidamente e bate a mão sobre a mesa,",
+            "recolhendo a pasta antes que você leia os detalhes.",
+            "",
+            "[CONFIANÇA COM DANIEL: -3 (Ele passa a te enxergar como uma ameaça imprevisível)]"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
+            { "tipo": "RELACAO", "personagem": "daniel", "valor": -3 }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,352 @@
+{
+  "id": "ato_1",
+  "dialogos": [
+    {
+      "personagem": "narrador",
+      "texto": [
+        "[CENA: Interior de um ônibus de viagem. Chuva bate contra a janela.]",
+        "",
+        "O balanço do veículo é constante. Do lado de fora, a névoa de Santa Aurora",
+        "engole a paisagem familiar. Você observa seu próprio reflexo no vidro molhado.",
+        "",
+        "> PROTAGONISTA:",
+        "\"Eu não lembrava da cidade parecer tão pequena. Talvez fosse eu que tivesse",
+        "mudado.\"",
+        "",
+        "*(O ônibus desacelera até parar com um chiado nos freios. As portas se abrem.)*",
+        "",
+        "Você desce na plataforma da rodoviária deserta. O ar frio da noite atinge",
+        "seu rosto. No seu bolso, o celular vibra.",
+        "",
+        "[NOVA MENSAGEM - DANIEL]",
+        "\"Quando chegar, me procure na delegacia.\"",
+        "",
+        "Você guarda o aparelho. Um peso no peito lembra o motivo de estar aqui."
+      ]
+    },
+    {
+      "personagem": "narrador",
+      "texto": [
+        "A lembrança do seu irmão Gabriel preenche seus pensamentos. O desentendimento",
+        "que os afastou anos atrás parece distante e irrelevante agora perante a notícia",
+        "de sua morte brutal em Santa Aurora."
+      ]
+    },
+    {
+      "personagem": "protagonista",
+      "texto": [
+        "Você guarda o celular no bolso. O eco das vozes ainda vibra nos seus ouvidos,",
+        "mas o peso do medalhão de bronze no seu bolso — o mesmo que seu irmão te deu",
+        "na infância — traz um choque doloroso de realidade.",
+        "",
+        "Você precisa decidir como dar o primeiro passo nesta cidade."
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Analisar o mapa da cidade na parede da estação para calcular o trajeto",
+            "    mais rápido até a delegacia e entender onde a quinta vítima foi achada."
+          ],
+          "resposta": [
+            "Você se aproxima do mapa manchado de umidade. Com calma, cruza as informações",
+            "da mensagem de Daniel com os locais de isolamento policial que ouviu no rádio.",
+            "",
+            "> VOZ :",
+            "> \"O tempo entre a rodoviária e o centro é de dez minutos a pé. Se cortarmos",
+            "> pela travessa, evitamos a névoa densa e chegamos com fatos, não com suposições.\""
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Observar os arredores da plataforma. Aquele sujeito encostado no poste",
+            "    parece estar vigiando quem desce do ônibus."
+          ],
+          "resposta": [
+            "Você ajusta a gola do casaco e disfarça o olhar. O homem no poste acende um",
+            "cigarro, mas os olhos dele acompanham cada movimento das suas mãos.",
+            "",
+            "> VOZ:",
+            "> \"Ele sabe quem você é. A notícia da sua volta já circulou antes mesmo de o",
+            "> ônibus estacionar. Ninguém fica parado no frio à meia-noite sem um motivo.\""
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Segurar com força o medalhão no bolso, ignorar a chuva e marchar firme",
+            "    direto para a rua, pronto para encarar qualquer um que cruzar seu caminho."
+          ],
+          "resposta": [
+            "Você ignora o mapa, a névoa e as pessoas. Seus passos ecoam pesados contra",
+            "o paralelepípedo molhado, cortando a noite com determinação cega.",
+            "",
+            "> VOZ:",
+            "> \"Deixe que vejam você chegando. Se alguém nesta cidade acha que pode brincar",
+            "> com a memória do seu irmão, vai descobrir do pior jeito que você voltou.\""
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "jonas",
+      "texto": [
+        "A caminho do seu destino, uma figura surge da névoa. É o Velho Jonas, um antigo",
+        "conhecido da família que trabalhava com seu irmão. Ele parece assustado e segura",
+        "uma lanterna com a mão trêmula.",
+        "",
+        "MORADOR (JONAS):",
+        "\"Garoto?... É você mesmo? Pelas barbas de Deus, você não devia ter voltado.",
+        "Aquele assunto do seu irmão... ele estava mexendo onde não devia!\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] \"Jonas, acalme-se. Me diga exatamente o que ele estava fazendo nos últimos",
+            "    dias e quem foi a última pessoa a falar com ele.\""
+          ],
+          "resposta": [
+            "Jonas solta um suspiro pesado, ajeitando o casaco. Sua postura firme o acalma.",
+            "",
+            "MORADOR (JONAS):",
+            "\"Ele... ele estava na antiga fábrica desativada na semana passada. Dizia que",
+            "achou registros antigos da prefeitura que não batiam. Falou que ia encontrar",
+            "o Daniel para entregar tudo...\"",
+            "",
+            "(Obteve Pista: Informação de Jonas [ID: 6])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] \"Quem te mandou aqui para me avisar? Você está vigiando a entrada da cidade",
+            "    para quem?\""
+          ],
+          "resposta": [
+            "Jonas recua dois passos, assustado com o seu olhar desconfiado.",
+            "",
+            "MORADOR (JONAS):",
+            "\"Ninguém me mandou! Eu só... eu vi a movimentação no posto de polícia mais cedo.",
+            "Tinha gente estranha lá, garoto. Gente que não é da cidade perguntando por você!\""
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Segurar Jonas pelo colarinho do casaco: \"Chega de rodeios, velho! Fala de",
+            "    uma vez o que aconteceu com ele antes que eu perca a paciência!\""
+          ],
+          "resposta": [
+            "Jonas treme, arregalando os olhos com o impacto. Ele aponta para o beco da delegacia.",
+            "",
+            "MORADOR (JONAS):",
+            "\"Calma, garoto! Eu não sei de nada! Só sei que o Daniel tá te esperando no beco",
+            "dos fundos da delegacia... e ele não tá sozinho!\""
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "jonas",
+      "texto": [
+        "Jonas hesita antes de continuar falando, os olhos passeando entre",
+        "você e a névoa atrás de si, como se avaliasse se pode confiar no",
+        "que vai dizer a seguir."
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] \"Eu sei que isso é pesado, Jonas. Mas confio em você — foi o Gabriel",
+            "    quem sempre disse que você era de confiança. Me ajuda a entender",
+            "    o resto.\""
+          ],
+          "resposta": [
+            "Jonas relaxa os ombros pela primeira vez desde que apareceu na névoa.",
+            "Ele parece aliviado por ouvir o nome do seu irmão dito sem raiva.",
+            "",
+            "MORADOR (JONAS):",
+            "\"Ele falava de você toda semana, sabia? Achava que um dia vocês dois",
+            "iam resolver as coisas. Vem, garoto... te mostro onde ele escondia",
+            "as anotações.\"",
+            "",
+            "(Relação com Jonas melhorou)"
+          ],
+          "efeitos": [
+            { "tipo": "RELACAO", "personagem": "jonas", "valor": 3 },
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] \"Não tenho tempo pra isso agora, Jonas. Se sabe de algo, fala logo",
+            "    ou sai da minha frente.\""
+          ],
+          "resposta": [
+            "Jonas se encolhe, os olhos marejados. Ele dá um passo para trás,",
+            "a lanterna tremendo ainda mais na mão.",
+            "",
+            "MORADOR (JONAS):",
+            "\"Tudo bem... tudo bem. Você mudou mesmo, garoto. Não vou te atrapalhar",
+            "mais.\"",
+            "",
+            "(Relação com Jonas piorou)"
+          ],
+          "efeitos": [
+            { "tipo": "RELACAO", "personagem": "jonas", "valor": -2 },
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Ficar em silêncio, apenas observando Jonas, esperando que ele",
+            "    continue por conta própria."
+          ],
+          "resposta": [
+            "O silêncio pesa entre vocês. Jonas se remexe, incomodado, mas",
+            "acaba enchendo o vazio sozinho.",
+            "",
+            "MORADOR (JONAS):",
+            "\"Você sempre foi de poucas palavras... assim como o Gabriel quando",
+            "tava puto com alguma coisa. Só espero que não esteja puto comigo.\""
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "jonas",
+      "texto": [
+        "Jonas segura algo no bolso do casaco, indeciso. A forma como ele",
+        "reage agora parece depender inteiramente de como você o tratou",
+        "até aqui."
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] \"Jonas, se você confia em mim, me entrega o que o Gabriel te deixou.\""
+          ],
+          "resposta": [
+            "Jonas suspira fundo, como quem solta um peso carregado por dias.",
+            "Ele tira do bolso do casaco um envelope amassado e úmido de chuva.",
+            "",
+            "MORADOR (JONAS):",
+            "\"Ele me disse... 'só entrega isso pra alguém que eu confiaria de",
+            "olhos fechados'. Acho que só pode ser você, garoto.\"",
+            "",
+            "(Obteve Pista: Pista De Jonas)",
+            "(Relação com Jonas melhorou)"
+          ],
+          "efeitos": [
+            { "tipo": "RELACAO", "personagem": "jonas", "valor": 3 },
+            { "tipo": "ITEM", "idItem": 6 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] \"Jonas, para de enrolar e me entrega logo isso que você tá escondendo!\""
+          ],
+          "resposta": [
+            "Jonas recua, protegendo o bolso do casaco com o braço.",
+            "",
+            "MORADOR (JONAS):",
+            "\"Não! Não do jeito que você tá agora. O Gabriel confiava em mim",
+            "justamente pra saber a hora certa. E essa hora não é essa.\"",
+            "",
+            "(Jonas se recusa a entregar a pista)"
+          ],
+          "efeitos": [
+            { "tipo": "RELACAO", "personagem": "jonas", "valor": -2 }
+          ]
+        }
+      ]
+    },
+    {
+      "personagem": "protagonista",
+      "texto": [
+        "Ao se aproximar do bloco policial, a iluminação da rua falha. Você percebe que",
+        "a entrada principal está trancada. Há um rastro de documentos espalhados na lama",
+        "perto da porta de serviço, além de uma figura caída na penumbra do beco.",
+        "",
+        "> VOZ DA RAZÃO:",
+        "> \"Examine a cena primeiro. Recolha os papéis e verifique os sinais vitais",
+        "> antes de tomar qualquer atitude impulsiva.\"",
+        "",
+        "> VOZ DA CONSPIRAÇÃO:",
+        "> \"É uma emboscada clara. Alguém deixou essa cena montada para ver como você",
+        "> reage. Mantenha as costas na parede e observe as sombras.\"",
+        "",
+        "> VOZ DA VIOLÊNCIA:",
+        "> \"Esqueça a cautela. Avance rápido, segure quem estiver ali e garanta que",
+        "> ninguém saia desse beco sem te dar respostas.\""
+      ],
+      "escolhas": [
+        {
+          "texto": [
+            "[1] Agachar-se para recolher as provas na lama e checar a pessoa no chão de",
+            "    forma metódica."
+          ],
+          "resposta": [
+            "Você analisa as páginas molhadas: são cópias do laudo do seu irmão com rasuras",
+            "propositais. A pessoa no chão é apenas um manequim usado para chamar atenção.",
+            "",
+            "(Obteve Pista: Pista do Manequim [ID: 7])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
+            { "tipo": "ITEM", "idItem": 7 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        },
+        {
+          "texto": [
+            "[2] Dar a volta por trás dos caixotes, usando a névoa como cobertura para",
+            "    analisar o beco sem ser visto."
+          ],
+          "resposta": [
+            "Sua cautela revela um olheiro escondido no topo da escada de incêndio, com uma",
+            "câmera apontada para o beco. Ao notar que foi descoberto, o sujeito foge,",
+            "porém rápido demais para saber quem estava monitorando a polícia."
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+          ]
+        },
+        {
+          "texto": [
+            "[3] Marchar direto em direção à sombra na penumbra, pronto para o confronto."
+          ],
+          "resposta": [
+            "Você arromba a porta de serviço com um chute, surpreendendo um suspeito que",
+            "tentava queimar o restante dos arquivos do seu irmão. Você o imobiliza antes que",
+            "as evidências sejam destruídas.",
+            "",
+            "(Obteve Evidência: Laudo Adulterado [ID: 8])"
+          ],
+          "efeitos": [
+            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
+            { "tipo": "ITEM", "idItem": 8 },
+            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+          ]
+        }
+      ]
+    }
+  ]
+}
