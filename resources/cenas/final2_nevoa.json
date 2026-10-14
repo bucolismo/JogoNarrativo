@@ -1,0 +1,19 @@
+{
+  "cena": {
+    "id": "final2_nevoa",
+    "dialogos": [
+      {
+        "id": "final2_praca",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nFINAL 2 — A NÉVOA SE LEVANTA\n===============================================================================\n\n[CENA: Praça da Matriz / Seis meses depois]\n\nA voz de Gabriel foi tocada tantas vezes que virou trilha de protesto. Na praça, crianças repetem o refrão \"Se alguém está ouvindo isso...\" sem saber exatamente de onde vem. Bairros inteiros se organizaram em associações de vigilância comunitária — não por medo, mas por cuidado uns com os outros. O governo municipal foi substituído por uma junta provisória de moradores, e pela primeira vez em anos as reuniões da Câmara são abertas e transmitidas ao vivo pela rádio comunitária.",
+        "escolhas": []
+      },
+      {
+        "id": "final2_epilogo",
+        "personagem": "helena",
+        "texto": "===============================================================================\nEPÍLOGO — A CIDADE QUE APRENDEU A OUVIR\n===============================================================================\n\nHelena virou editora-chefe do jornal, agora com uma redação de verdade — mesa para seis repórteres, financiada por assinantes de toda a região. Ela te chamou para ser o correspondente de investigações locais, um trabalho que parece ter sido desenhado sob medida para a pessoa que você se tornou.\n\nHELENA:\n\"Você continua olhando por cima do ombro. Mas agora tem gente olhando com você. Isso conta como progresso, sabia?\"\n\nVocê sorri, de verdade, pela primeira vez desde que voltou a Santa Aurora. Na parede do seu apartamento — que já não é mais provisório —, o velho mapa com linhas vermelhas foi substituído por fotos: Helena na redação, o pessoal da associação de bairro, uma foto do túmulo de Gabriel com flores frescas.\n\nVocê não parou de ser vigilante. Mas a vigilância deixou de ser solidão para virar comunidade. Ainda existem nomes no seu mapa mental que a justiça não alcançou — mas agora você tem uma cidade inteira ajudando a procurar, e isso, descobre você, é o mais parecido com paz que alguém como você consegue ter.\n\nSanta Aurora acordou. E, pela primeira vez, você acordou junto com ela.\n\n===============================================================================\nFIM — [FINAL 2: A NÉVOA SE LEVANTA]\n===============================================================================",
+        "escolhas": []
+      }
+    ]
+  }
+}

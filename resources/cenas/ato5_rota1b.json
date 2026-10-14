@@ -1,0 +1,101 @@
+{
+  "cena": {
+    "id": "ato5_rota1b",
+    "dialogos": [
+      {
+        "id": "ato5_1b_cena1_saguao",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nATO V — A REVOLTA DA CIDADE (ROTA 1B)\n===============================================================================\n\n[CENA 1: Saguão da Câmara e Praça da Matriz / 06h20]\n\nAs cópias vazadas passam de mão em mão. A cidade inteira parece prender o fôlego.",
+        "escolhas": [
+          {
+            "id": "escolhaAto5_1B_1",
+            "texto": "[1] Subir na escadaria de mármore e organizar a multidão em uma comissão pacífica, lendo em voz alta os nomes dos envolvidos.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" },
+              { "tipo": "relacionamento", "personagem": "helena", "valor": 10 }
+            ],
+            "requisitos": [],
+            "resultado": "Sua voz atravessa o saguão. Um a um, os nomes são lidos. A multidão, que estava prestes a virar uma turba, se transforma em plateia.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1B_2",
+            "texto": "[2] Observar a multidão e identificar os provocadores infiltrados pela Guarda Municipal para justificar uma repressão.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" }
+            ],
+            "requisitos": [],
+            "resultado": "Três homens de jaqueta preta distribuem pedras para quem está na frente. Você os aponta para a imprensa. Sem o pretexto, a Guarda Municipal recua.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1B_3",
+            "texto": "[3] Incitar a multidão a invadir o gabinete do Prefeito e quebrar tudo o que encontrar.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" }
+            ],
+            "requisitos": [],
+            "resultado": "A multidão explode. Documentos que poderiam servir de prova são pisoteados junto com o resto. Na confusão, o Secretário de Governo escapa.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1B_4",
+            "texto": "[4] Sair pela porta lateral e deixar a multidão sozinha, sem rosto nem liderança.",
+            "efeitos": [
+              { "tipo": "gameOver" }
+            ],
+            "requisitos": [],
+            "resultado": "UMA REVOLTA SEM ROSTO É ESMAGADA\nSem ninguém para conduzi-la, a multidão é dispersa à força. O Gabinete afirma que foi um tumulto de vândalos.",
+            "gameOver": true
+          }
+        ]
+      },
+      {
+        "id": "ato5_1b_cena2_radio",
+        "personagem": "helena",
+        "texto": "===============================================================================\nCENA 2: Rádio Comunitária de Santa Aurora / 07h30\n===============================================================================\n\nOPERADOR DA RÁDIO:\n\"Gabriel me trouxe uma fita na semana em que morreu. Acho que agora não posso mais ter medo.\"",
+        "escolhas": [
+          {
+            "id": "escolhaAto5_1B_5",
+            "texto": "[1] Exigir que a rádio comunitária leia a ata da sessão e os nomes oficiais envolvidos, sem tocar a gravação.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" },
+              { "tipo": "relacionamento", "personagem": "helena", "valor": 10 }
+            ],
+            "requisitos": [],
+            "resultado": "O locutor lê a ata e os nomes em tom sóbrio. A rádio ganha credibilidade, mas não emociona ninguém.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1B_6",
+            "texto": "[2] Pedir ao operador da rádio a cópia da gravação que ele guardou e transmiti-la na frequência aberta para toda a cidade.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" },
+              { "tipo": "marcador", "valor": 11, "descricao": "Gravação de Gabriel (reutilização do ID cadastrado em criarAtoIIRota2A)" },
+              { "tipo": "ref", "ref": "ganhaProva" }
+            ],
+            "requisitos": [],
+            "resultado": "O operador tira de uma caixa de sapatos a cópia da fita que Gabriel deixou com ele semanas antes. A voz do seu irmão ecoa em todos os rádios de Santa Aurora.\n\n(Você recuperou a Gravação [ID: 11])",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1B_7",
+            "texto": "[3] Descer pelas galerias subterrâneas e capturar o Secretário de Governo à força antes que ele fuja da cidade.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" }
+            ],
+            "requisitos": [],
+            "resultado": "No fim de uma galeria úmida, você o alcança. Você o arrasta de volta à superfície pelo colarinho diante de dezenas de testemunhas.",
+            "gameOver": false
+          }
+        ]
+      },
+      {
+        "id": "ato5_1b_ponte_final",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nPONTE NARRATIVA FINAL DO ATO V (ROTA 1B) — A CIDADE ACORDA\n===============================================================================\n\nAo meio-dia, Santa Aurora parece outra cidade. O governo municipal ruiu sem que ninguém tivesse dado um tiro de aviso: a maioria dos vereadores renunciou antes do almoço.",
+        "escolhas": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "cena": {
+    "id": "ato5_rota1a",
+    "dialogos": [
+      {
+        "id": "ato5_1a_cena1_plenario",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nATO V — A QUEDA PELO DIREITO (ROTA 1A)\n===============================================================================\n\n[CENA 1: Plenário da Câmara Municipal / 06h20]\n\nO advogado do Prefeito se levanta, ajeita a gravata e sorri.\n\nADVOGADO:\n\"Excelência, tudo o que foi apresentado aqui foi obtido por invasão de imóvel público, arrombamento de cartório e furto de arquivos oficiais. Nada disso é prova. É crime.\"",
+        "escolhas": [
+          {
+            "id": "escolhaAto5_1A_1",
+            "texto": "[1] Apresentar a cadeia de custódia completa, dos arquivos do Cartório até o dossiê, e chamar Helena como testemunha da origem das provas.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" },
+              { "tipo": "relacionamento", "personagem": "helena", "valor": 10 }
+            ],
+            "requisitos": [],
+            "resultado": "Você expõe cada etapa em ordem cronológica. Helena confirma sob juramento que o material passou pelo jornal antes de chegar à mesa. O argumento de prova ilícita perde o fôlego.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1A_2",
+            "texto": "[2] Exigir que a Polícia Federal apreenda os servidores da Câmara antes que aconteça uma \"pane\" conveniente nos registros.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" }
+            ],
+            "requisitos": [],
+            "resultado": "O delegado hesita, mas você aponta o técnico de informática suando junto à sala de máquinas. Minutos depois, encontram um script de exclusão programado.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1A_3",
+            "texto": "[3] Interromper o advogado aos gritos e avançar até a tribuna para arrancar o martelo do Prefeito.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" },
+              { "tipo": "relacionamento", "personagem": "helena", "valor": -10 }
+            ],
+            "requisitos": [],
+            "resultado": "Dois agentes federais seguram seus braços antes que você alcance a tribuna. O advogado sorri: agora ele tem o que precisava para te pintar como um agressor.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1A_4",
+            "texto": "[4] Ficar em silêncio e deixar que a Polícia Federal decida sozinha o que fazer com as provas.",
+            "efeitos": [
+              { "tipo": "gameOver" }
+            ],
+            "requisitos": [],
+            "resultado": "\nA PROVA SEM DONO FOI ANULADA\nSem ninguém para sustentar a origem do material, o juiz de plantão o anula. O Prefeito sai do plenário de cabeça erguida.",
+            "gameOver": true
+          }
+        ]
+      },
+      {
+        "id": "ato5_1a_cena2_depoimento",
+        "personagem": "helena",
+        "texto": "===============================================================================\nCENA 2: Sala de Depoimentos da Polícia Federal / 08h00\n===============================================================================\n\nHELENA:\n\"O que você disser aqui vai ser lido por um juiz daqui a um ano. Não diga nada que você não consiga provar.\"",
+        "escolhas": [
+          {
+            "id": "escolhaAto5_1A_5",
+            "texto": "[1] Pedir que Helena entregue as cópias catalogadas do Diário de Gabriel que ela guardou no cofre do jornal e exigir uma perícia independente.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" },
+              { "tipo": "relacionamento", "personagem": "helena", "valor": 10 },
+              { "tipo": "marcador", "valor": 10, "descricao": "Diário de Gabriel (reutilização do ID cadastrado em criarAtoIIRota2A)" },
+              { "tipo": "ref", "ref": "ganhaProva" }
+            ],
+            "requisitos": [],
+            "resultado": "Helena tira do cofre do jornal a cópia integral do Diário de Gabriel. A perícia independente confirma a autenticidade da letra do seu irmão.\n\n(Você recuperou o Diário de Gabriel [ID: 10])",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1A_6",
+            "texto": "[2] Exigir proteção de testemunha antes de depor: o Gabinete tem homens dentro da polícia.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" }
+            ],
+            "requisitos": [],
+            "resultado": "O delegado aceita, contrariado. Você é transferido para uma sala sem janelas com dois agentes de confiança dele.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1A_7",
+            "texto": "[3] Depor com raiva e exigir a prisão imediata de Daniel e de todo o Gabinete, sem esperar o trâmite.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" },
+              { "tipo": "relacionamento", "personagem": "daniel", "valor": -20 }
+            ],
+            "requisitos": [],
+            "resultado": "O delegado pede calma duas vezes. Você bate na mesa na terceira. O depoimento registra que você \"demonstrou hostilidade\".",
+            "gameOver": false
+          }
+        ]
+      },
+      {
+        "id": "ato5_1a_ponte_final",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nPONTE NARRATIVA FINAL DO ATO V (ROTA 1A) — O PROCESSO COMEÇA\n===============================================================================\n\nO depoimento termina às 13h40. A notícia já chegou às ruas: \"PREFEITO PRESO EM PLENÁRIO\". O processo será longo. Mas a prova existe, está catalogada e está sob custódia federal.",
+        "escolhas": []
+      }
+    ]
+  }
+}
