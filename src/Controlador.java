@@ -21,19 +21,15 @@ public class Controlador {
     private final Menu menu;
     private final RepositorioDeSaves repositorio;
 
-    public Controlador() {
-        this(new Entrada(), new RepositorioJson());
-    }
-
     /**
-     * permite informar de onde vem a entrada e onde os saves são guardados (usado nos testes)
+     * o Controlador não cria suas dependências: quem monta as peças do jogo é a classe Partida
+     * (e os testes), o que também permite trocar o Menu ou o local dos saves sem mexer aqui
      *
-     * @param entrada origem dos dados digitados pelo jogador
+     * @param menu tela (entrada e saída de dados) usada para falar com o jogador
      * @param repositorio local de armazenamento dos saves
      */
-    
-    public Controlador(Entrada entrada, RepositorioDeSaves repositorio) {
-        this.menu = new Menu(entrada);
+    public Controlador(Menu menu, RepositorioDeSaves repositorio) {
+        this.menu = menu;
         this.repositorio = repositorio;
     }
 
@@ -43,7 +39,6 @@ public class Controlador {
      * aqui o jogador pode iniciar uma partida, continuar ou carregar uma partida salva,
      * ver as instruções, ver os créditos ou sair do jogo
      */
-    
     public void menuInicial() {
 
         int opcao;
@@ -188,7 +183,6 @@ public class Controlador {
     /**
      * @return o slot (0 a 3) do save mais recente, ou -1 se não houver nenhum save válido
      */
-    
     private int slotMaisRecente() {
         int melhorSlot = -1;
         LocalDateTime melhorData = null;
@@ -219,7 +213,6 @@ public class Controlador {
      * @param incluiAutomatico true para acrescentar o salvamento automático como última opção
      * @return uma linha por slot: slots manuais 1 a 3 e, se pedido, o automático
      */
-    
     private List<String> descricaoDosSlots(boolean incluiAutomatico) {
         List<String> linhas = new ArrayList<>();
 
@@ -304,7 +297,6 @@ public class Controlador {
      * se alguma cena não puder ser carregada (arquivo JSON ausente ou inválido), mostra o erro e
      * volta ao menu principal
      */
-    
     private void executarHistoria(EstadoPartida estado) {
         try {
             rodarHistoria(estado);
@@ -321,7 +313,7 @@ public class Controlador {
 
         while (estado.getAto() != Ato.FIM) {
 
-            if (estado.getAto().pontoDeSalvamento() && !pontoDeSalvamento(estado)) {
+            if (estado.getAto().ehPontoDeSalvamento() && !pontoDeSalvamento(estado)) {
                 return; // voltou ao menu principal
             }
 
