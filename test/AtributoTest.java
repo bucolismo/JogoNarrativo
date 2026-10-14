@@ -26,4 +26,27 @@ public class AtributoTest {
 
         assertEquals(0, atributo.getValor());
     }
+
+    @Test
+    public void valorNaoDevePassarDoMaximo() {
+        Atributo atributo = new Atributo("Razão", 90, 100);
+        atributo.aumentaValor(200);
+
+        assertEquals(100, atributo.getValor());
+    }
+
+    @Test
+    public void valorInicialDeveRespeitarOsLimites() {
+        assertEquals(0, new Atributo("Razão", -5, 100).getValor());
+        assertEquals(100, new Atributo("Razão", 500, 100).getValor());
+    }
+
+    @Test
+    public void quantidadeNaoPositivaNaoDeveAlterarAoAumentar() {
+        Atributo atributo = new Atributo("Razão", 10, 100);
+        atributo.aumentaValor(0);
+        atributo.aumentaValor(-5);
+
+        assertEquals(10, atributo.getValor());
+    }
 }
