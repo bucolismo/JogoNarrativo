@@ -7,12 +7,15 @@
  *
  */
 public class NPC extends Personagem {
+    private static final int CONFIANCA_MINIMA = 0;
+    private static final int CONFIANCA_MAXIMA = 100;
+
     private int confianca;
 
     public NPC(String nome, int idade, String genero, int confiancaInicial) {
         super(nome, idade, genero);
-        this.confianca = 0;
         this.confianca = confiancaInicial;
+        validaConfianca();
     }
 
 
@@ -36,10 +39,10 @@ public class NPC extends Personagem {
      * método que mantem o nível de confiança dentro dos limites permitidos
      */
     private void validaConfianca() {
-        if (confianca > 100) {
-            confianca = 100;
-        } else if (confianca < 0) {
-            confianca = 0;
+        if (confianca > CONFIANCA_MAXIMA) {
+            confianca = CONFIANCA_MAXIMA;
+        } else if (confianca < CONFIANCA_MINIMA) {
+            confianca = CONFIANCA_MINIMA;
         }
     }
 }
