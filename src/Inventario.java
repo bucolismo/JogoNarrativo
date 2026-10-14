@@ -89,4 +89,22 @@ public class Inventario {
 
         return item != null && item.getItemStatus();
     }
+
+    /**
+     * lista os identificadores dos itens que estão disponíveis (habilitados) no inventário
+     * é a informação que precisa ser guardada em um save
+     *
+     * @return lista nova com os ids dos itens disponíveis
+     */
+    public List<Integer> getIdsDosItensDisponiveis() {
+        List<Integer> ids = new ArrayList<>();
+
+        for (Item item : todosOsItens) {
+            if (item.getItemStatus()) {
+                ids.add(item.getItemID());
+            }
+        }
+
+        return ids;
+    }
 }
