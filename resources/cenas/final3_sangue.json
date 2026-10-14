@@ -1,0 +1,19 @@
+{
+  "cena": {
+    "id": "final3_sangue",
+    "dialogos": [
+      {
+        "id": "final3_rodovia",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nFINAL 3 — O PREÇO DO SANGUE\n===============================================================================\n\n[CENA: Rodovia Estadual, saindo de Santa Aurora / Noite]\n\nA caminhonete que você comprou com o resto do dinheiro percorre a estrada de terra sob uma chuva fina. No banco do passageiro, o medalhão de bronze balança com o movimento. No retrovisor, as luzes da cidade encolhem.\n\nSanta Aurora o chama de herói ou de assassino, dependendo de quem responde. O Prefeito está preso. O laudo adulterado virou cinzas. Mas o mandado de prisão está em vigor e o seu retrato circula em todas as delegacias do estado.",
+        "escolhas": []
+      },
+      {
+        "id": "final3_epilogo",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nEPÍLOGO — O QUE FICOU PARA TRÁS\n===============================================================================\n\nO rádio da caminhonete sintoniza uma estação de outra cidade. Uma locutora fala sobre um \"vigilante armado que invadiu a Câmara Municipal de Santa Aurora\" — e depois, num tom mais sóbrio, sobre um Prefeito preso por corrupção e homicídio. As duas notícias são a mesma história, contada por gente diferente.\n\nVocê não se arrepende de ter feito o Prefeito pagar. Também não se orgulha do que precisou fazer para chegar até ele. Gabriel, pensa você, jamais teria apontado a arma — mas Gabriel também não teria sobrevivido ao que você viveu em uma única madrugada, e pelo menos os nomes na parede da prefeitura hoje significam alguma coisa para os cinco mortos que vieram antes dele.\n\nNa próxima cidade, você vai usar outro nome. Vai aprender a dormir de olhos abertos, sem Helena, sem Daniel, sem ninguém que saiba o que você fez ou por quê. A justiça foi feita — só não sobrou ninguém para comemorar com você.\n\n===============================================================================\nFIM — [FINAL 3: O PREÇO DO SANGUE]\n===============================================================================",
+        "escolhas": []
+      }
+    ]
+  }
+}

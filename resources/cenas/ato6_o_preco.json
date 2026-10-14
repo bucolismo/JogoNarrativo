@@ -1,0 +1,66 @@
+{
+  "cena": {
+    "id": "ato6_o_preco",
+    "dialogos": [
+      {
+        "id": "ato6_cemiterio",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nATO VI — O PREÇO DE SANTA AURORA (CONVERGÊNCIA DAS ROTAS DO ATO V)\n===============================================================================\n\n[CENA: Cemitério de Santa Aurora / Fim de Tarde / 17h30]\n\nNão importa o caminho: pela lei, pela revolta ou pelo aço, todos terminam aqui. O cemitério fica no alto do morro. De lá, dá para ver a cidade inteira, com as luzes da Prefeitura já apagadas.\n\nO túmulo de Gabriel é simples: uma lápide de concreto, o nome gravado à mão e um vaso de flores murchas. Você tira do bolso o medalhão de bronze, o mesmo que ele lhe deu na infância, e o coloca sobre a pedra molhada.\n\n> VOZ DA RAZÃO:\n> \"Você tem provas, tem registro, tem uma história que pode ser contada com cuidado.\"\n\n> VOZ DA CONSPIRAÇÃO:\n> \"A cidade acordou, mas a rede continua lá. Uma voz vale mais que mil papéis.\"\n\n> VOZ DA VIOLÊNCIA:\n> \"Você prometeu que ele seria vingado. Não deixe pela metade.\"\n\n===============================================================================\nA ESCOLHA FINAL — O QUE VOCÊ FAZ COM O QUE SOBROU?\n===============================================================================",
+        "escolhas": [
+          {
+            "id": "escolhaAto6_1",
+            "texto": "[1] Colocar o diário de Gabriel sobre o túmulo e prometer que a verdade será levada até o fim nos tribunais, por mais que o processo demore.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" }
+            ],
+            "requisitos": [
+              { "tipo": "atributo", "atributo": "RAZÃO", "minimo": "LIMITE_FINAL_ATO_VI" },
+              { "tipo": "item", "id": 10 }
+            ],
+            "resultado": "Você deposita o diário sobre a lápide, ainda molhada da chuva. Não há vingança nem multidão. Só a promessa lenta e teimosa de que cada nome escrito naquelas páginas será chamado a responder diante de um juiz.\n\n[FINAL 1 — A BALANÇA: A verdade prevalece pelo caminho da lei]",
+            "proximaCena": "final1_balanca",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto6_2",
+            "texto": "[2] Tocar a gravação de Gabriel no rádio do cemitério e deixar que a cidade inteira ouça a última mensagem dele, mesmo sabendo que a rede é maior do que se vê.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" }
+            ],
+            "requisitos": [
+              { "tipo": "atributo", "atributo": "PARANOIA", "minimo": "LIMITE_FINAL_ATO_VI" },
+              { "tipo": "item", "id": 11 }
+            ],
+            "resultado": "A voz do seu irmão atravessa o cemitério, sobe os morros e chega às janelas de Santa Aurora. A névoa, pela primeira vez, começa a se levantar de verdade.\n\n[FINAL 2 — A NÉVOA SE LEVANTA: a cidade desperta, e você não está mais sozinho]",
+            "proximaCena": "final2_nevoa",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto6_3",
+            "texto": "[3] Queimar o laudo adulterado diante do túmulo, empunhar a arma e partir antes que a polícia chegue, sabendo que agora você é o procurado.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" }
+            ],
+            "requisitos": [
+              { "tipo": "atributo", "atributo": "VIOLÊNCIA", "minimo": "LIMITE_FINAL_ATO_VI" },
+              { "tipo": "item", "id": 8 }
+            ],
+            "resultado": "O laudo queima em segundos, junto com a última mentira oficial sobre a morte de Gabriel. Você guarda a arma sem olhar para trás.\n\n[FINAL 3 — O PREÇO DO SANGUE: a vingança cobra o seu preço]",
+            "proximaCena": "final3_sangue",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto6_4",
+            "texto": "[4] Virar as costas ao túmulo, pegar o primeiro ônibus e deixar Santa Aurora sem olhar para trás.",
+            "efeitos": [
+              { "tipo": "gameOver" }
+            ],
+            "requisitos": [],
+            "resultado": "\nO SILÊNCIO DE SANTA AURORA\nO ônibus parte na chuva fina. Pelo vidro molhado, a cidade encolhe. Ninguém fala do que aconteceu no plenário, e em uma semana ninguém mais lembra de você. A névoa cobre a cidade como sempre cobriu.\n\n(Nenhuma das três causas foi levada longe o suficiente. Talvez, numa outra tentativa, você escolha se comprometer de verdade com uma delas.)",
+            "gameOver": true
+          }
+        ]
+      }
+    ]
+  }
+}

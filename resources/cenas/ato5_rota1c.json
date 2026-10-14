@@ -1,0 +1,102 @@
+{
+  "cena": {
+    "id": "ato5_rota1c",
+    "dialogos": [
+      {
+        "id": "ato5_1c_cena1_tribuna",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nATO V — A SENTENÇA DE SANGUE (ROTA 1C)\n===============================================================================\n\n[CENA 1: Tribuna da Câmara Municipal / 06h10]\n\nO Prefeito assina o papel com a mão trêmula, o cano da arma encostado no peito. Vingança feita? A palavra pesa mais do que você imaginava.",
+        "escolhas": [
+          {
+            "id": "escolhaAto5_1C_1",
+            "texto": "[1] Usar a confissão assinada como escudo legal e exigir que Helena a fotografe e publique antes de qualquer passo seu.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" },
+              { "tipo": "relacionamento", "personagem": "helena", "valor": 10 }
+            ],
+            "requisitos": [],
+            "resultado": "Helena fotografa a confissão com as mãos trêmulas e corre até o telefone público. Em dez minutos, a imagem está nas mãos de três redações.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1C_2",
+            "texto": "[2] Fugir pelas galerias subterrâneas e despistar a Guarda Municipal por um caminho que só você conhece.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" }
+            ],
+            "requisitos": [],
+            "resultado": "Você se move pelos túneis como se os tivesse construído. Os guardas perdem o seu rastro na terceira bifurcação.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1C_3",
+            "texto": "[3] Abrir caminho à bala pelo corredor central e sair pela porta principal diante de todos.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" }
+            ],
+            "requisitos": [],
+            "resultado": "Você abre caminho a tiros. Um deles o atinge de raspão no ombro, mas os guardas recuam diante de alguém que não tem mais nada a perder.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1C_4",
+            "texto": "[4] Baixar a arma e se render aos guardas para \"explicar tudo com calma\".",
+            "efeitos": [
+              { "tipo": "gameOver" }
+            ],
+            "requisitos": [],
+            "resultado": "\nA CONFISSÃO FOI CASSADA E VOCÊ TAMBÉM\nA confissão, feita sob a mira de uma arma, é declarada nula em minutos. Você é preso por sequestro e tentativa de homicídio.",
+            "gameOver": true
+          }
+        ]
+      },
+      {
+        "id": "ato5_1c_cena2_delegacia",
+        "personagem": "daniel",
+        "texto": "===============================================================================\nCENA 2: Delegacia Central, Armário de Evidências / 07h40\n===============================================================================\n\nDANIEL:\n\"Eu sabia que você viria aqui. Seu irmão me deixou uma carta antes de morrer, e nela dizia que, se você chegasse até aqui, eu devia deixar você passar.\"",
+        "escolhas": [
+          {
+            "id": "escolhaAto5_1C_5",
+            "texto": "[1] Ligar para Daniel de um telefone público e propor uma troca: ele entrega o laudo original em troca de tempo para fugir.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" },
+              { "tipo": "relacionamento", "personagem": "daniel", "valor": 10 }
+            ],
+            "requisitos": [],
+            "resultado": "Daniel escuta em silêncio. Depois diz apenas: \"Cinco minutos.\" Ele deixa o laudo original na caixa de correio da delegacia.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1C_6",
+            "texto": "[2] Esperar escondido a saída de Daniel e segui-lo para descobrir se ele guarda as provas originais em algum lugar.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" },
+              { "tipo": "relacionamento", "personagem": "daniel", "valor": -10 }
+            ],
+            "requisitos": [],
+            "resultado": "Daniel sai da delegacia, olha para os lados e pega um caminho torto até a casa de Gabriel. Ele entra e não sai mais.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto5_1C_7",
+            "texto": "[3] Arrombar o armário de evidências da delegacia, recuperar o laudo original adulterado e queimar o resto.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" },
+              { "tipo": "marcador", "valor": 8, "descricao": "Laudo Adulterado (reutilização do ID cadastrado no Ato I)" },
+              { "tipo": "ref", "ref": "ganhaProva" }
+            ],
+            "requisitos": [],
+            "resultado": "A fechadura cede na segunda pancada. Entre dezenas de envelopes, você encontra o laudo original, com as rasuras que você reconheceria em qualquer lugar.\n\n(Você recuperou o Laudo Adulterado [ID: 8])",
+            "gameOver": false
+          }
+        ]
+      },
+      {
+        "id": "ato5_1c_ponte_final",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nPONTE NARRATIVA FINAL DO ATO V (ROTA 1C) — O PREÇO DA SENTENÇA\n===============================================================================\n\nÀs 09h00, você está escondido no depósito de uma padaria fechada, com o ombro latejando. A cidade inteira o procura. O Prefeito foi preso. A confissão foi divulgada. Mas nada disso apaga o fato de que você apontou uma arma para um homem em plenário.",
+        "escolhas": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "cena": {
+    "id": "ato4_a_verdade",
+    "dialogos": [
+      {
+        "id": "ato4_cena1_preparacao",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nATO IV — A VERDADE (CONVERGÊNCIA UNIVERSAL DAS ROTAS DO ATO III)\n===============================================================================\n\n[CENA 1: Subsolo da Câmara Municipal de Santa Aurora / 05h15]\n\nNão importa o caminho que você percorreu até aqui — todas as pistas apontam para o mesmo destino: a Sessão Extraordinária das 06h00.\n\n===============================================================================\nCENA 2: A PREPARAÇÃO TÁTICA\n===============================================================================",
+        "escolhas": [
+          {
+            "id": "escolhaAto4_1",
+            "texto": "[1] Usar a passagem técnica de manutenção para acessar o sistema de áudio e projeção, carregando a prova correspondente ao seu caminho para execução imediata.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" }
+            ],
+            "requisitos": [],
+            "resultado": "Você se posiciona na cabine de controle. As provas colhidas no Ato III estão prontas para serem injetadas no sistema de som da câmara.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_2",
+            "texto": "[2] Aproveitar a troca de guarda das 05h30 para render o sentinela do subsolo e tomar o controle da entrada de emergência do plenário à força.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" }
+            ],
+            "requisitos": [],
+            "resultado": "Com um golpe certeiro, você neutraliza a segurança do acesso privado. O plenário está vulnerável a uma invasão direta.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_3",
+            "texto": "[3] Aguardar a chegada de Helena com a equipe da imprensa na porta lateral para entrar disfarçado entre os jornalistas e fotógrafos credenciados.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" },
+              { "tipo": "relacionamento", "personagem": "helena", "valor": 10 }
+            ],
+            "requisitos": [],
+            "resultado": "Helena pisca para você e te entrega um crachá de imprensa reserva. Você passa pela barreira policial sem disparar um único alarme.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_4",
+            "texto": "[4] Tentar forçar as portas de bronze do plenário principal sem armas ou disfarce.",
+            "efeitos": [
+              { "tipo": "gameOver" }
+            ],
+            "requisitos": [],
+            "resultado": "\nA FALTA DE ESTRATÉGIA CUSTOU A SUA VIDA\nOs guardas municipais na entrada identificam você imediatamente. Cercado no saguão e sem cobertura, você é alvejado antes de alcançar os degraus.",
+            "gameOver": true
+          }
+        ]
+      },
+      {
+        "id": "ato4_ponte1_confronto_daniel",
+        "personagem": "daniel",
+        "texto": "===============================================================================\nPONTE NARRATIVA I — O CONFRONTO NO CORREDOR DOS VEREADORES / 05h45\n===============================================================================\n\nDANIEL:\n\"Eu sabia que você viria. Você não vai estragar a votação das seis da manhã.\"\n\nEle empunha a arma. Passos apressados ecoam atrás de você: é Helena.",
+        "escolhas": [
+          {
+            "id": "escolhaAto4_5",
+            "texto": "[1] Usar a cobertura da imprensa trazida por Helena para expor publicamente a prova diante dos repórteres.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" }
+            ],
+            "requisitos": [],
+            "resultado": "Os repórteres registram as provas em fotos e áudio. Daniel percebe que disparar diante das câmeras é suicídio e recua desarmado.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_6",
+            "texto": "[2] Sacar a arma e confrontar Daniel em um duelo direto antes que ele abra fogo.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" }
+            ],
+            "requisitos": [],
+            "resultado": "O espoco do tiro ecoa no corredor. Daniel é atingido no braço e larga a arma, caindo gemendo no chão de mármore.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_7",
+            "texto": "[3] Usar as provas obtidas no Ato III para chantagear Daniel, oferecendo uma rota de fuga para ele caso ele entregue a cumplicidade do Prefeito na tribuna.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" }
+            ],
+            "requisitos": [],
+            "resultado": "Daniel avalia o peso das provas e percebe que foi abandonado pela prefeitura.\nDANIEL: \"Se eu abrir aquela porta para você, você promete que o meu nome sai da manchete principal?\"",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_8_sucesso",
+            "texto": "[4] Fazer um sinal para Helena — contando com a confiança que vocês construíram ao longo da noite — para que ela distraia Daniel.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" }
+            ],
+            "requisitos": [
+              {
+                "tipo": "confianca",
+                "personagem": "helena",
+                "minimo": "CONFIANCA_PARCERIA_BASICA"
+              }
+            ],
+            "resultado": "Helena não hesita. Ela avança e derruba uma pilha de processos sobre o braço armado de Daniel, dando a você a fração de segundo necessária para desarmá-lo.\n\n* A noite inteira construindo confiança com ela valeu a pena.",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_8_falha",
+            "texto": "[4] Gritar por ajuda e torcer para que Helena arrisque a própria vida por você.",
+            "efeitos": [
+              { "tipo": "gameOver" }
+            ],
+            "requisitos": [],
+            "resultado": "SUA ALIADA NÃO CONFIAVA EM VOCÊ PARA ARRISCAR A VIDA\nDevido ao histórico de atritos entre vocês, Helena hesita — e a hesitação dá tempo para Daniel disparar no seu peito. Vocês nunca construíram confiança suficiente para isso.",
+            "gameOver": true
+          }
+        ]
+      },
+      {
+        "id": "ato4_ponte2_plenario",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nPONTE NARRATIVA II — A ENTRADA NO PLENÁRIO / 06h00\n===============================================================================\n\nO relógio do Palácio Municipal soa seis batidas graves. As portas duplas do plenário se abrem. O Prefeito ergue o martelo na tribuna.\n\n===============================================================================\nCENA 4: A ESCOLHA DECISIVA DO ATO IV\n===============================================================================",
+        "escolhas": [
+          {
+            "id": "escolhaAto4_9",
+            "texto": "[1] Executar a gravação nas caixas de som/distribuir as fraudes para a mesa diretora, forçando a Polícia Federal a dar ordem de prisão ao Prefeito em plenário.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaRazao" },
+              { "tipo": "marcador", "valor": 35 }
+            ],
+            "requisitos": [
+              {
+                "tipo": "atributo",
+                "atributo": "RAZÃO",
+                "minimo": "LIMITE_CHECKPOINT_ATO_IV"
+              }
+            ],
+            "resultado": "As provas ecoam e circulam no plenário. Os agentes federais fecham as saídas e dão voz de prisão ao Prefeito diante de todas as câmeras.\n\n[Rota Ativada: Ato V — A Queda pelo Direito]",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_10",
+            "texto": "[2] Vazar as cópias para a população no saguão e incitar a multidão a cercar a câmara, impedindo a saída dos corruptos e derrubando o governo municipal.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaParanioa" },
+              { "tipo": "marcador", "valor": 36 }
+            ],
+            "requisitos": [
+              {
+                "tipo": "atributo",
+                "atributo": "PARANOIA",
+                "minimo": "LIMITE_CHECKPOINT_ATO_IV"
+              }
+            ],
+            "resultado": "A multidão em fúria rompe os bloqueios e cerca o prédio. O governo municipal desmorona sob o peso da insurreição popular.\n\n[Rota Ativada: Ato V — A Revolta da Cidade]",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_11",
+            "texto": "[3] Invadir a tribuna de arma em punho, forçar o Prefeito a assinar a confissão da morte de Gabriel sob a mira do aço e executar sua vingança antes de fugir.",
+            "efeitos": [
+              { "tipo": "atributo", "ref": "aumentaViolencia" },
+              { "tipo": "marcador", "valor": 37 }
+            ],
+            "requisitos": [
+              {
+                "tipo": "atributo",
+                "atributo": "VIOLÊNCIA",
+                "minimo": "LIMITE_CHECKPOINT_ATO_IV"
+              }
+            ],
+            "resultado": "Sob a mira do aço, o Prefeito assina o papel em pânico antes de ser derrubado. Vingança cumprida, você desaparece na névoa da cidade.\n\n[Rota Ativada: Ato V — A Sentença de Sangue]",
+            "gameOver": false
+          },
+          {
+            "id": "escolhaAto4_12",
+            "texto": "[4] Tentar impedir a votação apenas com um discurso moral, sem apresentar provas ou armas.",
+            "efeitos": [
+              { "tipo": "gameOver" }
+            ],
+            "requisitos": [],
+            "resultado": "PALAVRAS SEM PROVAS NÃO DERRUBAM O PODER\nO Prefeito ignora suas palavras, bate o martelo e manda os guardas te levarem para o subsolo. Você é executado em segredo antes do fim do dia.\n\n(Nenhum dos seus atributos alcançou compromisso suficiente com uma linha de conduta clara — indecisão não muda uma cidade como Santa Aurora.)",
+            "gameOver": true
+          }
+        ]
+      }
+    ]
+  }
+}

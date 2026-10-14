@@ -1,0 +1,19 @@
+{
+  "cena": {
+    "id": "final1_balanca",
+    "dialogos": [
+      {
+        "id": "final1_forum",
+        "personagem": "narrador",
+        "texto": "===============================================================================\nFINAL 1 — A BALANÇA\n===============================================================================\n\n[CENA: Fórum Federal de Santa Aurora / Onze meses depois]\n\nO julgamento dura quatro semanas. O Prefeito é condenado a trinta e dois anos. O Secretário de Governo, a vinte e um. Mas o Vice-Prefeito e o Tabelião Chefe fecham acordo de delação premiada e cumprem pena em regime domiciliar antes do fim do ano — a lei que você tanto defendeu também protege quem sabe negociar com ela.",
+        "escolhas": []
+      },
+      {
+        "id": "final1_epilogo",
+        "personagem": "helena",
+        "texto": "===============================================================================\nEPÍLOGO — O QUE SOBRA DEPOIS DA SENTENÇA\n===============================================================================\n\nHelena publica a série completa. O jornal recebe assinaturas de todo o estado, mas ela raramente responde suas mensagens agora — o processo consumiu meses da vida dela também, e algo entre vocês esfriou no meio das audiências.\n\nHELENA (por telefone, distante):\n\"Você fez a coisa certa. Isso devia ser o suficiente, não devia?\"\n\nVocê não sabe responder. Fica na cidade por obrigação, não por escolha — testemunha de acusação em processos que ainda vão levar anos. Toda sexta-feira sobe ao cemitério sozinho e troca as flores do túmulo de Gabriel. Nunca chorou por ele, não de verdade; estava ocupado demais construindo um caso.\n\nSanta Aurora seguiu em frente. Os jornais pararam de falar do assunto depois do terceiro mês. Você conseguiu a justiça que prometeu, ponto por ponto, prova por prova — e mesmo assim, sentado sozinho na sala vazia do apartamento alugado, não consegue deixar de se perguntar se venceu o caso certo, do jeito errado.\n\n===============================================================================\nFIM — [FINAL 1: A BALANÇA]\n===============================================================================",
+        "escolhas": []
+      }
+    ]
+  }
+}
