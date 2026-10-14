@@ -31,4 +31,11 @@ public class EfeitoTest {
         assertEquals(3, efeito.getItemId());
         assertEquals(1, efeito.getValor());
     }
+
+    @Test
+    public void deveCriarEfeitoDeGameOver() {
+        Efeito efeito = Efeito.gameOver();
+
+        assertEquals(Efeito.TIPO_GAME_OVER, efeito.getTipo());
+    }
 }
