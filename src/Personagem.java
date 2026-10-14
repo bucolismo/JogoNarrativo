@@ -20,4 +20,12 @@ public class Personagem {
     public String getNome() {
         return this.nome;
     }
+
+    public int getIdade() {
+        return this.idade;
+    }
+
+    public String getGenero() {
+        return this.genero;
+    }
 }
