@@ -2,21 +2,35 @@
  * é a classe que representa o personagem controlado pelo jogador
  *
  * O protagonista possui atributos que representam seu estado durante a
- * partida (violência/razão/paranoia) e um inventário que armazena os itens disponíveis
+ * partida (violência/razão/paranoia), as provas reunidas e um inventário que
+ * armazena os itens disponíveis. Todos os atributos começam em 0 e vão até 100.
  */
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class Protagonista extends Personagem {
+    public static final String RAZAO = "Razão";
+    public static final String PARANOIA = "Paranoia";
+    public static final String VIOLENCIA = "Violência";
+    public static final String PROVAS = "Provas";
+    public static final String[] NOMES_DOS_ATRIBUTOS = {RAZAO, PARANOIA, VIOLENCIA, PROVAS};
+
+    private static final int VALOR_INICIAL = 0;
+    private static final int VALOR_MAXIMO = 100;
+
     private Atributo[] atributos;
     private Inventario inventario;
 
     public Protagonista(String nome, int idade, String genero) {
         super(nome, idade, genero);
 
-        atributos = new Atributo[3];
+        atributos = new Atributo[4];
 
-        atributos[0] = new Atributo("Razão", 50, 100);
-        atributos[1] = new Atributo("Paranoia", 50, 100);
-        atributos[2] = new Atributo("Violência", 50, 100);
+        atributos[0] = new Atributo(RAZAO, VALOR_INICIAL, VALOR_MAXIMO);
+        atributos[1] = new Atributo(PARANOIA, VALOR_INICIAL, VALOR_MAXIMO);
+        atributos[2] = new Atributo(VIOLENCIA, VALOR_INICIAL, VALOR_MAXIMO);
+        atributos[3] = new Atributo(PROVAS, VALOR_INICIAL, VALOR_MAXIMO);
 
         inventario = new Inventario();
     }
@@ -42,7 +56,35 @@ public class Protagonista extends Personagem {
                 return;
             }
         }
-        System.out.println("Atributo não existente");
+        System.out.println("Atributo não existente: " + nomeAtributo);
+    }
+
+    /**
+     * informa se o protagonista possui um atributo com o nome informado (sem diferenciar maiúsculas)
+     *
+     * @param nomeAtributo nome do atributo procurado
+     * @return true se o atributo existe, false caso contrário
+     */
+    /**
+     * @return mapa novo com o nome e o valor atual de cada atributo (na ordem de declaração)
+     */
+    public Map<String, Integer> getAtributos() {
+        Map<String, Integer> valores = new LinkedHashMap<>();
+
+        for (Atributo atributo : atributos) {
+            valores.put(atributo.getNome(), atributo.getValor());
+        }
+
+        return valores;
+    }
+
+    public boolean possuiAtributo(String nomeAtributo) {
+        for (Atributo atributo : atributos) {
+            if (atributo.getNome().equalsIgnoreCase(nomeAtributo)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getAtributo(String nomeAtributo) {
@@ -55,29 +97,15 @@ public class Protagonista extends Personagem {
     }
 
     /**
-     * cadastro todos os itens que vão ser utilizados pela história no inventário do protagonista
-     * todos itens são cadastrados porque eles por default são false, ou seja, o jogador precisa
-     * pegar o item em algum momento na história para que ele seja habilitado e adicionados ao invenptario
+     * cadastra no inventário do protagonista todos os itens que a história pode conceder
+     * (o catálogo completo fica na classe CatalogoDeItens). Todos os itens são cadastrados
+     * porque, por padrão, ficam desabilitados: o jogador precisa pegar o item em algum
+     * momento da história para que ele seja habilitado e passe a fazer parte do inventário.
      */
-    public void cadastrarItens(){
-        Item cartaoIml = new Item("Cartão do IML", "Acesso", "Um cartão de acesso que permite acessar o IML da cidade", 1);
-        Item chaveMestra = new Item("Chave Mestra do Cartório", "Acesso", "Uma chave estranha com o símbolo do cartório central que permite acessar o prédio de registros", 2);
-        Item cartaoPrefeitura = new Item("Cartão de Acesso da Prefeitura", "Acesso", "Um cartão magnético que permite acessar o prédio da prefeitura municipal", 3);
-        Item chaveCofrePrefeitura = new Item("Chave do Cofre da Prefeitura", "Acesso", "Uma chave de segurança que permite acessar o cofre e o arquivo restrito", 4);
-        Item peDeCabra = new Item("Pé de Cabra", "Acesso", "Uma ferramenta pesada que permite forçar e abrir portas e acessos bloqueados", 5);
-        Item pistaDeJonas = new Item("Pista de Jonas","Acesso","Uma pista que permite seguir outro caminho",6);
-        Item pistaManequim = new Item("Pista do Manequim","Acesso","Uma pista plantada por alguém em um manequim",7);
-        Item laudoAdulterado = new Item("Laudo Adulterado","Evidência","Um laudo adulterado do caso de Gabriel",8);
-
-        inventario.cadastrarItem(cartaoIml);
-        inventario.cadastrarItem(chaveMestra);
-        inventario.cadastrarItem(cartaoPrefeitura);
-        inventario.cadastrarItem(chaveCofrePrefeitura);
-        inventario.cadastrarItem(peDeCabra);
-        inventario.cadastrarItem(pistaDeJonas);
-        inventario.cadastrarItem(pistaManequim);
-        inventario.cadastrarItem(laudoAdulterado);
-
+    public void cadastrarItens() {
+        for (Item item : CatalogoDeItens.criarTodos()) {
+            inventario.cadastrarItem(item);
+        }
     }
 
     public Inventario getInventario() {
