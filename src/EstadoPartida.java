@@ -24,6 +24,8 @@ public class EstadoPartida {
     private int finalEscolhido;  // 1=Balança, 2=Névoa, 3=Sangue; 0 = ainda não escolhido
     private final List<String> decisoes;
 
+    private boolean mostrarEfeitosDasEscolhas;
+
     public EstadoPartida(Protagonista protagonista, NPC jonas, NPC daniel, NPC helena) {
         this.protagonista = protagonista;
         this.jonas = jonas;
@@ -189,5 +191,11 @@ public class EstadoPartida {
 
         resumo.append(" | ").append(decisoes.size()).append(decisoes.size() == 1 ? " decisão" : " decisões");
         return resumo.toString();
+    }
+    public boolean isMostrarEfeitosDasEscolhas() {
+        return mostrarEfeitosDasEscolhas;
+    }
+    public void setMostrarEfeitosDasEscolhas(boolean valor) {
+        this.mostrarEfeitosDasEscolhas = valor;
     }
 }
