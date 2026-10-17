@@ -6,9 +6,11 @@
  * oferece os pontos de salvamento. As regras do jogo (requisitos, efeitos) ficam no Model.
  */
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Controlador {
 
@@ -86,27 +88,120 @@ public class Controlador {
      */
     public void iniciarPartida() {
         Protagonista protagonista = criarProtagonista();
-
         executarHistoria(EstadoPartida.nova(protagonista));
     }
 
     /**
-     * cadastra o protagonista com as informações fornecidas pelo jogador
+     * obtém o protagonista da nova partida
      *
-     * faz o cadastro dos os itens disponíveis para o inventário do protagonista.
+     * primeiro oferece o personagem favorito, se existir. Se o jogador recusar, ou se o favorito
+     * não puder ser carregado, cadastra um personagem novo e oferece salvá-lo como favorito.
      *
-     * @return retona o protagonista criado para a partida
+     * @return o protagonista criado ou carregado para a partida
      */
     private Protagonista criarProtagonista() {
+        try {
+            Protagonista favorito = perguntaCarregarFavorito();
+            if (favorito != null) {
+                return favorito;
+            }
+        } catch (CarregamentoException e) {
+            menu.mostraString(e.getMessage());
+            menu.mostraString("Vamos criar um personagem novo.");
+        }
+
         String nome = menu.recebeNome();
         int idade = menu.recebeIdade();
         String genero = menu.recebeGenero();
         Protagonista protagonista = new Protagonista(nome, idade, genero);
         protagonista.cadastrarItens();
+
+        perguntaSalvarFavorito(protagonista);
+
         return protagonista;
     }
 
+
     // ------------------------------------------------------------------ saves
+    /**
+     * Pergunta se o jogador quer carregar o personagem favorito.
+     *
+     * Se não tem nenhum jogador carregado, a pergunta não é feita,
+     * Nesse cado o método devolve {@code null}, e o chamador segue para a criação de um
+     * personagem novo.
+     *
+     * @return o {@link Protagonista} recriado a partir do favorito, ou {@code null}
+     *         se não há favorito salvo ou se o jogador não quis carregá-lo
+     * @throws CarregamentoException se o arquivo do favorito não puder ser lido,
+     *         estiver vazio ou tiver conteúdo inválido
+     */
+    /**
+     * Pergunta se o jogador quer carregar o personagem favorito.
+     *
+     * Se não houver favorito salvo, a pergunta não é feita. Nesse caso, e também quando o
+     * jogador recusa, o método devolve {@code null} e o chamador segue para a criação de um
+     * personagem novo.
+     *
+     * @return o {@link Protagonista} recriado a partir do favorito, ou {@code null}
+     *         se não há favorito salvo ou se o jogador não quis carregá-lo
+     * @throws CarregamentoException se o arquivo do favorito não puder ser lido,
+     *         estiver vazio ou tiver conteúdo inválido
+     */
+    public Protagonista perguntaCarregarFavorito() throws CarregamentoException {
+        if (!PersonagemFavorito.existe()) {
+            return null;
+        }
+
+        if (!menu.confirma("Deseja carregar seu personagem favorito nesta nova partida?")) {
+            return null;
+        }
+
+        PersonagemFavorito favorito;
+
+        try {
+            favorito = PersonagemFavorito.carregar();
+        } catch (IOException | RuntimeException e) {
+            throw new CarregamentoException("Não foi possível carregar o favorito: " + e.getMessage(), e);
+        }
+
+        if (favorito == null) { // o Gson devolve null se o arquivo estiver vazio
+            throw new CarregamentoException("O arquivo do favorito está vazio.");
+        }
+
+        Protagonista protagonista = new Protagonista(favorito.getNome(), favorito.getIdade(), favorito.getGenero());
+        protagonista.cadastrarItens();
+        return protagonista;
+    }
+    /**
+     * Pergunta se o jogador quer guardar o personagem recém-criado como favorito.
+     *
+     * Se já existir um favorito, pede confirmação antes de substituí-lo. Uma falha ao gravar
+     * só avisa o jogador e não interrompe a partida.
+     *
+     * @param protagonista personagem recém-criado
+     */
+    private void perguntaSalvarFavorito(Protagonista protagonista) {
+        if (!menu.confirma("Deseja salvar este personagem como favorito?")) {
+            return;
+        }
+
+        if (PersonagemFavorito.existe()
+                && !menu.confirma("Já existe um favorito salvo. Deseja substituí-lo?")) {
+            return;
+        }
+
+        PersonagemFavorito favorito = new PersonagemFavorito(
+                protagonista.getNome(),
+                protagonista.getIdade(),
+                protagonista.getGenero());
+
+        try {
+            favorito.salvar();
+            menu.mostraString("Personagem salvo como favorito.");
+        } catch (IOException e) {
+            menu.mostraString("Não foi possível salvar o favorito: " + e.getMessage());
+        }
+    }
 
     /**
      * retoma a partida do save mais recente (entre os slots manuais e o automático)
@@ -313,7 +408,7 @@ public class Controlador {
 
         while (estado.getAto() != Ato.FIM) {
 
-            if (estado.getAto().ehPontoDeSalvamento() && !pontoDeSalvamento(estado)) {
+            if (!pontoDeSalvamento(estado)) {
                 return; // voltou ao menu principal
             }
 
@@ -493,8 +588,18 @@ public class Controlador {
 
                 estado.registrarDecisao(estado.getAto().name() + "#" + (i + 1) + "=" + escolha);
 
+                boolean mostrarEfeitos = estado.isMostrarEfeitosDasEscolhas();//
+
+                Map<String, Integer> antes = mostrarEfeitos ? estado.getProtagonista().getAtributos() : null;
+
+                boolean gameOver = estado.aplicarEfeitos(escolhaSelecionada);
+
+                if (mostrarEfeitos) {
+                    mostrarResultadoDaEscolha(antes, estado);
+                }
+
                 // game over: a cena é interrompida na hora e o jogo volta para o menu
-                if (estado.aplicarEfeitos(escolhaSelecionada)) {
+                if (gameOver) {
                     return SENTINELA_GAME_OVER;
                 }
 
@@ -503,5 +608,25 @@ public class Controlador {
         }
 
         return ultimaEscolha;
+    }
+    /**
+     * mostra a variação de cada atributo do protagonista que mudou depois de uma escolha
+     *
+     * não mostra nada se nenhum atributo mudou
+     *
+     * @param antes atributos do protagonista antes de os efeitos serem aplicados
+     */
+    private void mostrarResultadoDaEscolha(Map<String, Integer> antes, EstadoPartida estado) {
+        Map<String, Integer> depois = estado.getProtagonista().getAtributos();
+
+        for (Map.Entry<String, Integer> atributo : depois.entrySet()) {
+            int valorAntes = antes.getOrDefault(atributo.getKey(), 0);
+            int variacao = atributo.getValue() - valorAntes;
+
+            if (variacao != 0) {
+                String sinal = (variacao > 0) ? "+" : "";
+                menu.mostraString("[" + atributo.getKey() + " " + sinal + variacao + "]");
+            }
+        }
     }
 }
