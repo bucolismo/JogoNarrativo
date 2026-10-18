@@ -22,6 +22,7 @@ public class EstadoPartida {
     private int rotaAtoV;        // 1=Rota A, 2=Rota B, 3=Rota C; 0 = ainda não escolhida
     private int finalEscolhido;  // 1=Balança, 2=Névoa, 3=Sangue; 0 = ainda não escolhido
     private final List<String> decisoes;
+    private boolean mostrarEfeitosDasEscolhas;
 
     public EstadoPartida(Protagonista protagonista, NPC jonas, NPC daniel, NPC helena) {
         this.protagonista = protagonista;
@@ -30,6 +31,7 @@ public class EstadoPartida {
         this.helena = helena;
         this.ato = Ato.PROLOGO;
         this.decisoes = new ArrayList<>();
+        this.mostrarEfeitosDasEscolhas = false;
     }
 
     /**
@@ -61,7 +63,15 @@ public class EstadoPartida {
     public NPC getHelena() {
         return helena;
     }
-
+    
+     public Map<NPC, String> getNpcs() {
+        Map<NPC, String> npcs = new HashMap<>();
+        npcs.put(jonas, jonas.getNome());
+        npcs.put(daniel, daniel.getNome());
+        npcs.put(helena, helena.getNome());
+        return npcs;
+    }
+    
     public Ato getAto() {
         return ato;
     }
@@ -189,5 +199,23 @@ public class EstadoPartida {
 
         resumo = resumo + " | Decisões: " + decisoes.size();
         return resumo;
+    }
+   /**
+     * Indica se os efeitos das escolhas devem ser exibidos ao jogador.
+     *
+     * @return true se os efeitos das escolhas estão configurados para serem mostrados;
+     *         false caso contrário.
+     */
+    public boolean isMostrarEfeitosDasEscolhas() {
+        return mostrarEfeitosDasEscolhas;
+    }
+    /**
+     * Define se os efeitos das escolhas serão exibidos ao jogador.
+     *
+     * @param mostrarEfeitosDasEscolhas valor booleano que indica se os efeitos
+     *                                  das escolhas serão mostrados (true) ou ocultados (false).
+     */
+    public void setMostrarEfeitosDasEscolhas(boolean mostrarEfeitosDasEscolhas) {
+        this.mostrarEfeitosDasEscolhas = mostrarEfeitosDasEscolhas;
     }
 }
