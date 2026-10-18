@@ -37,11 +37,18 @@
             "\"É difícil aceitar, eu sei. Ele se envolveu com as pessoas erradas nos últimos",
             "meses... Pessoas perigosas da periferia. Mas não se preocupe, estamos cuidando.\"",
             "",
-            "[CONFIANÇA COM DANIEL: +2 — ele acredita que você é inofensivo]"
+            "[CONFIANÇA COM DANIEL: +20 — ele acredita que você é inofensivo]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 2 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 20
+            }
           ]
         },
         {
@@ -56,11 +63,18 @@
             "\"O rádio exagera para vender notícia. Temos pistas, sim, mas precisamos de",
             "cautela para não alertar os suspeitos antes da hora.\"",
             "",
-            "[CONFIANÇA COM DANIEL: +1]"
+            "[CONFIANÇA COM DANIEL: +10]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 1 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 10
+            }
           ]
         },
         {
@@ -75,11 +89,18 @@
             "\"Medir as palavras aqui dentro seria uma boa ideia. A polícia faz o trabalho",
             "dela, e você deveria focar no enterro do seu irmão.\"",
             "",
-            "[CONFIANÇA COM DANIEL: -3]"
+            "[CONFIANÇA COM DANIEL: -30]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -3 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -30
+            }
           ]
         }
       ]
@@ -108,11 +129,18 @@
             "Você não move um centímetro. Daniel retorna com o copo de água e percebe",
             "sua postura contida. Ele conclui que você é inofensivo e não desconfia de nada.",
             "",
-            "[CONFIANÇA COM DANIEL: +1 (Ele acredita que tem o controle da situação)]"
+            "[CONFIANÇA COM DANIEL: +10 (Ele acredita que tem o controle da situação)]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 1 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 10
+            }
           ]
         },
         {
@@ -124,11 +152,18 @@
             "Testemunha Não Identificada\". Daniel nota que você olhava para o vidro e fica",
             "mais cauteloso.",
             "",
-            "[CONFIANÇA COM DANIEL: -1 (Ele percebe que você desconfia)]"
+            "[CONFIANÇA COM DANIEL: -10 (Ele percebe que você desconfia)]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -1 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -10
+            }
           ]
         },
         {
@@ -139,11 +174,18 @@
             "Ao ouvir o papel se mover, Daniel se vira rapidamente e bate a mão sobre a mesa,",
             "recolhendo a pasta antes que você leia os detalhes.",
             "",
-            "[CONFIANÇA COM DANIEL: -3 (Ele passa a te enxergar como uma ameaça imprevisível)]"
+            "[CONFIANÇA COM DANIEL: -30 (Ele passa a te enxergar como uma ameaça imprevisível)]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -3 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -30
+            }
           ]
         }
       ]

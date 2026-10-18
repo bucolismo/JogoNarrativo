@@ -45,12 +45,22 @@
             "delegacia passa pelas minhas mãos. Se esse relatório foi alterado, veio de",
             "instâncias superiores.\"",
             "",
-            "[CONFIANÇA COM DANIEL: +2 — ele reconhece que você age com método]"
+            "[CONFIANÇA COM DANIEL: +20 — ele reconhece que você age com método]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 2 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 20
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -66,11 +76,18 @@
             "\"Você está vendo fantasmas onde não tem. Se alguém deixou esses papéis no beco,",
             "foi para nos colocar um contra o outro.\"",
             "",
-            "[CONFIANÇA COM DANIEL: -1]"
+            "[CONFIANÇA COM DANIEL: -10]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -1 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -10
+            }
           ]
         },
         {
@@ -86,11 +103,18 @@
             "\"Abaixe o tom! Você não está em posição de fazer exigências aqui. Se quiser",
             "respostas, vai ter que me ouvir sem chilique.\"",
             "",
-            "[CONFIANÇA COM DANIEL: -3]"
+            "[CONFIANÇA COM DANIEL: -30]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -3 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -30
+            }
           ]
         }
       ]
@@ -130,11 +154,18 @@
             "Daniel avalia a proposta com cautela. Um acordo tácito, não uma ameaça vazia,",
             "é algo que ele consegue respeitar. Ele desliza a pasta sobre a mesa.",
             "",
-            "[CONFIANÇA COM DANIEL: +2 — ele vê em você alguém racional, não um inimigo]"
+            "[CONFIANÇA COM DANIEL: +20 — ele vê em você alguém racional, não um inimigo]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 2 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 20
+            }
           ]
         },
         {
@@ -146,12 +177,22 @@
             "que faltam relatórios vitais anexados na data do crime, provando que o arquivo",
             "já foi filtrado antes de chegar a você.",
             "",
-            "[CONFIANÇA COM DANIEL: -1 — ele se sente vigiado]"
+            "[CONFIANÇA COM DANIEL: -10 — ele se sente vigiado]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -1 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -10
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -162,11 +203,18 @@
             "Você toma a pasta em um gesto rápido. Daniel recua, surpreso pela audácia,",
             "mas não tenta reavê-la; ele apenas cruza os braços, tenso com o rumo do confronto.",
             "",
-            "[CONFIANÇA COM DANIEL: -3]"
+            "[CONFIANÇA COM DANIEL: -30]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -3 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -30
+            }
           ]
         }
       ]
@@ -205,13 +253,26 @@
             "(Obteve Item: Rádio de Frequência Restrita da Polícia [ID: 12])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 1 },
-            { "tipo": "ITEM", "idItem": 12 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 10
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 12
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ],
           "requisitoNpc": "daniel",
-          "confiancaMinima": 9
+          "confiancaMinima": 90
         },
         {
           "texto": [
@@ -223,11 +284,18 @@
             "* CAMINHO LIBERADO: Você é forçado a agir na ilegalidade, precisando",
             "  invadir o arquivo morto da delegacia durante a madrugada para obter o restante das pistas.",
             "",
-            "[CONFIANÇA COM DANIEL: -2]"
+            "[CONFIANÇA COM DANIEL: -20]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -2 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -20
+            }
           ]
         },
         {
@@ -241,11 +309,18 @@
             "* CAMINHO LIBERADO: Rota de investigação rápida focada em interrogatórios",
             "  agressivos com suspeitos civis na área nobre da cidade.",
             "",
-            "[CONFIANÇA COM DANIEL: -4 — ele passa a te ver como um risco]"
+            "[CONFIANÇA COM DANIEL: -40 — ele passa a te ver como um risco]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -4 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -40
+            }
           ],
           "requisitoAtributo": "Violência",
           "valorRequisitoAtributo": 10

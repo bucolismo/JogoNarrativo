@@ -60,12 +60,6 @@ public class Protagonista extends Personagem {
     }
 
     /**
-     * informa se o protagonista possui um atributo com o nome informado (sem diferenciar maiúsculas)
-     *
-     * @param nomeAtributo nome do atributo procurado
-     * @return true se o atributo existe, false caso contrário
-     */
-    /**
      * @return mapa novo com o nome e o valor atual de cada atributo (na ordem de declaração)
      */
     public Map<String, Integer> getAtributos() {
@@ -78,6 +72,12 @@ public class Protagonista extends Personagem {
         return valores;
     }
 
+    /**
+     * informa se o protagonista possui um atributo com o nome informado (sem diferenciar maiúsculas)
+     *
+     * @param nomeAtributo nome do atributo procurado
+     * @return true se o atributo existe, false caso contrário
+     */
     public boolean possuiAtributo(String nomeAtributo) {
         for (Atributo atributo : atributos) {
             if (atributo.getNome().equalsIgnoreCase(nomeAtributo)) {

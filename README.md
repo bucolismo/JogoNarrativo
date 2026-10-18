@@ -4,7 +4,7 @@ Projeto desenvolvido em Java para a disciplina de EXA 863 - MI - Programação.
 
 Jogo narrativo em modo texto (terminal). O jogador cria um protagonista e toma decisões ao longo de diálogos organizados em capítulos/cenas.
 
-Este é um jogo narrativo de investigação em que o jogador acompanha a história da cidade de Santa Aurora e toma decisões que alteram seu desenvolvimento. As escolhas alteram atributos do protagonista, o inventário e o nível de confiança com NPCs, e podem liberar ou bloquear outras escolhas mais à frente. Diferentes finais são possíveis.
+Este é um jogo narrativo de investigação em que o jogador acompanha a história de Santa Aurora e toma decisões que alteram seu desenvolvimento. As escolhas alteram atributos do protagonista, o inventário e o nível de confiança com NPCs, e podem liberar ou bloquear outras escolhas mais à frente. Diferentes finais são possíveis.
 
 ## Estrutura
 
@@ -59,11 +59,19 @@ O conteúdo da história do prólogo até o Ato III fica em arquivos JSON na pas
 - Efeitos disponíveis: `PREDEFINIDO` (reaproveita um efeito pelo nome), `ATRIBUTO`, `RELACAO` (confiança de um NPC), `ITEM` e `GAME_OVER`. O formato completo está documentado no comentário da classe `CarregadorDeCenas`.
 - O `HistoriaTest` carrega todas as cenas (JSON e Java) e confere que nada referencia item, atributo, personagem ou efeito inexistente.
 
+## Registro de finais e conquistas (Fase 2)
+
+- O jogo tem 3 finais (`FinalDoJogo`): A Balança (Razão), A Névoa se Levanta (Paranoia) e O Preço do Sangue (Violência). O final é decidido na escolha final do Ato VI.
+- Quando o jogador termina uma partida em um final, o `ProgressoGlobal` registra o final alcançado e desbloqueia a conquista correspondente (`Conquista`). Ao alcançar os 3 finais, desbloqueia também a **Platina**, que fica oculta ("???" com uma dica) até lá.
+- O progresso vale para o jogo todo: não some ao apagar saves nem ao começar uma nova partida. É gravado em `saves/progresso.json` (`RepositorioDeProgresso`) e lido ao abrir o jogo. Se o arquivo estiver corrompido, o jogo avisa e começa com o progresso vazio.
+- No menu principal, a opção **Conquistas** mostra os finais alcançados e o estado de cada conquista, e permite redefinir tudo (com confirmação).
+- Os marcadores de rota do Ato V (itens "Rota Ativada") **não** são usados no registro: eles indicam o caminho escolhido no Ato IV, e o final depende da escolha do Ato VI.
+
 ## Saves (Fase 2)
 
 - Estado da partida: tudo o que muda durante o jogo fica em `EstadoPartida` (protagonista, confiança dos NPCs, ato atual, rotas e decisões). O `Controlador` só faz a ponte entre o jogador, o estado e os saves.
-- Pontos de salvamento: ao entrar em cada ato (`Ato.PontoDeSalvamento`). Nesses pontos o jogo salva automaticamente no slot automático e oferece salvar manualmente em um dos 3 slots.
-- Formato: um arquivo JSON por slot, na pasta `saves/` (`autosave.json`, `slot1.json` a `slot3.json`). A gravação usa um arquivo temporário para não destruir o save anterior se algo falhar.
+- Pontos de salvamento: ao entrar em cada ato (`Ato.ehPontoDeSalvamento`). Nesses pontos o jogo salva automaticamente no slot automático e oferece salvar manualmente em um dos 3 slots.
+- Formato: um arquivo JSON por slot, na pasta `saves/` (`autosave.json`, `slot1.json` a `slot3.json`). Os arquivos são gravados direto; se um save estiver corrompido ao carregar, o jogo avisa em vez de quebrar.
 - Menu: "Continuar" retoma o save mais recente, "Carregar partida" lista os slots (nome, data/hora, ato e resumo) e permite carregar ou excluir. Sobrescrever e excluir pedem confirmação.
 - Dados inválidos: todo save é validado ao carregar. Falhas viram `SaveException`, `CarregamentoException` ou `DadosInvalidosException`, e o jogo mostra a mensagem em vez de quebrar.
 
@@ -76,5 +84,4 @@ O conteúdo da história do prólogo até o Ato III fica em arquivos JSON na pas
 Discentes:
 
 Levi Sena Andrade
-
 Luis Felipe Santana Batista

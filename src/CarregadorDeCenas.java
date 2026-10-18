@@ -89,7 +89,6 @@ public class CarregadorDeCenas {
      * @return cena montada e validada
      * @throws CenaInvalidaException se o arquivo não existir, estiver malformado ou tiver conteúdo inválido
      */
-    
     public static Cena montarCena(String caminho, Map<String, Personagem> elenco,
                                   Map<String, Efeito> predefinidos) throws CenaInvalidaException {
         try (InputStream in = CarregadorDeCenas.class.getResourceAsStream(caminho)) {

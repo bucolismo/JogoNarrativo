@@ -39,7 +39,10 @@
             "de que ninguém no andar de baixo ouviu sua chegada."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            }
           ]
         },
         {
@@ -53,7 +56,10 @@
             "trabalho sem ser notado por qualquer câmera ou vigilante."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ]
         },
         {
@@ -67,7 +73,10 @@
             "possa se organizar."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            }
           ]
         }
       ]
@@ -108,7 +117,10 @@
             "outro jeito de abri-lo mais tarde."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            }
           ]
         },
         {
@@ -124,9 +136,18 @@
             "(Obteve Item: Gravação de Gabriel [ID: 11])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "ITEM", "idItem": 11 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 11
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -141,9 +162,18 @@
             "(Obteve Item: Diário de Gabriel [ID: 10])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "ITEM", "idItem": 10 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 10
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         }
       ]
@@ -183,7 +213,10 @@
             "pronto para usar as informações de forma calculada."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            }
           ]
         },
         {
@@ -196,7 +229,10 @@
             "limpando os rastros deixados pelo seu irmão."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ]
         },
         {
@@ -209,7 +245,10 @@
             "deixando o caminho da saída totalmente livre para você."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            }
           ]
         }
       ]

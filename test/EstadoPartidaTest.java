@@ -82,18 +82,36 @@ public class EstadoPartidaTest {
         assertTrue(estado.getProtagonista().getInventario().possuiItemPorId(6));
     }
 
-    @Test // importante
+    @Test
     public void efeitoDeGameOverDeveEncerrarAPartida() {
         assertTrue(estado.aplicarEfeitos(new Escolha("[1] fim", Efeito.gameOver())));
     }
 
-    @Test // imporante
+    @Test
     public void efeitoDeTipoDesconhecidoDeveLancarExcecao() {
         Escolha escolha = new Escolha("[1] estranho", new Efeito("VOAR", "x", 1));
 
         assertThrows(IllegalStateException.class, () -> estado.aplicarEfeitos(escolha));
     }
-  
+
+    @Test
+    public void deveRegistrarDecisoesEmOrdem() {
+        estado.registrarDecisao("ATO_I#2=1");
+        estado.registrarDecisao("ATO_I#5=3");
+
+        assertEquals(java.util.List.of("ATO_I#2=1", "ATO_I#5=3"), estado.getDecisoes());
+    }
+
+    @Test
+    public void alterarAListaDevolvidaNaoDeveAlterarAsDecisoesDaPartida() {
+        estado.registrarDecisao("ATO_I#1=1");
+
+        estado.getDecisoes().add("intruso");
+        estado.getDecisoes().clear();
+
+        assertEquals(java.util.List.of("ATO_I#1=1"), estado.getDecisoes());
+    }
+
     @Test
     public void resumoDeveTrazerAtoAtributosEDecisoes() {
         estado.setAto(Ato.ATO_II);
@@ -104,6 +122,6 @@ public class EstadoPartidaTest {
 
         assertTrue(resumo.contains("Ato II"));
         assertTrue(resumo.contains("Razão 9"));
-        assertTrue(resumo.contains("1 decisão"));
+        assertTrue(resumo.contains("Decisões: 1"));
     }
 }

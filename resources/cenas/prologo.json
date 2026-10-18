@@ -77,7 +77,11 @@
       "personagem": "narrador",
       "texto": [
         "\"O problema de uma cidade pequena é que segredos não ficam enterrados por muito",
-        "tempo. E Santa Aurora estava prestes a cobrar o seu preço.\""
+        "tempo. E Santa Aurora estava prestes a cobrar o seu preço.\"",
+        "",
+        "===============================================================================",
+        "Pressione [ENTER] para iniciar a investigação...",
+        "==============================================================================="
       ]
     }
   ]

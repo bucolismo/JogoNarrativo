@@ -26,8 +26,14 @@
             "(Provas +1)"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -41,8 +47,14 @@
             "(Provas +1)"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -56,8 +68,14 @@
             "(Você disparou o alarme: Alarme Disparado [ID: 30])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "ITEM", "idItem": 30 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 30
+            }
           ]
         }
       ]
@@ -84,9 +102,19 @@
             "(Provas +1)"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "helena", "valor": 2 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "helena",
+              "valor": 20
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -98,8 +126,15 @@
             "existência de uma empreiteira fantasma sediada no próprio endereço da Prefeitura."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "helena", "valor": 1 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "helena",
+              "valor": 10
+            }
           ]
         },
         {
@@ -113,9 +148,19 @@
             "(Obteve Item: Panfletos de Denúncia [ID: 27])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "helena", "valor": -1 },
-            { "tipo": "ITEM", "idItem": 27 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "helena",
+              "valor": -10
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 27
+            }
           ]
         }
       ]
@@ -144,7 +189,9 @@
             "de suas mãos tocarem o metal."
           ],
           "efeitos": [
-            { "tipo": "ITEM", "idItem": -1 }
+            {
+              "tipo": "GAME_OVER"
+            }
           ]
         },
         {
@@ -159,9 +206,18 @@
             "(Obteve Item: Veículo dos Seguranças [ID: 31])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "ITEM", "idItem": 31 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 31
+            }
           ]
         },
         {
@@ -177,9 +233,18 @@
             "(Você agora está marcado: Procurado por Agressão [ID: 21])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "ITEM", "idItem": 29 },
-            { "tipo": "ITEM", "idItem": 21 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 29
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 21
+            }
           ]
         }
       ]

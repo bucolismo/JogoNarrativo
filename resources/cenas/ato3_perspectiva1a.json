@@ -41,7 +41,10 @@
             "Gabriel para o Cartório Central agendada para as 02h15.\" Você obtém o horário exato."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ],
           "requisitoItem": 12
         },
@@ -57,9 +60,18 @@
             "(Obteve Item: Pasta Original do Laudo [ID: 13])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "ITEM", "idItem": 13 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 13
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -72,7 +84,10 @@
             "na janela."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            }
           ]
         }
       ]
@@ -106,9 +121,19 @@
             "as vítimas eram proprietárias de terrenos no traçado da nova rodovia municipal."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "helena", "valor": 2 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "helena",
+              "valor": 20
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ],
           "requisitoItem": 13
         },
@@ -121,8 +146,15 @@
             "falsa e confirma que Gabriel tentou expor a fraude dos terrenos antes de ser silenciado."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "helena", "valor": 1 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "helena",
+              "valor": 10
+            }
           ]
         },
         {
@@ -134,8 +166,15 @@
             "dos fatos e entrega o mapa do acesso de serviço para a gráfica e o setor de imprensa."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "helena", "valor": -1 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "helena",
+              "valor": -10
+            }
           ]
         }
       ]
@@ -172,7 +211,9 @@
             "e os papéis são arrancados do seu casaco. O caso termina no fundo do beco."
           ],
           "efeitos": [
-            { "tipo": "ITEM", "idItem": -1 }
+            {
+              "tipo": "GAME_OVER"
+            }
           ]
         },
         {
@@ -185,7 +226,10 @@
             "você desliza pela fresta do portão de serviço."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ]
         },
         {
@@ -200,8 +244,14 @@
             "(Você agora está marcado: Procurado por Agressão [ID: 21])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "ITEM", "idItem": 21 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 21
+            }
           ]
         }
       ]
