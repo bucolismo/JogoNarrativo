@@ -6,9 +6,12 @@
  * oferece os pontos de salvamento. As regras do jogo (requisitos, efeitos) ficam no Model.
  */
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Controlador {
 
@@ -91,21 +94,100 @@ public class Controlador {
     }
 
     /**
-     * cadastra o protagonista com as informações fornecidas pelo jogador
+     * obtém o protagonista da nova partida
      *
-     * faz o cadastro dos os itens disponíveis para o inventário do protagonista.
+     * primeiro oferece o personagem favorito, se existir. Se o jogador recusar, ou se o favorito
+     * não puder ser carregado, cadastra um personagem novo e oferece salvá-lo como favorito.
      *
-     * @return retona o protagonista criado para a partida
+     * @return o protagonista criado ou carregado para a partida
      */
     private Protagonista criarProtagonista() {
+        try {
+            Protagonista favorito = perguntaCarregarFavorito();
+            if (favorito != null) {
+                return favorito;
+            }
+        } catch (CarregamentoException e) {
+            menu.mostraString(e.getMessage());
+            menu.mostraString("Vamos criar um personagem novo.");
+        }
+
         String nome = menu.recebeNome();
         int idade = menu.recebeIdade();
         String genero = menu.recebeGenero();
         Protagonista protagonista = new Protagonista(nome, idade, genero);
         protagonista.cadastrarItens();
+
+        perguntaSalvarFavorito(protagonista);
+
         return protagonista;
     }
+    /**
+     * Pergunta se o jogador quer carregar o personagem favorito.
+     *
+     * Se não tem nenhum jogador carregado, a pergunta não é feita,
+     * Nesse cado o método devolve {@code null}, e segue para a criação de um
+     * personagem novo.
+     * @return o {@link Protagonista} recriado a partir do favorito, ou {@code null}
+     *         se não há favorito salvo ou se o jogador não quis carregá-lo
+     * @throws CarregamentoException se o arquivo do favorito não puder ser lido,
+     *         estiver vazio ou tiver conteúdo inválido
+    */
+    public Protagonista perguntaCarregarFavorito() throws CarregamentoException {
+        if (!PersonagemFavorito.existe()) {
+            return null;
+        }
 
+        if (!menu.confirma("Deseja carregar seu personagem favorito nesta nova partida?")) {
+            return null;
+        }
+
+        PersonagemFavorito favorito;
+
+        try {
+            favorito = PersonagemFavorito.carregar();
+        } catch (IOException | RuntimeException e) {
+            throw new CarregamentoException("Não foi possível carregar o favorito: " + e.getMessage(), e);
+        }
+
+        if (favorito == null) { // o Gson devolve null se o arquivo estiver vazio
+            throw new CarregamentoException("O arquivo do favorito está vazio.");
+        }
+
+        Protagonista protagonista = new Protagonista(favorito.getNome(), favorito.getIdade(), favorito.getGenero());
+        protagonista.cadastrarItens();
+        return protagonista;
+    }
+    /**
+     * Pergunta se o jogador quer guardar o personagem recém-criado como favorito.
+     *
+     * Se já existir um favorito, pede confirmação antes de substituí-lo. Uma falha ao gravar
+     * só avisa o jogador e não interrompe a partida.
+     *
+     * @param protagonista personagem recém-criado
+     */
+    private void perguntaSalvarFavorito(Protagonista protagonista) {
+        if (!menu.confirma("Deseja salvar este personagem como favorito?")) {
+            return;
+        }
+
+        if (PersonagemFavorito.existe()
+                && !menu.confirma("Já existe um favorito salvo. Deseja substituí-lo?")) {
+            return;
+        }
+
+        PersonagemFavorito favorito = new PersonagemFavorito(
+                protagonista.getNome(),
+                protagonista.getIdade(),
+                protagonista.getGenero());
+
+        try {
+            favorito.salvar();
+            menu.mostraString("Personagem salvo como favorito.");
+        } catch (IOException e) {
+            menu.mostraString("Não foi possível salvar o favorito: " + e.getMessage());
+        }
+    }
     // ------------------------------------------------------------------ saves
 
     /**
@@ -313,7 +395,7 @@ public class Controlador {
 
         while (estado.getAto() != Ato.FIM) {
 
-            if (estado.getAto().ehPontoDeSalvamento() && !pontoDeSalvamento(estado)) {
+            if (!pontoDeSalvamento(estado)) {
                 return; // voltou ao menu principal
             }
 
@@ -491,10 +573,19 @@ public class Controlador {
                     menu.mostraString(escolhaSelecionada.getTextoConsequencia());
                 }
 
-                estado.registrarDecisao(estado.getAto().name() + "#" + (i + 1) + "=" + escolha);
+                boolean mostrarEfeitos = estado.isMostrarEfeitosDasEscolhas();//
+
+                Map<String, Integer> antes = mostrarEfeitos ? estado.getProtagonista().getAtributos() : null;
+                Map<String, Integer> relacoesAntes = mostrarEfeitos ? fotografarRelacionamentos(estado) : null;
+
+                boolean gameOver = estado.aplicarEfeitos(escolhaSelecionada);
+
+                if (mostrarEfeitos) {
+                    mostrarResultadoDaEscolha(antes, relacoesAntes, estado);
+                }
 
                 // game over: a cena é interrompida na hora e o jogo volta para o menu
-                if (estado.aplicarEfeitos(escolhaSelecionada)) {
+                if (gameOver) {
                     return SENTINELA_GAME_OVER;
                 }
 
@@ -502,6 +593,63 @@ public class Controlador {
             }
         }
 
+
+
         return ultimaEscolha;
+    }
+
+    /**
+     * Mostra ao jogador o resultado da última escolha, comparando o estado
+     * anterior com o atual. São exibidas as variações nos atributos do
+     * protagonista e na confiança dos NPCs.
+     *
+     * @param atributosAntes foto dos atributos do protagonista tirada antes de aplicar os efeitos
+     * @param relacoesAntes  foto da confiança de cada NPC tirada antes de aplicar os efeitos
+     * @param estado         estado atual da partida, já com os efeitos aplicados
+     */
+    private void mostrarResultadoDaEscolha(Map<String, Integer> atributosAntes, Map<String, Integer> relacoesAntes, EstadoPartida estado) {
+        mostrarVariacoes(atributosAntes, estado.getProtagonista().getAtributos(), "");
+        mostrarVariacoes(relacoesAntes, fotografarRelacionamentos(estado), "Relação com ");
+    }
+
+    /**
+     * Compara dois mapas de valores (antes e depois) e exibe no menu apenas as
+     * chaves cujo valor mudou, no formato {@code [prefixo chave +N]} ou
+     * {@code [prefixo chave -N]}. Chaves sem variação não são exibidas.
+     * <p>
+     * Uma chave que existe em {@code depois}, mas não em {@code antes}, é tratada
+     * como se o valor anterior fosse 0.
+     *
+     * @param antes   valores antes da escolha, indexados por nome
+     * @param depois  valores depois da escolha, indexados por nome
+     * @param prefixo texto colocado antes do nome na exibição (use {@code ""} para nenhum)
+     */
+    private void mostrarVariacoes(Map<String, Integer> antes, Map<String, Integer> depois, String prefixo) {
+        for (Map.Entry<String, Integer> item : depois.entrySet()) {
+            int variacao = item.getValue() - antes.getOrDefault(item.getKey(), 0);
+
+            if (variacao != 0) {
+                String sinal = (variacao > 0) ? "+" : "";
+                menu.mostraString("[" + prefixo + item.getKey() + " " + sinal + variacao + "]");
+            }
+        }
+    }
+
+    /**
+     * Tira uma "foto" da confiança de cada NPC da partida naquele momento.
+     * <p>
+     * Os valores são copiados para um novo mapa, então a foto não muda quando os
+     * NPCs são alterados depois (por exemplo, ao aplicar os efeitos de uma escolha).
+     * Isso permite comparar o antes e o depois.
+     *
+     * @param estado estado da partida, de onde os NPCs são obtidos
+     * @return mapa com o nome de cada NPC e o valor de confiança no momento da chamada
+     */
+    private Map<String, Integer> fotografarRelacionamentos(EstadoPartida estado) {
+        Map<String, Integer> foto = new HashMap<>();
+        for (NPC npc : estado.getNpcs().keySet()) {
+            foto.put(npc.getNome(), npc.getConfianca());
+        }
+        return foto;
     }
 }
