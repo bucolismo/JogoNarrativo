@@ -4,7 +4,7 @@ Projeto desenvolvido em Java para a disciplina de EXA 863 - MI - Programação.
 
 Jogo narrativo em modo texto (terminal). O jogador cria um protagonista e toma decisões ao longo de diálogos organizados em capítulos/cenas.
 
-Este é um jogo narrativo de investigação em que o jogador acompanha a história de Santa Aurora e toma decisões que alteram seu desenvolvimento. As escolhas alteram atributos do protagonista, o inventário e o nível de confiança com NPCs, e podem liberar ou bloquear outras escolhas mais à frente. Diferentes finais são possíveis.
+Este é um jogo narrativo de investigação em que o jogador acompanha a história da cidade de Santa Aurora e toma decisões que alteram seu desenvolvimento. As escolhas alteram atributos do protagonista, o inventário e o nível de confiança com NPCs, e podem liberar ou bloquear outras escolhas mais à frente. Diferentes finais são possíveis.
 
 ## Estrutura
 
@@ -52,7 +52,7 @@ java -jar junit-platform-console-standalone.jar execute -cp out:resources:gson-2
 
 ## Cenas em JSON
 
-O conteúdo da história do prólogo até o Ato III fica em arquivos JSON na pasta `resources/cenas/` (ideia e implementação inicial do Luis Felipe), lidos pela classe `CarregadorDeCenas`. Os Atos IV, V, VI e os finais ainda são montados em Java no `ConstrutorDeCenas`.
+O conteúdo da história do prólogo até o Ato III fica em arquivos JSON na pasta `resources/cenas/`, lidos pela classe `CarregadorDeCenas`. Os Atos IV, V, VI e os finais ainda são montados em Java no `ConstrutorDeCenas`.
 
 - Para mudar uma fala, escolha, efeito ou requisito basta editar o JSON; não é preciso recompilar o código Java.
 - O carregador valida o arquivo ao montar a cena (personagens, tipos de efeito, itens do `CatalogoDeItens`, atributos e limites de confiança) e informa o arquivo, o diálogo e a escolha onde está o erro (`CenaInvalidaException`).
@@ -67,7 +67,7 @@ O menu principal tem a opção **Configurações**, com três preferências que 
 2. **Mostrar mudanças de atributos e relações após cada escolha:** quando ligada, imprime linhas como `[Razão +3]` e `[Relação com Jonas -10]` com o que mudou depois de cada escolha. Só aparece o que de fato mudou. Vem desligada por padrão.
 3. **Pausa entre diálogos:** quando ligada, o jogo espera o jogador apertar ENTER depois de cada diálogo que não tem escolhas. Vem desligada por padrão.
 
-As três ficam em `saves/config.json` (classes `Configuracoes` e `RepositorioDeConfiguracoes`), separadas dos saves e do progresso. Se o arquivo estiver corrompido ou inválido, o jogo avisa e usa os valores padrão. A ideia do personagem favorito e da opção de mostrar as mudanças das escolhas, e a primeira versão de ambas, são do Luis Felipe; foram integradas à versão unificada (guardadas nas configurações, e não no estado da partida, para valerem entre execuções).
+As três ficam em `saves/config.json` (classes `Configuracoes` e `RepositorioDeConfiguracoes`), separadas dos saves e do progresso. Se o arquivo estiver corrompido ou inválido, o jogo avisa e usa os valores padrão. A ideia do personagem favorito e da opção de mostrar as mudanças das escolhas, e a primeira versão de ambas, foram integradas à versão unificada (guardadas nas configurações, e não no estado da partida, para valerem entre execuções).
 
 ## Registro de finais e conquistas (Fase 2)
 
@@ -94,4 +94,5 @@ As três ficam em `saves/config.json` (classes `Configuracoes` e `RepositorioDeC
 Discentes:
 
 Levi Sena Andrade
+
 Luis Felipe Santana Batista
