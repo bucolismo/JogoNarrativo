@@ -8,9 +8,10 @@
 
 public class Menu {
 
-    public static final int OPCOES_MENU_PRINCIPAL = 7;
+    public static final int OPCOES_MENU_PRINCIPAL = 8;
 
     private Entrada entrada;
+    private boolean pausaEntreDialogos;   // preferência: esperar ENTER entre os diálogos
 
     public Menu(Entrada entrada) {
         this.entrada = entrada;
@@ -108,6 +109,10 @@ public class Menu {
                 Os finais que você alcançar e as conquistas que desbloquear ficam
                 guardados entre as execuções do jogo: veja em "Conquistas".
 
+                Em "Configurações" você escolhe se quer ver as mudanças de atributos e
+                relações depois de cada escolha, se quer uma pausa entre os diálogos e
+                gerencia o seu personagem favorito.
+
                 Boa sorte e boa história!
                 """);
     }
@@ -138,9 +143,10 @@ Luis Felipe Batista
     2 - Continuar partida
     3 - Carregar partida
     4 - Conquistas
-    5 - Instruções
-    6 - Créditos
-    7 - Sair
+    5 - Configurações
+    6 - Instruções
+    7 - Créditos
+    8 - Sair
     """);
     }
 
@@ -174,7 +180,22 @@ Luis Felipe Batista
             return validaOpcao(escolhas.length);
         }
 
+        // Diálogo sem opções: se a pausa estiver ligada, espera o jogador apertar ENTER
+        if (pausaEntreDialogos) {
+            System.out.println("[Pressione ENTER para continuar]");
+            entrada.lerString();
+        }
+
         return 0; // Diálogo sem opções
+    }
+
+    /**
+     * Liga ou desliga a pausa (ENTER para continuar) depois dos diálogos que não têm escolhas.
+     *
+     * @param pausaEntreDialogos true para pausar entre os diálogos
+     */
+    public void setPausaEntreDialogos(boolean pausaEntreDialogos) {
+        this.pausaEntreDialogos = pausaEntreDialogos;
     }
 
     /**
@@ -226,6 +247,40 @@ Luis Felipe Batista
      */
     public void mostraConquistaDesbloqueada(Conquista conquista) {
         System.out.println("\n*** CONQUISTA DESBLOQUEADA: " + conquista.getTitulo() + " ***");
+    }
+
+    /**
+     * Mostra a tela de configurações com o valor atual de cada preferência.
+     *
+     * @param configuracoes preferências do jogador
+     * @return 1 ou 2 para ligar/desligar a opção, 3 para o personagem favorito, 0 para voltar
+     */
+    public int mostraConfiguracoes(Configuracoes configuracoes) {
+        System.out.println("\n===== CONFIGURAÇÕES =====");
+        System.out.println("1 - Mostrar mudanças de atributos e relações após cada escolha: "
+                + textoLigado(configuracoes.isMostrarEfeitosDasEscolhas()));
+        System.out.println("2 - Pausa entre diálogos (ENTER para continuar): "
+                + textoLigado(configuracoes.isPausaEntreDialogos()));
+
+        if (configuracoes.temPersonagemFavorito()) {
+            PersonagemFavorito favorito = configuracoes.getPersonagemFavorito();
+            System.out.println("3 - Personagem favorito: " + favorito.getNome() + ", "
+                    + favorito.getIdade() + " anos, " + favorito.getGenero());
+        } else {
+            System.out.println("3 - Personagem favorito: nenhum");
+        }
+
+        System.out.println("0 - Voltar");
+
+        return validaOpcaoOuZero(3);
+    }
+
+    private String textoLigado(boolean ligado) {
+        if (ligado) {
+            return "LIGADO";
+        }
+
+        return "DESLIGADO";
     }
 
     public void mostraSaida() {
