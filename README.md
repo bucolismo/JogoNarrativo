@@ -2,7 +2,22 @@
 
 Projeto desenvolvido em Java para a disciplina de EXA 863 - MI - Programação.
 
-Jogo narrativo em modo texto (terminal). O jogador cria um protagonista e toma decisões ao longo de diálogos organizados em capítulos/cenas.
+Componentes da dupla:
+
+Levi Sena Andrade (https://github.com/bucolismo)  
+Luis Felipe Batista (https://github.com/LuisB4tista)
+
+## Introdução
+
+Jogos narrativos interativos são aplicações em que o jogador conduz uma história por meio de escolhas, e em que cada decisão altera o rumo da trama, a relação com os personagens e o desfecho final. Por trás da experiência de leitura, existe um sistema que precisa controlar estado, regras de acesso, consequências e persistência de dados de forma organizada.
+
+Este projeto teve como objetivo o desenvolvimento de um jogo narrativo interativo em linguagem Java, no estilo visual novel/RPG narrativo, seguindo os princípios da Programação Orientada a Objetos (POO) e o padrão arquitetural MVC (Model-View-Controller). Não foi utilizada nenhuma engine de jogos pronta: toda a lógica de narrativa, relacionamentos, atributos, recursos e finais foi implementada do zero.
+
+O desenvolvimento foi dividido em três fases:
+
+- Fase 1: jogo jogável pelo terminal, com menu, protagonista configurável, ao menos 10 cenas, escolhas com consequências, relacionamentos, atributos, recursos e 3 finais distintos;
+- Fase 2: sistema de persistência em JSON, com múltiplos slots de save, salvamento manual e automático, sobrescrita, exclusão, configurações persistentes e exceções customizadas;
+- Fase 3: interface gráfica com JavaFX, preservando o MVC e aplicando padrões de projeto GoF.
 
 Este é um jogo narrativo de investigação em que o jogador acompanha a história da cidade de Santa Aurora e toma decisões que alteram seu desenvolvimento. As escolhas alteram atributos do protagonista, o inventário e o nível de confiança com NPCs, e podem liberar ou bloquear outras escolhas mais à frente. Diferentes finais são possíveis.
 
@@ -90,9 +105,3 @@ As três ficam em `saves/config.json` (classes `Configuracoes` e `RepositorioDeC
 - Atributos do protagonista (Razão, Paranoia, Violência e Provas) começam em 0 e vão até 100.
 - A confiança de cada NPC começa em 50 e varia de 0 a 100 conforme as ações do jogador.
 - Escolhas com efeito `GAME_OVER` encerram a partida imediatamente e voltam ao menu.
-
-Discentes:
-
-Levi Sena Andrade
-
-Luis Felipe Santana Batista
