@@ -4,6 +4,7 @@
  * os diálogos podem conter nenhuma ou várias escolhas que serão apresentadas
  * ao jogador durante a partida
  *
+ * @author Levi Sena Andrade
  */
 
 import java.util.ArrayList;

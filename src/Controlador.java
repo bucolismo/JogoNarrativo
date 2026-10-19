@@ -20,6 +20,10 @@ public class Controlador {
 
     private final Menu menu;
     private final RepositorioDeSaves repositorio;
+    private final RepositorioDeProgresso repositorioDeProgresso;
+
+    // finais alcançados e conquistas: valem para o jogo todo, não para uma partida só
+    private ProgressoGlobal progresso;
 
     /**
      * o Controlador não cria suas dependências: quem monta as peças do jogo é a classe Partida
@@ -27,19 +31,24 @@ public class Controlador {
      *
      * @param menu tela (entrada e saída de dados) usada para falar com o jogador
      * @param repositorio local de armazenamento dos saves
+     * @param repositorioDeProgresso local de armazenamento dos finais alcançados e das conquistas
      */
-    public Controlador(Menu menu, RepositorioDeSaves repositorio) {
+    public Controlador(Menu menu, RepositorioDeSaves repositorio, RepositorioDeProgresso repositorioDeProgresso) {
         this.menu = menu;
         this.repositorio = repositorio;
+        this.repositorioDeProgresso = repositorioDeProgresso;
+        this.progresso = new ProgressoGlobal();
     }
 
     /**
      * mostra e controla o menu principal do jogo
      *
      * aqui o jogador pode iniciar uma partida, continuar ou carregar uma partida salva,
-     * ver as instruções, ver os créditos ou sair do jogo
+     * ver as conquistas, ver as instruções, ver os créditos ou sair do jogo
      */
     public void menuInicial() {
+
+        carregarProgresso();
 
         int opcao;
 
@@ -63,20 +72,24 @@ public class Controlador {
                     break;
 
                 case 4:
-                    menu.mostraInstrucoes();
+                    mostrarConquistas();
                     break;
 
                 case 5:
-                    menu.mostraCreditos();
+                    menu.mostraInstrucoes();
                     break;
 
                 case 6:
+                    menu.mostraCreditos();
+                    break;
+
+                case 7:
                     menu.mostraSaida();
                     break;
 
             }
 
-        } while (opcao != 6);
+        } while (opcao != 7);
     }
 
     /**
@@ -104,6 +117,78 @@ public class Controlador {
         Protagonista protagonista = new Protagonista(nome, idade, genero);
         protagonista.cadastrarItens();
         return protagonista;
+    }
+
+    // ------------------------------------------------- conquistas e registro de finais
+
+    /**
+     * lê o progresso gravado em disco; se não for possível, o jogo avisa e segue com o progresso vazio
+     */
+    private void carregarProgresso() {
+        try {
+            progresso = repositorioDeProgresso.carregar();
+        } catch (CarregamentoException e) {
+            menu.mostraString("Aviso: não foi possível carregar suas conquistas (" + e.getMessage()
+                    + "). O progresso começará vazio.");
+            progresso = new ProgressoGlobal();
+        }
+    }
+
+    private void salvarProgresso() {
+        try {
+            repositorioDeProgresso.salvar(progresso);
+        } catch (SaveException e) {
+            menu.mostraString("Aviso: não foi possível salvar o progresso. " + e.getMessage());
+        }
+    }
+
+    /**
+     * tela de conquistas do menu principal: mostra as conquistas e permite redefini-las
+     */
+    private void mostrarConquistas() {
+        int opcao;
+
+        do {
+            menu.mostraConquistas(progresso);
+            opcao = menu.mostraOpcoesDasConquistas();
+
+            if (opcao == 1) {
+                redefinirConquistas();
+            }
+        } while (opcao != 0);
+    }
+
+    private void redefinirConquistas() {
+        if (!menu.confirma("Deseja realmente apagar as conquistas e o registro de finais? Essa ação não pode ser desfeita.")) {
+            return;
+        }
+
+        progresso = new ProgressoGlobal();
+        salvarProgresso();
+        menu.mostraString("Conquistas redefinidas.");
+    }
+
+    /**
+     * registra o final que o jogador acabou de alcançar, guarda o progresso e avisa das conquistas novas
+     *
+     * @param idDoFinal número do final (o mesmo de EstadoPartida.getFinalEscolhido)
+     */
+    private void registrarFinalAlcancado(int idDoFinal) {
+        FinalDoJogo alcancado = FinalDoJogo.porId(idDoFinal);
+
+        if (alcancado == null) {
+            return;
+        }
+
+        List<Conquista> novas = progresso.registrarFinal(alcancado);
+
+        if (!novas.isEmpty()) {
+            salvarProgresso();
+        }
+
+        for (int i = 0; i < novas.size(); i++) {
+            menu.mostraConquistaDesbloqueada(novas.get(i));
+        }
     }
 
     // ------------------------------------------------------------------ saves
@@ -416,6 +501,7 @@ public class Controlador {
                     }
                     if (cena != null) {
                         executaCena(cena, estado); // epílogo puro, sem escolhas
+                        registrarFinalAlcancado(estado.getFinalEscolhido());
                     }
                     estado.setAto(Ato.FIM);
                     break;

@@ -4,7 +4,6 @@
  * O valor do atributo varia de 0 ao valor maximo informado na inicialização
  *
  */
-
 public class Atributo {
     private String nome;
     private int valor;
@@ -42,7 +41,6 @@ public class Atributo {
      *
      * @param quantidade valor que será acrescentado ao atributo
      */
-    
     public void aumentaValor(int quantidade) {
         if (quantidade > 0) {
             this.valor += quantidade;
@@ -59,7 +57,6 @@ public class Atributo {
      *
      * @param quantidade valor que será subtraído do atributo
      */
-    
     public void reduzValor(int quantidade) {
         if (quantidade > 0) {
             this.valor -= quantidade;

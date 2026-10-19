@@ -8,7 +8,7 @@
 
 public class Menu {
 
-    public static final int OPCOES_MENU_PRINCIPAL = 6;
+    public static final int OPCOES_MENU_PRINCIPAL = 7;
 
     private Entrada entrada;
 
@@ -58,11 +58,11 @@ public class Menu {
     }
 
     /**
-     * Valida a opção digitada garantindo que ela esteja no intervalo de 1 até o parametro maxOpcoes.
-     * funciona  para diálogos com qualquer quantidade de escolhas
+     * Valida a opção digitada garantindo que ela esteja no intervalo de 1 até maxOpcoes.
+     * Funciona dinamicamente para diálogos com qualquer quantidade de escolhas.
      *
-     * @param maxOpcoes é o número máximo de opções válidas disponíveis
-     * @return o número da opção escolhida válida
+     * @param maxOpcoes O número máximo de opções válidas disponíveis.
+     * @return O número da opção escolhida válida.
      */
     public int validaOpcao(int maxOpcoes) {
         int opcao = recebeOpcao();
@@ -76,9 +76,8 @@ public class Menu {
     }
 
     /**
-     * sobrecarga para o menu principal, que tem 6 opções fixas
+     * Sobrecarga para o menu principal, que tem 6 opções fixas.
      */
-    
     public int validaOpcao() {
         return validaOpcao(OPCOES_MENU_PRINCIPAL);
     }
@@ -105,6 +104,9 @@ public class Menu {
                 O jogo salva automaticamente ao iniciar cada ato e, nesses mesmos
                 pontos, você também pode salvar manualmente em um dos 3 slots.
                 Use "Continuar" ou "Carregar partida" no menu para retomar.
+
+                Os finais que você alcançar e as conquistas que desbloquear ficam
+                guardados entre as execuções do jogo: veja em "Conquistas".
 
                 Boa sorte e boa história!
                 """);
@@ -135,9 +137,10 @@ Luis Felipe Batista
     1 - Nova partida
     2 - Continuar partida
     3 - Carregar partida
-    4 - Instruções
-    5 - Créditos
-    6 - Sair
+    4 - Conquistas
+    5 - Instruções
+    6 - Créditos
+    7 - Sair
     """);
     }
 
@@ -148,7 +151,6 @@ Luis Felipe Batista
      * @param dialogo diálogo que será apresentado
      * @return ele retorna o número da escolha selecionada ou retorna "0" se o diálogo não tiver opções
      */
-    
     public int mostraDialogo(Dialogo dialogo) {
 
         // Caso de não ser o narrador:
@@ -175,6 +177,57 @@ Luis Felipe Batista
         return 0; // Diálogo sem opções
     }
 
+    /**
+     * Mostra a tela de conquistas: quantos finais já foram alcançados e o estado de cada conquista.
+     * A conquista oculta (Platina) aparece como "???" com uma dica até ser desbloqueada.
+     *
+     * @param progresso progresso do jogador
+     */
+    public void mostraConquistas(ProgressoGlobal progresso) {
+        System.out.println("\n===== CONQUISTAS =====");
+        System.out.println("Finais alcançados: " + progresso.getQuantidadeDeFinais() + "/" + ProgressoGlobal.TOTAL_DE_FINAIS);
+        System.out.println();
+
+        Conquista[] todas = Conquista.values();
+
+        for (int i = 0; i < todas.length; i++) {
+            Conquista conquista = todas[i];
+
+            if (progresso.temConquista(conquista)) {
+                System.out.println("[X] " + conquista.getTitulo());
+                System.out.println("    " + conquista.getDescricao() + " (" + progresso.getDataDaConquista(conquista) + ")");
+            } else if (conquista.isOculta()) {
+                System.out.println("[ ] ???");
+                System.out.println("    Dica: " + conquista.getDescricao());
+            } else {
+                System.out.println("[ ] " + conquista.getTitulo());
+                System.out.println("    " + conquista.getDescricao());
+            }
+        }
+    }
+
+    /**
+     * Mostra as opções da tela de conquistas.
+     *
+     * @return 1 para redefinir as conquistas ou 0 para voltar
+     */
+    public int mostraOpcoesDasConquistas() {
+        System.out.println();
+        System.out.println("1 - Redefinir conquistas");
+        System.out.println("0 - Voltar");
+
+        return validaOpcaoOuZero(1);
+    }
+
+    /**
+     * Avisa o jogador que uma conquista acabou de ser desbloqueada.
+     *
+     * @param conquista conquista desbloqueada
+     */
+    public void mostraConquistaDesbloqueada(Conquista conquista) {
+        System.out.println("\n*** CONQUISTA DESBLOQUEADA: " + conquista.getTitulo() + " ***");
+    }
+
     public void mostraSaida() {
         System.out.println("Encerrando o jogo. Até a próxima!");
     }
@@ -197,13 +250,12 @@ Luis Felipe Batista
     }
 
     /**
-     * Perrgunta sim ou não, se a resposta for qualquer coisa que não "s" ou "sim" conta como não,
-     * que é a escolha segura para ações que apagam ou substituem dados
+     * Faz uma pergunta de sim ou não. Qualquer resposta diferente de "s" ou "sim" conta como não,
+     * que é a escolha segura para ações que apagam ou substituem dados.
      *
      * @param pergunta texto da pergunta
      * @return true somente se o jogador confirmou
      */
-    
     public boolean confirma(String pergunta) {
         System.out.println(pergunta + " (s/n)");
         String resposta = entrada.lerString().trim().toLowerCase();
@@ -217,7 +269,6 @@ Luis Felipe Batista
      * @param rotuloDoAto nome do ato em que o jogador está
      * @return 1 para continuar, 2 para salvar, 3 para voltar ao menu principal
      */
-    
     public int mostraPontoDeSalvamento(String rotuloDoAto) {
         System.out.println("""
 
@@ -237,7 +288,6 @@ Luis Felipe Batista
      * @param linhas descrição de cada save, na ordem das opções 1, 2, 3...
      * @return o número da opção escolhida, ou 0 para voltar
      */
-    
     public int mostraListaDeSaves(String titulo, java.util.List<String> linhas) {
         System.out.println("\n===== " + titulo + " =====");
 

@@ -56,7 +56,10 @@
             "> pela travessa, evitamos a névoa densa e chegamos com fatos, não com suposições.\""
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            }
           ]
         },
         {
@@ -73,7 +76,10 @@
             "> ônibus estacionar. Ninguém fica parado no frio à meia-noite sem um motivo.\""
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ]
         },
         {
@@ -90,7 +96,10 @@
             "> com a memória do seu irmão, vai descobrir do pior jeito que você voltou.\""
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            }
           ]
         }
       ]
@@ -123,8 +132,14 @@
             "(Obteve Pista: Informação de Jonas [ID: 6])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -140,7 +155,10 @@
             "Tinha gente estranha lá, garoto. Gente que não é da cidade perguntando por você!\""
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ]
         },
         {
@@ -156,7 +174,10 @@
             "dos fundos da delegacia... e ele não tá sozinho!\""
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            }
           ]
         }
       ]
@@ -187,8 +208,15 @@
             "(Relação com Jonas melhorou)"
           ],
           "efeitos": [
-            { "tipo": "RELACAO", "personagem": "jonas", "valor": 3 },
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+            {
+              "tipo": "RELACAO",
+              "personagem": "jonas",
+              "valor": 30
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            }
           ]
         },
         {
@@ -207,8 +235,15 @@
             "(Relação com Jonas piorou)"
           ],
           "efeitos": [
-            { "tipo": "RELACAO", "personagem": "jonas", "valor": -2 },
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "RELACAO",
+              "personagem": "jonas",
+              "valor": -20
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ]
         },
         {
@@ -225,7 +260,10 @@
             "tava puto com alguma coisa. Só espero que não esteja puto comigo.\""
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ]
         }
       ]
@@ -254,9 +292,19 @@
             "(Relação com Jonas melhorou)"
           ],
           "efeitos": [
-            { "tipo": "RELACAO", "personagem": "jonas", "valor": 3 },
-            { "tipo": "ITEM", "idItem": 6 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "RELACAO",
+              "personagem": "jonas",
+              "valor": 30
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 6
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -273,7 +321,11 @@
             "(Jonas se recusa a entregar a pista)"
           ],
           "efeitos": [
-            { "tipo": "RELACAO", "personagem": "jonas", "valor": -2 }
+            {
+              "tipo": "RELACAO",
+              "personagem": "jonas",
+              "valor": -20
+            }
           ]
         }
       ]
@@ -310,9 +362,18 @@
             "(Obteve Pista: Pista do Manequim [ID: 7])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "ITEM", "idItem": 7 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 7
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -326,7 +387,10 @@
             "porém rápido demais para saber quem estava monitorando a polícia."
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ]
         },
         {
@@ -341,9 +405,18 @@
             "(Obteve Evidência: Laudo Adulterado [ID: 8])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "ITEM", "idItem": 8 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 8
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         }
       ]

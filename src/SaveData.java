@@ -151,7 +151,7 @@ public class SaveData {
             throw new DadosInvalidosException("Ato desconhecido: " + ato, e);
         }
 
-        if (!atoLido.pontoDeSalvamento()) {
+        if (!atoLido.ehPontoDeSalvamento()) {
             throw new DadosInvalidosException("Ato que não é ponto de salvamento: " + ato);
         }
 
@@ -159,18 +159,25 @@ public class SaveData {
     }
 
     private void validarRotas(Ato atoSalvo) throws DadosInvalidosException {
-        boolean passouDoDesfechoDoAtoI = atoSalvo.ordinal() >= Ato.ATO_II.ordinal();
-        boolean passouDoAtoIII = atoSalvo.ordinal() >= Ato.ATO_III.ordinal();
-        boolean passouDoAtoIV = atoSalvo.ordinal() >= Ato.ATO_V.ordinal();
+        // a rota do Ato II já foi escolhida a partir do Ato II
+        boolean noAtoIIOuDepois = atoSalvo == Ato.ATO_II || atoSalvo == Ato.ATO_III || atoSalvo == Ato.ATO_IV
+                || atoSalvo == Ato.ATO_V || atoSalvo == Ato.ATO_VI;
 
-        if (passouDoDesfechoDoAtoI && (rotaAtoII < 1 || rotaAtoII > 6)) {
+        // as rotas 4 e 6 terminam em game over dentro do Ato II, então só existe save no Ato III em diante
+        // se a rota for outra
+        boolean noAtoIIIOuDepois = atoSalvo == Ato.ATO_III || atoSalvo == Ato.ATO_IV
+                || atoSalvo == Ato.ATO_V || atoSalvo == Ato.ATO_VI;
+
+        // a rota do Ato V já foi escolhida (no Ato IV) a partir do Ato V
+        boolean noAtoVOuDepois = atoSalvo == Ato.ATO_V || atoSalvo == Ato.ATO_VI;
+
+        if (noAtoIIOuDepois && (rotaAtoII < 1 || rotaAtoII > 6)) {
             throw new DadosInvalidosException("Rota do Ato II inválida: " + rotaAtoII);
         }
-        // as rotas 4 e 6 terminam em game over dentro do Ato II, não existe save depois delas
-        if (passouDoAtoIII && (rotaAtoII == 4 || rotaAtoII == 6)) {
+        if (noAtoIIIOuDepois && (rotaAtoII == 4 || rotaAtoII == 6)) {
             throw new DadosInvalidosException("Rota do Ato II incompatível com o ato salvo: " + rotaAtoII);
         }
-        if (passouDoAtoIV && (rotaAtoV < 1 || rotaAtoV > 3)) {
+        if (noAtoVOuDepois && (rotaAtoV < 1 || rotaAtoV > 3)) {
             throw new DadosInvalidosException("Rota do Ato V inválida: " + rotaAtoV);
         }
     }

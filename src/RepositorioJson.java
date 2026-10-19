@@ -3,8 +3,9 @@
  *
  * slot 0 -> autosave.json | slots 1 a 3 -> slot1.json, slot2.json, slot3.json
  *
- * A gravação é feita em um arquivo temporário que depois substitui o definitivo, para que uma falha
- * no meio da escrita não destrua o save anterior.
+ * Os arquivos são gravados direto. Se um save estiver corrompido na hora de carregar, o jogo não
+ * quebra: o carregamento lança uma exceção (CarregamentoException ou DadosInvalidosException)
+ * e o Controlador avisa o jogador.
  */
 
 import com.google.gson.Gson;
@@ -12,12 +13,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 public class RepositorioJson implements RepositorioDeSaves {
     public static final String PASTA_PADRAO = "saves";
@@ -38,21 +36,11 @@ public class RepositorioJson implements RepositorioDeSaves {
     public void salvar(int slot, EstadoPartida estado) throws SaveException {
         validarSlot(slot);
 
-        Path destino = arquivoDoSlot(slot);
-        Path temporario = pasta.resolve(destino.getFileName() + ".tmp");
-
         try {
             Files.createDirectories(pasta);
             String json = gson.toJson(SaveData.de(estado, slot));
-            Files.writeString(temporario, json, StandardCharsets.UTF_8);
-
-            try {
-                Files.move(temporario, destino, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
-            } catch (AtomicMoveNotSupportedException e) {
-                Files.move(temporario, destino, StandardCopyOption.REPLACE_EXISTING);
-            }
-        } catch (IOException | RuntimeException e) {
-            apagarSilenciosamente(temporario);
+            Files.writeString(arquivoDoSlot(slot), json);
+        } catch (IOException e) {
             throw new SaveException("Não foi possível salvar no slot " + rotulo(slot) + ": " + e.getMessage(), e);
         }
     }
@@ -99,7 +87,7 @@ public class RepositorioJson implements RepositorioDeSaves {
 
         String json;
         try {
-            json = Files.readString(arquivoDoSlot(slot), StandardCharsets.UTF_8);
+            json = Files.readString(arquivoDoSlot(slot));
         } catch (IOException e) {
             throw new CarregamentoException("Não foi possível ler o slot " + rotulo(slot) + ": " + e.getMessage(), e);
         }
@@ -119,7 +107,11 @@ public class RepositorioJson implements RepositorioDeSaves {
     }
 
     private Path arquivoDoSlot(int slot) {
-        return pasta.resolve(slot == SLOT_AUTOMATICO ? "autosave.json" : "slot" + slot + ".json");
+        if (slot == SLOT_AUTOMATICO) {
+            return pasta.resolve("autosave.json");
+        }
+
+        return pasta.resolve("slot" + slot + ".json");
     }
 
     private boolean slotValido(int slot) {
@@ -133,14 +125,10 @@ public class RepositorioJson implements RepositorioDeSaves {
     }
 
     private String rotulo(int slot) {
-        return slot == SLOT_AUTOMATICO ? "automático" : String.valueOf(slot);
-    }
-
-    private void apagarSilenciosamente(Path arquivo) {
-        try {
-            Files.deleteIfExists(arquivo);
-        } catch (IOException ignorado) {
-            // nada a fazer: o temporário será sobrescrito no próximo salvamento
+        if (slot == SLOT_AUTOMATICO) {
+            return "automático";
         }
+
+        return String.valueOf(slot);
     }
 }

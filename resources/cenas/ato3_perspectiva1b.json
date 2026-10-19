@@ -34,9 +34,18 @@
             "(Obteve Item: Fita de Áudio Confidencial do Irmão [ID: 22])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "ITEM", "idItem": 22 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 22
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -51,9 +60,18 @@
             "(Obteve Item: Diários do Sobrado de Gabriel [ID: 23])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "ITEM", "idItem": 23 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 23
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -68,8 +86,14 @@
             "(Obteve Item: Ordem de Busca e Apreensão Paralela [ID: 24])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "ITEM", "idItem": 24 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 24
+            }
           ]
         }
       ]
@@ -98,10 +122,23 @@
             "(Obteve Item: Mapeamento da Conta Fantasma [ID: 25])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "helena", "valor": 2 },
-            { "tipo": "ITEM", "idItem": 25 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "helena",
+              "valor": 20
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 25
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -115,10 +152,23 @@
             "(Obteve Item: Dossiê de Ocultação de Cadáveres [ID: 26])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "helena", "valor": 2 },
-            { "tipo": "ITEM", "idItem": 26 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "helena",
+              "valor": 20
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 26
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -132,9 +182,19 @@
             "(Obteve Item: Panfletos de Denúncia Operacional [ID: 27])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "helena", "valor": -1 },
-            { "tipo": "ITEM", "idItem": 27 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "helena",
+              "valor": -10
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 27
+            }
           ]
         }
       ]
@@ -165,7 +225,9 @@
             "no porta-malas do carro sem placas. Seu jogo duplo termina no escuro."
           ],
           "efeitos": [
-            { "tipo": "ITEM", "idItem": -1 }
+            {
+              "tipo": "GAME_OVER"
+            }
           ]
         },
         {
@@ -180,9 +242,18 @@
             "(Obteve Item: Rota das Galerias do Centro [ID: 28])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "ITEM", "idItem": 28 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 28
+            }
           ]
         },
         {
@@ -198,9 +269,18 @@
             "(Você agora está marcado: Procurado por Agressão [ID: 21])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "ITEM", "idItem": 29 },
-            { "tipo": "ITEM", "idItem": 21 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 29
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 21
+            }
           ]
         }
       ]

@@ -43,7 +43,10 @@
             "[ROTA ATIVADA: ATO II - OPÇÃO 1A (O CONFRONTO METÓDICO)]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            }
           ],
           "requisitoItem": 8
         },
@@ -58,7 +61,10 @@
             "[ROTA ATIVADA: ATO II - OPÇÃO 1B (O JOGO DUPLO)]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ]
         },
         {
@@ -72,7 +78,10 @@
             "[ROTA ATIVADA: ATO II - ROTA 2A (O ESCONDERIJO SUBTERRÂNEO)]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            }
           ],
           "requisitoItem": 6
         },
@@ -87,7 +96,10 @@
             "[ROTA ATIVADA: ATO II - ROTA 2B (OS ARQUIVOS MORTOS)]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            }
           ],
           "requisitoItem": 7
         },
@@ -103,7 +115,10 @@
             "[ROTA ATIVADA: ATO II - ROTA 3A (O CONFRONTO NO BECO)]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            }
           ]
         },
         {
@@ -117,7 +132,10 @@
             "[ROTA ATIVADA: ATO II - ROTA 3B (INVASÃO À DELEGACIA)]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            }
           ],
           "requisitoAtributo": "Violência",
           "valorRequisitoAtributo": 7

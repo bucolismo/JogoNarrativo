@@ -1,11 +1,10 @@
 /**
- * aqwui temos aas etapas da narrativa, na ordem em que acontecem
+ * etapas da narrativa, na ordem em que acontecem
  *
- * O controlador usa o ato atual da partida para saber qual cena construir e vai executar
+ * O Controlador usa o ato atual da partida para saber qual cena construir e executar.
  * Alguns atos são pontos de salvamento: o jogo salva automaticamente ao entrar neles e
- * oferece o salvamento manual (método lá embaixo Ato.PontoDeSalvamento)
+ * oferece o salvamento manual (ver Ato.ehPontoDeSalvamento).
  */
-
 public enum Ato {
     PROLOGO("Prólogo"),
     ATO_I("Ato I"),
@@ -31,8 +30,7 @@ public enum Ato {
     /**
      * @return true se é permitido salvar (e carregar) a partida ao entrar nesse ato
      */
-
-    public boolean pontoDeSalvamento() {
+    public boolean ehPontoDeSalvamento() {
         return this != PROLOGO && this != FINAL && this != FIM;
     }
 }

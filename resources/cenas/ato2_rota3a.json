@@ -49,11 +49,18 @@
             "imediatamente. O sujeito é levado algemado para a cela, mas Daniel fica",
             "extremamente irritado com a sua violência em propriedade policial.",
             "",
-            "[CONFIANÇA COM DANIEL: -2]"
+            "[CONFIANÇA COM DANIEL: -20]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -2 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -20
+            }
           ]
         },
         {
@@ -68,9 +75,18 @@
             "(Obteve Item: Cartão de Acesso da Prefeitura [ID: 15])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "ITEM", "idItem": 15 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 15
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -85,9 +101,18 @@
             "(Obteve Pista: Canal do Gabinete [ID: 16])"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "ITEM", "idItem": 16 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 16
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -99,11 +124,18 @@
             "pela captura limpa e sem uso de força desmedida, ele agradece a ajuda e",
             "concorda em realizar o interrogatório em conjunto na sala oficial.",
             "",
-            "[CONFIANÇA COM DANIEL: +2]"
+            "[CONFIANÇA COM DANIEL: +20]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 2 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 20
+            }
           ]
         }
       ]
@@ -153,13 +185,26 @@
             "Santa Aurora para apagar as provas daquela noite.",
             "",
             "(Obteve Pista: Vínculo com Vice-Prefeito [ID: 17])",
-            "[CONFIANÇA COM DANIEL: +1]"
+            "[CONFIANÇA COM DANIEL: +10]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 1 },
-            { "tipo": "ITEM", "idItem": 17 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 10
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 17
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         },
         {
@@ -175,8 +220,14 @@
             "[CONFIANÇA COM DANIEL: NEUTRA]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "ITEM", "idItem": 18 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 18
+            }
           ]
         },
         {
@@ -190,12 +241,22 @@
             "para evitar uma agressão física.",
             "",
             "(Obteve Pista: Nome do Assessor [ID: 19])",
-            "[CONFIANÇA COM DANIEL: -1]"
+            "[CONFIANÇA COM DANIEL: -10]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -1 },
-            { "tipo": "ITEM", "idItem": 19 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -10
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 19
+            }
           ]
         },
         {
@@ -209,13 +270,26 @@
             "onde entregaria o restante do material queimado.",
             "",
             "(Obteve Pista: Ponto de Encontro do Transfuga [ID: 20])",
-            "[CONFIANÇA COM DANIEL: +2]"
+            "[CONFIANÇA COM DANIEL: +20]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 2 },
-            { "tipo": "ITEM", "idItem": 20 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 20
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 20
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         }
       ]
@@ -253,11 +327,18 @@
             "Daniel acena positivamente com a cabeça. Ele garante que usará sua influência",
             "para conseguir um mandado de busca discreto sem acionar os alertas da prefeitura.",
             "",
-            "[CONFIANÇA COM DANIEL: +2 | ROTA ATIVADA: OPERAÇÃO CONJUNTA]"
+            "[CONFIANÇA COM DANIEL: +20 | ROTA ATIVADA: OPERAÇÃO CONJUNTA]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 2 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 20
+            }
           ]
         },
         {
@@ -268,11 +349,18 @@
             "Daniel joga a bituca do cigarro no chão e suspira, preocupado com sua imprudência.",
             "Ele avisa que não poderá te cobrir se você for pego invadindo prédios públicos.",
             "",
-            "[CONFIANÇA COM DANIEL: -1 | ROTA ATIVADA: INFILTRAÇÃO SOLO]"
+            "[CONFIANÇA COM DANIEL: -10 | ROTA ATIVADA: INFILTRAÇÃO SOLO]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaParanoia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -1 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaParanoia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -10
+            }
           ]
         },
         {
@@ -283,11 +371,18 @@
             "Daniel põe a mão no coldre e avisa em tom ameaçador que não hesitará em te prender",
             "se você tentar fazer justiça com as próprias mãos em Santa Aurora.",
             "",
-            "[CONFIANÇA COM DANIEL: -3 | ROTA ATIVADA: VIGILANTE PERSEGUIDO]"
+            "[CONFIANÇA COM DANIEL: -30 | ROTA ATIVADA: VIGILANTE PERSEGUIDO]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaViolencia" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": -3 }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaViolencia"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": -30
+            }
           ]
         },
         {
@@ -299,13 +394,26 @@
             "Ele demonstra confiança total na sua capacidade de conduzir o caso ao seu lado.",
             "",
             "(Obteve Item: Chave do Arquivo Morto [ID: 14])",
-            "[CONFIANÇA COM DANIEL: +3 | ROTA ATIVADA: PARCERIA TOTAL]"
+            "[CONFIANÇA COM DANIEL: +30 | ROTA ATIVADA: PARCERIA TOTAL]"
           ],
           "efeitos": [
-            { "tipo": "PREDEFINIDO", "nome": "aumentaRazao" },
-            { "tipo": "RELACAO", "personagem": "daniel", "valor": 3 },
-            { "tipo": "ITEM", "idItem": 14 },
-            { "tipo": "PREDEFINIDO", "nome": "ganhaProva" }
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "aumentaRazao"
+            },
+            {
+              "tipo": "RELACAO",
+              "personagem": "daniel",
+              "valor": 30
+            },
+            {
+              "tipo": "ITEM",
+              "idItem": 14
+            },
+            {
+              "tipo": "PREDEFINIDO",
+              "nome": "ganhaProva"
+            }
           ]
         }
       ]

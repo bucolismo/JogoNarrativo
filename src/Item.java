@@ -25,6 +25,10 @@ public class Item {
         return this.itemNome;
     }
 
+    public String getTipo() {
+        return this.itemTipo;
+    }
+
     public String getDescricao() {
         return this.itemDescricao;
     }
@@ -41,17 +45,13 @@ public class Item {
      * "remove" o item do inventário, mudando seu status para indisponível.
      */
     public void remover() {
-        if (this.itemStatus) {
-            this.itemStatus = false;
-        }
+        this.itemStatus = false;
     }
 
     /**
      * adiciona o item ao inventário, mudando seu status para disponível.
      */
     public void adicionar() {
-        if (!this.itemStatus) {
-            this.itemStatus = true;
-        }
+        this.itemStatus = true;
     }
 }

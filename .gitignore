@@ -31,3 +31,7 @@ bin/
 
 .idea/
 *.iml
+
+### Saves do jogo ###
+saves/
+target/
