@@ -21,6 +21,10 @@ public class Controlador {
     private final Menu menu;
     private final RepositorioDeSaves repositorio;
     private final RepositorioDeProgresso repositorioDeProgresso;
+    private final RepositorioDeConfiguracoes repositorioDeConfiguracoes;
+
+    // preferências do jogador: valem para o jogo todo e são mantidas entre as execuções
+    private Configuracoes configuracoes;
 
     // finais alcançados e conquistas: valem para o jogo todo, não para uma partida só
     private ProgressoGlobal progresso;
@@ -32,22 +36,27 @@ public class Controlador {
      * @param menu tela (entrada e saída de dados) usada para falar com o jogador
      * @param repositorio local de armazenamento dos saves
      * @param repositorioDeProgresso local de armazenamento dos finais alcançados e das conquistas
+     * @param repositorioDeConfiguracoes local de armazenamento das preferências do jogador
      */
-    public Controlador(Menu menu, RepositorioDeSaves repositorio, RepositorioDeProgresso repositorioDeProgresso) {
+    public Controlador(Menu menu, RepositorioDeSaves repositorio, RepositorioDeProgresso repositorioDeProgresso,
+                       RepositorioDeConfiguracoes repositorioDeConfiguracoes) {
         this.menu = menu;
         this.repositorio = repositorio;
         this.repositorioDeProgresso = repositorioDeProgresso;
+        this.repositorioDeConfiguracoes = repositorioDeConfiguracoes;
         this.progresso = new ProgressoGlobal();
+        this.configuracoes = new Configuracoes();
     }
 
     /**
      * mostra e controla o menu principal do jogo
      *
      * aqui o jogador pode iniciar uma partida, continuar ou carregar uma partida salva,
-     * ver as conquistas, ver as instruções, ver os créditos ou sair do jogo
+     * ver as conquistas, mudar as configurações, ver as instruções, ver os créditos ou sair do jogo
      */
     public void menuInicial() {
 
+        carregarConfiguracoes();
         carregarProgresso();
 
         int opcao;
@@ -76,20 +85,24 @@ public class Controlador {
                     break;
 
                 case 5:
-                    menu.mostraInstrucoes();
+                    gerenciarConfiguracoes();
                     break;
 
                 case 6:
-                    menu.mostraCreditos();
+                    menu.mostraInstrucoes();
                     break;
 
                 case 7:
+                    menu.mostraCreditos();
+                    break;
+
+                case 8:
                     menu.mostraSaida();
                     break;
 
             }
 
-        } while (opcao != 7);
+        } while (opcao != 8);
     }
 
     /**
@@ -104,20 +117,153 @@ public class Controlador {
     }
 
     /**
-     * cadastra o protagonista com as informações fornecidas pelo jogador
+     * obtém o protagonista da nova partida
      *
-     * faz o cadastro dos os itens disponíveis para o inventário do protagonista.
+     * Primeiro oferece o personagem favorito, se existir. Se o jogador recusar (ou não houver favorito),
+     * cadastra um personagem novo com as informações fornecidas e oferece guardá-lo como favorito.
+     * Em todos os casos faz o cadastro dos itens disponíveis para o inventário do protagonista.
      *
-     * @return retona o protagonista criado para a partida
+     * @return o protagonista criado ou escolhido para a partida
      */
     private Protagonista criarProtagonista() {
+        Protagonista favorito = perguntaUsarFavorito();
+
+        if (favorito != null) {
+            return favorito;
+        }
+
         String nome = menu.recebeNome();
         int idade = menu.recebeIdade();
         String genero = menu.recebeGenero();
         Protagonista protagonista = new Protagonista(nome, idade, genero);
         protagonista.cadastrarItens();
+
+        perguntaSalvarFavorito(protagonista);
+
         return protagonista;
     }
+
+    /**
+     * pergunta se o jogador quer usar o personagem favorito nesta partida
+     *
+     * @return o protagonista criado a partir do favorito, ou null se não há favorito ou o jogador recusou
+     */
+    private Protagonista perguntaUsarFavorito() {
+        PersonagemFavorito favorito = configuracoes.getPersonagemFavorito();
+
+        if (favorito == null) {
+            return null;
+        }
+
+        String descricao = favorito.getNome() + ", " + favorito.getIdade() + " anos, " + favorito.getGenero();
+
+        if (!menu.confirma("Deseja usar seu personagem favorito (" + descricao + ") nesta nova partida?")) {
+            return null;
+        }
+
+        Protagonista protagonista = new Protagonista(favorito.getNome(), favorito.getIdade(), favorito.getGenero());
+        protagonista.cadastrarItens();
+        return protagonista;
+    }
+
+    /**
+     * pergunta se o jogador quer guardar o personagem recém-criado como favorito
+     *
+     * Se já existir um favorito, pede confirmação antes de substituí-lo. Uma falha ao gravar
+     * só avisa o jogador e não interrompe a partida.
+     *
+     * @param protagonista personagem recém-criado
+     */
+    private void perguntaSalvarFavorito(Protagonista protagonista) {
+        if (!menu.confirma("Deseja salvar este personagem como favorito?")) {
+            return;
+        }
+
+        if (configuracoes.temPersonagemFavorito()
+                && !menu.confirma("Já existe um favorito salvo. Deseja substituí-lo?")) {
+            return;
+        }
+
+        configuracoes.setPersonagemFavorito(new PersonagemFavorito(
+                protagonista.getNome(), protagonista.getIdade(), protagonista.getGenero()));
+
+        if (salvarConfiguracoes()) {
+            menu.mostraString("Personagem salvo como favorito.");
+        }
+    }
+
+    // ------------------------------------------------------------ configurações
+
+    /**
+     * lê as configurações gravadas em disco; se não for possível, o jogo avisa e usa os valores padrão
+     */
+    private void carregarConfiguracoes() {
+        try {
+            configuracoes = repositorioDeConfiguracoes.carregar();
+        } catch (CarregamentoException e) {
+            menu.mostraString("Aviso: não foi possível carregar suas configurações (" + e.getMessage()
+                    + "). Serão usados os valores padrão.");
+            configuracoes = new Configuracoes();
+        }
+
+        menu.setPausaEntreDialogos(configuracoes.isPausaEntreDialogos());
+    }
+
+    /**
+     * grava as configurações; se falhar, só avisa o jogador
+     *
+     * @return true se gravou, false se não foi possível gravar
+     */
+    private boolean salvarConfiguracoes() {
+        try {
+            repositorioDeConfiguracoes.salvar(configuracoes);
+            return true;
+        } catch (SaveException e) {
+            menu.mostraString("Aviso: não foi possível salvar as configurações. " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * tela de configurações do menu principal: liga/desliga as opções e gerencia o personagem favorito
+     */
+    private void gerenciarConfiguracoes() {
+        int opcao;
+
+        do {
+            opcao = menu.mostraConfiguracoes(configuracoes);
+
+            if (opcao == 1) {
+                configuracoes.setMostrarEfeitosDasEscolhas(!configuracoes.isMostrarEfeitosDasEscolhas());
+                salvarConfiguracoes();
+            } else if (opcao == 2) {
+                configuracoes.setPausaEntreDialogos(!configuracoes.isPausaEntreDialogos());
+                menu.setPausaEntreDialogos(configuracoes.isPausaEntreDialogos());
+                salvarConfiguracoes();
+            } else if (opcao == 3) {
+                gerenciarFavorito();
+            }
+        } while (opcao != 0);
+    }
+
+    private void gerenciarFavorito() {
+        if (!configuracoes.temPersonagemFavorito()) {
+            menu.mostraString("Você ainda não tem um personagem favorito. Crie um personagem em uma nova partida "
+                    + "e escolha salvá-lo como favorito.");
+            return;
+        }
+
+        String nome = configuracoes.getPersonagemFavorito().getNome();
+
+        if (menu.confirma("Deseja excluir o personagem favorito " + nome + "?")) {
+            configuracoes.setPersonagemFavorito(null);
+
+            if (salvarConfiguracoes()) {
+                menu.mostraString("Personagem favorito excluído.");
+            }
+        }
+    }
+
 
     // ------------------------------------------------- conquistas e registro de finais
 
@@ -579,8 +725,24 @@ public class Controlador {
 
                 estado.registrarDecisao(estado.getAto().name() + "#" + (i + 1) + "=" + escolha);
 
+                // se a preferência estiver ligada, guarda os valores de antes para mostrar o que mudou
+                boolean mostrarEfeitos = configuracoes.isMostrarEfeitosDasEscolhas();
+                int[] atributosAntes = null;
+                int[] confiancasAntes = null;
+
+                if (mostrarEfeitos) {
+                    atributosAntes = fotografarAtributos(estado);
+                    confiancasAntes = fotografarConfiancas(estado);
+                }
+
+                boolean gameOver = estado.aplicarEfeitos(escolhaSelecionada);
+
+                if (mostrarEfeitos) {
+                    mostrarResultadoDaEscolha(atributosAntes, confiancasAntes, estado);
+                }
+
                 // game over: a cena é interrompida na hora e o jogo volta para o menu
-                if (estado.aplicarEfeitos(escolhaSelecionada)) {
+                if (gameOver) {
                     return SENTINELA_GAME_OVER;
                 }
 
@@ -589,5 +751,66 @@ public class Controlador {
         }
 
         return ultimaEscolha;
+    }
+
+    // ------------------------------------------- mostrar os efeitos das escolhas
+
+    /**
+     * copia o valor de cada atributo do protagonista naquele momento (na ordem de NOMES_DOS_ATRIBUTOS)
+     */
+    private int[] fotografarAtributos(EstadoPartida estado) {
+        String[] nomes = Protagonista.NOMES_DOS_ATRIBUTOS;
+        int[] valores = new int[nomes.length];
+
+        for (int i = 0; i < nomes.length; i++) {
+            valores[i] = estado.getProtagonista().getAtributo(nomes[i]);
+        }
+
+        return valores;
+    }
+
+    /**
+     * copia a confiança dos NPCs naquele momento, na ordem Jonas, Daniel, Helena
+     */
+    private int[] fotografarConfiancas(EstadoPartida estado) {
+        int[] valores = new int[3];
+
+        valores[0] = estado.getJonas().getConfianca();
+        valores[1] = estado.getDaniel().getConfianca();
+        valores[2] = estado.getHelena().getConfianca();
+
+        return valores;
+    }
+
+    /**
+     * mostra ao jogador o que mudou depois da escolha, comparando os valores de antes com os de agora
+     *
+     * @param atributosAntes valores dos atributos antes de aplicar os efeitos
+     * @param confiancasAntes confiança de Jonas, Daniel e Helena antes de aplicar os efeitos
+     * @param estado estado da partida, já com os efeitos aplicados
+     */
+    private void mostrarResultadoDaEscolha(int[] atributosAntes, int[] confiancasAntes, EstadoPartida estado) {
+        String[] nomes = Protagonista.NOMES_DOS_ATRIBUTOS;
+
+        for (int i = 0; i < nomes.length; i++) {
+            mostrarVariacao(nomes[i], atributosAntes[i], estado.getProtagonista().getAtributo(nomes[i]));
+        }
+
+        mostrarVariacao("Relação com Jonas", confiancasAntes[0], estado.getJonas().getConfianca());
+        mostrarVariacao("Relação com Daniel", confiancasAntes[1], estado.getDaniel().getConfianca());
+        mostrarVariacao("Relação com Helena", confiancasAntes[2], estado.getHelena().getConfianca());
+    }
+
+    /**
+     * mostra uma linha como [Razão +3] ou [Relação com Jonas -10], só se o valor mudou
+     */
+    private void mostrarVariacao(String nome, int antes, int depois) {
+        int variacao = depois - antes;
+
+        if (variacao > 0) {
+            menu.mostraString("[" + nome + " +" + variacao + "]");
+        } else if (variacao < 0) {
+            menu.mostraString("[" + nome + " " + variacao + "]");
+        }
     }
 }

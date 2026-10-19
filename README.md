@@ -59,6 +59,16 @@ O conteúdo da história do prólogo até o Ato III fica em arquivos JSON na pas
 - Efeitos disponíveis: `PREDEFINIDO` (reaproveita um efeito pelo nome), `ATRIBUTO`, `RELACAO` (confiança de um NPC), `ITEM` e `GAME_OVER`. O formato completo está documentado no comentário da classe `CarregadorDeCenas`.
 - O `HistoriaTest` carrega todas as cenas (JSON e Java) e confere que nada referencia item, atributo, personagem ou efeito inexistente.
 
+## Configurações do jogador (Fase 2)
+
+O menu principal tem a opção **Configurações**, com três preferências que são mantidas entre as execuções do jogo:
+
+1. **Personagem favorito:** ao criar um personagem em uma nova partida, o jogador pode guardá-lo como favorito. Nas próximas partidas, o jogo oferece usar o favorito em vez de pedir nome, idade e gênero de novo. Pede confirmação antes de substituir um favorito existente, e o favorito pode ser excluído na tela de configurações (também com confirmação).
+2. **Mostrar mudanças de atributos e relações após cada escolha:** quando ligada, imprime linhas como `[Razão +3]` e `[Relação com Jonas -10]` com o que mudou depois de cada escolha. Só aparece o que de fato mudou. Vem desligada por padrão.
+3. **Pausa entre diálogos:** quando ligada, o jogo espera o jogador apertar ENTER depois de cada diálogo que não tem escolhas. Vem desligada por padrão.
+
+As três ficam em `saves/config.json` (classes `Configuracoes` e `RepositorioDeConfiguracoes`), separadas dos saves e do progresso. Se o arquivo estiver corrompido ou inválido, o jogo avisa e usa os valores padrão. A ideia do personagem favorito e da opção de mostrar as mudanças das escolhas, e a primeira versão de ambas, são do Luis Felipe; foram integradas à versão unificada (guardadas nas configurações, e não no estado da partida, para valerem entre execuções).
+
 ## Registro de finais e conquistas (Fase 2)
 
 - O jogo tem 3 finais (`FinalDoJogo`): A Balança (Razão), A Névoa se Levanta (Paranoia) e O Preço do Sangue (Violência). O final é decidido na escolha final do Ato VI.

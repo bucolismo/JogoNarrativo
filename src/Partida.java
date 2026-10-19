@@ -2,7 +2,7 @@
  * Classe responsável por iniciar a execução do jogo.
  *
  * É também onde as peças do MVC são montadas: a Entrada (leitura do teclado) é entregue ao Menu
- * (View), e o Menu e os repositórios (saves e progresso) são entregues ao Controlador.
+ * (View), e o Menu e os repositórios (saves, progresso e configurações) são entregues ao Controlador.
  *
  * @author Levi Sena Andrade
  */
@@ -13,7 +13,8 @@ public class Partida {
         Menu menu = new Menu(entrada);
         RepositorioDeSaves repositorio = new RepositorioJson();
         RepositorioDeProgresso repositorioDeProgresso = new RepositorioDeProgresso();
-        Controlador controlador = new Controlador(menu, repositorio, repositorioDeProgresso);
+        RepositorioDeConfiguracoes repositorioDeConfiguracoes = new RepositorioDeConfiguracoes();
+        Controlador controlador = new Controlador(menu, repositorio, repositorioDeProgresso, repositorioDeConfiguracoes);
 
         try {
             controlador.menuInicial();
