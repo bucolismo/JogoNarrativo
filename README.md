@@ -1,107 +1,272 @@
-# Jogo Narrativo
-
-Projeto desenvolvido em Java para a disciplina de EXA 863 - MI - Programação.
+# Jogo Narrativo Interativo em Java
+EXA863 - MI PROGRAMAÇÃO
 
 Componentes da dupla:
+* Levi Sena (https://github.com/bucolismo)
+* Luis Felipe Batista (https://github.com/LuisB4tista)
 
-Levi Sena Andrade (https://github.com/bucolismo)  
-Luis Felipe Batista (https://github.com/LuisB4tista)
+Tutor: Roberto Almeida Bittencourt
 
-## Introdução
+Universidade Estadual de Feira de Santana (UEFS) — 2026.2
+
+---
+
+## 1. Introdução
 
 Jogos narrativos interativos são aplicações em que o jogador conduz uma história por meio de escolhas, e em que cada decisão altera o rumo da trama, a relação com os personagens e o desfecho final. Por trás da experiência de leitura, existe um sistema que precisa controlar estado, regras de acesso, consequências e persistência de dados de forma organizada.
 
-Este projeto teve como objetivo o desenvolvimento de um jogo narrativo interativo em linguagem Java, no estilo visual novel/RPG narrativo, seguindo os princípios da Programação Orientada a Objetos (POO) e o padrão arquitetural MVC (Model-View-Controller). Não foi utilizada nenhuma engine de jogos pronta: toda a lógica de narrativa, relacionamentos, atributos, recursos e finais foi implementada do zero.
+Este projeto teve como objetivo o desenvolvimento de um jogo narrativo interativo em linguagem Java, no estilo *visual novel*/RPG narrativo, seguindo os princípios da Programação Orientada a Objetos (POO) e o padrão arquitetural **MVC** (*Model-View-Controller*). Não foi utilizada nenhuma *engine* de jogos pronta: toda a lógica de narrativa, relacionamentos, atributos, recursos e finais foi implementada do zero.
 
 O desenvolvimento foi dividido em três fases:
 
-- Fase 1: jogo jogável pelo terminal, com menu, protagonista configurável, ao menos 10 cenas, escolhas com consequências, relacionamentos, atributos, recursos e 3 finais distintos;
-- Fase 2: sistema de persistência em JSON, com múltiplos slots de save, salvamento manual e automático, sobrescrita, exclusão, configurações persistentes e exceções customizadas;
-- Fase 3: interface gráfica com JavaFX, preservando o MVC e aplicando padrões de projeto GoF.
+* **Fase 1:** jogo jogável pelo terminal, com menu, protagonista configurável, ao menos 10 cenas, escolhas com consequências, relacionamentos, atributos, recursos e 3 finais distintos;
+* **Fase 2:** sistema de persistência em **JSON**, com múltiplos *slots* de save, salvamento manual e automático, sobrescrita, exclusão, configurações persistentes e exceções customizadas;
+* **Fase 3:** interface gráfica com **JavaFX**, preservando o MVC e aplicando padrões de projeto GoF.
 
-Este é um jogo narrativo de investigação em que o jogador acompanha a história da cidade de Santa Aurora e toma decisões que alteram seu desenvolvimento. As escolhas alteram atributos do protagonista, o inventário e o nível de confiança com NPCs, e podem liberar ou bloquear outras escolhas mais à frente. Diferentes finais são possíveis.
+[PREENCHER: 1 ou 2 frases sobre a história/ambientação do jogo, sem spoilers dos finais.]
 
-## Estrutura
+---
 
-O projeto utiliza o padrão MVC e possui:
+## 2. Especificação do Projeto
 
-- Personagens e NPCs
-- Cenas, diálogos e escolhas
-- Atributos de Razão, Paranoia e Violência
-- Sistema de confiança dos NPCs
-- Inventário e itens
-- Efeitos das escolhas
-- Requisitos para determinadas escolhas (condição de acesso)
-- Testes de unidade com JUnit
+| Item | Valor |
+|---|---|
+| Linguagem | Java 17 ou superior |
+| Interface (Fases 1 e 2) | Terminal (console) |
+| Interface (Fase 3) | JavaFX |
+| Persistência | Arquivos JSON - Biblioteca: Gson |
+| Testes de unidade | JUnit 4/5 |
+| Gerenciador de build | Maven |
+| IDE de desenvolvimento | IntelliJ IDEA |
+| Controle de versão | Git / GitHub |
 
-## Execução
+---
 
-Com Maven (Java 17 ou superior), na raiz do projeto:
+## 3. Fundamentação Teórica
 
-```bash
-mvn compile exec:java      # roda o jogo
-mvn test                   # roda os testes de unidade
+### 3.1. Programação Orientada a Objetos
+
+O projeto foi modelado com classes que representam as entidades do domínio do jogo (protagonista, personagens não jogáveis, cenas, escolhas, estado da partida), aplicando os conceitos de encapsulamento, abstração, herança e polimorfismo vistos em sala. [PREENCHER: citar onde herança/polimorfismo/interfaces foram usados de fato no código.]
+
+### 3.2. Padrão MVC
+
+A separação em três camadas é o eixo da arquitetura:
+
+* **Model:** guarda os dados e as regras do jogo (protagonista, NPCs, cenas, estado da partida), sem saber nada sobre como serão exibidos;
+* **View:** responsável apenas pela exibição e pela captura de entradas do jogador (terminal na Fase 1/2, JavaFX na Fase 3);
+* **Controller:** recebe as ações da View, aplica as regras sobre o Model e decide o que será exibido em seguida.
+
+### 3.3. Persistência com JSON
+
+JSON é um formato textual leve e legível, adequado para representar o estado de uma partida (campos simples, listas e objetos aninhados). Ele foi utilizado em dois pontos do projeto: na **definição das cenas** (carregadas por `CarregadorDeCenas`) e no **salvamento das partidas** e configurações do jogador. A escolha por JSON em vez de XML foi motivada pela simplicidade de leitura e escrita.
+
+
+### 3.4. Padrões de projeto (GoF)
+
+[PREENCHER na Fase 3: descrever os 3 padrões GoF aplicados — nome, onde foi usado no código e qual problema resolveu. Ex.: *Singleton* para ..., *Factory Method* para ..., *Observer* para ...]
+
+---
+
+
+## 4. Arquitetura
+
+### 4.1. Organização em pacotes
+
+```
+src/
+├── model/         # entidades e regras do jogo
+├── view/          # exibição e entrada do jogador
+├── controller/    # fluxo do jogo e orquestração
+├── persistencia/  # leitura/escrita de JSON, saves e configurações
+├── excecoes/      # exceções customizadas
+└── Main.java
+test/              # testes de unidade
+recursos/cenas/    # arquivos JSON com as cenas
 ```
 
-Sem Maven, é preciso o jar do Gson no classpath (exemplo no Linux):
+> [AJUSTAR a árvore acima para refletir a estrutura real do repositório.]
 
-```bash
-javac -encoding UTF-8 -cp gson-2.10.1.jar -d out src/*.java
-java -Dfile.encoding=UTF-8 -cp out:resources:gson-2.10.1.jar Partida
-```
+### 4.2. Diagrama de classes
 
-## Ponto de entrada
+[INSERIR imagem ou link do diagrama de classes, ex.: `docs/diagrama-de-classes.png`]
 
-A classe Partida inicia o jogo pelo terminal e monta as peças do MVC: cria a Entrada, o Menu (View) e o RepositorioJson, entrega os dois últimos ao Controlador e chama o menuInicial().
+### 4.3. Fluxo geral de uma partida
 
-## Testes
+1. O jogador abre o **menu inicial** (Nova partida, Carregar, Instruções, Créditos, Conquistas, Configurações, Sair);
+2. Em *Nova partida*, escolhe um personagem salvo (preferência de personagem favorito) ou cria um novo protagonista;
+3. O jogo apresenta a **introdução narrativa** e avança pelas cenas;
+4. A cada cena, o jogador escolhe entre as opções **liberadas** pelas condições de acesso (atributos, recursos, relacionamentos, decisões anteriores);
+5. As escolhas aplicam **efeitos** sobre atributos, recursos e relacionamentos e atualizam o estado da partida;
+6. Ao final, é exibido um dos finais disponíveis e o jogador retorna ao menu.
 
-Testes de unidade em JUnit 5, na pasta test/. Cobrem Atributo, NPC, Inventario, Protagonista, Efeito, Dialogo, Entrada, CatalogoDeItens e a integridade da história (HistoriaTest: todo item, atributo e efeito usado nas cenas precisa existir no motor). Classes de saída (Menu) e o conteúdo narrativo em si não possuem testes dedicados.
+### 4.4. `EstadoPartida` — o estado central do jogo
 
-Sem Maven, com o JUnit Console Launcher (`junit-platform-console-standalone`) e o Gson:
+A classe `EstadoPartida` concentra tudo o que define uma partida em andamento: o protagonista, os NPCs e seus relacionamentos, o ato atual, as rotas seguidas, as decisões tomadas, as regras de bloqueio/efeitos das escolhas e o resumo da jornada. Por reunir todo o estado em um único objeto, ela é o elemento que a Fase 2 serializa para JSON ao salvar e reconstrói ao carregar uma partida.
 
-```bash
-javac -encoding UTF-8 -cp junit-platform-console-standalone.jar:gson-2.10.1.jar -d out src/*.java test/*.java
-java -jar junit-platform-console-standalone.jar execute -cp out:resources:gson-2.10.1.jar --scan-classpath
-```
+### 4.5. `CarregadorDeCenas` — cenas em JSON
 
-## Cenas em JSON
+As cenas do jogo ficam em arquivos JSON, e não dentro do código. O `CarregadorDeCenas` lê esses arquivos e monta os objetos de cena (texto, diálogos, escolhas, condições e efeitos). Com isso, o conteúdo narrativo pode ser alterado sem recompilar o projeto.
 
-O conteúdo da história do prólogo até o Ato III fica em arquivos JSON na pasta `resources/cenas/`, lidos pela classe `CarregadorDeCenas`. Os Atos IV, V, VI e os finais ainda são montados em Java no `ConstrutorDeCenas`.
+---
 
-- Para mudar uma fala, escolha, efeito ou requisito basta editar o JSON; não é preciso recompilar o código Java.
-- O carregador valida o arquivo ao montar a cena (personagens, tipos de efeito, itens do `CatalogoDeItens`, atributos e limites de confiança) e informa o arquivo, o diálogo e a escolha onde está o erro (`CenaInvalidaException`).
-- Efeitos disponíveis: `PREDEFINIDO` (reaproveita um efeito pelo nome), `ATRIBUTO`, `RELACAO` (confiança de um NPC), `ITEM` e `GAME_OVER`. O formato completo está documentado no comentário da classe `CarregadorDeCenas`.
-- O `HistoriaTest` carrega todas as cenas (JSON e Java) e confere que nada referencia item, atributo, personagem ou efeito inexistente.
+## 5. Detalhamento das Funcionalidades
 
-## Configurações do jogador (Fase 2)
+### 5.1. Protagonista e atributos
 
-O menu principal tem a opção **Configurações**, com três preferências que são mantidas entre as execuções do jogo:
+O protagonista é configurado pelo jogador no início da partida e possui [N] atributos variáveis ([LISTAR, ex.: Coragem, Inteligência, ...]), todos iniciando em **0** e evoluindo conforme as escolhas.
 
-1. **Personagem favorito:** ao criar um personagem em uma nova partida, o jogador pode guardá-lo como favorito. Nas próximas partidas, o jogo oferece usar o favorito em vez de pedir nome, idade e gênero de novo. Pede confirmação antes de substituir um favorito existente, e o favorito pode ser excluído na tela de configurações (também com confirmação).
-2. **Mostrar mudanças de atributos e relações após cada escolha:** quando ligada, imprime linhas como `[Razão +3]` e `[Relação com Jonas -10]` com o que mudou depois de cada escolha. Só aparece o que de fato mudou. Vem desligada por padrão.
-3. **Pausa entre diálogos:** quando ligada, o jogo espera o jogador apertar ENTER depois de cada diálogo que não tem escolhas. Vem desligada por padrão.
+### 5.2. Personagens e relacionamentos
 
-As três ficam em `saves/config.json` (classes `Configuracoes` e `RepositorioDeConfiguracoes`), separadas dos saves e do progresso. Se o arquivo estiver corrompido ou inválido, o jogo avisa e usa os valores padrão. A ideia do personagem favorito e da opção de mostrar as mudanças das escolhas, e a primeira versão de ambas, foram integradas à versão unificada (guardadas nas configurações, e não no estado da partida, para valerem entre execuções).
+O jogo conta com 3 personagens relevantes (Daniel, Helena e Jonas). Os relacionamentos com eles são medidos por **confiança**, em escala de **0 a 100**, iniciando em **50** e subindo ou descendo conforme as ações do jogador.
 
-## Registro de finais e conquistas (Fase 2)
+### 5.3. Recursos gerenciáveis
 
-- O jogo tem 3 finais (`FinalDoJogo`): A Balança (Razão), A Névoa se Levanta (Paranoia) e O Preço do Sangue (Violência). O final é decidido na escolha final do Ato VI.
-- Quando o jogador termina uma partida em um final, o `ProgressoGlobal` registra o final alcançado e desbloqueia a conquista correspondente (`Conquista`). Ao alcançar os 3 finais, desbloqueia também a **Platina**, que fica oculta ("???" com uma dica) até lá.
-- O progresso vale para o jogo todo: não some ao apagar saves nem ao começar uma nova partida. É gravado em `saves/progresso.json` (`RepositorioDeProgresso`) e lido ao abrir o jogo. Se o arquivo estiver corrompido, o jogo avisa e começa com o progresso vazio.
-- No menu principal, a opção **Conquistas** mostra os finais alcançados e o estado de cada conquista, e permite redefinir tudo (com confirmação).
-- Os marcadores de rota do Ato V (itens "Rota Ativada") **não** são usados no registro: eles indicam o caminho escolhido no Ato IV, e o final depende da escolha do Ato VI.
+[PREENCHER: quais recursos o jogo possui — inventário, pontos de ação, energia, dinheiro, pistas, habilidades — e como são consumidos/obtidos.]
 
-## Saves (Fase 2)
+### 5.4. Escolhas, consequências e condições de acesso
 
-- Estado da partida: tudo o que muda durante o jogo fica em `EstadoPartida` (protagonista, confiança dos NPCs, ato atual, rotas e decisões). O `Controlador` só faz a ponte entre o jogador, o estado e os saves.
-- Pontos de salvamento: ao entrar em cada ato (`Ato.ehPontoDeSalvamento`). Nesses pontos o jogo salva automaticamente no slot automático e oferece salvar manualmente em um dos 3 slots.
-- Formato: um arquivo JSON por slot, na pasta `saves/` (`autosave.json`, `slot1.json` a `slot3.json`). Os arquivos são gravados direto; se um save estiver corrompido ao carregar, o jogo avisa em vez de quebrar.
-- Menu: "Continuar" retoma o save mais recente, "Carregar partida" lista os slots (nome, data/hora, ato e resumo) e permite carregar ou excluir. Sobrescrever e excluir pedem confirmação.
-- Dados inválidos: todo save é validado ao carregar. Falhas viram `SaveException`, `CarregamentoException` ou `DadosInvalidosException`, e o jogo mostra a mensagem em vez de quebrar.
+Cada escolha pode ter **condições de acesso** (por exemplo, exigir um atributo mínimo, um item ou um nível de confiança) que bloqueiam ou liberam opções, além de **efeitos** que alteram o estado da partida. [PREENCHER: dar 1 ou 2 exemplos reais do jogo.] + adicionar o vídeo aqui da restrição de acesso
 
-## Regras de balanceamento
+### 5.5. Finais
 
-- Atributos do protagonista (Razão, Paranoia, Violência e Provas) começam em 0 e vão até 100.
-- A confiança de cada NPC começa em 50 e varia de 0 a 100 conforme as ações do jogador.
-- Escolhas com efeito `GAME_OVER` encerram a partida imediatamente e voltam ao menu.
+<details>
+  <summary> Visualizar finais </summary>
+
+  
+  O jogo possui 3 finais distintos, ligados às rotas narrativas:
+  
+  | Final | Rota |
+  |---|---|
+  | Razão | [PREENCHER: o que leva a este final] |
+  | Paranoia | [PREENCHER: o que leva a este final] |
+  | Violência | [PREENCHER: o que leva a este final] |
+
+</details>
+
+### 5.6. Sistema de saves (Fase 2)
+
+* Múltiplos *slots* de save;
+* Salvamento **manual** e **automático** [PREENCHER: em quais momentos ocorre o automático];
+* Sobrescrita e exclusão de saves;
+* Tratamento de falhas por **exceções customizadas** [colocar as exceções, talvez a prioridade das exceções]
+
+### 5.7. Configurações persistentes (Fase 2)
+
+Três preferências do jogador são gravadas em JSON e restauradas ao abrir o jogo:
+
+| Preferência | Função |
+|---|---|
+| Personagem favorito | Após *Nova partida*, permite usar o personagem salvo ou criar um novo |
+| Mostrar efeitos das escolhas | Exibe (ou oculta) as consequências numéricas de cada escolha |
+| Pausa entre diálogos | Controla o ritmo da exibição dos diálogos |
+
+### 5.8. Conquistas e conteúdo desbloqueável (Fase 2)
+
+O registro de finais alimenta a opção **Conquistas** do menu: uma conquista por final (Razão, Paranoia e Violência) e a conquista **Platina**, concedida ao atingir todos os finais.
+
+### 5.9. Interface gráfica (Fase 3)
+
+[PREENCHER: telas implementadas em JavaFX (menu, cena, escolhas, saves, configurações, conquistas), como a View se comunica com o Controller e como o MVC foi preservado.]
+
+---
+
+## 6. Testes, Limitações e Melhorias Futuras
+
+### 6.1. Testes de unidade
+
+Os testes cobrem [PREENCHER: classes/regras testadas, ex.: efeitos de escolhas, condições de acesso, cálculo de relacionamento, serialização e desserialização do `EstadoPartida`].
+
+Para executar: [COMANDO ou instrução na IDE, ex.: `mvn test`].
+
+### 6.2. Limitações conhecidas
+
+- [PREENCHER: ex.: conteúdo narrativo limitado a N cenas]
+- [PREENCHER: ex.: ausência de áudio/imagens na interface]
+- [PREENCHER: outras limitações reais]
+
+## 7. Instruções de Reprodução
+
+### Pré-requisitos
+
+* JDK [VERSÃO] instalado;
+* JavaFX SDK [VERSÃO] configurado (Fase 3);
+* [IDE ou Maven/Gradle].
+
+### Passo a passo
+
+1. Clone o repositório:
+   ```
+   git clone https://github.com/[USUARIO]/[REPOSITORIO].git
+   ```
+2. Abra o projeto na IDE [NOME DA IDE] (ou entre na pasta do projeto pelo terminal);
+3. Configure o JDK [VERSÃO] e as dependências ([BIBLIOTECA JSON], JavaFX, JUnit);
+4. Execute a classe principal `[CAMINHO.DA.Main]`;
+5. Para rodar os testes: [COMANDO ou instrução].
+
+> Os arquivos de save e de configuração são gerados em `[PASTA, ex.: saves/]` na primeira execução.
+
+---
+
+## 8. Guia de Uso
+
+### 8.1 Menu inicial
+
+| Opção | Função |
+|---|---|
+| Nova partida | Inicia uma nova história (usando o personagem favorito ou criando um novo) |
+| Carregar partida | Retoma uma partida salva em um dos slots |
+| Instruções | Explica como jogar |
+| Conquistas | Mostra as conquistas desbloqueadas |
+| Configurações | Altera as preferências persistentes |
+| Créditos | Exibe a dupla e a disciplina |
+| Sair | Encerra o jogo |
+
+> [AJUSTAR as opções conforme o menu real.]
+
+### 8.2 Durante a partida
+
+[PREENCHER: como escolher opções (número/clique), como salvar, como acompanhar atributos/recursos/relacionamentos, como voltar ao menu.]
+
+---
+
+## 9. Vídeos de Demonstração da Execução
+
+Os vídeos a seguir demonstram o funcionamento do jogo.
+
+### 10.1 [TÍTULO, ex.: Menu, criação do protagonista e início da história]
+
+[DESCRIÇÃO CURTA do que o vídeo mostra]
+
+[LINK ou arquivo do vídeo]
+
+### 10.2 [TÍTULO, ex.: Escolhas, consequências e relacionamentos]
+
+[DESCRIÇÃO CURTA do que o vídeo mostra]
+
+[LINK ou arquivo do vídeo]
+
+### 10.3 [TÍTULO, ex.: Saves, configurações e conquistas]
+
+[DESCRIÇÃO CURTA do que o vídeo mostra]
+
+[LINK ou arquivo do vídeo]
+
+### 10.4 [TÍTULO, ex.: Os três finais]
+
+[DESCRIÇÃO CURTA do que o vídeo mostra]
+
+[LINK ou arquivo do vídeo]
+
+> No GitHub, para exibir o vídeo direto no README, edite o README pelo navegador e arraste o arquivo de vídeo para a caixa de edição; o GitHub gera o link `https://github.com/user-attachments/assets/...` automaticamente.
+
+---
+
+## 11. Referências
+
+[PREENCHER no padrão da disciplina/SBC. Exemplos de itens possíveis:]
+
+* Documentação oficial do Java (Oracle).
+* Documentação do JavaFX (OpenJFX).
+* Documentação da biblioteca JSON utilizada.
+* GAMMA, E.; HELM, R.; JOHNSON, R.; VLISSIDES, J. *Padrões de Projeto: Soluções Reutilizáveis de Software Orientado a Objetos*. Bookman.
+* Material de aula da disciplina EXA863.
